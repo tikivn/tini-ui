@@ -41,7 +41,7 @@ Then you can use it as normal component:
 
 ## Contribute
 
-If you have any issues or suggestions, please send us [issue](https://github.com/tikivn/tiny-ui)
+If you have any issues or suggestions, please send us [issue](https://github.com/tikivn/tiny-ui/issues)
 
 ## Resources
 
