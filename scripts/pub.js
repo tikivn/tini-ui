@@ -6,14 +6,14 @@ const { version } = packageJson;
 const isRpx = process.argv.splice(2)[0] === '--rpx';
 
 if (isRpx) {
-  packageJson.name = 'mini-ali-ui-rpx';
+  packageJson.name = '@tikivn/tiny-ui-rpx';
   packageJson.description = 'Tiny UI Rpx version';
 
   const runner = spawn('npm', ['publish']);
 
   runner.on('close', () => {});
 } else {
-  packageJson.name = 'mini-ali-ui';
+  packageJson.name = '@tikivn/tiny-ui';
   packageJson.description = 'Tiny UI';
 
   const runner = spawn('npm', ['publish']);
