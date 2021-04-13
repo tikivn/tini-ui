@@ -1,0 +1,23 @@
+<view class="tm-avatar" style="{{style}}">
+    <image
+        class="tm-avatar-img tm-avatar-img-{{size}}"
+        style="{{
+        shape!=='circle' ? 'border-radius:4px':
+        size==='xs'?'border-radius:20px':
+        size==='sm'?'border-radius:24px':
+        size==='md'?'border-radius:28px':
+        'border-radius:36px'
+
+        }}
+        "
+        src="{{src}}" lazy-load="{{lazyLoad}}"
+        onError="_onError"/>
+  <view class="tm-avatar-content" tiki:if="{{name || desc}}">
+    <view class="tm-avatar-name tm-avatar-name-{{size}}" tiki:if="{{name}}">
+      {{name}}
+    </view>
+    <view class="tm-avatar-desc tm-avatar-desc-{{size}}" tiki:if="{{desc}}">
+      {{desc}}
+    </view>
+  </view>
+</view>

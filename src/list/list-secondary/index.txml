@@ -1,0 +1,10 @@
+<view class="tm-list-secondary">
+  <auto-sizer tiki:if="{{thumb}}" 
+    placeholder="{{thumbPlaceholder}}" 
+    src="{{thumb}}" 
+    size="{{thumbSize}}" />
+  <view class="tm-list-secondary-text">
+    <view class="tm-list-secondary-title" tiki:if="{{title}}">{{title}}</view>
+    <view class="tm-list-secondary-subtitle" tiki:if="{{subtitle}}">{{subtitle}}</view>
+  </view>
+</view>

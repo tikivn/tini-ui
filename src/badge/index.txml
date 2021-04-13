@@ -1,0 +1,16 @@
+<view class="tm-badge {{className}} {{!$slots.inner ? 'tm-badge-not-a-wrapper' : ''}}">
+  <view
+    class="tm-badge-text"
+      style="
+        {{withArrow && direction === 'right' ? 'border-radius: 8px 8px 0 8px;right:0;' : ''}}
+        {{withArrow && direction === 'left' ? 'border-radius: 8px 8px 8px 0;left:0;' : ''}}
+        {{withArrow && direction === 'middle' ? 'text-align:center;' : ''}}
+        {{stroke?'border: 1px solid #fff;':''}}"
+      "
+    tiki:if="{{!dot}}">
+    <text class="tm-badge-text-inner">{{typeof text === 'number' && text > overflowCount ? '···' : text }}</text>
+    <view tiki:if="{{withArrow && direction ==='middle'}}" class="tm-badge-arrow {{stroke?'border: 1px solid #fff;':''}}"/>
+  </view>
+  <view class="tm-badge is-dot" tiki:if="{{dot}}"></view>
+  <slot name="inner" />
+</view>

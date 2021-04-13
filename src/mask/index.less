@@ -1,0 +1,21 @@
+.tm-mask {
+  /** position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  background-color: var(--tm-mask-backgroundColor, rgba(0, 0, 0, 0.55));
+}
+
+.tm-mask__m {
+  background-color: rgba(0, 0, 0, 0.75);
+  background-color: var(--tm-mask-market-backgroundColor, rgba(0, 0, 0, 0.75));
+}
+
+.tm-mask__fix {
+  width: 300vw;
+  height: 300vh;
+  transform: translate3d(-100vw, -100vh, 0);
+}

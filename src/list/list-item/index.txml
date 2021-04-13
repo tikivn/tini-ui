@@ -1,0 +1,67 @@
+<view class="tm-list-item {{last ? 'last': ''}} {{borderRadius ? 'tm-list-item-radius' : ''}} {{className}}" 
+	hover-class="{{disabled ? '' : 'tm-list-item-hover'}}" 
+	hover-start-time="0"
+	hover-stay-time="0"
+	onTap="onItemTap" 
+	data-index="{{index}}">
+	<view class="tm-list-prefix">
+		<view tiki:if="{{$slots.prefix && !$slots.supporting}}" class="tm-list-supporting">
+			<slot name="prefix" />
+		</view>
+		<view tiki:if="{{$slots.supporting}}" class="tm-list-supporting">
+			<slot name="supporting" />
+		</view>
+		<auto-sizer tiki:if="{{thumb}}" 
+			src="{{thumb}}" 
+			size="{{thumbSize}}" />
+	</view>
+	<view class="tm-list-line {{wrap ? 'tm-list-wrap' : ''}}">
+		<view class="tm-list-content">
+			<view tiki:if="{{titlePosition === 'top'}}" 
+				class="tm-list-content-title">
+				<view class="tm-list-text-wrapper {{$slots.afterTitle ? '' : 'tm-list-text-wrapper__fix'}}">
+					<slot />
+				</view>
+				<slot name="afterTitle" />
+			</view>
+			<view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" 
+				class="tm-list-content-subtitle {{upperSubtitle && lowerSubtitle ? 'tm-list-content-subtitle-small' : ''}} {{$slots.afterLowerSubtitle && upperSubtitle ?  'tm-list-content-subtitle-small' : ''}}">
+				<view tiki:if="{{upperSubtitle}}" 
+					class="tm-list-text-wrapper">{{upperSubtitle}}</view>
+				<slot name="afterUpperSubtitle" />
+			</view>
+			<view tiki:if="{{titlePosition === 'middle'}}" 
+				class="tm-list-content-title">
+				<view class="tm-list-text-wrapper">
+					<slot />
+				</view>
+				<slot name="afterTitle" />
+			</view>
+			<view tiki:if="{{lowerSubtitle || $slots.afterLowerSubtitle}}" 
+				class="tm-list-content-subtitle {{upperSubtitle && lowerSubtitle ? 'tm-list-content-subtitle-small' : ''}} {{lowerSubtitle && $slots.afterUpperSubtitle ? 'tm-list-content-subtitle-small' : ''}}">
+				<view tiki:if="{{lowerSubtitle}}" 
+					class="tm-list-text-wrapper">{{lowerSubtitle}}</view>
+				<slot name="afterLowerSubtitle" />
+			</view>
+			<view tiki:if="{{titlePosition === 'bottom'}}" 
+				class="tm-list-content-title">
+				<view class="tm-list-text-wrapper">
+					<slot />
+				</view>
+				<slot name="afterTitle" />
+			</view>
+			
+		</view>
+		<view tiki:if="{{$slots.extra}}" 
+			class="tm-list-extra">
+			<slot name="extra" />
+		</view>
+		<view tiki:if="{{arrow}}" 
+			class="tm-list-arrow">
+			<tm-icon type="right" 
+				size="{{iconSize}}" 
+				color="#ccc" />
+		</view>
+	</view>
+	<view class="tm-list-line-divider"/>
+</view>

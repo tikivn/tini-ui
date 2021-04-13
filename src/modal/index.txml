@@ -1,0 +1,58 @@
+<modal 
+    show="{{show}}"
+    onModalClose="_onModalClose"
+    onMaskClick="_onMaskTap"
+    mask="{{mask}}"
+    animationType="{{animationType}}"
+    >
+      <view
+          class="{{advice?'tm-modal-close-advice':'tm-modal-close'}}"
+            tiki:if="{{showClose || advice}}"
+            onTap="_onModalClose"
+        >
+            <icon type="{{advice ? 'close_circle' : 'close'}}" size="{{advice ? adviceClose : normalClose}}" color="#999" />
+      </view>
+      <view class="tm-modal-container">
+        <view tiki:if="{{topImage}}" class="tm-modal-image tm-modal-image-{{topImageSize}}">
+          <image class="tm-modal-image-element" src="{{topImage}}" />
+        </view>
+        <view class="tm-modal-header" tiki:if="{{$slots.header}}">
+            <slot name="header" />
+        </view>
+        <view class="tm-modal-body">
+            <slot />
+        </view>
+        <view tiki:if="{{buttons}}" class="tm-modal-line--horizontal"/>
+        <view
+            tiki:if="{{buttons}}"
+            class="tm-footer-custom-button--{{buttonsLayout|| 'horizontal'}}"
+            >
+            <view
+                class="tm-fotter-button--{{buttonsLayout||'horizontal'}}"
+                tiki:if="{{buttons[0]}}"
+                data-item="{{buttons[0]}}"
+                data-index="{{0}}"
+                type="tertiary" data-item="{{buttons[0]}}" onTap="_onButtonClick">{{buttons[0].text}}</view>
+            <view
+                tiki:if="{{buttons[1]}}"
+                class="tm-modal-line--{{buttonsLayout==='vertical'?'horizontal':'vertical'}}"
+            />
+            <view
+                class="tm-fotter-button--{{buttonsLayout||'horizontal'}}"
+                data-item="{{buttons[0]}}"
+                data-index="{{1}}"
+                tiki:if="{{buttons[1]}}" type="tertiary" onTap="_onButtonClick">{{buttons[1].text}}</view>
+        </view>
+
+        <view tiki:if="{{$slots.footer}}" class="tm-modal-line--horizontal"/>
+        <view tiki:if="{{$slots.footer}}" 
+            class="tm-modal-footer"
+            onTap="_onModalClick"
+        >
+        <slot 
+            name="footer"
+            tiki:if="{{!buttons}}"
+            />
+        </view>
+    </view>
+</modal>

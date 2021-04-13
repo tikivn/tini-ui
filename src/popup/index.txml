@@ -1,0 +1,10 @@
+<popup
+    show="{{show}}"
+    position="{{position}}"
+    mask="{{mask}}"
+    onMaskClick="_onMaskClick"
+  >
+    <view class="tm-popup-content" onTap="onTap">
+        <slot />
+    </view>
+</popup>

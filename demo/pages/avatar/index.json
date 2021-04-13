@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "avatar": "../../es/avatar/index",
+    "list-item": "../../es/list/list-item/index",
+    "list": "../../es/list/index"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "files.associations": {
+    "*.txml": "xml",
+    "*k.tcss": "css"
+  }
+}

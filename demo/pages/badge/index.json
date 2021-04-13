@@ -1,0 +1,12 @@
+{
+  "defaultTitle": "Badge",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "avatar": "../../es/avatar/index",
+    "badge": "../../es/badge/index",
+    "list-item": "../../es/list/list-item/index",
+    "list": "../../es/list/index"
+  }
+}

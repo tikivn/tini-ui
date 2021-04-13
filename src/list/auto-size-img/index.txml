@@ -1,0 +1,5 @@
+<view class="tm-auto-sizer-container" 
+  style="{{`width: ${size}; height: ${size};`}}">
+  <view class="tm-auto-sizer-content" 
+    style="{{(src ? `background-image: url('${src}'); background-color: transparent` : '')}}" />
+</view>

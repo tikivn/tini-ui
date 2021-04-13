@@ -1,0 +1,71 @@
+.tm-alphabet {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+}
+
+.tm-alphabet-letter {
+  text-align: center;
+  font-size: 11px;
+  font-size: var(--tm-alphabet-letter-font-size, 11px);
+  color: var(--tm-alphabet-letter-color, #999);
+  height: var(--tm-alphabet-letter-size, 16px);
+  width: var(--tm-alphabet-letter-size, 16px);
+  border-radius: var(--tm-alphabet-letter-border-radius, 50vh);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tm-alphabet-letter-chosen {
+  background: var(--tm-alphabet-letter-chosen-background, #1677ff);
+  color: var(--tm-alphabet-letter-chosen-text-color, #fff);
+}
+
+.tm-alphabet-bubble {
+  color: var(--tm-alphabet-bubble-color, #fff);
+  position: absolute;
+  top: var(--tm-alphabet-bubble-top, 16px);
+  right: var(--tm-alphabet-bubble-right, 48px);
+  height: var(--tm-alphabet-bubble-height, 48px);
+  width: var(--tm-alphabet-bubble-width, 48px);
+  transform: translateY(-50%);
+  border-radius: 50vh;
+  background: var(--tm-alphabet-bubble-background, #ccc);
+  font-size: var(--tm-alphabet-bubble-font-size, 27px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* stylelint-disable-next-line */
+  font-family: 'PingFangSC-Medium';
+}
+
+.tm-alphabet-item {
+  min-height: var(--tm-alphabet-min-height, 48px);
+}
+
+.tm-alphabet-line {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.tm-alphabet-content {
+  padding: var(--tm-alphabet-content-paddingTB, 12px) 0;
+  width: var(--tm-alphabet-content-width, 48px);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /** text-overflow: ellipsis; */
+  /** white-space: nowrap; */
+  text-align: center;
+}

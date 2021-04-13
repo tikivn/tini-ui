@@ -1,0 +1,5 @@
+.item {
+  padding: 8px;
+  border: solid 0 #cfcfcf;
+  border-bottom-width: 1px;
+}

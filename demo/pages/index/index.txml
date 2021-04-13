@@ -1,0 +1,7 @@
+<view>
+  <block tiki:for="{{components}}">
+    <view class="item" data-item="{{item}}" onTap="onNavigate">
+      {{item.name}}
+    </view>
+  </block>
+</view>

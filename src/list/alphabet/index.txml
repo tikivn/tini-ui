@@ -1,0 +1,29 @@
+<view class="tm-alphabet">
+	<view class="tm-alphabet-item" 
+		data-index="{{index}}">
+		<view class="tm-alphabet-content">
+			<view class="tm-alphabet-letter" 
+				data-index="prefix" 
+				onTap="onItemTap">
+				<slot name="prefix" />
+			</view>
+			<view tiki:for="{{alphabet}}" 
+				hover-class="tm-alphabet-letter-chosen" 
+				hover-start-time="{{10}}" 
+				hover-stay-time="{{10}}" 
+				data-index="{{index}}" 
+				data-item="{{item}}" 
+				onTap="onItemTap" 
+				onLongTap="onItemTap" 
+				onTouchStart="onTouchStart" 
+				onTouchEnd="onTouchEnd" 
+				class="tm-alphabet-letter">
+				<view>{{ item }}</view>
+				<view class="tm-alphabet-bubble" 
+					a:if="{{current === index}}">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

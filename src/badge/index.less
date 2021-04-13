@@ -1,0 +1,88 @@
+.tm-badge {
+  /** display: inline-block; */
+  position: relative;
+
+  /** vertical-align: middle; */
+}
+
+.tm-badge-text {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: -8px;
+  right: -10px;
+  min-width: 19px;
+  height: 16px;
+  padding: 4px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 400;
+  background-color: #fd8209;
+  border-radius: 8px;
+  color: #fff;
+  z-index: 4;
+}
+
+.tm-badge-text-padding {
+  font-size: 10px;
+  opacity: 0;
+}
+
+.tm-badge-text-inner {
+  position: relative;
+  z-index: 2;
+  font-size: 12.25px;
+
+  /** white-space: nowrap; */
+}
+
+.tm-badge-text .tm-badge-double {
+  padding: 0 4px;
+}
+
+.tm-badge-not-a-wrapper .tm-badge-text {
+  position: relative;
+}
+
+.tm-badge .is-dot {
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  right: -4px;
+  top: -4px;
+  width: 8px;
+  min-width: 8px;
+  height: 8px;
+  min-height: 8px;
+  background: #fd8209;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.tm-badge-arrow {
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  bottom: -2px;
+  left: 50%;
+  margin-left: -2px;
+  z-index: 1;
+  border-radius: 2px 0 0;
+  background: #fd8209;
+  transform: rotate(45deg);
+}
+
+.tm-badge-text-arrow-right {
+  border-radius: 8px 8px 0 8px;
+}
+
+.tm-badge-text-arrow-left {
+  border-radius: 8px 8px 8px 0;
+}
+
+.tm-badge-stroke {
+  border: 1px solid #fff;
+}
