@@ -1,8 +1,8 @@
 {
-  "name": "tiny-ui",
+  "name": "@tiki-miniapp/tiny-ui",
   "version": "0.0.1",
   "description": "Tiki Design System for MiniApp",
-  "homepage": "https://miniapp.tiki.vn/",
+  "homepage": "https://miniapp.tiki.vn",
   "license": "MIT",
   "files": [
     "es"
@@ -11,6 +11,7 @@
     "tiki",
     "mini-program",
     "miniapp",
+    "tiki-miniapp",
     "tiny-ui"
   ],
   "scripts": {
