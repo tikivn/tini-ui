@@ -11,13 +11,13 @@ The MiniApp design team builds a design system for the MiniApp platform based on
 Use npm
 
 ```bash
-$ npm install @tikivn/tiny-ui --save
+$ npm install @tiki-miniapp/tiny-ui --save
 ```
 
 Use yarn
 
 ```bash
-$ yarn add @tikivn/tiny-ui
+$ yarn add @tiki-miniapp/tiny-ui
 ```
 
 ## How to use
