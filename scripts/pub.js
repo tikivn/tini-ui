@@ -16,7 +16,7 @@ if (isRpx) {
   packageJson.name = '@tiki-miniapp/tiny-ui';
   packageJson.description = 'Tiny UI';
 
-  const runner = spawn('npm', ['publish --access public']);
+  const runner = spawn('npm', ['publish']);
 
   runner.on('close', () => {
     execSync(`git tag ${version}`);
