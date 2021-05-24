@@ -1,9 +1,4 @@
-type PopupComponent = ComponentOptions<{ mask: string }, { onMaskClick: () => void }>;
-
 Component({
-  data: {
-    mask: 'hehe',
-  },
   props: {
     className: '',
     show: false,
@@ -17,8 +12,9 @@ Component({
       console.log('onTap');
     },
     _onMaskClick() {
-      this.props.onMaskClick();
-      this.setData({ mask: 'string' });
+      if (this.props.onMaskClick) {
+        this.props.onMaskClick();
+      }
     },
   },
-} as PopupComponent);
+});

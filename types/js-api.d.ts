@@ -1,3 +1,2 @@
-interface JSAPI {}
-declare const my: JSAPI;
-declare const getApp: () => App;
+declare namespace my {}
+// declare const getApp: () => App;
