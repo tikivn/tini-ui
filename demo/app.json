@@ -6,9 +6,10 @@
     "pages/list/index",
     "pages/modal/index",
     "pages/popup/index",
-    "pages/stepper/index"
+    "pages/stepper/index",
+    "pages/button/index"
   ],
   "window": {
-    "defaultTitle": "Tiki Mini UI"
+    "defaultTitle": "Tiki Tiny UI"
   }
 }
