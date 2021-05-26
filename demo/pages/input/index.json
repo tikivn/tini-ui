@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "Input",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "tiny-input": "../../es/input/index"
+  }
+}

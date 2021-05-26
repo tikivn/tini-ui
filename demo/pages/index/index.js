@@ -29,9 +29,16 @@ Page({
         name: 'button',
         path: 'pages/button/index',
       },
+      {
+        name: 'input',
+        path: 'pages/input/index',
+      },
     ],
   },
   onNavigate(e) {
     my.navigateTo({ url: e.target.dataset.item.path });
+  },
+  onLoad() {
+    my.navigateTo({ url: 'pages/input/index' });
   },
 });

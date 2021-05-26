@@ -1,0 +1,7 @@
+<input  
+  style="{{style}}" 
+  class="t-tiny-input {{className || ' ' }}"> 
+  
+</input>
+
+   
