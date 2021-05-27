@@ -6,7 +6,8 @@
     "pages/list/index",
     "pages/modal/index",
     "pages/popup/index",
-    "pages/stepper/index"
+    "pages/stepper/index",
+    "pages/tabs/index"
   ],
   "window": {
     "defaultTitle": "Tiki Mini UI"

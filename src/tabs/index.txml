@@ -1,0 +1,120 @@
+<!-- <import-sjs name="util" from="./util.sjs" /> -->
+
+<view class="tm-tabs {{className}}">
+  <view class="tm-tabs-tab-bar-wrap">
+    <view 
+      class="tm-tabs-bar {{capsule?'tm-tabs-bar-capsule':''}} {{(elevator || stickyBar)?'tm-tabs-bar-sticky':''}}"
+      style="background-color: {{tabBarBackgroundColor}};{{(elevator || stickyBar) && elevatorTop ? `top: ${elevatorTop};` : ''}}">
+      <view class="tm-tabs-bar-content-wrap">
+        <view 
+          tiki:if="{{showLeftShadow}}" 
+          class="tm-tabs-scroll-left"
+          style="background-color: {{tabBarBackgroundColor}};"></view>
+        <view tiki:if="{{showRightShadow}}" class="tm-tabs-scroll-right"
+          style="background-color: {{tabBarBackgroundColor}};"></view>
+        <scroll-view 
+          scroll-left="{{viewScrollLeft}}"
+          scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}{{tabViewNum}}" 
+          scroll-x="{{true}}"
+          scroll-with-animation="{{animation}}" 
+          onScroll="showLeftShadow" 
+          class="tm-tabs-bar-content"
+          id="tm-tabs-bar-{{tabsName ? tabsName+'-' :''}}content">
+          <block tiki:for="{{tabs}}">
+            <view 
+              id="tabs-item-{{tabsName?tabsName+'-':''}}{{index}}" 
+              data-index="{{index}}"
+              data-tabsName="{{tabsName}}" 
+              data-floor="{{floorNumber[index]}}" 
+              key="tabs-item-{{index}}"
+              onTap="handleTabClick" 
+              onFirstAppear="onTabFirstShow" 
+              style="color: {{ !hasSubTitle && capsule?
+                (index === activeTab ? capsuleTabBarActiveTextColor: tabBarInactiveTextColor)
+                :
+                (index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor) }}"
+              class="tm-tabs-bar-tab {{ !hasSubTitle && capsule?'tm-tabs-bar-tab-capsule':''}} {{ hasSubTitle?'tm-tabs-bar-tab__hasSubTitle':''}} {{tabBarCls}}"
+              hover-class="{{index === activeTab?'':!hasSubTitle && capsule?'tm-tabs-bar-tab-capsule__hover':'tm-tabs-bar-tab__hover'}}"
+              hover-start-time="0" 
+              hover-stay-time="0">
+              <view class="
+                tm-tabs-bar-title
+                {{ hasSubTitle ? 'tm-tabs-bar-title__hasSubTitle' : ''}}
+                {{ index === activeTab ? activeCls : '' }}
+                {{ !hasSubTitle && capsule?'tm-tabs-bar-capsule-title':''}}
+                {{tabs.length - 1 === index?'tm-tabs-bar-title__noMargin':''}}
+                " style="{{!hasSubTitle && capsule? (tabs.length <= 3?'font-size: ' + tabFontSize15 + ';':'font-size: ' + tabFontSize13 + ';'):''}}
+                  {{hasSubTitle?
+                    '':
+                  (!hasSubTitle && capsule?
+                  (index === activeTab ? 'background-color:' + tabBarUnderlineColor + ';' : 'background-color: ' + capsuleTabBarBackgroundColor + ';')
+                  :'') }}">
+                <view tiki:if="{{ !hasSubTitle && !capsule && index === activeTab}}" class="tm-tabs-bar-title-underline"
+                  style="background-color: {{tabBarUnderlineColor}};
+                    {{tabBarUnderlineWidth?`width: ${tabBarUnderlineWidth};`:''}}
+                    {{tabBarUnderlineHeight?`height: ${tabBarUnderlineHeight};`:''}}"></view>
+                <view class="tm-tabs-bar-tab-mainTitle" style="{{index === activeTab?'font-weight: bold;':''}}">
+                  {{item.title}}
+                  <badge className="tm-tabs-bar-tab-badge" tiki:if="{{item.showBadge}}"
+                    dot="{{item.number ? false : true}}" text="{{item.number}}"
+                    withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
+                    direction="{{item.badge.arrow ? 'left' : ''}}"
+                    stroke="{{item.badge.stroke ? item.badge.stroke : false}}"></badge>
+                </view>
+                <text tiki:if="{{!hasSubTitle && capsule && item.number && !item.showBadge}}"
+                  class="tm-tabs-bar-tab-number {{ index === activeTab ?'tm-tabs-bar-tab-number_active':''}}">({{item.number}})</text>
+                <text class="tm-tabs-bar-tab-subTitle" tiki:if="{{hasSubTitle && item.subTitle}}" style="
+                  {{index === activeTab ? 'background-color:' + tabBarUnderlineColor + '; color: ' + tabBarActiveSubTextColor + ';' : 'color: ' + tabBarSubTextColor + ';'}}
+                ">{{item.subTitle}}</text>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class="tm-tabs-plus {{showPlus && _showPlus ? 'show' : ''}}" onTap="handlePlusClick"
+        hover-class="tm-tabs-bar-tab__hover" hover-start-time="0" hover-stay-time="0">
+        <!-- 如果没有图片 url，将采用 icon 来展示 -->
+        <tm-icon type="{{plusIcon}}" size="{{plusIconSize}}" color="{{plusIconColor}}" tiki:if="{{plusImg === ''}}">
+        </tm-icon>
+        <image 
+          src="{{plusImg}}" 
+          style="width: {{plusImgWidth}}; height: {{plusImgHeight}};" 
+          mode="scaleToFill"
+          tiki:else />
+      </view>
+    </view>
+    <block tiki:if="{{elevator}}">
+      <view class="tm-tabs-elevator-content" id="tm-tabs-elevator-content">
+        <slot></slot>
+      </view>
+    </block>
+    <block tiki:else>
+      <block tiki:if="{{swipeable}}">
+        <view style="{{tabContentHeight ? `height: ${tabContentHeight};`: ''}}">
+          <swiper 
+            circular="{{false}}" 
+            current="{{activeTab}}" 
+            data-tabsName="{{tabsName}}" 
+            interval="99999999"
+            autoplay="{{autoplay}}" 
+            duration="{{duration}}" 
+            onChange="handleSwiperChange"
+            disable-update-direction="{{true}}"
+            class="tm-tabs-content-wrap {{tabContentHeight ? 'tm-tabs-content-wrap_H100': ''}} {{util.compareVersion(version) < 0 ? 'fix' : ''}}">
+            <slot></slot>
+          </swiper>
+        </view>
+      </block>
+      <block tiki:else>
+        <view class="tm-tabs-content-wrap {{util.compareVersion(version) >= 0 ? 'fix' : ''}}">
+          <view class="tm-tabs-slides" style="
+            transform: translate3d({{-activeTab * 100}}%, 0, 0);
+            transition-duration: {{duration}}ms;
+          ">
+            <slot></slot>
+          </view>
+        </view>
+      </block>
+    </block>
+  </view>
+</view>

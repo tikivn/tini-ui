@@ -25,6 +25,10 @@ Page({
         name: 'stepper',
         path: 'pages/stepper/index',
       },
+      {
+        name: 'tabs',
+        path: 'pages/tabs/index',
+      },
     ],
   },
   onNavigate(e) {
