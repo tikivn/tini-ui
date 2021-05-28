@@ -1,4 +1,4 @@
-<text class="title">Tiny Button</text>
+<view class="title">Tiny Button</view>
 <view class="button--container">
   <block tiki:for="{{items.splice(0,8833)}}" >
     <text class="button--item" style="">{{index}}. {{item.type}} {{item.size}} {{item.shape}} {{item.skeleton&&'skeleton'||' '}}
@@ -6,7 +6,7 @@
     </text>
 
     <view class="button--item" style="width: content-width; text-align: end;" >
-      <tiny-button
+      <button
         class="button--class-here"
         style="--button-inline-style: 2px;"
         type="{{item.type}}"
@@ -23,7 +23,7 @@
         formType="{{item.formType}}"
       >
         Button
-      </tiny-button>
+      </button>
     </view> 
     <view class="button--item" style="width: 100vw;"></view>
 

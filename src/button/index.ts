@@ -16,7 +16,6 @@ export type ButtonProps = ButtonMethods & DefaultUIProps & ButtonVariants;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ButtonState {
-  //
   // state: ButtonProps;
 }
 

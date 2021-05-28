@@ -5,32 +5,24 @@
 @color-disable, @background-color-disable, @border-color-disable
 ) {
   display: inline-flex;
-  align-items: center;
-  width: fit-content;
-
-  pointer-events: all;
-  justify-content: flex-start;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 12px;
-  padding-right: 12px;
-  text-align: left;
   &.large {
     .t-tiny-button--icon {
-      width: 24px;
-      height: 24px;
+      width: var(--font-height-medium);
+      height: var(--font-height-medium);
     }
   }
   &.medium {
     .t-tiny-button--icon {
-      width: 20px;
-      height: 20px;
+      width: var(--font-height-base);
+      height: var(--font-height-base);
     }
   }
   &.small {
     .t-tiny-button--icon {
-      width: 16px;
-      height: 16px;
+      width: var(--font-height-base);
+      height: var(--font-height-base);
     }
   }
   & .t-tiny-button--icon {
@@ -63,7 +55,6 @@
   }
   &:disabled {
     pointer-events: none;
-
     background-color: @background-color-disable;
     border-color: @border-color-disable;
     color: @color-disable;
@@ -101,8 +92,8 @@
     align-items: center;
     justify-content: center;
     padding-right: 0;
-    width: var(--height-medium);
-    height: var(--height-medium);
+    width: var(--height-large);
+    height: var(--height-large);
     & .t-loading-indicator {
       margin-right: 0;
     }
@@ -125,9 +116,10 @@
 }
 
 .t-tiny-button {
-  --height-small: 24px;
-  --height-medium: 32px;
-  --height-large: 40px;
+  --height-small: var(--font-height-medium);
+  --height-medium: var(--font-height-large);
+  --height-large: var(--font-height-x-large);
+
   &.t-button-solid {
     .create-button-style-for-type(
       @color:var(--text-button-solid-default);

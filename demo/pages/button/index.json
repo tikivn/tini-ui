@@ -4,6 +4,6 @@
   "titleColor": "#fff",
   "transparentTitle": "none",
   "usingComponents": {
-    "tiny-button": "../../es/button/index"
+    "button": "../../es/button/index"
   }
 }
