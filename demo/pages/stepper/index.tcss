@@ -1,4 +1,4 @@
-.1 {
+.o1 {
   display: flex;
   align-items: center;
   color: var(--brand-primary);
