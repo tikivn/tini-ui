@@ -12,8 +12,9 @@
         tiki:if="{{showClose || advice}}" 
         onTap="_onModalClose" >
         <tm-icon 
-          type="{{advice ? 'close-circle' : 'close'}}" 
-          size="{{advice ? adviceClose : normalClose}}" color="{{closeType === '1' ? 'white' : '#999'}}" />
+          type="{{advice ? 'close_circle' : 'close'}}" 
+          size="{{advice ? adviceClose : normalClose}}" 
+          color="{{closeType === '1' ? 'white' : '#999'}}" />
       </view>
       <!-- modal content -->
       <view class="tm-modal-content {{topImageSize === 'lg' ? 'tm-modal-content--fill' : ''}}">

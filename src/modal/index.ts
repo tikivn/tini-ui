@@ -9,7 +9,7 @@ type Props = {
   buttonsLayout: 'horizontal' | 'vertical';
   disableScroll: boolean;
   maskClick: boolean;
-  buttons: string[];
+  buttons: string[] | null;
   onModalClick?: () => void;
   onButtonClick?: (event: unknown) => void;
   onModalClose?: () => void;
@@ -30,7 +30,7 @@ Component({
     buttonsLayout: 'horizontal',
     disableScroll: true,
     maskClick: false,
-    buttons: [],
+    buttons: null,
     onModalClick: () => {},
     onButtonClick: () => {},
     onModalClose: () => {},

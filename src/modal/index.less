@@ -17,7 +17,7 @@
 @modal-advice-close-size: 26px;
 @modal-advice-margin-size: 24px;
 
-@modal-width: 296px;
+@modal-width: calc(750rpx - 64px);
 @modal-mask-backgroundColor: rgba(0, 0 , 0, 0.4);
 @modal-market-mask-backgroundColor: rgba(0, 0 , 0, 0.7);
 @font-size-title: var(--font-size-large);
@@ -68,7 +68,6 @@
   &-image {
     display: flex;
     justify-content: center;
-    // margin-bottom: @v-spacing-large;
     margin-bottom: @modal-spacing;
   }
   &-image-lg &-image-element {
@@ -129,7 +128,7 @@
     }
   }
   &-button {
-    padding: 8;
+    padding: 12px;
     flex: 1;
     position: relative;
     overflow: hidden;

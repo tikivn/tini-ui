@@ -25,7 +25,7 @@ export interface ButtonMethods {
 
 const defaultProps: ButtonProps = {
   type: 'solid',
-  shape: 'pill',
+  shape: 'rounded',
   size: 'large',
   skeleton: false,
   loading: false,

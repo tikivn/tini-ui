@@ -1,1 +1,1 @@
-<view />
+<icon type="{{type}}" color="{{color}}" size="{{size}}" />

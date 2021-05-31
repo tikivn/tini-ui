@@ -11,13 +11,9 @@
   font-weight: bold;
 }
 
-
-
-
 .modal-item {
   margin-top: 10px;
 }
 button {
   margin: 8px;
-  display: block !important;
 }

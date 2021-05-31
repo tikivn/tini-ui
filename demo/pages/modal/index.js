@@ -11,26 +11,18 @@ Page({
     modalOpened4: false,
     modalOpened5: false,
     modalOpened6: false,
-    buttons5: [{ text: '取消' }, { text: '主操作', extClass: 'buttonBold' }],
-    buttons6: [{ text: '主操作', extClass: 'buttonBold' }, { text: '取消' }],
+    buttons5: [{ text: 'Left' }, { text: 'Right', extClass: 'buttonBold' }],
+    buttons6: [{ text: 'Top', extClass: 'buttonBold' }, { text: 'Bottom' }],
     buttons7: [
-      { text: '取消', extClass: 'cancelBtn' },
-      { text: '删除', extClass: 'deleteBtn' },
+      { text: 'Cancel', extClass: 'cancelBtn' },
+      { text: 'Delete', extClass: 'deleteBtn' },
     ],
-    buttons8: [{ text: '主操作', extClass: 'buttonBold' }, { text: '更多' }, { text: '取消' }],
+    buttons8: [
+      { text: 'Button 1', extClass: 'buttonBold' },
+      { text: 'Button 2' },
+      { text: 'Button 3' },
+    ],
   },
-  onLoad() {
-    setInterval(() => {
-      this.setData({ input: (this.data.input += '1') });
-    }, 1000);
-  },
-  onFocus(e) {
-    console.log('focus', e);
-  },
-  onBlur(e) {
-    console.log('blur', e);
-  },
-  /* 通用modal */
   openModal() {
     this.setData({
       modalOpened: true,
@@ -46,7 +38,6 @@ Page({
       modalOpened: false,
     });
   },
-  /* 带图弹窗-大图 */
   openModal2() {
     this.setData({
       modalOpened2: true,
@@ -62,7 +53,6 @@ Page({
       modalOpened2: false,
     });
   },
-  /* 带图弹窗 */
   openModal21() {
     this.setData({
       modalOpened21: true,
@@ -83,7 +73,6 @@ Page({
       modalOpened21: false,
     });
   },
-  /* 带图弹窗-小图 */
   openModal22() {
     this.setData({
       modalOpened22: true,
@@ -99,7 +88,6 @@ Page({
       modalOpened22: false,
     });
   },
-  /* 带图弹窗-中图 */
   openModal222() {
     this.setData({
       modalOpened222: true,
@@ -115,7 +103,6 @@ Page({
       modalOpened222: false,
     });
   },
-  /* 带图弹框-关闭icon */
   openModal23() {
     this.setData({
       modalOpened23: true,
@@ -131,7 +118,6 @@ Page({
       modalOpened23: false,
     });
   },
-  /* 运营活动弹框-大 */
   openModal3() {
     this.setData({
       modalOpened3: true,
@@ -142,7 +128,6 @@ Page({
       modalOpened3: false,
     });
   },
-  /* 运营活动弹框-小 */
   openModal4() {
     this.setData({
       modalOpened4: true,
@@ -153,7 +138,6 @@ Page({
       modalOpened4: false,
     });
   },
-  /* 双按钮弹框 */
   openModal5() {
     this.setData({
       modalOpened5: true,
@@ -167,11 +151,10 @@ Page({
       modalOpened5: false,
     });
     my.alert({
-      title: `点击了：${JSON.stringify(dataset)}`,
-      buttonText: '关闭',
+      title: `Dataset：${JSON.stringify(dataset)}`,
+      buttonText: 'Button',
     });
   },
-  /* 双按钮弹框-竖排 */
   openModal6() {
     this.setData({
       modalOpened6: true,
@@ -185,11 +168,10 @@ Page({
       modalOpened6: false,
     });
     my.alert({
-      title: `点击了：${JSON.stringify(dataset)}`,
-      buttonText: '关闭',
+      title: `Dataset：${JSON.stringify(dataset)}`,
+      buttonText: 'Button',
     });
   },
-  /* 弹框自定义按钮样式 */
   openModal7() {
     this.setData({
       modalOpened7: true,
@@ -208,11 +190,10 @@ Page({
       modalOpened7: false,
     });
     my.alert({
-      title: `点击了：${JSON.stringify(dataset)}`,
-      buttonText: '关闭',
+      title: `Dataset：${JSON.stringify(dataset)}`,
+      buttonText: 'Button',
     });
   },
-  /* 三按钮弹框 */
   openModal8() {
     this.setData({
       modalOpened8: true,
@@ -226,11 +207,10 @@ Page({
       modalOpened8: false,
     });
     my.alert({
-      title: `点击了：${JSON.stringify(dataset)}`,
-      buttonText: '关闭',
+      title: `Dataset：${JSON.stringify(dataset)}`,
+      buttonText: 'Button',
     });
   },
-  /* 自定义弹框内容 */
   openModal9() {
     this.setData({
       modalOpened9: true,

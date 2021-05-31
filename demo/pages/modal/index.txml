@@ -2,7 +2,15 @@
 <button onTap="openModal22">Image sm</button>
 <button onTap="openModal222">Image md</button>
 <button onTap="openModal2">Image lg</button>
-<button onTap="openModal23" style="margin: 0 10px;">带图弹窗-关闭icon</button>
+<button onTap="openModal23">Icon</button>
+<button onTap="openModal">Lock Mask</button>
+<button onTap="openModal3">Advice</button>
+<button onTap="openModal4">Advice small</button>
+<button onTap="openModal5">Button horizontal</button>
+<button onTap="openModal6">Button vertical</button>
+<button onTap="openModal7">Custom button style</button>
+<button onTap="openModal8">3 Buttons vertical</button>
+<button onTap="openModal9">User Buton</button>
 
 <modal
   show="{{modalOpened21}}"
@@ -48,4 +56,100 @@
   <view slot="header">Image "lg"</view>
   Modal content
   <view slot="footer">Footer</view>
+</modal>
+<modal
+  show="{{modalOpened23}}"
+  onModalClick="onModalClick23"
+  onModalClose="onModalClose23"
+  showClose="{{true}}"
+  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+>
+  <view slot="header">Icon</view>
+  Modal icon
+  <tm-icon type="success" color="red" />
+  <view slot="footer">Footer</view>
+</modal>
+<modal
+  show="{{modalOpened}}"
+  onModalClick="onModalClick"
+  onModalClose="onModalClose"
+>
+  <view style="margin: 20px 0 10px 0;">This is a image</view>
+  <image mode="widthFix" style="width: 100%;" src="https://tfsimg.alipay.com/images/mobilecodec/TB1JjWmXkyEDuNjme6tXXXIKXXa" />
+  Content
+  <view slot="footer">Footer</view>
+</modal>
+<modal
+  show="{{modalOpened3}}"
+  onModalClose="onModalClick3"
+  advice="{{true}}"
+  >
+  <view style="display: flex; height: 280px; width: 280px;">
+    <image
+      style="height: 280px;width: 280px;"
+      src="https://gw.alipayobjects.com/zos/rmsportal/vJzAWQLgeDLGOMKiIgZt.png"
+    />
+  </view>
+</modal>
+<modal
+  show="{{modalOpened4}}"
+  onModalClose="onModalClick4"
+  advice="{{true}}"
+  >
+  <view style="display: flex; width: 270px; height: 350px;">
+    <image
+      style="width: 270px;height: 350px;"
+      src="https://gw.alipayobjects.com/zos/rmsportal/vJzAWQLgeDLGOMKiIgZt.png"
+    />
+  </view>
+</modal>
+<modal
+  show="{{modalOpened5}}"
+  showClose="{{false}}"
+  onButtonClick="onButtonClick5"
+  buttons="{{buttons5}}"
+>
+  <view slot="header">Header</view>
+  Content
+</modal>
+<modal
+  show="{{modalOpened6}}"
+  showClose="{{false}}"
+  onButtonClick="onButtonClick6"
+  buttonsLayout="vertical"
+  buttons="{{buttons6}}"
+>
+  <view slot="header">Header</view>
+  Buttons 6
+</modal>
+<modal
+  show="{{modalOpened7}}"
+  onModalClose="onModalClose7"
+  onButtonClick="onButtonClick7"
+  buttons="{{buttons7}}"
+  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImageSize="lg"
+>
+  <view slot="header">Header</view>
+  Button 7
+</modal>
+<modal
+  show="{{modalOpened8}}"
+  showClose="{{false}}"
+  onButtonClick="onButtonClick8"
+  buttons="{{buttons8}}"
+>
+  <view slot="header">Header</view>
+  Dataset
+</modal>
+<modal
+  show="{{modalOpened9}}"
+  showClose="{{false}}"
+>
+  <view slot="header">Header</view>
+  <view>Content</view>
+  <view style="margin-top:10px;padding-bottom:10px">
+    <!-- <slider value="5" step="5"/> -->
+  </view>
+  <button type="primary" onTap="onModalClose9">主操作</button>
 </modal>
