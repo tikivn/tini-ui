@@ -1,4 +1,4 @@
-<!-- <import-sjs name="util" from="./util.sjs" /> -->
+<import-sjs name="util" from="./util.sjs" />
 
 <view class="tm-tabs {{className}}">
   <view class="tm-tabs-tab-bar-wrap">
