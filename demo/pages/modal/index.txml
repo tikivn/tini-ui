@@ -17,7 +17,7 @@
   onMaskClick="onMaskClick21"
   onModalClick="onModalClick21"
   onModalClose="onModalClose21"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
 >
   <view slot="header">Image default is "md"</view>
   Modal content
@@ -27,7 +27,7 @@
   show="{{modalOpened22}}"
   onModalClick="onModalClick22"
   onModalClose="onModalClose22"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="sm"
 >
   <view slot="header">Image size "sm"</view>
@@ -38,7 +38,7 @@
   show="{{modalOpened222}}"
   onModalClick="onModalClick222"
   onModalClose="onModalClose222"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="md"
 >
   <view slot="header">Image "md"</view>
@@ -49,7 +49,7 @@
   show="{{modalOpened2}}"
   onModalClick="onModalClick2"
   onModalClose="onModalClose2"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="lg"
   closeType="1"
 >
@@ -62,7 +62,7 @@
   onModalClick="onModalClick23"
   onModalClose="onModalClose23"
   showClose="{{true}}"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
 >
   <view slot="header">Icon</view>
   Modal icon
@@ -75,7 +75,7 @@
   onModalClose="onModalClose"
 >
   <view style="margin: 20px 0 10px 0;">This is a image</view>
-  <image mode="widthFix" style="width: 100%;" src="https://tfsimg.alipay.com/images/mobilecodec/TB1JjWmXkyEDuNjme6tXXXIKXXa" />
+  <image mode="widthFix" style="width: 100%;" src="https://picsum.photos/id/866/400/400.jpg" />
   Content
   <view slot="footer">Footer</view>
 </modal>
@@ -86,8 +86,8 @@
   >
   <view style="display: flex; height: 280px; width: 280px;">
     <image
-      style="height: 280px;width: 280px;"
-      src="https://gw.alipayobjects.com/zos/rmsportal/vJzAWQLgeDLGOMKiIgZt.png"
+      style="height: 280px; width: 280px;"
+      src="https://picsum.photos/id/866/400/400.jpg"
     />
   </view>
 </modal>
@@ -98,8 +98,8 @@
   >
   <view style="display: flex; width: 270px; height: 350px;">
     <image
-      style="width: 270px;height: 350px;"
-      src="https://gw.alipayobjects.com/zos/rmsportal/vJzAWQLgeDLGOMKiIgZt.png"
+      style="width: 270px; height: 350px;"
+      src="https://picsum.photos/id/866/400/400.jpg"
     />
   </view>
 </modal>
@@ -127,7 +127,7 @@
   onModalClose="onModalClose7"
   onButtonClick="onButtonClick7"
   buttons="{{buttons7}}"
-  topImage="https://gw.alipayobjects.com/zos/rmsportal/yFeFExbGpDxvDYnKHcrs.png"
+  topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="lg"
 >
   <view slot="header">Header</view>
@@ -148,8 +148,8 @@
 >
   <view slot="header">Header</view>
   <view>Content</view>
-  <view style="margin-top:10px;padding-bottom:10px">
+  <view style="margin-top: 10px; padding-bottom: 10px;">
     <!-- <slider value="5" step="5"/> -->
   </view>
-  <button type="primary" onTap="onModalClose9">主操作</button>
+  <button type="primary" onTap="onModalClose9">Close</button>
 </modal>
