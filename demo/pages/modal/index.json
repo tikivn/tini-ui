@@ -4,6 +4,8 @@
   "titleColor": "#fff",
   "transparentTitle": "none",
   "usingComponents": {
-    "modal": "../../es/modal/index"
+    "modal": "../../es/modal/index",
+    "button": "../../es/button/index",
+    "tm-icon": "../../es/tm-icon/index"
   }
 }

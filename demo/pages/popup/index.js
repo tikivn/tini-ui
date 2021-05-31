@@ -1,16 +1,36 @@
 Page({
   data: {
-    popup: {},
+    showLeft: false,
+    showRight: false,
+    showTop: false,
+    showBottom: false,
   },
-  onLoad() {},
-  onMaskClick() {
+  onTopBtnTap() {
     this.setData({
-      popup: {},
+      showTop: true,
     });
   },
-  onTap(e) {
+  onRightBtnTap() {
     this.setData({
-      popup: e.target.dataset.popup,
+      showRight: true,
+    });
+  },
+  onLeftBtnTap() {
+    this.setData({
+      showLeft: true,
+    });
+  },
+  onButtomBtnTap() {
+    this.setData({
+      showBottom: true,
+    });
+  },
+  onPopupClose() {
+    this.setData({
+      showLeft: false,
+      showRight: false,
+      showTop: false,
+      showBottom: false,
     });
   },
 });

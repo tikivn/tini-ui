@@ -1,3 +1,13 @@
+type Props = {
+  className: string;
+  show: boolean;
+  position: 'top' | 'left' | 'right' | 'bottom';
+  mask: boolean;
+  animation: boolean;
+  disableScroll: boolean;
+  onClose(): void;
+};
+
 Component({
   props: {
     className: '',
@@ -6,14 +16,19 @@ Component({
     mask: true,
     animation: true,
     disableScroll: true,
-  },
+  } as Props,
   methods: {
-    onTap() {
-      console.log('onTap');
-    },
-    _onMaskClick() {
-      if (this.props.onMaskClick) {
-        this.props.onMaskClick();
+    onMaskTap() {
+      const { onClose, animation } = this.props;
+
+      if (onClose) {
+        if (animation) {
+          onClose();
+        } else {
+          setTimeout(() => {
+            onClose();
+          }, 200);
+        }
       }
     },
   },
