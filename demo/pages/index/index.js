@@ -26,6 +26,10 @@ Page({
         path: 'pages/stepper/index',
       },
       {
+        name: 'button',
+        path: 'pages/button/index',
+      },
+      {
         name: 'tabs',
         path: 'pages/tabs/index',
       },

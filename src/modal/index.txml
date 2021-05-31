@@ -1,58 +1,52 @@
-<modal 
-    show="{{show}}"
-    onModalClose="_onModalClose"
-    onMaskClick="_onMaskTap"
-    mask="{{mask}}"
-    animationType="{{animationType}}"
-    >
-      <view
-          class="{{advice?'tm-modal-close-advice':'tm-modal-close'}}"
-            tiki:if="{{showClose || advice}}"
-            onTap="_onModalClose"
-        >
-            <icon type="{{advice ? 'close_circle' : 'close'}}" size="{{advice ? adviceClose : normalClose}}" color="#999" />
+<view class="tm-modal-{{show ? 'show' : 'hide'}}" 
+  disable-scroll="{{disableScroll}}" 
+  style="{{zIndex ? `z-index: ${zIndex};`: ''}}">
+  <view class="tm-modal-document {{advice === true ? 'tm-modal-document-advice' : '' }}">
+    <view 
+      class="tm-modal-mask {{advice === true ? 'tm-modal-mask-advice': ''}}" 
+      tiki:if="{{mask}}" onTap="_onMaskTap" />
+    <view class="tm-modal {{className}}">
+      <!-- close icon -->
+      <view class="tm-modal-close" 
+        hover-class="tm-modal-close-active" 
+        tiki:if="{{showClose || advice}}" 
+        onTap="_onModalClose" >
+        <tm-icon 
+          type="{{advice ? 'close_circle' : 'close'}}" 
+          size="{{advice ? adviceClose : normalClose}}" 
+          color="{{closeType === '1' ? 'white' : '#999'}}" />
       </view>
-      <view class="tm-modal-container">
+      <!-- modal content -->
+      <view class="tm-modal-content {{topImageSize === 'lg' ? 'tm-modal-content--fill' : ''}}">
         <view tiki:if="{{topImage}}" class="tm-modal-image tm-modal-image-{{topImageSize}}">
           <image class="tm-modal-image-element" src="{{topImage}}" />
         </view>
         <view class="tm-modal-header" tiki:if="{{$slots.header}}">
-            <slot name="header" />
+          <slot name="header" />
         </view>
         <view class="tm-modal-body">
-            <slot />
+          <slot />
         </view>
-        <view tiki:if="{{buttons}}" class="tm-modal-line--horizontal"/>
-        <view
-            tiki:if="{{buttons}}"
-            class="tm-footer-custom-button--{{buttonsLayout|| 'horizontal'}}"
-            >
-            <view
-                class="tm-fotter-button--{{buttonsLayout||'horizontal'}}"
-                tiki:if="{{buttons[0]}}"
-                data-item="{{buttons[0]}}"
-                data-index="{{0}}"
-                type="tertiary" data-item="{{buttons[0]}}" onTap="_onButtonClick">{{buttons[0].text}}</view>
-            <view
-                tiki:if="{{buttons[1]}}"
-                class="tm-modal-line--{{buttonsLayout==='vertical'?'horizontal':'vertical'}}"
-            />
-            <view
-                class="tm-fotter-button--{{buttonsLayout||'horizontal'}}"
-                data-item="{{buttons[0]}}"
-                data-index="{{1}}"
-                tiki:if="{{buttons[1]}}" type="tertiary" onTap="_onButtonClick">{{buttons[1].text}}</view>
+      </view>
+      <view 
+        class="tm-modal-footer" 
+        hover-class="tm-modal-footer-active" 
+        tiki:if="{{$slots.footer}}" 
+        onTap="_onModalClick">
+        <slot name="footer" />
+      </view>
+      <!-- modal button -->
+      <view 
+        class="tm-modal-buttons 
+        {{_buttonsLayout === 'vertical' ? 'tm-modal-buttons--vertical' : 'tm-modal-buttons--horizontal'}}"
+        tiki:if="{{buttons}}">
+        <view 
+          class="tm-modal-button 
+          {{button.extClass}} 
+          {{_buttonsLayout === 'vertical' ? 'tm-modal-button--vertical' : 'tm-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tm-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
+          {{button.text}}
         </view>
-
-        <view tiki:if="{{$slots.footer}}" class="tm-modal-line--horizontal"/>
-        <view tiki:if="{{$slots.footer}}" 
-            class="tm-modal-footer"
-            onTap="_onModalClick"
-        >
-        <slot 
-            name="footer"
-            tiki:if="{{!buttons}}"
-            />
-        </view>
+      </view>
     </view>
-</modal>
+  </view>
+</view>

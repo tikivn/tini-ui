@@ -1,0 +1,17 @@
+<button 
+  onTap="onTap" 
+  style="{{style}}"
+  size="{{size}}"
+  type="{{type}}"
+  loading="{{loading}}"
+  formType="{{formType}}"
+  disabled="{{disabled || skeleton || loading}}"
+  class="t-tiny-button {{className || ' ' }} {{type}} {{shape}} {{size}} {{skeleton&&'skeleton'||' '}} {{!skeleton&&loading&&'loading'||' '}}"> 
+  <icon tiki:if="{{iconName && !loading}}" 
+    type="{{iconName}}" 
+    class='t-tiny-button--icon'
+    color="#fff" />
+   <slot tiki:if="{{shape !== 'circle'}}"  />
+</button>
+
+   

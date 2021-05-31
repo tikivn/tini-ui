@@ -1,15 +1,16 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/popup/index",
     "pages/avatar/index",
     "pages/badge/index",
     "pages/list/index",
     "pages/modal/index",
-    "pages/popup/index",
     "pages/stepper/index",
-    "pages/tabs/index"
+    "pages/tabs/index",
+    "pages/button/index"
   ],
   "window": {
-    "defaultTitle": "Tiki Mini UI"
+    "defaultTitle": "Tiki Tiny UI"
   }
 }

@@ -1,23 +1,25 @@
 <view>
-  <view class="block-content">
-      <text class="title mb-8">Plaground</text>
-      <button data-popup="{{position:'top',mask:true,show:true}}" onTap="onTap">OpenTop</button>
-      <button data-popup="{{position:'bottom',mask:true,show:true}}" onTap="onTap">OpenBottom</button>
-      <button data-popup="{{position:'right',mask:true,show:true}}" onTap="onTap">OpenRight</button>
-      <button data-popup="{{position:'left',mask:true,show:true}}" onTap="onTap">OpenLeft</button>
+  <view class="btn-container">
+    <button onTap="onTopBtnTap">Top</button>
+    <button onTap="onButtomBtnTap">Bottom</button>
+    <button onTap="onRightBtnTap">No mask</button>
+    <button onTap="onLeftBtnTap">Right</button>
   </view>
-  <popup
-      position="{{popup.position}}"
-      show="{{popup.show}}"
-      mask="{{true}}"
-      onMaskClick="onMaskClick"
-    >
-  <view
-      class="popup-content"
-      style="{{popup.position==='bottom'||popup.position==='top'?'height:150px':'width:200px;flex:1'}}"
-  >
-      <text>this is popoup content</text>
-      <button onTap="onMaskClick">Close</button>
-  </view>
+  <popup show="{{showLeft}}" animation="{{false}}" position="left" onClose="onPopupClose">
+    <view class="box left">hello world</view>
+  </popup>
+  <popup show="{{showRight}}" position="right" mask="{{false}}" onClose="onPopupClose">
+    <view class="box right" style="display: flex; flex-direction: column;">
+      <view>hello world</view>
+      <view style="margin-top: 20px;">
+        <button onTap="onPopupClose" style="width: 100px;">Close</button>
+      </view>
+    </view>
+  </popup>
+  <popup show="{{showTop}}" position="top" onClose="onPopupClose">
+    <view class="box top">hello world</view>
+  </popup>
+  <popup show="{{showBottom}}" position="bottom" onClose="onPopupClose">
+    <view class="box bottom">hello world</view>
   </popup>
 </view>
