@@ -1,12 +1,32 @@
 @import '../style/mixins/hairline.less';
 @import (reference) "../style/themes/default.less";
 
+@hd: 1px;
+@pixelSize: 0.5 * @hd;
+
+// @modal-width: 560 * @pixelSize;
+// @modal-sm-image-size: 160 * @pixelSize;
+// @modal-md-image-size: 280 * @pixelSize;
+// @modal-lg-image-v-size: 312 * @pixelSize;
+// @modal-v-spacing: 40 * @pixelSize;
+// @modal-footer-height: 100 * @pixelSize;
+// @modal-footer-border-color: @color-fill-grey-light;
+// @modal-close-size: 88 * @pixelSize;
+// @modal-close-icon-size: 32 * @pixelSize;
+// @modal-active-reverse-backgroundColor: rgba(37, 39, 40, .05);
+// @modal-body-max-width: 638 * @pixelSize;
+// @modal-advice-border-radius-size: 16 * @pixelSize;
+// @modal-advice-close-bottom: 100 * @pixelSize;
+// @modal-advice-close-size: 52 * @pixelSize;
+// @modal-advice-margin-size: 48 * @pixelSize;
+//
+// @modal-width: 296px;
 @modal-sm-image-size: 80px;
 @modal-md-image-size: 140px;
 @modal-lg-image-v-size: 156px;
 @modal-v-spacing: 20px;
 @h-spacing-large: 12px;
-@modal-footer-height: 56px;
+@modal-footer-height: 50px;
 @modal-footer-border-color: var(--gray20);
 @modal-close-size: 44px;
 @modal-close-icon-size: 16px;
@@ -16,12 +36,9 @@
 @modal-advice-close-bottom: 50px;
 @modal-advice-close-size: 26px;
 @modal-advice-margin-size: 24px;
+@corner-radius-lg: 8px;
 
 @modal-width: 296px;
-@modal-mask-backgroundColor: rgba(0, 0 , 0, 0.4);
-@modal-market-mask-backgroundColor: rgba(0, 0 , 0, 0.7);
-@font-size-title: var(--font-size-large);
-@color-text-primary: var(--brand);
 @border-radius: 8px;
 @modal-spacing: 16px;
 
@@ -49,9 +66,9 @@
     bottom: 0;
   }
   &-mask {
-    background-color: @modal-mask-backgroundColor;
+    background-color: var(--modal-mask-backgroundColor);
     &-advice {
-      background-color: @modal-market-mask-backgroundColor;
+      background-color: var(--modal-market-mask-backgroundColor);
     }
   }
   &-document {
@@ -60,6 +77,7 @@
     justify-content: center;
   }
   &-content {
+    // padding: @modal-v-spacing @h-spacing-large;
     padding: @modal-spacing;
     &--fill {
       padding-top: 0;
@@ -74,10 +92,11 @@
   &-image-lg &-image-element {
     width: @modal-width;
     height: @modal-lg-image-v-size;
-    margin-left: -@modal-spacing;
-    margin-right: -@modal-spacing;
-    border-top-left-radius: @border-radius;
-    border-top-right-radius: @border-radius;
+    margin-left: -@h-spacing-large;
+    margin-left: -@h-spacing-large;
+    margin-right: -@h-spacing-large;
+    border-top-left-radius: @corner-radius-lg;
+    border-top-right-radius: @corner-radius-lg;
     overflow: hidden;
   }
   &-image-md &-image-element {
@@ -89,20 +108,27 @@
     height: @modal-sm-image-size;
   }
   &-header {
-    font-size: var(--font-size-large);
-    line-height: var(--font-height-medium);
+    font-size: @font-size-title;
+    font-size: var(--tm-modal-title-fontSize, @font-size-title);
+    line-height: @line-height-paragraph;
+    line-height: var(--tm-modal-title-lineHeight, @line-height-paragraph);
     text-align: center;
-    color: var(--text-color);
+    color: @color-text-title;
+    color: var(--tm-modal-title-color, @color-text-title);
     font-weight: bold;
-    margin-bottom: @modal-spacing;
+    margin-bottom: @v-spacing-standard;
+    margin-bottom: var(--tm-modal-title-margin-v, @v-spacing-standard);
   }
   &-body {
     overflow: hidden;
     max-width: @modal-width;
-    line-height: var(--font-height-base);
+    line-height: @line-height-paragraph;
+    line-height: var(--tm-modal-body-lineHeight, @line-height-paragraph);
     text-align: center;
-    color: var(--text-color);
-    font-size: var(--font-size-base);
+    color: @color-text-title;
+    color: var(--tm-modal-body-color, @color-text-title);
+    font-size: @font-size-subtitle;
+    font-size: var(--tm-modal-body-fontSize, @font-size-subtitle);
   }
 
   &-footer {
@@ -110,7 +136,9 @@
     line-height: @modal-footer-height;
     position: relative;
     font-size: @font-size-title;
+    font-size: var(--tm-modal-footer-fontSize, @font-size-title);
     color: @color-text-primary;
+    color: var(--tm-color-text-primary, @color-text-primary);
     text-align: center;
     .hairline('top', @modal-footer-border-color);
   }
@@ -118,7 +146,9 @@
     position: relative;
     display: flex;
     font-size: @font-size-title;
+    font-size: var(--tm-modal-footer-fontSize, @font-size-title);
     color: @color-text-primary;
+    color: var(--tm-color-text-primary, @color-text-primary);
     text-align: center;
     .hairline('top', @modal-footer-border-color);
     &--vertical {
@@ -129,7 +159,7 @@
     }
   }
   &-button {
-    padding: 8;
+    padding: 24 * @pixelSize;
     flex: 1;
     position: relative;
     overflow: hidden;

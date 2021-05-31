@@ -1,36 +1,23 @@
-.button-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.button-wrapper button {
-  color: green;
-}
-.body-wrapper {
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-}
-.footer-wrapper {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+.deleteBtn {
+  color: #f93a4a;
+  font-weight: bolder;
 }
 
-.footer-container {
-  width: 100%;
+.cancelBtn {
+  color: #ccc;
 }
-.footer-custom-button--horizontal {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+
+.buttonBold, .modalButtonBold .am-modal-footer {
+  font-weight: bold;
 }
-.footer-custom-button--vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+
+
+
+
+.modal-item {
+  margin-top: 10px;
+}
+button {
+  margin: 8px;
+  display: block !important;
 }
