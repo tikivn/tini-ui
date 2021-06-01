@@ -12,6 +12,7 @@
           style="background-color: {{tabBarBackgroundColor}};"></view>
         <view tiki:if="{{showRightShadow}}" class="tm-tabs-scroll-right"
           style="background-color: {{tabBarBackgroundColor}};"></view>
+        {{viewScrollLeft}}
         <scroll-view 
           scroll-left="{{viewScrollLeft}}"
           scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}{{tabViewNum}}" 
@@ -91,7 +92,7 @@
     <block tiki:else>
       <block tiki:if="{{swipeable}}">
         <view style="{{tabContentHeight ? `height: ${tabContentHeight};`: ''}}">
-          <swiper 
+          <carousel 
             circular="{{false}}" 
             current="{{activeTab}}" 
             data-tabsName="{{tabsName}}" 
@@ -102,7 +103,7 @@
             disable-update-direction="{{true}}"
             class="tm-tabs-content-wrap {{tabContentHeight ? 'tm-tabs-content-wrap_H100': ''}} {{util.compareVersion(version) < 0 ? 'fix' : ''}}">
             <slot></slot>
-          </swiper>
+          </carousel>
         </view>
       </block>
       <block tiki:else>

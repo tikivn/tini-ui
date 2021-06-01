@@ -99,7 +99,7 @@ Component({
         });
         // 记录电梯组件总高度，并写入 data
         my.createSelectorQuery()
-          .select('#am-tabs-elevator-content')
+          .select('#tm-tabs-elevator-content')
           .boundingClientRect()
           .exec((ret) => {
             if (ret && ret[0]) {
@@ -135,7 +135,7 @@ Component({
           }
         });
       my.createSelectorQuery()
-        .select(`#am-tabs-bar-${this.props.tabsName}-content`)
+        .select(`#tm-tabs-bar-${this.props.tabsName}-content`)
         .boundingClientRect()
         .exec((ret) => {
           if (ret && ret[0]) {
@@ -181,7 +181,7 @@ Component({
     if (elevator) {
       // 当 didUpdate 时判断电梯组件总高度是否发生变化
       my.createSelectorQuery()
-        .select('#am-tabs-elevator-content')
+        .select('#tm-tabs-elevator-content')
         .boundingClientRect()
         .exec((ret) => {
           if (ret && ret[0].height !== this.data.elevatorHeight) {
@@ -221,9 +221,9 @@ Component({
       let boxWidth = 0;
       let elWidth = 0;
       let elLeft = 0;
-      const className = `am-tabs-bar-tab ${
-        !this.props.hasSubTitle && this.props.capsule ? 'am-tabs-bar-tab-capsule' : ''
-      } ${this.props.hasSubTitle ? 'am-tabs-bar-tab__hasSubTitle' : ''} ${this.props.tabBarCls}`;
+      const className = `tm-tabs-bar-tab ${
+        !this.props.hasSubTitle && this.props.capsule ? 'tm-tabs-bar-tab-capsule' : ''
+      } ${this.props.hasSubTitle ? 'tm-tabs-bar-tab__hasSubTitle' : ''} ${this.props.tabBarCls}`;
 
       my.createSelectorQuery()
         .selectAll(`.${className}`)
@@ -251,7 +251,7 @@ Component({
         });
 
       my.createSelectorQuery()
-        .select(`#am-tabs-bar-${tabsName}-content`)
+        .select(`#tm-tabs-bar-${tabsName}-content`)
         .boundingClientRect()
         .exec((ret) => {
           if (ret && ret[0]) {
@@ -263,7 +263,7 @@ Component({
             // mock el.offsetLeft
             const elOffeseLeft = this.data.tabsWidthArr.reduce((prev, cur, index) => {
               if (index < this.props.activeTab) {
-                // eslint-disable-next-line no-param-reassign
+                // eslint-disable-next-line no-partm-reassign
                 prev += cur;
               }
               return prev;
@@ -302,9 +302,9 @@ Component({
       return new Promise((resolve) => {
         for (let i = 0; i < tabs.length; i++) {
           my.createSelectorQuery()
-            .select(`#am-tabs-elevator-pane-${i}`)
+            .select(`#tm-tabs-elevator-pane-${i}`)
             .boundingClientRect()
-            .select('.am-tabs-bar-sticky')
+            .select('.tm-tabs-bar-sticky')
             .boundingClientRect()
             .exec((ret) => {
               if (ret && ret[0]) {
@@ -368,7 +368,6 @@ Component({
     },
     showLeftShadow(e) {
       const { scrollLeft, scrollWidth } = e.detail;
-      console.log('scrollLeft :>> ', scrollLeft);
       // 判断是否隐藏左边的阴影
       if (scrollLeft > 0) {
         this.setData({
