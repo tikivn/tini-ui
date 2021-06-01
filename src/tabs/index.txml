@@ -6,19 +6,11 @@
       class="tm-tabs-bar {{capsule?'tm-tabs-bar-capsule':''}} {{(elevator || stickyBar)?'tm-tabs-bar-sticky':''}}"
       style="background-color: {{tabBarBackgroundColor}};{{(elevator || stickyBar) && elevatorTop ? `top: ${elevatorTop};` : ''}}">
       <view class="tm-tabs-bar-content-wrap">
-        <view 
-          tiki:if="{{showLeftShadow}}" 
-          class="tm-tabs-scroll-left"
-          style="background-color: {{tabBarBackgroundColor}};"></view>
-        <view tiki:if="{{showRightShadow}}" class="tm-tabs-scroll-right"
-          style="background-color: {{tabBarBackgroundColor}};"></view>
-        {{viewScrollLeft}}
         <scroll-view 
           scroll-left="{{viewScrollLeft}}"
           scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}{{tabViewNum}}" 
           scroll-x="{{true}}"
           scroll-with-animation="{{animation}}" 
-          onScroll="showLeftShadow" 
           class="tm-tabs-bar-content"
           id="tm-tabs-bar-{{tabsName ? tabsName+'-' :''}}content">
           <block tiki:for="{{tabs}}">
@@ -29,7 +21,6 @@
               data-floor="{{floorNumber[index]}}" 
               key="tabs-item-{{index}}" 
               onTap="handleTabClick"
-              onFirstAppear="onTabFirstShow" 
               style="color: {{ !hasSubTitle && capsule?
                 (index === activeTab ? capsuleTabBarActiveTextColor: tabBarInactiveTextColor)
                 :
@@ -100,7 +91,6 @@
             autoplay="{{autoplay}}" 
             duration="{{duration}}" 
             onChange="handleSwiperChange"
-            disable-update-direction="{{true}}"
             class="tm-tabs-content-wrap {{tabContentHeight ? 'tm-tabs-content-wrap_H100': ''}} {{util.compareVersion(version) < 0 ? 'fix' : ''}}">
             <slot></slot>
           </carousel>

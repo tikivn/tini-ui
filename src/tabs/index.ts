@@ -1,69 +1,103 @@
 import fmtUnit from '../_util/fmtUnit';
 
+type Props = {
+  className: string;
+  activeCls: string;
+  tabBarCls: string;
+  tabBarUnderlineColor: string;
+  tabBarActiveTextColor: string;
+  capsuleTabBarActiveTextColor: string;
+  tabBarInactiveTextColor: string;
+  tabBarSubTextColor: string;
+  tabBarActiveSubTextColor: string;
+  tabBarBackgroundColor: string;
+  capsuleTabBarBackgroundColor: string;
+  showPlus: boolean;
+  swipeable: boolean;
+  activeTab: number;
+  animation: boolean;
+  duration: number;
+  capsule: boolean;
+  hasSubTitle: boolean;
+  elevator: boolean;
+  floorNumber: number[];
+  elevatorTop: string; // '0px'
+  tabsName: string;
+  showBadge: boolean;
+  tabBarUnderlineWidth: string;
+  tabBarUnderlineHeight: string;
+  elevatorContentTop: number;
+  tabContentHeight: string;
+  plusIcon: string;
+  plusIconSize: number;
+  plusIconColor: string;
+  plusImg: string;
+  plusImgWidth: string;
+  plusImgHeight: string;
+  stickyBar: boolean;
+  tabs: Array<{ number: number; title: string; showBadge: boolean; subTitle: string }> | null;
+};
+
+type Data = {
+  capsule: boolean;
+  swipeable: boolean;
+  windowWidth: number;
+  tabWidth: number;
+  autoplay: boolean;
+  animation: boolean;
+  version: string;
+  viewScrollLeft: number;
+  tabViewNum: number;
+  hideRightShadow: boolean;
+  boxWidth: number;
+  elWidth: number;
+  tabFontSize15: string;
+  tabFontSize13: string;
+  _showPlus: boolean;
+  tabsWidthArr: number[];
+};
+
 Component({
   props: {
     className: '',
-    // tabbar激活的 tab 样式 class
     activeCls: '',
-    // tabbar的自定义样式class
     tabBarCls: '',
-    // 选中选项卡下划线颜色 & 胶囊选中背景色
     tabBarUnderlineColor: '#1677FF',
-    // 选中选项卡字体颜色
     tabBarActiveTextColor: '#1677FF',
-    // 胶囊选中选项卡字体颜色
     capsuleTabBarActiveTextColor: '#ffffff',
-    // 未选中选项卡字体颜色
     tabBarInactiveTextColor: '#333333',
-    // 未选中描述字体颜色
     tabBarSubTextColor: '#999999',
-    // 选中描述字体颜色
     tabBarActiveSubTextColor: '#ffffff',
-    // 选项卡背景颜色
     tabBarBackgroundColor: '#ffffff',
-    // 胶囊选项卡未选中的背景色
     capsuleTabBarBackgroundColor: '#e5e5e5',
     showPlus: false,
-    // tabs 内容区是否可拖动，true 可拖动，内容区固定高度 false 不可拖动，内容区自适应高度
     swipeable: true,
-    // 当前激活tab id
     activeTab: 0,
     animation: true,
     duration: 500,
-    // 是否为胶囊形式 tab
     capsule: false,
-    // 是否有副标题
     hasSubTitle: false,
     elevator: false,
     floorNumber: [],
     elevatorTop: '0px',
     showBadge: false,
-    // 选中选项卡下划线宽度
     tabBarUnderlineWidth: '',
-    // 选中选项卡下划线高度
     tabBarUnderlineHeight: '',
-    // 电梯组件 tab-content 距离顶部高度
     elevatorContentTop: 0,
-    // 通过接收外部传值，动态控制 tab-content 在 swiper 下的高度
     tabContentHeight: '',
-    // plus icon 类型更多的支持
     plusIcon: 'add',
     plusIconSize: 16,
     plusIconColor: '',
-    // plus icon 使用 image 的方式
     plusImg: '',
     plusImgWidth: '',
     plusImgHeight: '',
-    // tab-bar 是否滚动定位在顶部的判断
     stickyBar: false,
-  },
+  } as Props,
   data: {
     windowWidth: 0,
     tabWidth: 0.25,
     autoplay: false,
     animation: false,
-    showLeftShadow: false,
-    showRightShadow: true,
     version: '1.10.0',
     viewScrollLeft: 0,
     tabViewNum: 0,
@@ -74,7 +108,7 @@ Component({
     tabFontSize13: fmtUnit('13px'),
     _showPlus: false,
     tabsWidthArr: [],
-  },
+  } as Data,
   async didMount() {
     const { tabs, animation, hasSubTitle, elevator, showPlus } = this.props;
     if (tabs.length !== 0 || !tabs) {
@@ -97,11 +131,13 @@ Component({
         this.setData({
           swipeable: false,
         });
-        // 记录电梯组件总高度，并写入 data
+
+        // Get height of content
         my.createSelectorQuery()
           .select('#tm-tabs-elevator-content')
           .boundingClientRect()
-          .exec((ret) => {
+          .exec((ret: unknown) => {
+            console.log('ret :>> ', ret);
             if (ret && ret[0]) {
               this.setData({
                 elevatorHeight: ret[0].height,
@@ -364,36 +400,6 @@ Component({
     handlePlusClick() {
       if (this.props.onPlusClick) {
         this.props.onPlusClick();
-      }
-    },
-    showLeftShadow(e) {
-      const { scrollLeft, scrollWidth } = e.detail;
-      // 判断是否隐藏左边的阴影
-      if (scrollLeft > 0) {
-        this.setData({
-          showLeftShadow: true,
-        });
-      } else {
-        this.setData({
-          showLeftShadow: false,
-        });
-      }
-      // 判断是否隐藏右边的阴影
-      if (scrollLeft + this.data.boxWidth >= scrollWidth - 8) {
-        this.setData({
-          showRightShadow: false,
-        });
-      } else {
-        this.setData({
-          showRightShadow: true,
-        });
-      }
-    },
-    onTabFirstShow(e) {
-      // SDKversion 最低要求 1.9.4
-      const { index, tabsName } = e.target.dataset;
-      if (this.props.onTabFirstShow) {
-        this.props.onTabFirstShow({ index, tabsName });
       }
     },
   },

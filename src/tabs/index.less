@@ -43,29 +43,6 @@
     }
   }
 
-  &-scroll-left,
-  &-scroll-right {
-    width: 72 * @pixelSize;
-    position: absolute;
-    top: 0;
-    bottom: 1px;
-    z-index: 99;
-    background-size: 100%;
-    pointer-events: none;
-  }
-
-  &-scroll-left {
-    left: 0;
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
-  }
-
-  &-scroll-right {
-    right: 0;
-    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
-    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
-  }
-
   &-bar-content {
     width: 100%;
     display: flex;
