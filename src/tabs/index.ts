@@ -64,7 +64,7 @@ Component({
     animation: false,
     showLeftShadow: false,
     showRightShadow: true,
-    version:'1.10.0',
+    version: '1.10.0',
     viewScrollLeft: 0,
     tabViewNum: 0,
     hideRightShadow: false,
@@ -155,6 +155,12 @@ Component({
     }
   },
   didUpdate(prevProps, prevData) {
+    if (
+      JSON.stringify(prevProps) === JSON.stringify(this.props) &&
+      JSON.stringify(prevData) === JSON.stringify(this.data)
+    ) {
+      return;
+    }
     const {
       tabs,
       elevator,
@@ -362,6 +368,7 @@ Component({
     },
     showLeftShadow(e) {
       const { scrollLeft, scrollWidth } = e.detail;
+      console.log('scrollLeft :>> ', scrollLeft);
       // 判断是否隐藏左边的阴影
       if (scrollLeft > 0) {
         this.setData({

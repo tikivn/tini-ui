@@ -26,8 +26,8 @@
               data-index="{{index}}"
               data-tabsName="{{tabsName}}" 
               data-floor="{{floorNumber[index]}}" 
-              key="tabs-item-{{index}}"
-              onTap="handleTabClick" 
+              key="tabs-item-{{index}}" 
+              onTap="handleTabClick"
               onFirstAppear="onTabFirstShow" 
               style="color: {{ !hasSubTitle && capsule?
                 (index === activeTab ? capsuleTabBarActiveTextColor: tabBarInactiveTextColor)
@@ -55,11 +55,11 @@
                     {{tabBarUnderlineHeight?`height: ${tabBarUnderlineHeight};`:''}}"></view>
                 <view class="tm-tabs-bar-tab-mainTitle" style="{{index === activeTab?'font-weight: bold;':''}}">
                   {{item.title}}
-                  <badge className="tm-tabs-bar-tab-badge" tiki:if="{{item.showBadge}}"
-                    dot="{{item.number ? false : true}}" text="{{item.number}}"
-                    withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
-                    direction="{{item.badge.arrow ? 'left' : ''}}"
-                    stroke="{{item.badge.stroke ? item.badge.stroke : false}}"></badge>
+                  <!-- <badge className="tm-tabs-bar-tab-badge" tiki:if="{{item.showBadge}}" -->
+                  <!--   dot="{{item.number ? false : true}}" text="{{item.number}}" -->
+                  <!--   withArrow="{{item.badge.arrow ? item.badge.arrow : false}}" -->
+                  <!--   direction="{{item.badge.arrow ? 'left' : ''}}" -->
+                  <!--   stroke="{{item.badge.stroke ? item.badge.stroke : false}}"></badge> -->
                 </view>
                 <text tiki:if="{{!hasSubTitle && capsule && item.number && !item.showBadge}}"
                   class="tm-tabs-bar-tab-number {{ index === activeTab ?'tm-tabs-bar-tab-number_active':''}}">({{item.number}})</text>

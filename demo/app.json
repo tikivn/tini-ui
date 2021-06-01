@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/tabs/index",
     "pages/index/index",
     "pages/popup/index",
     "pages/avatar/index",
@@ -7,7 +8,6 @@
     "pages/list/index",
     "pages/modal/index",
     "pages/stepper/index",
-    "pages/tabs/index",
     "pages/button/index"
   ],
   "window": {
