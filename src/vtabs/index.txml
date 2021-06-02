@@ -1,0 +1,57 @@
+<view class="tm-vtabs {{className}}">
+  <view class="tm-vtabs-bar">
+    <scroll-view style="{{tabBarActiveBgColor?'background-color: ' + tabBarActiveBgColor + ';':''}}"
+      class="tm-vtabs-bar-content"
+      scroll-top="{{tabTop}}"
+      scroll-y="{{true}}">
+      <block tiki:for="{{tabs}}">
+        <view data-index="{{index}}"
+          data-anchor="{{item.anchor}}"
+          onTap="handleTabClick"
+          class="tm-vtabs-bar-tab {{!sameFontSize && activeTab === index?'tm-vtabs-bar-tab__active':'tm-vtabs-bar-tab__same'}}"
+          hover-class="{{activeTab !== index?'tm-vtabs-bar-tab__hover':''}}"
+          hover-start-time="0"
+          hover-stay-time="0"
+          style="{{
+          activeTab == index?'font-weight: bold;color: ' + tabBarActiveTextColor + ';background-color: ' + tabBarActiveBgColor + ';':'color: ' + tabBarInactiveTextColor + ';background-color: ' + tabBarInactiveBgColor + ';'
+        }}
+        {{index === currentBefore?'border-radius: 0 0 ' + besideRadius + ' 0;':''}}
+        {{index === currentAfter?'border-radius: 0 ' + besideRadius + ' 0 0;':''}}">
+          <view class="tm-vtabs-bar-title">
+            <text>{{item.title}}<text tiki:if="{{item.number && item.number !== ''}}">({{item.number}})</text></text>
+          </view>
+          <view tiki:if="{{activeTab === index && tabBarlineShow}}"
+            class="tm-vtabs-bar-line"
+            style="{{tabBarlineColor?'background-color: ' + tabBarlineColor + ';':''}}"></view>
+        </view>
+        <view tiki:if="{{index + 1 === tabs.length}}"
+          style="{{index + 1 === currentAfter?'border-radius: 0 ' + besideRadius + ' 0 0;':''}}
+          {{tabBarInactiveBgColor?'background-color: ' + tabBarInactiveBgColor + ';':''}}"
+          class="tm-vtabs-bar-placehold"></view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="tm-vtabs-content-wrap"
+    onTouchMove="onWrapTouchMove">
+    <block tiki:if="{{swipeable}}">
+      <scroll-view 
+        class="tm-vtabs-slides tm-vtabs-slides-{{$id}}"
+        scroll-with-animation="{{animated}}"
+        scroll-y="{{true}}"
+        scroll-top="{{wrapScrollTop}}"
+        onTouchStart="onWrapTouch"
+        onTouchEnd="onWrapTouch"
+        onScroll="onScroll">
+        <slot></slot>
+      </scroll-view>
+    </block>
+    <block tiki:else>
+      <view class="tm-vtabs-slides tm-vtabs-slides-{{$id}} {{animated ? 'animate' : ''}}"
+        onTouchStart="onWrapTouch"
+        onTouchEnd="onWrapTouch"
+        style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop._v) + 'px, 0)' }}">
+        <slot></slot>
+      </view>
+    </block>
+  </view>
+</view>
