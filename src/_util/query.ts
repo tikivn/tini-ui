@@ -1,4 +1,4 @@
-export async function selectAsync(selector: string): Promise<unknown | string> {
+export function selectAsync(selector: string): Promise<unknown | string> {
   return new Promise((resolve, reject) => {
     my.createSelectorQuery()
       .select(selector)
@@ -12,7 +12,7 @@ export async function selectAsync(selector: string): Promise<unknown | string> {
   });
 }
 
-export async function selectAllAsync(selector: string): Promise<unknown | string> {
+export function selectAllAsync(selector: string): Promise<unknown | string> {
   return new Promise((resolve, reject) => {
     my.createSelectorQuery()
       .selectAll(selector)
