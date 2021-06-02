@@ -22,7 +22,17 @@ type Props = {
   tabBarUnderlineHeight: string;
   tabContentHeight: string;
   stickyBar: boolean;
-  tabs: Array<{ number: number; title: string; showBadge: boolean; subTitle: string }> | null;
+  tabs: Array<{
+    title: string;
+    number: number;
+    showBadge?: boolean;
+    subTitle?: string;
+    icon?: string;
+    iconActive?: string;
+    image?: string;
+    imageActive?: string;
+    type?: 'text-only' | 'text-icon' | 'text-image';
+  }> | null;
   onTabClick({ index: number, tabsName: string }): void;
   onChange({ index: number, tabsName: string }): void;
 };
@@ -51,12 +61,12 @@ Component({
     className: '',
     activeCls: '',
     tabBarCls: '',
-    tabBarUnderlineColor: '#1677FF',
-    tabBarActiveTextColor: '#1677FF',
-    tabBarInactiveTextColor: '#333333',
-    tabBarSubTextColor: '#999999',
-    tabBarActiveSubTextColor: '#ffffff',
-    tabBarBackgroundColor: '#ffffff',
+    tabBarUnderlineColor: '',
+    tabBarActiveTextColor: '',
+    tabBarInactiveTextColor: '',
+    tabBarSubTextColor: '',
+    tabBarActiveSubTextColor: '',
+    tabBarBackgroundColor: '',
     swipeable: true,
     activeTab: 0,
     animation: true,

@@ -13,26 +13,30 @@
           id="tm-tabs-bar-{{tabsName ? tabsName+'-' :''}}content">
           <block tiki:for="{{tabs}}">
             <view 
-              id="tabs-item-{{tabsName?tabsName+'-':''}}{{index}}" 
+              id="tabs-item-{{tabsName ? tabsName + '-' : ''}}{{index}}" 
               data-index="{{index}}"
               data-tabsName="{{tabsName}}" 
               data-floor="{{floorNumber[index]}}" 
               key="tabs-item-{{index}}" 
               onTap="handleTabClick"
-              style="color: index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}"
-              class="tm-tabs-bar-tab {{ hasSubTitle?'tm-tabs-bar-tab__hasSubTitle':''}} {{tabBarCls}}" >
+              style="color: {{index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}"
+              class="tm-tabs-bar-tab {{ hasSubTitle ? 'tm-tabs-bar-tab__hasSubTitle' : ''}} {{tabBarCls}}" >
               <view class="
                 tm-tabs-bar-title
                 {{ hasSubTitle ? 'tm-tabs-bar-title__hasSubTitle' : ''}}
                 {{ index === activeTab ? activeCls : '' }}
-                {{tabs.length - 1 === index?'tm-tabs-bar-title__noMargin':''}}
                 ">
-                <view tiki:if="{{ !hasSubTitle && index === activeTab}}" class="tm-tabs-bar-title-underline"
-                  style="background-color: {{tabBarUnderlineColor}};
-                    {{tabBarUnderlineWidth?`width: ${tabBarUnderlineWidth};`:''}}
-                    {{tabBarUnderlineHeight?`height: ${tabBarUnderlineHeight};`:''}}"></view>
-                <view class="tm-tabs-bar-tab-mainTitle" style="{{index === activeTab?'font-weight: bold;':''}}">
-                  {{item.title}}
+              <view tiki:if="{{ !hasSubTitle && index === activeTab}}" 
+                class="tm-tabs-bar-title-underline"
+                style="background-color: {{tabBarUnderlineColor}};
+                  {{tabBarUnderlineWidth ? `width: ${tabBarUnderlineWidth};` : ''}}
+                  {{tabBarUnderlineHeight ? `height: ${tabBarUnderlineHeight};` : ''}}"></view>
+                <view class="tm-tabs-bar-tab-mainTitle">
+                  <text class="
+                    tm-tabs-bar-tab-mainTitle-text 
+                    tm-tabs-bar-tab-mainTitle-text{{index === activeTab ? '-active' : ''}}">
+                    {{item.title}}
+                  </text>
                   <!-- <badge className="tm-tabs-bar-tab-badge" tiki:if="{{item.showBadge}}" -->
                   <!--   dot="{{item.number ? false : true}}" text="{{item.number}}" -->
                   <!--   withArrow="{{item.badge.arrow ? item.badge.arrow : false}}" -->
@@ -40,8 +44,9 @@
                   <!--   stroke="{{item.badge.stroke ? item.badge.stroke : false}}"></badge> -->
                 </view>
                 <text class="tm-tabs-bar-tab-subTitle" tiki:if="{{hasSubTitle && item.subTitle}}" style="
-                  {{index === activeTab ? 'background-color:' + tabBarUnderlineColor + '; color: ' + tabBarActiveSubTextColor + ';' : 'color: ' + tabBarSubTextColor + ';'}}
-                ">{{item.subTitle}}</text>
+                  {{index === activeTab ? 'background-color:' + tabBarUnderlineColor + '; color: ' + tabBarActiveSubTextColor + ';' : 'color: ' + tabBarSubTextColor + ';'}} ">
+                  {{item.subTitle}}
+                </text>
               </view>
             </view>
           </block>

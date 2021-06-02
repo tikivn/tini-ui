@@ -7,7 +7,6 @@
     activeTab="{{activeTab}}" 
     swipeable="{{isSwipeable}}" 
     hasSubTitle="{{typeHasSubTitle}}" 
-    tabBarUnderlineWidth="20px" 
     tabContentHeight="{{activeTab === 0 ? '130px' : activeTab === 2 ? '200px' : '50vh'}}" 
     stickyBar="{{true}}">
     <block tiki:for="{{tabs}}" tiki:if="{{!isSwipeable}}">

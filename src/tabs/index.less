@@ -1,7 +1,7 @@
 @import (reference) "../style/themes/default.less";
 
-@h-spacing-large: 12px;
-@v-spacing-large: 12px;
+@h-spacing-large: 8px;
+@v-spacing-large: 8px;
 @h-spacing-standard: 8px;
 @v-spacing-standard: 8px;
 @border-width-standard: 1px;
@@ -16,7 +16,6 @@
 @size-4: 12px;
 @size-1: 4px;
 @line-height-paragraph: 20px;
-@corner-radius-circle: 50vh;
 
 .tm-tabs {
   &-tab-bar-wrap {
@@ -25,17 +24,14 @@
 
   &-bar {
     position: relative;
+    background-color: var(--background-panel);
     display: flex;
     align-items: stretch;
     width: 100%;
-    padding: 0 @h-spacing-large;
-    padding: 0 var(--tm-tabs-padding, @h-spacing-large);
     border-bottom: @border-width-standard solid @color-divider-line;
-    border-bottom: var(--tm-tabs-content-borderWidth, @border-width-standard) solid var(--tm-tabs-content-borderColor, @color-divider-line);
     box-sizing: border-box;
     z-index: 1;
     &-sticky {
-      position: -webkit-sticky;
       position: sticky;
     }
   }
@@ -51,18 +47,6 @@
     }
   }
 
-  &-plus {
-    display: none;
-  }
-
-  &-plus.show {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    margin-left: @h-spacing-large;
-    margin-left: var(--tm-tabs-plus-marginLeft, @h-spacing-large);
-  }
-
   &-bar-content-wrap {
     position: relative;
     flex: 1 1 auto;
@@ -76,7 +60,6 @@
     justify-content: center;
     flex: 1 0 auto;
     font-size: @font-size-list;
-    font-size: var(--tm-tabs-fontSize, @font-size-list);
     white-space: nowrap;
     &-badge {
       position: absolute;
@@ -86,10 +69,16 @@
     }
     &-mainTitle {
       position: relative;
+      &-text {
+        color: var(--text-panel-inactive);
+        &-active {
+          color: var(--text-panel-active);
+          font-weight: var(--font-weight-bold);
+        }
+      }
     }
     &__hasSubTitle {
       margin-right: @size-4;
-      margin-right: var(--tm-tabs-subTitle-marginRight, @size-4);
       &:last-child {
         margin-right: 0;
       }
@@ -97,16 +86,12 @@
     &-subTitle {
       margin-top: 8 * @pixelSize;
       padding: 0 @h-spacing-standard;
-      padding: 0 var(--tm-tabs-subTitle-paddingH, @h-spacing-standard);
       font-size: @font-size-content;
-      font-size: var(--tm-tabs-subTitle-fontSize, @font-size-content);
       line-height: @line-height-paragraph;
-      line-height: var(--tm-tabs-subTitle-lineHeght, @line-height-paragraph);
       border-radius: 50vh;
     }
     &-number {
       margin-left: @size-1;
-      margin-left: var(--tm-tabs-number-marginLeft, @size-1);
       font-size: @font-size-content;
       font-size: var(--tm-tabs-number-fontSize, @font-size-content);
       color: @color-text-subtitle;
@@ -125,17 +110,11 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-right: @size-6;
-    margin-right: var(--tm-tabs-title-marginRight, @size-6);
-    padding-top: @v-spacing-large;
-    padding-top: var(--tm-tabs-title-paddingTop, @v-spacing-large);
-    padding-bottom: @v-spacing-large;
-    padding-bottom: var(--tm-tabs-title-paddingBottom, @v-spacing-large);
+    justify-content: center;
+    padding: var(--space-stack-2x-small);
     box-sizing: border-box;
-    &__noMargin {
-      margin-right: 0;
-      z-index: 101;
-    }
+    flex: 1;
+
     &__hasSubTitle {
       flex-direction: column;
       margin-right: 0;
@@ -147,12 +126,12 @@
       left: 50%;
       bottom: 0;
       width: 100%;
-      height: 4 * @pixelSize;
+      height: 1px;
       overflow: hidden;
       font-size: 0;
-      border-radius: @corner-radius-circle;
       box-sizing: border-box;
       animation: underlineShow 200ms linear 0ms 1 forwards;
+      background-color: var(--border-panel-active);
     }
   }
 
@@ -163,7 +142,6 @@
     overflow: hidden;
     height: auto;
     background-color: @color-fill-grey-inverse;
-    background-color: var(--tm-tabs-content-bgc, @color-fill-grey-inverse);
     &_H100 {
       height: 100% !important;
     }

@@ -4,9 +4,6 @@
   align-items: center;
   padding: 40rpx;
   box-sizing: border-box;
-  /* 如果 swipeable="{{true}}"，需要增加 height */
-  /* height: 350px; */
-  /* 为了体现 stickyBar 的作用而增加的 tab-content 的高度 */
   height: 50vh;
 }
 
