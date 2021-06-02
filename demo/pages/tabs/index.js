@@ -36,7 +36,7 @@ Page({
       { title: '4 Tab', subTitle: 'Subtitle 5' },
       { title: '15 Tab', subTitle: 'Subtitle 5' },
     ],
-    activeTab: 0,
+    activeTab: 6,
     isSwipeable: false,
   },
   handleTabClick({ index, tabsName }) {

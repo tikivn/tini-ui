@@ -1,4 +1,3 @@
-import fmtUnit from '../_util/fmtUnit';
 import { selectAsync, selectAllAsync } from '../_util/query';
 import { getSystemInfoAsync } from '../_util/system';
 
@@ -17,7 +16,6 @@ type Props = {
   animation: boolean;
   duration: number;
   hasSubTitle: boolean;
-  floorNumber: number[];
   tabsName: string;
   showBadge: boolean;
   tabBarUnderlineWidth: string;
@@ -26,6 +24,7 @@ type Props = {
   stickyBar: boolean;
   tabs: Array<{ number: number; title: string; showBadge: boolean; subTitle: string }> | null;
   onTabClick({ index: number, tabsName: string }): void;
+  onChange({ index: number, tabsName: string }): void;
 };
 
 type Data = {
@@ -34,15 +33,10 @@ type Data = {
   tabWidth: number;
   autoplay: boolean;
   animation: boolean;
-  version: string;
   viewScrollLeft: number;
-  tabViewNum: number;
-  hideRightShadow: boolean;
   boxWidth: number;
   elWidth: number;
   elLeft: number;
-  tabFontSize15: string;
-  tabFontSize13: string;
   tabsWidthArr: number[];
 };
 
@@ -68,7 +62,6 @@ Component({
     animation: true,
     duration: 500,
     hasSubTitle: false,
-    floorNumber: [],
     showBadge: false,
     tabBarUnderlineWidth: '',
     tabBarUnderlineHeight: '',
@@ -80,24 +73,11 @@ Component({
     tabWidth: 0.25,
     autoplay: false,
     animation: false,
-    version: '1.10.0',
     viewScrollLeft: 0,
-    tabViewNum: 0,
-    hideRightShadow: false,
     boxWidth: 0,
     elWidth: 0,
-    tabFontSize15: fmtUnit('15px'),
-    tabFontSize13: fmtUnit('13px'),
     tabsWidthArr: [],
   } as Data,
-  methods: {
-    handleTabClick(e: ClickEvent<{ index: number; tabsName: string }>) {
-      const { index, tabsName } = e.target.dataset;
-      if (this.props.onTabClick) {
-        this.props.onTabClick({ index, tabsName });
-      }
-    },
-  },
   async didMount() {
     const { tabs, animation, activeTab, tabsName } = this.props;
     const systemInfo = await getSystemInfoAsync();
@@ -127,18 +107,18 @@ Component({
       data.animation = animation;
       data.autoplay = true;
 
-      if (this.props.activeTab > 0) {
+      if (+activeTab > 0) {
         const [activeTabEle, tabContentEle] = await Promise.all([
           selectAsync(`#tabs-item-${tabsName}-${activeTab}`),
-          selectAsync(`#tm-tabs-bar-${this.props.tabsName}-content`),
+          selectAsync(`#tm-tabs-bar-${tabsName}-content`),
         ]);
         data.elWidth = (<my.IBoundingClientRect>activeTabEle).width;
         data.elLeft = (<my.IBoundingClientRect>activeTabEle).left;
         data.boxWidth = (<my.IBoundingClientRect>tabContentEle).width;
-        (data.viewScrollLeft = Math.floor(data.elWidth + data.elLeft - data.boxWidth)),
-          setTimeout(() => {
-            this.setData(data);
-          }, 300);
+        data.viewScrollLeft = Math.floor(data.elWidth + data.elLeft - data.boxWidth);
+        setTimeout(() => {
+          this.setData(data);
+        }, 300);
       }
     }
   },
@@ -199,5 +179,21 @@ Component({
         this.setData(data);
       }, 300);
     }
+  },
+  methods: {
+    handleTabClick(e: ClickEvent<{ index: number; tabsName: string }>) {
+      const { index, tabsName } = e.target.dataset;
+      if (this.props.onTabClick) {
+        this.props.onTabClick({ index, tabsName });
+      }
+    },
+    handleSwiperChange(e) {
+      const { current } = e.detail;
+      const { tabsName } = e.target.dataset;
+
+      if (this.props.onChange) {
+        this.props.onChange({ index: current, tabsName });
+      }
+    },
   },
 });

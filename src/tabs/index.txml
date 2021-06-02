@@ -6,7 +6,7 @@
       <view class="tm-tabs-bar-content-wrap">
         <scroll-view 
           scroll-left="{{viewScrollLeft}}"
-          scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}{{tabViewNum}}" 
+          scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}" 
           scroll-x="{{true}}"
           scroll-with-animation="{{animation}}" 
           class="tm-tabs-bar-content"
