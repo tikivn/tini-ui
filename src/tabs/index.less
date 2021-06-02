@@ -69,12 +69,20 @@
     }
     &-mainTitle {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       &-text {
         color: var(--text-panel-inactive);
         &-active {
           color: var(--text-panel-active);
           font-weight: var(--font-weight-bold);
         }
+      }
+      &-image {
+        width: 24px;
+        height: 24px;
       }
     }
     &__hasSubTitle {

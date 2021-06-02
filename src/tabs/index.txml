@@ -32,6 +32,13 @@
                   {{tabBarUnderlineWidth ? `width: ${tabBarUnderlineWidth};` : ''}}
                   {{tabBarUnderlineHeight ? `height: ${tabBarUnderlineHeight};` : ''}}"></view>
                 <view class="tm-tabs-bar-tab-mainTitle">
+                  <icon tiki:if="{{item.icon}}" 
+                    size="{{item.iconSize || 24}}"
+                    color="{{index === activeTab ? tabBarActiveIconColor : tabBarInactiveIconColor }}"
+                    type="{{index === activeTab && item.iconActive ? item.iconActive : item.icon}}" />
+                  <image tiki:if="{{item.image}}" 
+                    class="tm-tabs-bar-tab-mainTitle-image"
+                    src="{{index === activeTab && item.imageActive ? item.imageActive : item.image}}" />
                   <text class="
                     tm-tabs-bar-tab-mainTitle-text 
                     tm-tabs-bar-tab-mainTitle-text{{index === activeTab ? '-active' : ''}}">

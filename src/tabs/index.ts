@@ -11,11 +11,14 @@ type Props = {
   tabBarSubTextColor: string;
   tabBarActiveSubTextColor: string;
   tabBarBackgroundColor: string;
-  swipeable: boolean;
+  tabBarActiveIconColor: string;
+  tabBarInactiveIconColor: string;
+  iconSize?: number;
+  swipeable?: boolean;
   activeTab: number;
-  animation: boolean;
-  duration: number;
-  hasSubTitle: boolean;
+  animation?: boolean;
+  duration?: number;
+  hasSubTitle?: boolean;
   tabsName: string;
   showBadge: boolean;
   tabBarUnderlineWidth: string;
@@ -31,7 +34,6 @@ type Props = {
     iconActive?: string;
     image?: string;
     imageActive?: string;
-    type?: 'text-only' | 'text-icon' | 'text-image';
   }> | null;
   onTabClick({ index: number, tabsName: string }): void;
   onChange({ index: number, tabsName: string }): void;
@@ -67,6 +69,9 @@ Component({
     tabBarSubTextColor: '',
     tabBarActiveSubTextColor: '',
     tabBarBackgroundColor: '',
+    tabBarActiveIconColor: '#1A94FF',
+    tabBarInactiveIconColor: '#808089',
+    iconSize: 24,
     swipeable: true,
     activeTab: 0,
     animation: true,

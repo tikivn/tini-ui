@@ -8,6 +8,8 @@
     swipeable="{{isSwipeable}}" 
     hasSubTitle="{{typeHasSubTitle}}" 
     tabContentHeight="{{activeTab === 0 ? '130px' : activeTab === 2 ? '200px' : '50vh'}}" 
+    tabBarActiveIconColor="red"
+    tabBarInactiveIconColor="blue"
     stickyBar="{{true}}">
     <block tiki:for="{{tabs}}" tiki:if="{{!isSwipeable}}">
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:if="{{index === 0}}">
