@@ -1,11 +1,21 @@
 <view style="padding: 24rpx;">
-  <tabs tabs="{{tabs}}" tabsName="activeTab" onTabClick="handleTabClick" onChange="handleTabChange" onPlusClick="handlePlusClick" activeTab="{{activeTab}}" showPlus="{{hasPlus}}" swipeable="{{isSwipeable}}" capsule="{{typeCapsule}}" hasSubTitle="{{typeHasSubTitle}}" tabBarUnderlineWidth="20px" tabContentHeight="{{activeTab === 0 ? '130px' : activeTab === 2 ? '200px' : '50vh'}}" stickyBar="{{true}}">
+  <tabs 
+    tabs="{{tabs}}" 
+    tabsName="activeTab" 
+    onTabClick="handleTabClick" 
+    onChange="handleTabChange" 
+    activeTab="{{activeTab}}" 
+    swipeable="{{isSwipeable}}" 
+    hasSubTitle="{{typeHasSubTitle}}" 
+    tabBarUnderlineWidth="20px" 
+    tabContentHeight="{{activeTab === 0 ? '130px' : activeTab === 2 ? '200px' : '50vh'}}" 
+    stickyBar="{{true}}">
     <block tiki:for="{{tabs}}" tiki:if="{{!isSwipeable}}">
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:if="{{index === 0}}">
-        <view class="tab-content" style="height: 130px;">高度为 130px {{item.title}}</view>
+        <view class="tab-content" style="height: 130px;">Tab 1 height 130</view>
       </tab-content>
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:elif="{{index === 2}}">
-        <view class="tab-content" style="height: 200px;">改变 tab-content 高度为 200px {{item.title}}</view>
+        <view class="tab-content" style="height: 200px;">Tab 2 height 200</view>
       </tab-content>
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}"
         tiki:else>
@@ -15,10 +25,10 @@
 
     <block tiki:for="{{tabs}}" tiki:if="{{isSwipeable}}">
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:if="{{index === 0}}">
-        <view class="tab-content" style="height: 130px;">高度为 130px {{item.title}}</view>
+        <view class="tab-content" style="height: 130px;">Tab 1 height 130</view>
       </tab-content>
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:elif="{{index === 2}}">
-        <view class="tab-content" style="height: 200px;">改变 tab-content 高度为 200px {{item.title}}</view>
+        <view class="tab-content" style="height: 200px;">Tab 2 height 200</view>
       </tab-content>
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}"
         tiki:else>
@@ -28,45 +38,7 @@
   </tabs>
 </view>
 
-<view class="demo-title">elevator 模式:</view>
-<!-- <navigator url="./elevator/elevator" open-type="redirect" style="padding: 24rpx 40rpx;">点击进入 elevator 电梯组件模式</navigator> -->
-
-<view class="demo-title">activeTab: {{activeTab}}</view>
-<radio-group class="radio-group" onChange="activeTabChange" name="type">
-  <label class="radio" tiki:for="{{tabs}}" key="label-{{index}}">
-    <radio value="{{index}}" />
-    <text class="radio-text">{{item.title}}</text>
-  </label>
-</radio-group>
-
-<view class="demo-title">tab 类型:</view>
-<radio-group class="radio-group" onChange="typeChange" name="type">
-  <label class="radio" tiki:for="{{type}}" key="label-{{index}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    <text class="radio-text">{{item.value}}</text>
-  </label>
-</radio-group>
-
-<view class="demo-title">swipeable:</view>
-<radio-group class="radio-group" onChange="swipeableChange" name="swipeable">
-  <label class="radio" tiki:for="{{swipeable}}" key="label-{{index}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    <text class="radio-text">{{item.value}}</text>
-  </label>
-</radio-group>
-
-<view class="demo-title">是否有 ➕icon:</view>
-<radio-group class="radio-group" onChange="plusChange" name="plus">
-  <label class="radio" tiki:for="{{plus}}" key="label-{{index}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    <text class="radio-text">{{item.value}}</text>
-  </label>
-</radio-group>
-
-<view class="demo-title">tabs选项数量:</view>
-<radio-group class="radio-group" onChange="tabsNumberChange" name="tabsNumber">
-  <label class="radio" tiki:for="{{tabsNumber}}" key="label-{{index}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    <text class="radio-text">{{item.value}}</text>
-  </label>
-</radio-group>
+<label>
+  <checkbox checked="{{isSwipeable}}" onChange="onChangeSwipeable" />
+  <text>Swipeable</text>
+</label>
