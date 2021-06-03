@@ -61,18 +61,18 @@
     flex: 1 0 auto;
     font-size: @font-size-list;
     white-space: nowrap;
-    &-badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(55%, -70%);
-    }
     &-mainTitle {
       position: relative;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
       &-text {
         color: var(--text-panel-inactive);
         &-active {
@@ -83,6 +83,17 @@
       &-image {
         width: 24px;
         height: 24px;
+      }
+    }
+    &-badge, .tm-badge {
+      &.right {
+        margin-left: 2px;
+      }
+      &.top {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(15%, -50%);
       }
     }
     &__hasSubTitle {
@@ -122,6 +133,7 @@
     padding: var(--space-stack-2x-small);
     box-sizing: border-box;
     flex: 1;
+    height: 100%;
 
     &__hasSubTitle {
       flex-direction: column;
