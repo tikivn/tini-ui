@@ -9,22 +9,63 @@
         <view data-index="{{index}}"
           data-anchor="{{item.anchor}}"
           onTap="handleTabClick"
-          class="tm-vtabs-bar-tab {{!sameFontSize && activeTab === index?'tm-vtabs-bar-tab__active':'tm-vtabs-bar-tab__same'}}"
+          class="tm-vtabs-bar-tab 
+            {{!sameFontSize && activeTab === index
+              ? 'tm-vtabs-bar-tab__active'
+              : 'tm-vtabs-bar-tab__same'}}"
           style="{{
-          activeTab == index?'font-weight: bold;color: ' + tabBarActiveTextColor + ';background-color: ' + tabBarActiveBgColor + ';':'color: ' + tabBarInactiveTextColor + ';background-color: ' + tabBarInactiveBgColor + ';'
+            activeTab == index || item.expandChildren
+          ? 'background-color: ' + tabBarActiveBgColor + ';'
+          : 'background-color: ' + tabBarInactiveBgColor + ';'
         }}
-        {{index === currentBefore?'border-radius: 0 0 ' + besideRadius + ' 0;':''}}
-        {{index === currentAfter?'border-radius: 0 ' + besideRadius + ' 0 0;':''}}">
+        ">
           <view class="tm-vtabs-bar-title">
-            <text>{{item.title}}<text tiki:if="{{item.number && item.number !== ''}}">({{item.number}})</text></text>
+            <text 
+              style="{{
+                  activeTab == index || item.expandChildren
+                ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
+                : 'color: ' + tabBarInactiveTextColor + ';'}}"
+              >
+              {{item.title}}
+              <!-- <text tiki:if="{{item.number && item.number !== ''}}">({{item.number}})</text> -->
+            </text>
+            <icon
+              tiki:if="{{item.children.length > 0}}"
+              type="arrow_down"
+              class="tm-vtabs-bar-tab-arrow {{item.expandChildren ? 'up' : 'down'}}"
+              color="{{item.expandChildren ? tabBarActiveTextColor : tabBarInactiveTextColor}}"
+            />
           </view>
-          <view tiki:if="{{activeTab === index && tabBarlineShow}}"
-            class="tm-vtabs-bar-line"
-            style="{{tabBarlineColor?'background-color: ' + tabBarlineColor + ';':''}}"></view>
+          <!-- <view tiki:if="{{activeTab === index && tabBarlineShow}}" -->
+          <!--   class="tm-vtabs-bar-line" -->
+          <!--   style="{{tabBarlineColor?'background-color: ' + tabBarlineColor + ';':''}}"></view> -->
+
+          <!-- Children -->
+          <view tiki:if="{{item.children.length > 0}}"
+            style="display: {{item.expandChildren ? 'auto' : 'none'}}"  >
+            <block 
+              tiki:for="{{item.children}}" 
+              tiki:for-index="childIndex"
+              tiki:for-item="child">
+              <view 
+                class="tm-vtabs-bar-tab-child tm-vtabs-bar-tab-child__{{childIndex}}"
+                data-anchor="{{child.anchor}}"
+                data-parent="{{index}}"
+                data-index="{{childIndex}}"
+                catchTap="handleChildClick">
+                <text style="{{
+                  activeChild == childIndex && activeTab === index
+                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
+                  : 'color: ' + tabBarInactiveTextColor + ';'}}">
+                  {{child.anchor}}
+                  {{child.title}}
+                </text>
+              </view>
+            </block>
+          </view>
         </view>
         <view tiki:if="{{index + 1 === tabs.length}}"
-          style="{{index + 1 === currentAfter?'border-radius: 0 ' + besideRadius + ' 0 0;':''}}
-          {{tabBarInactiveBgColor?'background-color: ' + tabBarInactiveBgColor + ';':''}}"
+          style="{{tabBarInactiveBgColor?'background-color: ' + tabBarInactiveBgColor + ';':''}}"
           class="tm-vtabs-bar-placehold"></view>
       </block>
     </scroll-view>
@@ -47,7 +88,7 @@
       <view class="tm-vtabs-slides tm-vtabs-slides-{{$id}} {{animated ? 'animate' : ''}}"
         onTouchStart="onWrapTouch"
         onTouchEnd="onWrapTouch"
-        style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop._v) + 'px, 0)' }}">
+        style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop) + 'px, 0)' }}">
         <slot></slot>
       </view>
     </block>

@@ -1,10 +1,17 @@
-import fmtUnit from '../_util/fmtUnit';
 import { selectAsync, selectAllAsync } from '../_util/query';
 
+type Tab = {
+  title: string;
+  number: number;
+  anchor: number | string;
+  expandChildren: boolean;
+  children: Array<{ titile: string; anchor: number | string }>;
+};
 type Props = {
   activeTab: number;
+  activeChild?: number;
   className: string;
-  tabs: Array<{ title: string; number: number; anchor: number }>;
+  tabs: Tab[];
   animated: boolean;
   swipeable: boolean;
   tabBarActiveTextColor: string;
@@ -15,6 +22,7 @@ type Props = {
   sameFontSize: boolean;
   tabBarlineShow: boolean;
   onTabClick(index: number): void;
+  onChildClick(parentIndex: number, index: number): void;
   onChange(index: number): void;
   onScrollBar(current: number): void;
 };
@@ -22,17 +30,16 @@ type Props = {
 type Data = {
   tabTop: number;
   wrapScrollTop: number;
-  besideRadius: string;
   currentBefore: number;
   currentAfter: number;
   current: number;
 };
 
+// NOTE: Anchor of child must be unique, and not same width another tabs
 Component({
   data: {
     tabTop: 0,
     wrapScrollTop: 0,
-    besideRadius: fmtUnit('8px'),
   } as Data,
   props: {
     activeTab: 0,
@@ -40,11 +47,11 @@ Component({
     tabs: [],
     animated: false,
     swipeable: true,
-    tabBarActiveTextColor: '#1677FF',
-    tabBarInactiveTextColor: '#333333',
+    tabBarInactiveTextColor: '#808089',
+    tabBarActiveTextColor: '#1A94FF',
     tabBarActiveBgColor: '#ffffff',
     tabBarInactiveBgColor: '#f5f5f5',
-    tabBarlineColor: '#1677FF',
+    tabBarlineColor: '#1A94FF',
     sameFontSize: true,
     tabBarlineShow: true,
   } as Props,
@@ -53,13 +60,28 @@ Component({
     this.onlyChangeTab = false;
     this.timerId = null;
     await this.calcHeight();
-    this.setData({
-      wrapScrollTop: this.anchorMap[this.props.tabs[this.props.activeTab].anchor],
-    });
+    const { tabs, activeTab, activeChild } = this.props;
+    if (activeChild) {
+      if (tabs[activeTab][activeChild]) {
+        this.setData({
+          wrapScrollTop: this.anchorMap[tabs[activeTab][activeChild].anchor],
+        });
+      } else {
+        console.warn('The anchor is invalid. Make sure your child has anchor');
+      }
+    } else {
+      this.setData({
+        wrapScrollTop: this.anchorMap[tabs[activeTab].anchor],
+      });
+    }
   },
   didUpdate(prevProps) {
-    const { activeTab } = this.props;
-    if (this.props.tabs.length !== prevProps.tabs.length || activeTab !== prevProps.activeTab) {
+    const { activeTab, tabs, activeChild } = this.props;
+    if (
+      tabs.length !== prevProps.tabs.length ||
+      activeTab !== prevProps.activeTab ||
+      activeChild !== prevProps.activeChild
+    ) {
       this.calcHeight();
     }
   },
@@ -86,19 +108,44 @@ Component({
         currentAfter: activeTab + 1,
       });
 
+      // Select left sidebar
       const slides = await selectAsync(`.tm-vtabs-slides-${this.$id}`);
       this.wrapHeight = (<my.IBoundingClientRect>slides).height;
       const tabs = this.props.tabs || [];
-      const allSlide = await selectAllAsync(
-        tabs.map((tab) => `#tm-vtab-slide-${tab.anchor}`).join(','),
-      );
+
+      // Select content
+      const allSlideSelector = tabs
+        .reduce((arr, tab) => {
+          if ((tab.children || []).length === 0) {
+            arr.push(`#tm-vtab-slide-${tab.anchor}`);
+          } else {
+            const children = tab.children.map((child) => `#tm-vtab-slide-${child.anchor}`);
+            arr.push(...children);
+          }
+          return arr;
+        }, [] as string[])
+        .join(',');
+      const allSlide = await selectAllAsync(allSlideSelector);
+      console.log('allSlide :>> ', allSlide);
       const rects = (<my.IBoundingClientRect[]>allSlide).sort((a, b) => a.top - b.top);
 
-      let prevHeight = 0;
+      // Init anchorMap
       for (let i = 0; i < tabs.length; i += 1) {
+        if ((tabs[i].children || []).length) {
+          for (const child of tabs[i].children) {
+            this.anchorMap[child.anchor] = 0;
+          }
+        } else {
+          this.anchorMap[tabs[i].anchor] = 0;
+        }
+      }
+
+      // Init height
+      let prevHeight = 0;
+      Object.keys(this.anchorMap).forEach((key, i) => {
         const { height } = rects[i];
-        this.anchorMap[tabs[i].anchor] = prevHeight;
         this.indexMap[i] = height;
+        this.anchorMap[key] = prevHeight;
 
         if (i === 0) {
           this.indexTop[0] = 0;
@@ -109,17 +156,56 @@ Component({
 
         prevHeight += Math.floor(height);
         this.scrollWrapHeight = prevHeight;
+      });
+      console.log('anchorMap :>> ', this.anchorMap);
+    },
+    handleChildClick(e) {
+      const { parent, index } = e.target.dataset;
+      const { tabs, activeTab, swipeable, activeChild, onChildClick } = this.props;
+      if (!this.isScrolling || !swipeable || this.onlyChangeTab) {
+        if (activeTab !== parent || activeChild !== index) {
+          onChildClick && onChildClick(parent, index);
+        }
+
+        let tabIndex = 0;
+        tabs.some((item, idx) => {
+          if (idx === parent) {
+            tabIndex += index;
+            return true;
+          }
+          tabIndex += item.children ? item.children.length : 1;
+          return false;
+        }, 0);
+
+        this.setData({
+          wrapScrollTop: this.indexTop[tabIndex],
+        });
       }
     },
     handleTabClick(e) {
       const { index } = e.target.dataset;
+      const { activeTab, onTabClick, swipeable, tabs } = this.props;
+      if (tabs[index].children?.length) {
+        onTabClick(index);
+        return;
+      }
 
-      if (!this.isScrolling || !this.props.swipeable || this.onlyChangeTab) {
-        if (this.props.activeTab !== index) {
-          this.props.onTabClick(index);
+      if (!this.isScrolling || !swipeable || this.onlyChangeTab) {
+        if (activeTab !== index) {
+          onTabClick(index);
         }
+
+        let tabIndex = -1;
+        tabs.some((item, idx) => {
+          if (idx <= index) {
+            tabIndex += item.children ? item.children.length : 1;
+            return false;
+          }
+          return true;
+        }, 0);
+
         this.setData({
-          wrapScrollTop: this.indexTop[index],
+          wrapScrollTop: this.indexTop[tabIndex],
         });
         this.moveScrollBar(index);
       }
