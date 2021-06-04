@@ -14,7 +14,7 @@
               ? 'tm-vtabs-bar-tab__active'
               : 'tm-vtabs-bar-tab__same'}}"
           style="{{
-            activeTab == index || item.expandChildren
+            activeTab == index || (item.children && item.expandChildren)
           ? 'background-color: ' + tabBarActiveBgColor + ';'
           : 'background-color: ' + tabBarInactiveBgColor + ';'
         }}
@@ -22,7 +22,7 @@
           <view class="tm-vtabs-bar-title">
             <text 
               style="{{
-                  activeTab == index || item.expandChildren
+                  activeTab == index || (item.children && item.expandChildren)
                 ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
                 : 'color: ' + tabBarInactiveTextColor + ';'}}"
               >
