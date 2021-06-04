@@ -127,7 +127,6 @@ Component({
         }, [] as string[])
         .join(',');
       const allSlide = await selectAllAsync(allSlideSelector);
-      console.log('allSlide :>> ', allSlide);
       const rects = (<my.IBoundingClientRect[]>allSlide).sort((a, b) => a.top - b.top);
 
       // Init anchorMap
@@ -158,7 +157,6 @@ Component({
         prevHeight += Math.floor(height);
         this.scrollWrapHeight = prevHeight;
       });
-      console.log('anchorMap :>> ', this.anchorMap);
     },
     handleChildClick(e) {
       const { parent, index } = e.target.dataset;
@@ -231,41 +229,6 @@ Component({
         currentBefore: current - 1,
         currentAfter: current + 1,
       });
-    },
-    onScroll(e) {
-      const { scrollTop } = e.detail;
-      const keys = Object.keys(this.anchorMap);
-
-      if (this.timerId) {
-        clearTimeout(this.timerId);
-        this.timerId = null;
-      }
-
-      this.timerId = setTimeout(() => {
-        this.isScrolling = false;
-      }, 300);
-
-      const anchorLength = keys.length;
-      for (let i = 0; i < anchorLength; i++) {
-        if (i === anchorLength - 1) {
-          if (scrollTop >= this.anchorMap[keys[i]]) {
-            this.moveScrollBar(i);
-            break;
-          }
-        }
-        if (scrollTop >= this.anchorMap[keys[i]] && scrollTop < this.anchorMap[keys[i + 1]]) {
-          if (scrollTop + this.wrapHeight < this.scrollWrapHeight) {
-            this.moveScrollBar(i);
-          }
-          break;
-        }
-      }
-    },
-    onWrapTouchMove() {
-      if (this.props.swipeable) {
-        this.isScrolling = true;
-        this.onlyChangeTab = true;
-      }
     },
   },
 });

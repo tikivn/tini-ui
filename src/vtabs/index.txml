@@ -77,17 +77,12 @@
         class="tm-vtabs-slides tm-vtabs-slides-{{$id}}"
         scroll-with-animation="{{animated}}"
         scroll-y="{{true}}"
-        scroll-top="{{wrapScrollTop}}"
-        onTouchStart="onWrapTouch"
-        onTouchEnd="onWrapTouch"
-        onScroll="onScroll">
+        scroll-top="{{wrapScrollTop}}">
         <slot></slot>
       </scroll-view>
     </block>
     <block tiki:else>
       <view class="tm-vtabs-slides tm-vtabs-slides-{{$id}} {{animated ? 'animate' : ''}}"
-        onTouchStart="onWrapTouch"
-        onTouchEnd="onWrapTouch"
         style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop) + 'px, 0)' }}">
         <slot></slot>
       </view>
