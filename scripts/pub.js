@@ -6,14 +6,14 @@ const { version } = packageJson;
 const isRpx = process.argv.splice(2)[0] === '--rpx';
 
 if (isRpx) {
-  packageJson.name = '@tiki/tini-ui-rpx';
+  packageJson.name = '@tiki.vn/tini-ui-rpx';
   packageJson.description = 'Tini UI Rpx version';
 
   const runner = spawn('npm', ['publish']);
 
   runner.on('close', () => {});
 } else {
-  packageJson.name = '@tiki/tini-ui';
+  packageJson.name = '@tiki.vn/tini-ui';
   packageJson.description = 'Tini UI';
 
   const runner = spawn('npm', ['publish']);
