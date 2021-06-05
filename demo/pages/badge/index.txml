@@ -37,7 +37,7 @@
                  background-color: #333;
                  color: #f8f8f8;">
             <text style="color:white">Badge component with stroke</text>
-            <badge text="Miniapp demo" stroke="{{true}}" withArrow="{{true}}" direction="left" />
+            <badge text="TiniApp demo" stroke="{{true}}" withArrow="{{true}}" direction="left" />
         </view>
     </view>
 

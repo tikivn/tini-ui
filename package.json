@@ -1,8 +1,8 @@
 {
-  "name": "@tiki-miniapp/tiny-ui",
-  "version": "0.0.3",
-  "description": "Tiki Design System for MiniApp",
-  "homepage": "https://miniapp.tiki.vn",
+  "name": "@tiki.vn/tini-ui",
+  "version": "0.0.1",
+  "description": "Tiki Design System for TiniApp",
+  "homepage": "https://developers.tiki.vn",
   "license": "MIT",
   "files": [
     "es"
@@ -11,8 +11,10 @@
     "tiki",
     "mini-program",
     "miniapp",
+    "tiniapp",
     "tiki-miniapp",
-    "tiny-ui"
+    "tini",
+    "tini-ui"
   ],
   "scripts": {
     "dev": "yarn && node scripts/compiler.js",
@@ -34,11 +36,11 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/tikivn/tiny-ui/issues"
+    "url": "https://github.com/tikivn/tini-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tikivn/tiny-ui.git"
+    "url": "git+https://github.com/tikivn/tini-ui.git"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
