@@ -19,20 +19,13 @@ type Props = {
   tabBarActiveBgColor: string;
   tabBarInactiveBgColor: string;
   tabBarlineColor: string;
-  sameFontSize: boolean;
   tabBarlineShow: boolean;
   onTabClick(index: number): void;
   onChildClick(parentIndex: number, index: number): void;
-  onChange(index: number): void;
-  onScrollBar(current: number): void;
 };
-
 type Data = {
   tabTop: number;
   wrapScrollTop: number;
-  currentBefore: number;
-  currentAfter: number;
-  current: number;
 };
 
 // NOTE: Anchor of child must be unique, and not same width another tabs
@@ -53,7 +46,6 @@ Component({
     tabBarActiveBgColor: '#ffffff',
     tabBarInactiveBgColor: '#f5f5f5',
     tabBarlineColor: '#1A94FF',
-    sameFontSize: true,
     tabBarlineShow: true,
   } as Props,
   async didMount() {
@@ -75,6 +67,7 @@ Component({
         wrapScrollTop: this.anchorMap[tabs[activeTab].anchor],
       });
     }
+    this.moveScrollBar(activeTab);
   },
   didUpdate(prevProps) {
     const { activeTab, tabs, activeChild } = this.props;
@@ -97,17 +90,11 @@ Component({
       await this.calcHeight();
     },
     async calcHeight() {
-      const { activeTab } = this.props;
       this.anchorMap = {};
       this.indexMap = {};
       this.indexTop = {};
       this.wrapHeight = 0;
       this.scrollWrapHeight = 0;
-
-      this.setData({
-        currentBefore: activeTab - 1,
-        currentAfter: activeTab + 1,
-      });
 
       // Select left sidebar
       const slides = await selectAsync(`.tm-vtabs-slides-${this.$id}`);
@@ -214,21 +201,9 @@ Component({
       if (current < 6) {
         tabTop = 0;
       } else {
-        tabTop = (current - 5) * 55;
+        tabTop = (current - 5) * 36;
       }
-      if (this.props.activeTab !== current) {
-        if (this.props.onChange) {
-          this.props.onChange(current);
-        } else {
-          this.props.onScrollBar(current);
-        }
-      }
-      this.setData({
-        tabTop,
-        current,
-        currentBefore: current - 1,
-        currentAfter: current + 1,
-      });
+      this.setData({ tabTop });
     },
   },
 });

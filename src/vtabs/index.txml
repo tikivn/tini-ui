@@ -10,7 +10,7 @@
           data-anchor="{{item.anchor}}"
           onTap="handleTabClick"
           class="tm-vtabs-bar-tab 
-            {{!sameFontSize && activeTab === index
+            {{activeTab === index
               ? 'tm-vtabs-bar-tab__active'
               : 'tm-vtabs-bar-tab__same'}}"
           style="{{
@@ -65,13 +65,12 @@
           </view>
         </view>
         <view tiki:if="{{index + 1 === tabs.length}}"
-          style="{{tabBarInactiveBgColor?'background-color: ' + tabBarInactiveBgColor + ';':''}}"
+          style="{{tabBarInactiveBgColor ? 'background-color: ' + tabBarInactiveBgColor + ';':''}}"
           class="tm-vtabs-bar-placehold"></view>
       </block>
     </scroll-view>
   </view>
-  <view class="tm-vtabs-content-wrap"
-    onTouchMove="onWrapTouchMove">
+  <view class="tm-vtabs-content-wrap">
     <block tiki:if="{{swipeable}}">
       <scroll-view 
         class="tm-vtabs-slides tm-vtabs-slides-{{$id}}"
