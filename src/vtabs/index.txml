@@ -1,5 +1,5 @@
 <view class="tm-vtabs {{className}}">
-  <view class="tm-vtabs-bar">
+  <view class="tm-vtabs-bar" style="width: {{width}};">
     <scroll-view 
       style="{{tabBarActiveBgColor?'background-color: ' + tabBarActiveBgColor + ';':''}}"
       class="tm-vtabs-bar-content"
@@ -20,15 +20,32 @@
         }}
         ">
           <view class="tm-vtabs-bar-title">
-            <text 
-              style="{{
-                  activeTab == index || (item.children && item.expandChildren)
-                ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
-                : 'color: ' + tabBarInactiveTextColor + ';'}}"
-              >
-              {{item.title}}
-              <!-- <text tiki:if="{{item.number && item.number !== ''}}">({{item.number}})</text> -->
-            </text>
+            <view class="tm-vtabs-bar-title-content {{direction}}">
+              <icon 
+                tiki:if="{{item.icon}}" 
+                size="{{item.iconSize || 24}}"
+                color="{{index === activeTab ? tabBarActiveIconColor : tabBarInactiveIconColor }}"
+                type="{{index === activeTab && item.iconActive ? item.iconActive : item.icon}}" />
+              <image 
+                tiki:if="{{item.image}}" 
+                class="tm-vtabs-bar-title-content-image"
+                src="{{index === activeTab && item.imageActive ? item.imageActive : item.image}}" />
+              <badge 
+                tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
+                className="tm-vtabs-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
+                dot="{{item.number ? false : true}}" text="{{item.number}}"
+                withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
+                direction="{{item.badge.arrow ? 'left' : ''}}"
+                stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
+              <text 
+                style="{{
+                    activeTab == index || (item.children && item.expandChildren)
+                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
+                  : 'color: ' + tabBarInactiveTextColor + ';'}}"
+                >
+                {{item.title}}
+              </text>
+            </view>
             <icon
               tiki:if="{{item.children.length > 0}}"
               type="arrow_down"

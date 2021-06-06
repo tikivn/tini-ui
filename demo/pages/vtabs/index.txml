@@ -6,6 +6,8 @@
   activeChild="{{activeChild}}"
   sameFontSize="{{false}}"
   swipeable="{{swipeable}}"
+  width="56px"
+  direction="vertical"
   tabBarlineShow="{{false}}">
   <block tiki:for="{{tabs}}">
     <block tiki:if="{{!item.children || item.children.length === 0}}">

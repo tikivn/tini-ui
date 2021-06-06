@@ -2,7 +2,13 @@ import { selectAsync, selectAllAsync } from '../_util/query';
 
 type Tab = {
   title: string;
-  number: number;
+  number: string;
+  showBadge?: boolean;
+  subTitle?: string;
+  icon?: string;
+  iconActive?: string;
+  image?: string;
+  imageActive?: string;
   anchor: number | string;
   expandChildren: boolean;
   children: Array<{ titile: string; anchor: number | string }>;
@@ -10,8 +16,10 @@ type Tab = {
 type Props = {
   activeTab: number;
   activeChild?: number;
+  width?: string;
   className: string;
   tabs: Tab[];
+  direction: 'horizontal' | 'vertical';
   animated: boolean;
   swipeable: boolean;
   tabBarActiveTextColor: string;
@@ -20,6 +28,8 @@ type Props = {
   tabBarInactiveBgColor: string;
   tabBarlineColor: string;
   tabBarlineShow: boolean;
+  tabBarActiveIconColor: string;
+  tabBarInactiveIconColor: string;
   onTabClick(index: number): void;
   onChildClick(parentIndex: number, index: number): void;
 };
@@ -38,7 +48,9 @@ Component({
   props: {
     activeTab: 0,
     className: '',
+    width: '124px',
     tabs: [],
+    direction: 'horizontal',
     animated: false,
     swipeable: true,
     tabBarInactiveTextColor: '#808089',
@@ -46,6 +58,8 @@ Component({
     tabBarActiveBgColor: '#ffffff',
     tabBarInactiveBgColor: '#f5f5f5',
     tabBarlineColor: '#1A94FF',
+    tabBarActiveIconColor: '#1A94FF',
+    tabBarInactiveIconColor: '#c4c4cf',
     tabBarlineShow: true,
   } as Props,
   async didMount() {
