@@ -2,7 +2,7 @@ import { selectAsync, selectAllAsync } from '../_util/query';
 
 type Tab = {
   title: string;
-  number: string;
+  badgeText: string;
   showBadge?: boolean;
   subTitle?: string;
   icon?: string;

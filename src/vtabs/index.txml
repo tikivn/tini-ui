@@ -33,7 +33,7 @@
               <badge 
                 tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
                 className="tm-vtabs-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
-                dot="{{item.number ? false : true}}" text="{{item.number}}"
+                dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
                 withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
                 direction="{{item.badge.arrow ? 'left' : ''}}"
                 stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />

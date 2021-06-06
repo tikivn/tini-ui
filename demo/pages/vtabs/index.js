@@ -60,7 +60,7 @@ Page({
       {
         anchor: '3',
         showBadge: true,
-        number: '10',
+        badgeText: '10',
         icon: 'arrow_down',
       },
     ],
