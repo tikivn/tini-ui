@@ -27,7 +27,7 @@ type Props = {
   stickyBar: boolean;
   tabs: Array<{
     title: string;
-    number: number;
+    badgeText: string;
     showBadge?: boolean;
     subTitle?: string;
     icon?: string;
