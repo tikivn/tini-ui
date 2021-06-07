@@ -45,8 +45,8 @@
                       style="color: {{index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}"
                       class="
                         tm-tabs-bar-tab-mainTitle-text 
-                        tm-tabs-bar-tab-mainTitle-text{{ item.image || item.icon ? '-small' : ''}}"
-                        tm-tabs-bar-tab-mainTitle-text{{index === activeTab ? '-active' : ''}}">
+                        tm-tabs-bar-tab-mainTitle-text{{ item.image || item.icon ? '-small' : ''}}
+                        tm-tabs-bar-tab-mainTitle-text{{ index === activeTab ? '-active' : ''}}">
                       {{item.title}}
                     </text>
                   </view>

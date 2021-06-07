@@ -57,7 +57,7 @@ Component({
     sidebarlineColor: '#1A94FF',
     sidebarActiveIconColor: '#1A94FF',
     sidebarInactiveIconColor: '#c4c4cf',
-    sidebarlineShow: true,
+    sidebarlineShow: false,
   } as Props,
   async didMount() {
     this.isScrolling = false;

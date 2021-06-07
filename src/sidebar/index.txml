@@ -9,8 +9,7 @@
         <view data-index="{{index}}"
           data-anchor="{{item.anchor}}"
           onTap="handleTabClick"
-          class="tm-sidebar-bar-tab 
-            {{activeItem === index
+          class="tm-sidebar-bar-tab {{activeItem === index
               ? 'tm-sidebar-bar-tab__active'
               : 'tm-sidebar-bar-tab__same'}}"
           style="{{
@@ -19,7 +18,7 @@
           : 'background-color: ' + sidebarInactiveBgColor + ';'
         }}
         ">
-          <view class="tm-sidebar-bar-title">
+          <view class="tm-sidebar-bar-title {{direction === 'vertical' && !item.children ? 'center' : ''}}">
             <view class="tm-sidebar-bar-title-content {{direction}}">
               <icon 
                 tiki:if="{{item.icon}}" 
@@ -30,14 +29,8 @@
                 tiki:if="{{item.image}}" 
                 class="tm-sidebar-bar-title-content-image"
                 src="{{index === activeItem && item.imageActive ? item.imageActive : item.image}}" />
-              <badge 
-                tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
-                className="tm-sidebar-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
-                dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
-                withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
-                direction="{{item.badge.arrow ? 'left' : ''}}"
-                stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
               <text 
+                class="tm-sidebar-bar-title-content-text{{direction === 'vertical' && (item.icon || item.image) ? '-small' : ''}} {{direction === 'horizontal' && (item.icon || item.image) ? 'ml-8' : ''}}" 
                 style="{{
                     activeItem == index || (item.children && item.expandChildren)
                   ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
@@ -45,6 +38,13 @@
                 >
                 {{item.title}}
               </text>
+              <badge 
+                tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
+                className="tm-sidebar-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
+                dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
+                withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
+                direction="{{item.badge.arrow ? 'left' : ''}}"
+                stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
             </view>
             <icon
               tiki:if="{{item.children.length > 0}}"
@@ -74,7 +74,6 @@
                   activeChild == childIndex && activeItem === index
                   ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
                   : 'color: ' + sidebarInactiveTextColor + ';'}}">
-                  {{child.anchor}}
                   {{child.title}}
                 </text>
               </view>
