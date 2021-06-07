@@ -1,9 +1,0 @@
-{
-  "defaultTitle": "Vtabs",
-  "usingComponents": {
-    "vtabs": "../../es/vtabs/index",
-    "vtab-content": "../../es/vtabs/vtab-content/index",
-    "button": "../../es/button/index"
-  },
-  "allowsBounceVertical": false
-}

@@ -37,10 +37,6 @@ Page({
       { title: 'Tab 5', icon: 'home', showBadge: true, anchor: 'e' },
       {
         title: 'Tab 6',
-        image:
-          'https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_home_48px-256.png',
-        imageActive:
-          'https://cdn1.iconfinder.com/data/icons/real-estate-building-flat-vol-1/104/building__house__home__real__estate-512.png',
         icon: 'home',
         iconActive: 'success',
         anchor: 'f',

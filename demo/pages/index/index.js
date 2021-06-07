@@ -33,6 +33,10 @@ Page({
         name: 'tabs',
         path: 'pages/tabs/index',
       },
+      {
+        name: 'sidebar',
+        path: 'pages/sidebar/index',
+      },
     ],
   },
   onNavigate(e) {
