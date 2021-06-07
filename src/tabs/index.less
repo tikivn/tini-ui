@@ -1,22 +1,5 @@
 @import (reference) "../style/themes/default.less";
 
-@h-spacing-large: 8px;
-@v-spacing-large: 8px;
-@h-spacing-standard: 8px;
-@v-spacing-standard: 8px;
-@border-width-standard: 1px;
-@color-divider-line: var(--gray20);
-@color-fill-grey-light: var(--gray40);
-@color-fill-grey-inverse: var(--white);
-@color-text-subtitle: var(--gray60);
-@color-text-base: var(--text-color);
-@font-size-list: 14px;
-@font-size-content: 14px;
-@size-6: 24px;
-@size-4: 12px;
-@size-1: 4px;
-@line-height-paragraph: 20px;
-
 .tm-tabs {
   &-tab-bar-wrap {
     width: 100%;
@@ -28,7 +11,7 @@
     display: flex;
     align-items: stretch;
     width: 100%;
-    border-bottom: @border-width-standard solid @color-divider-line;
+    border-bottom: 1px solid var(--gray20);
     box-sizing: border-box;
     z-index: 1;
     &-sticky {
@@ -59,7 +42,7 @@
     align-items: center;
     justify-content: center;
     flex: 1 0 auto;
-    font-size: @font-size-list;
+    font-size: var(--font-size-base);
     white-space: nowrap;
     &-mainTitle {
       position: relative;
@@ -75,9 +58,14 @@
       }
       &-text {
         color: var(--text-panel-inactive);
+        display: block;
         &-active {
           color: var(--text-panel-active);
           font-weight: var(--font-weight-bold);
+        }
+        &-small {
+          font-size: var(--font-size-x-small);
+          line-height: var(--font-height-x-small);
         }
       }
       &-image {
@@ -97,27 +85,20 @@
       }
     }
     &__hasSubTitle {
-      margin-right: @size-4;
+      margin-right: 12px;
       &:last-child {
         margin-right: 0;
       }
     }
     &-subTitle {
-      margin-top: 8 * @pixelSize;
-      padding: 0 @h-spacing-standard;
-      font-size: @font-size-content;
-      line-height: @line-height-paragraph;
-      border-radius: 50vh;
-    }
-    &-number {
-      margin-left: @size-1;
-      font-size: @font-size-content;
-      font-size: var(--tm-tabs-number-fontSize, @font-size-content);
-      color: @color-text-subtitle;
-      color: var(--tm-tabs-number-color, @color-text-subtitle);
-      &_active {
-        color: @color-text-base;
-        color: var(--tm-tabs-number-color__active, @color-text-base);
+      margin-top: 4px;
+      padding: 0 4px;
+      font-size: var(--font-size-x-small);
+      line-height: var(--font-height-x-small);
+      color: var(--text-panel-inactive);
+      &-active {
+        color: var(--text-panel-active);
+        font-weight: var(--font-weight-bold);
       }
     }
     &__hover {
@@ -161,7 +142,7 @@
     align-content: stretch;
     overflow: hidden;
     height: auto;
-    background-color: @color-fill-grey-inverse;
+    background-color: var(--white);
     &_H100 {
       height: 100% !important;
     }

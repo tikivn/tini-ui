@@ -6,14 +6,14 @@
     onChange="handleTabChange" 
     activeTab="{{activeTab}}" 
     swipeable="{{isSwipeable}}" 
-    hasSubTitle="{{typeHasSubTitle}}" 
+    hasSubTitle="{{true}}" 
     tabContentHeight="{{activeTab === 0 ? '130px' : activeTab === 2 ? '200px' : '50vh'}}" 
     tabBarActiveIconColor="red"
     tabBarInactiveIconColor="blue"
     stickyBar="{{true}}">
     <block tiki:for="{{tabs}}" tiki:if="{{!isSwipeable}}">
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:if="{{index === 0}}">
-        <view class="tab-content" style="height: 130px;">Tab 1 height 130</view>
+        <view class="tab-content" style="height: 1000px;">Tab 1 height 130</view>
       </tab-content>
       <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}" tiki:elif="{{index === 2}}">
         <view class="tab-content" style="height: 200px;">Tab 2 height 200</view>

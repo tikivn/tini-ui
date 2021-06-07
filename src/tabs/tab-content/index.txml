@@ -1,10 +1,4 @@
-<block tiki:if="{{elevator}}">
-  <view id="tm-tabs-elevator-pane-{{tabId}}"
-    class="tm-tabs-elevator-pane">
-    <slot></slot>
-  </view>
-</block>
-<block tiki:else>
+<block>
   <view tiki:if="{{style}}"
     style="{{style}}"
     class="tm-tabs-pane-wrap tm-tabs-pane-swiper-item"

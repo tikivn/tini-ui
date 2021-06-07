@@ -9,7 +9,7 @@ Page({
         //   'https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_home_48px-256.png',
         // imageActive:
         //   'https://cdn1.iconfinder.com/data/icons/real-estate-building-flat-vol-1/104/building__house__home__real__estate-512.png',
-        // icon: 'home',
+        icon: 'home',
         // iconActive: 'success',
         showBadge: true,
         badge: {
@@ -26,6 +26,11 @@ Page({
           arrow: false,
           stroke: true,
         },
+      },
+      {
+        title: 'Tab 3',
+        subTitle: 'Subtitle 2',
+        showBadge: true,
       },
       // {
       //   title: 'Tab 3',

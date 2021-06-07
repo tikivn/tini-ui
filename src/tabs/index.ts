@@ -20,7 +20,6 @@ type Props = {
   duration?: number;
   hasSubTitle?: boolean;
   tabsName: string;
-  showBadge: boolean;
   tabBarUnderlineWidth: string;
   tabBarUnderlineHeight: string;
   tabContentHeight: string;
@@ -34,6 +33,10 @@ type Props = {
     iconActive?: string;
     image?: string;
     imageActive?: string;
+    badge?: {
+      stroke: boolean;
+      arrow: boolean;
+    };
   }> | null;
   onTabClick({ index: number, tabsName: string }): void;
   onChange({ index: number, tabsName: string }): void;
@@ -77,7 +80,6 @@ Component({
     animation: true,
     duration: 500,
     hasSubTitle: false,
-    showBadge: false,
     tabBarUnderlineWidth: '',
     tabBarUnderlineHeight: '',
     tabContentHeight: '',
