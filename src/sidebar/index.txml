@@ -1,0 +1,107 @@
+<view class="tm-sidebar {{className}}">
+  <view class="tm-sidebar-bar" style="width: {{width}};">
+    <scroll-view 
+      style="{{tabBarActiveBgColor?'background-color: ' + tabBarActiveBgColor + ';':''}}"
+      class="tm-sidebar-bar-content"
+      scroll-top="{{tabTop}}"
+      scroll-y="{{true}}">
+      <block tiki:for="{{tabs}}">
+        <view data-index="{{index}}"
+          data-anchor="{{item.anchor}}"
+          onTap="handleTabClick"
+          class="tm-sidebar-bar-tab 
+            {{activeTab === index
+              ? 'tm-sidebar-bar-tab__active'
+              : 'tm-sidebar-bar-tab__same'}}"
+          style="{{
+            activeTab == index || (item.children && item.expandChildren)
+          ? 'background-color: ' + tabBarActiveBgColor + ';'
+          : 'background-color: ' + tabBarInactiveBgColor + ';'
+        }}
+        ">
+          <view class="tm-sidebar-bar-title">
+            <view class="tm-sidebar-bar-title-content {{direction}}">
+              <icon 
+                tiki:if="{{item.icon}}" 
+                size="{{item.iconSize || 24}}"
+                color="{{index === activeTab ? tabBarActiveIconColor : tabBarInactiveIconColor }}"
+                type="{{index === activeTab && item.iconActive ? item.iconActive : item.icon}}" />
+              <image 
+                tiki:if="{{item.image}}" 
+                class="tm-sidebar-bar-title-content-image"
+                src="{{index === activeTab && item.imageActive ? item.imageActive : item.image}}" />
+              <badge 
+                tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
+                className="tm-sidebar-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
+                dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
+                withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
+                direction="{{item.badge.arrow ? 'left' : ''}}"
+                stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
+              <text 
+                style="{{
+                    activeTab == index || (item.children && item.expandChildren)
+                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
+                  : 'color: ' + tabBarInactiveTextColor + ';'}}"
+                >
+                {{item.title}}
+              </text>
+            </view>
+            <icon
+              tiki:if="{{item.children.length > 0}}"
+              type="arrow_down"
+              class="tm-sidebar-bar-tab-arrow {{item.expandChildren ? 'up' : 'down'}}"
+              color="{{item.expandChildren ? tabBarActiveTextColor : tabBarInactiveTextColor}}"
+            />
+          </view>
+          <!-- <view tiki:if="{{activeTab === index && tabBarlineShow}}" -->
+          <!--   class="tm-sidebar-bar-line" -->
+          <!--   style="{{tabBarlineColor?'background-color: ' + tabBarlineColor + ';':''}}"></view> -->
+
+          <!-- Children -->
+          <view tiki:if="{{item.children.length > 0}}"
+            style="display: {{item.expandChildren ? 'auto' : 'none'}}"  >
+            <block 
+              tiki:for="{{item.children}}" 
+              tiki:for-index="childIndex"
+              tiki:for-item="child">
+              <view 
+                class="tm-sidebar-bar-tab-child tm-sidebar-bar-tab-child__{{childIndex}}"
+                data-anchor="{{child.anchor}}"
+                data-parent="{{index}}"
+                data-index="{{childIndex}}"
+                catchTap="handleChildClick">
+                <text style="{{
+                  activeChild == childIndex && activeTab === index
+                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
+                  : 'color: ' + tabBarInactiveTextColor + ';'}}">
+                  {{child.anchor}}
+                  {{child.title}}
+                </text>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view tiki:if="{{index + 1 === tabs.length}}"
+          style="{{tabBarInactiveBgColor ? 'background-color: ' + tabBarInactiveBgColor + ';':''}}"
+          class="tm-sidebar-bar-placehold"></view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="tm-sidebar-content-wrap">
+    <block tiki:if="{{swipeable}}">
+      <scroll-view 
+        class="tm-sidebar-slides tm-sidebar-slides-{{$id}}"
+        scroll-with-animation="{{animated}}"
+        scroll-y="{{true}}"
+        scroll-top="{{wrapScrollTop}}">
+        <slot></slot>
+      </scroll-view>
+    </block>
+    <block tiki:else>
+      <view class="tm-sidebar-slides tm-sidebar-slides-{{$id}} {{animated ? 'animate' : ''}}"
+        style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop) + 'px, 0)' }}">
+        <slot></slot>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<sidebar tabs="{{tabs}}"
+  onTabClick="onTabClick"
+  onChildClick="onChildClick"
+  onChange="onChange"
+  activeTab="{{activeTab}}"
+  activeChild="{{activeChild}}"
+  sameFontSize="{{false}}"
+  swipeable="{{swipeable}}"
+  direction="vertical"
+  tabBarlineShow="{{false}}">
+  <block tiki:for="{{tabs}}">
+    <block tiki:if="{{!item.children || item.children.length === 0}}">
+      <sidebar-content anchor="{{item.anchor}}">
+        <view style="height: 100vh;">
+          <text>content of {{item.title}}</text>
+        </view>
+      </sidebar-content>
+    </block>
+    <block tiki:else>
+      <block tiki:for="{{item.children}}" tiki:for-item="child">
+        <sidebar-content anchor="{{child.anchor}}">
+          <view style="height: 100vh;">
+            <text>child of {{item.title}} anchor: {{child.anchor}}</text>
+          </view>
+        </sidebar-content>
+      </block>
+    </block>
+
+    <!-- <block tiki:if="{{item.anchor === 'b'}}"> -->
+    <!--   <sidebar-content anchor="{{item.anchor}}"> -->
+    <!--     <view onTap="changeHeight" -->
+    <!--       style="height: {{tabItemHeight}}vh;background-color: #ccc;"> -->
+    <!--       <text>content of {{item.title}}</text> -->
+    <!--     </view> -->
+    <!--   </sidebar-content> -->
+    <!-- </block> -->
+    <!-- <block tiki:if="{{item.anchor === 'a'}}"> -->
+    <!--   <sidebar-content anchor="{{item.anchor}}"> -->
+    <!--     <view onTap="changeHeight" -->
+    <!--       style="height: 100vh;"> -->
+    <!--       <button size="default" type="primary" onTap="changeSwipeable">{{swipeable? 'swipeable: true' : ' swipeable:false'}}</button> -->
+    <!--     </view> -->
+    <!--   </sidebar-content> -->
+    <!-- </block> -->
+    <!-- <block tiki:else> -->
+    <!--   <sidebar-content anchor="{{item.anchor}}"> -->
+    <!--     <view style="height: 100vh;"> -->
+    <!--       <text>content of {{item.title}}</text> -->
+    <!--     </view> -->
+    <!--   </sidebar-content> -->
+    <!-- </block> -->
+  </block>
+</sidebar>
