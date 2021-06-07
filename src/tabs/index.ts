@@ -95,51 +95,54 @@ Component({
     elWidth: 0,
     tabsWidthArr: [],
   } as Data,
-  async didMount() {
+  didMount() {
     const { tabs, animation, activeTab, tabsName } = this.props;
-    const systemInfo = await getSystemInfoAsync();
-    const data: Pick<
-      Data,
-      | 'windowWidth'
-      | 'elWidth'
-      | 'elLeft'
-      | 'tabWidth'
-      | 'animation'
-      | 'autoplay'
-      | 'boxWidth'
-      | 'viewScrollLeft'
-    > = {
-      windowWidth: systemInfo.windowWidth,
-      elWidth: this.data.elWidth,
-      elLeft: this.data.elLeft,
-      tabWidth: this.data.tabWidth,
-      animation: this.data.animation,
-      autoplay: this.data.autoplay,
-      boxWidth: this.data.boxWidth,
-      viewScrollLeft: this.data.viewScrollLeft,
-    };
+    getSystemInfoAsync().then((systemInfo) => {
+      const data: Pick<
+        Data,
+        | 'windowWidth'
+        | 'elWidth'
+        | 'elLeft'
+        | 'tabWidth'
+        | 'animation'
+        | 'autoplay'
+        | 'boxWidth'
+        | 'viewScrollLeft'
+      > = {
+        windowWidth: systemInfo.windowWidth,
+        elWidth: this.data.elWidth,
+        elLeft: this.data.elLeft,
+        tabWidth: this.data.tabWidth,
+        animation: this.data.animation,
+        autoplay: this.data.autoplay,
+        boxWidth: this.data.boxWidth,
+        viewScrollLeft: this.data.viewScrollLeft,
+      };
 
-    if (tabs && tabs.length > 0) {
-      data.tabWidth = tabs.length > 3 ? 0.25 : 1 / tabs.length;
-      data.animation = animation;
-      data.autoplay = true;
+      if (tabs && tabs.length > 0) {
+        data.tabWidth = tabs.length > 3 ? 0.25 : 1 / tabs.length;
+        data.animation = animation;
+        data.autoplay = true;
 
-      if (+activeTab > 0) {
-        const [activeTabEle, tabContentEle] = await Promise.all([
-          selectAsync(`#tabs-item-${tabsName}-${activeTab}`),
-          selectAsync(`#tm-tabs-bar-${tabsName}-content`),
-        ]);
-        data.elWidth = (<my.IBoundingClientRect>activeTabEle).width;
-        data.elLeft = (<my.IBoundingClientRect>activeTabEle).left;
-        data.boxWidth = (<my.IBoundingClientRect>tabContentEle).width;
-        data.viewScrollLeft = Math.floor(data.elWidth + data.elLeft - data.boxWidth);
-        setTimeout(() => {
-          this.setData(data);
-        }, 300);
+        if (+activeTab > 0) {
+          Promise.all([
+            selectAsync(`#tabs-item-${tabsName}-${activeTab}`),
+            selectAsync(`#tm-tabs-bar-${tabsName}-content`),
+          ]).then((rs) => {
+            const [activeTabEle, tabContentEle] = rs;
+            data.elWidth = (<my.IBoundingClientRect>activeTabEle).width;
+            data.elLeft = (<my.IBoundingClientRect>activeTabEle).left;
+            data.boxWidth = (<my.IBoundingClientRect>tabContentEle).width;
+            data.viewScrollLeft = Math.floor(data.elWidth + data.elLeft - data.boxWidth);
+            setTimeout(() => {
+              this.setData(data);
+            }, 300);
+          });
+        }
       }
-    }
+    });
   },
-  async didUpdate(prevProps, prevData) {
+  didUpdate(prevProps, prevData) {
     if (
       JSON.stringify(prevProps) === JSON.stringify(this.props) &&
       JSON.stringify(prevData) === JSON.stringify(this.data)
@@ -162,37 +165,40 @@ Component({
         viewScrollLeft: this.data.viewScrollLeft,
       };
 
-      const [allTabs, currentTab] = await Promise.all([
+      Promise.all([
         selectAllAsync(`.${className}`),
         selectAsync(`#tabs-item-${tabsName}-${currentActiveTab}`),
-      ]);
-      data.tabsWidthArr = (<my.IBoundingClientRect[]>allTabs).map((item) => item.width);
-      data.elWidth = (<my.IBoundingClientRect>currentTab).width;
-      data.elLeft = (<my.IBoundingClientRect>currentTab).left;
+      ]).then((rs) => {
+        const [allTabs, currentTab] = rs;
+        data.tabsWidthArr = (<my.IBoundingClientRect[]>allTabs).map((item) => item.width);
+        data.elWidth = (<my.IBoundingClientRect>currentTab).width;
+        data.elLeft = (<my.IBoundingClientRect>currentTab).left;
 
-      const tabContent = await selectAsync(`#tm-tabs-bar-${tabsName}-content`);
-      data.boxWidth = (<my.IBoundingClientRect>tabContent).width;
+        selectAsync(`#tm-tabs-bar-${tabsName}-content`).then((tabContent) => {
+          data.boxWidth = (<my.IBoundingClientRect>tabContent).width;
 
-      // mock el.offsetLeft
-      const elOffeseLeft = data.tabsWidthArr.reduce((prev, cur, index) => {
-        if (index < currentActiveTab) {
-          prev += cur;
-        }
-        return prev;
-      }, 0);
+          // mock el.offsetLeft
+          const elOffeseLeft = data.tabsWidthArr.reduce((prev, cur, index) => {
+            if (index < currentActiveTab) {
+              prev += cur;
+            }
+            return prev;
+          }, 0);
 
-      // Update scrollLeft
-      if (data.elWidth > data.boxWidth / 2) {
-        data.viewScrollLeft = elOffeseLeft - 40;
-      } else {
-        data.viewScrollLeft = swipeable
-          ? elOffeseLeft
-          : elOffeseLeft - Math.floor(data.boxWidth / 2);
-      }
+          // Update scrollLeft
+          if (data.elWidth > data.boxWidth / 2) {
+            data.viewScrollLeft = elOffeseLeft - 40;
+          } else {
+            data.viewScrollLeft = swipeable
+              ? elOffeseLeft
+              : elOffeseLeft - Math.floor(data.boxWidth / 2);
+          }
 
-      setTimeout(() => {
-        this.setData(data);
-      }, 300);
+          setTimeout(() => {
+            this.setData(data);
+          }, 300);
+        });
+      });
     }
   },
   methods: {

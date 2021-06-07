@@ -59,11 +59,12 @@ Component({
     sidebarInactiveIconColor: '#c4c4cf',
     sidebarlineShow: false,
   } as Props,
-  async didMount() {
+  didMount() {
     this.isScrolling = false;
     this.onlyChangeTab = false;
     this.timerId = null;
-    await this.calcHeight();
+    this.calcHeight();
+
     const { items, activeItem, activeChild } = this.props;
     if (activeChild) {
       if (items[activeItem][activeChild]) {
@@ -97,10 +98,10 @@ Component({
     }
   },
   methods: {
-    async onWrapTouch() {
-      await this.calcHeight();
+    onWrapTouch() {
+      this.calcHeight();
     },
-    async calcHeight() {
+    calcHeight() {
       this.anchorMap = {};
       this.indexMap = {};
       this.indexTop = {};
@@ -108,52 +109,54 @@ Component({
       this.scrollWrapHeight = 0;
 
       // Select left sidebar
-      const slides = await selectAsync(`.tm-sidebar-slides-${this.$id}`);
-      this.wrapHeight = (<my.IBoundingClientRect>slides).height;
-      const items = this.props.items || [];
+      selectAsync(`.tm-sidebar-slides-${this.$id}`).then((slides) => {
+        this.wrapHeight = (<my.IBoundingClientRect>slides).height;
+        const items = this.props.items || [];
 
-      // Select content
-      const allSlideSelector = items
-        .reduce((arr, tab) => {
-          if ((tab.children || []).length === 0) {
-            arr.push(`#tm-sidebar-slide-${tab.anchor}`);
-          } else {
-            const children = tab.children.map((child) => `#tm-sidebar-slide-${child.anchor}`);
-            arr.push(...children);
+        // Select content
+        const allSlideSelector = items
+          .reduce((arr, tab) => {
+            if ((tab.children || []).length === 0) {
+              arr.push(`#tm-sidebar-slide-${tab.anchor}`);
+            } else {
+              const children = tab.children.map((child) => `#tm-sidebar-slide-${child.anchor}`);
+              arr.push(...children);
+            }
+            return arr;
+          }, [] as string[])
+          .join(',');
+        selectAllAsync(allSlideSelector).then((allSlide) => {
+          const rects = (<my.IBoundingClientRect[]>allSlide).sort((a, b) => a.top - b.top);
+
+          // Init anchorMap
+          for (let i = 0; i < items.length; i += 1) {
+            if ((items[i].children || []).length) {
+              for (const child of items[i].children) {
+                this.anchorMap[child.anchor] = 0;
+              }
+            } else {
+              this.anchorMap[items[i].anchor] = 0;
+            }
           }
-          return arr;
-        }, [] as string[])
-        .join(',');
-      const allSlide = await selectAllAsync(allSlideSelector);
-      const rects = (<my.IBoundingClientRect[]>allSlide).sort((a, b) => a.top - b.top);
 
-      // Init anchorMap
-      for (let i = 0; i < items.length; i += 1) {
-        if ((items[i].children || []).length) {
-          for (const child of items[i].children) {
-            this.anchorMap[child.anchor] = 0;
-          }
-        } else {
-          this.anchorMap[items[i].anchor] = 0;
-        }
-      }
+          // Init height
+          let prevHeight = 0;
+          Object.keys(this.anchorMap).forEach((key, i) => {
+            const { height } = rects[i];
+            this.indexMap[i] = height;
+            this.anchorMap[key] = prevHeight;
 
-      // Init height
-      let prevHeight = 0;
-      Object.keys(this.anchorMap).forEach((key, i) => {
-        const { height } = rects[i];
-        this.indexMap[i] = height;
-        this.anchorMap[key] = prevHeight;
+            if (i === 0) {
+              this.indexTop[0] = 0;
+            } else {
+              this.indexTop[i] =
+                this.indexTop[i - 1] + Math.floor((<my.IBoundingClientRect>rects[i - 1])?.height);
+            }
 
-        if (i === 0) {
-          this.indexTop[0] = 0;
-        } else {
-          this.indexTop[i] =
-            this.indexTop[i - 1] + Math.floor((<my.IBoundingClientRect>rects[i - 1])?.height);
-        }
-
-        prevHeight += Math.floor(height);
-        this.scrollWrapHeight = prevHeight;
+            prevHeight += Math.floor(height);
+            this.scrollWrapHeight = prevHeight;
+          });
+        });
       });
     },
     handleChildClick(e) {
