@@ -1,36 +1,35 @@
 import { selectAsync, selectAllAsync } from '../_util/query';
 
-type Tab = {
+type Sidebar = {
   title: string;
   badgeText: string;
   showBadge?: boolean;
-  subTitle?: string;
   icon?: string;
   iconActive?: string;
   image?: string;
   imageActive?: string;
   anchor: number | string;
   expandChildren: boolean;
-  children: Array<{ titile: string; anchor: number | string }>;
+  children: Array<{ title: string; anchor: number | string }>;
 };
 type Props = {
-  activeTab: number;
+  activeItem: number;
   activeChild?: number;
   width?: string;
   className: string;
-  tabs: Tab[];
+  items: Sidebar[];
   direction: 'horizontal' | 'vertical';
   animated: boolean;
   swipeable: boolean;
-  tabBarActiveTextColor: string;
-  tabBarInactiveTextColor: string;
-  tabBarActiveBgColor: string;
-  tabBarInactiveBgColor: string;
-  tabBarlineColor: string;
-  tabBarlineShow: boolean;
-  tabBarActiveIconColor: string;
-  tabBarInactiveIconColor: string;
-  onTabClick(index: number): void;
+  sidebarActiveTextColor: string;
+  sidebarInactiveTextColor: string;
+  sidebarActiveBgColor: string;
+  sidebarInactiveBgColor: string;
+  sidebarlineColor: string;
+  sidebarlineShow: boolean;
+  sidebarActiveIconColor: string;
+  sidebarInactiveIconColor: string;
+  onItemClick(index: number): void;
   onChildClick(parentIndex: number, index: number): void;
 };
 type Data = {
@@ -38,7 +37,7 @@ type Data = {
   wrapScrollTop: number;
 };
 
-// NOTE: Anchor of child must be unique, and not same width another tabs
+// NOTE: Anchor of child must be unique, and not same width another items
 // NOTE: Disable swipeable for now
 Component({
   data: {
@@ -46,48 +45,48 @@ Component({
     wrapScrollTop: 0,
   } as Data,
   props: {
-    activeTab: 0,
+    activeItem: 0,
     className: '',
     width: '124px',
-    tabs: [],
+    items: [],
     direction: 'horizontal',
     animated: false,
-    swipeable: true,
-    tabBarInactiveTextColor: '#808089',
-    tabBarActiveTextColor: '#1A94FF',
-    tabBarActiveBgColor: '#ffffff',
-    tabBarInactiveBgColor: '#f5f5f5',
-    tabBarlineColor: '#1A94FF',
-    tabBarActiveIconColor: '#1A94FF',
-    tabBarInactiveIconColor: '#c4c4cf',
-    tabBarlineShow: true,
+    swipeable: false,
+    sidebarInactiveTextColor: '#808089',
+    sidebarActiveTextColor: '#1A94FF',
+    sidebarActiveBgColor: '#ffffff',
+    sidebarInactiveBgColor: '#f5f5f5',
+    sidebarlineColor: '#1A94FF',
+    sidebarActiveIconColor: '#1A94FF',
+    sidebarInactiveIconColor: '#c4c4cf',
+    sidebarlineShow: true,
   } as Props,
   async didMount() {
     this.isScrolling = false;
     this.onlyChangeTab = false;
     this.timerId = null;
     await this.calcHeight();
-    const { tabs, activeTab, activeChild } = this.props;
+    const { items, activeItem, activeChild } = this.props;
     if (activeChild) {
-      if (tabs[activeTab][activeChild]) {
+      if (items[activeItem][activeChild]) {
         this.setData({
-          wrapScrollTop: this.anchorMap[tabs[activeTab][activeChild].anchor],
+          wrapScrollTop: this.anchorMap[items[activeItem][activeChild].anchor],
         });
       } else {
         console.warn('The anchor is invalid. Make sure your child has anchor');
       }
     } else {
       this.setData({
-        wrapScrollTop: this.anchorMap[tabs[activeTab].anchor],
+        wrapScrollTop: this.anchorMap[items[activeItem].anchor],
       });
     }
-    this.moveScrollBar(activeTab);
+    this.moveScrollBar(activeItem);
   },
   didUpdate(prevProps) {
-    const { activeTab, tabs, activeChild } = this.props;
+    const { activeItem, items, activeChild } = this.props;
     if (
-      tabs.length !== prevProps.tabs.length ||
-      activeTab !== prevProps.activeTab ||
+      items.length !== prevProps.items.length ||
+      activeItem !== prevProps.activeItem ||
       activeChild !== prevProps.activeChild
     ) {
       this.calcHeight();
@@ -113,10 +112,10 @@ Component({
       // Select left sidebar
       const slides = await selectAsync(`.tm-sidebar-slides-${this.$id}`);
       this.wrapHeight = (<my.IBoundingClientRect>slides).height;
-      const tabs = this.props.tabs || [];
+      const items = this.props.items || [];
 
       // Select content
-      const allSlideSelector = tabs
+      const allSlideSelector = items
         .reduce((arr, tab) => {
           if ((tab.children || []).length === 0) {
             arr.push(`#tm-sidebar-slide-${tab.anchor}`);
@@ -131,13 +130,13 @@ Component({
       const rects = (<my.IBoundingClientRect[]>allSlide).sort((a, b) => a.top - b.top);
 
       // Init anchorMap
-      for (let i = 0; i < tabs.length; i += 1) {
-        if ((tabs[i].children || []).length) {
-          for (const child of tabs[i].children) {
+      for (let i = 0; i < items.length; i += 1) {
+        if ((items[i].children || []).length) {
+          for (const child of items[i].children) {
             this.anchorMap[child.anchor] = 0;
           }
         } else {
-          this.anchorMap[tabs[i].anchor] = 0;
+          this.anchorMap[items[i].anchor] = 0;
         }
       }
 
@@ -161,14 +160,14 @@ Component({
     },
     handleChildClick(e) {
       const { parent, index } = e.target.dataset;
-      const { tabs, activeTab, swipeable, activeChild, onChildClick } = this.props;
+      const { items, activeItem, swipeable, activeChild, onChildClick } = this.props;
       if (!this.isScrolling || !swipeable || this.onlyChangeTab) {
-        if (activeTab !== parent || activeChild !== index) {
+        if (activeItem !== parent || activeChild !== index) {
           onChildClick && onChildClick(parent, index);
         }
 
         let tabIndex = 0;
-        tabs.some((item, idx) => {
+        items.some((item, idx) => {
           if (idx === parent) {
             tabIndex += index;
             return true;
@@ -184,19 +183,19 @@ Component({
     },
     handleTabClick(e) {
       const { index } = e.target.dataset;
-      const { activeTab, onTabClick, swipeable, tabs } = this.props;
-      if (tabs[index].children?.length) {
-        onTabClick(index);
+      const { activeItem, onItemClick, swipeable, items } = this.props;
+      if (items[index].children?.length && onItemClick) {
+        onItemClick(index);
         return;
       }
 
       if (!this.isScrolling || !swipeable || this.onlyChangeTab) {
-        if (activeTab !== index) {
-          onTabClick(index);
+        if (activeItem !== index && onItemClick) {
+          onItemClick(index);
         }
 
         let tabIndex = -1;
-        tabs.some((item, idx) => {
+        items.some((item, idx) => {
           if (idx <= index) {
             tabIndex += item.children ? item.children.length : 1;
             return false;

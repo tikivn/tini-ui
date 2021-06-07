@@ -1,7 +1,7 @@
 // NOTE: If tab has children, no need anchor
 Page({
   data: {
-    activeTab: 2,
+    activeItem: 2,
     activeChild: null,
     swipeable: false,
     tabs: [
@@ -49,28 +49,28 @@ Page({
     ],
   },
   onTabClick(index) {
-    const activeTab = this.data.tabs[index];
-    if (activeTab.children && activeTab.children.length > 0) {
+    const activeItem = this.data.tabs[index];
+    if (activeItem.children && activeItem.children.length > 0) {
       this.setData({
         tabs: this.data.tabs.map((item, tabIndex) =>
-          tabIndex === index ? { ...item, expandChildren: !activeTab.expandChildren } : item,
+          tabIndex === index ? { ...item, expandChildren: !activeItem.expandChildren } : item,
         ),
       });
     } else {
       this.setData({
-        activeTab: index,
+        activeItem: index,
       });
     }
   },
   onChildClick(parentIndex, index) {
     this.setData({
-      activeTab: parentIndex,
+      activeItem: parentIndex,
       activeChild: index,
     });
   },
   onChange(index) {
     this.setData({
-      activeTab: index,
+      activeItem: index,
     });
   },
   changeHeight() {

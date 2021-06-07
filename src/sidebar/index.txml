@@ -1,22 +1,22 @@
 <view class="tm-sidebar {{className}}">
   <view class="tm-sidebar-bar" style="width: {{width}};">
     <scroll-view 
-      style="{{tabBarActiveBgColor?'background-color: ' + tabBarActiveBgColor + ';':''}}"
+      style="{{sidebarActiveBgColor?'background-color: ' + sidebarActiveBgColor + ';':''}}"
       class="tm-sidebar-bar-content"
       scroll-top="{{tabTop}}"
       scroll-y="{{true}}">
-      <block tiki:for="{{tabs}}">
+      <block tiki:for="{{items}}">
         <view data-index="{{index}}"
           data-anchor="{{item.anchor}}"
           onTap="handleTabClick"
           class="tm-sidebar-bar-tab 
-            {{activeTab === index
+            {{activeItem === index
               ? 'tm-sidebar-bar-tab__active'
               : 'tm-sidebar-bar-tab__same'}}"
           style="{{
-            activeTab == index || (item.children && item.expandChildren)
-          ? 'background-color: ' + tabBarActiveBgColor + ';'
-          : 'background-color: ' + tabBarInactiveBgColor + ';'
+            activeItem == index || (item.children && item.expandChildren)
+          ? 'background-color: ' + sidebarActiveBgColor + ';'
+          : 'background-color: ' + sidebarInactiveBgColor + ';'
         }}
         ">
           <view class="tm-sidebar-bar-title">
@@ -24,12 +24,12 @@
               <icon 
                 tiki:if="{{item.icon}}" 
                 size="{{item.iconSize || 24}}"
-                color="{{index === activeTab ? tabBarActiveIconColor : tabBarInactiveIconColor }}"
-                type="{{index === activeTab && item.iconActive ? item.iconActive : item.icon}}" />
+                color="{{index === activeItem ? sidebarActiveIconColor : sidebarInactiveIconColor }}"
+                type="{{index === activeItem && item.iconActive ? item.iconActive : item.icon}}" />
               <image 
                 tiki:if="{{item.image}}" 
                 class="tm-sidebar-bar-title-content-image"
-                src="{{index === activeTab && item.imageActive ? item.imageActive : item.image}}" />
+                src="{{index === activeItem && item.imageActive ? item.imageActive : item.image}}" />
               <badge 
                 tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
                 className="tm-sidebar-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
@@ -39,9 +39,9 @@
                 stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
               <text 
                 style="{{
-                    activeTab == index || (item.children && item.expandChildren)
-                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
-                  : 'color: ' + tabBarInactiveTextColor + ';'}}"
+                    activeItem == index || (item.children && item.expandChildren)
+                  ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
+                  : 'color: ' + sidebarInactiveTextColor + ';'}}"
                 >
                 {{item.title}}
               </text>
@@ -50,12 +50,12 @@
               tiki:if="{{item.children.length > 0}}"
               type="arrow_down"
               class="tm-sidebar-bar-tab-arrow {{item.expandChildren ? 'up' : 'down'}}"
-              color="{{item.expandChildren ? tabBarActiveTextColor : tabBarInactiveTextColor}}"
+              color="{{item.expandChildren ? sidebarActiveTextColor : sidebarInactiveTextColor}}"
             />
           </view>
-          <!-- <view tiki:if="{{activeTab === index && tabBarlineShow}}" -->
-          <!--   class="tm-sidebar-bar-line" -->
-          <!--   style="{{tabBarlineColor?'background-color: ' + tabBarlineColor + ';':''}}"></view> -->
+          <view tiki:if="{{activeItem === index && sidebarlineShow}}"
+            class="tm-sidebar-bar-line"
+            style="{{sidebarlineColor ? 'background-color: ' + sidebarlineColor + ';' : ''}}"></view>
 
           <!-- Children -->
           <view tiki:if="{{item.children.length > 0}}"
@@ -71,9 +71,9 @@
                 data-index="{{childIndex}}"
                 catchTap="handleChildClick">
                 <text style="{{
-                  activeChild == childIndex && activeTab === index
-                  ? 'font-weight: bold; color: ' + tabBarActiveTextColor + ';'
-                  : 'color: ' + tabBarInactiveTextColor + ';'}}">
+                  activeChild == childIndex && activeItem === index
+                  ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
+                  : 'color: ' + sidebarInactiveTextColor + ';'}}">
                   {{child.anchor}}
                   {{child.title}}
                 </text>
@@ -81,8 +81,10 @@
             </block>
           </view>
         </view>
-        <view tiki:if="{{index + 1 === tabs.length}}"
-          style="{{tabBarInactiveBgColor ? 'background-color: ' + tabBarInactiveBgColor + ';':''}}"
+        <view tiki:if="{{index + 1 === items.length}}"
+          style="
+          {{width ? width + ';' : ''}}
+          {{sidebarInactiveBgColor ? 'background-color: ' + sidebarInactiveBgColor + ';':''}}"
           class="tm-sidebar-bar-placehold"></view>
       </block>
     </scroll-view>
