@@ -1,4 +1,3 @@
-// NOTE: If tab has children, no need anchor
 Page({
   data: {
     activeItem: 2,

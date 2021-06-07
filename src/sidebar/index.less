@@ -1,25 +1,5 @@
 @import (reference) '../style/themes/default.less';
 
-@h-spacing-large: 8px;
-@v-spacing-large: 8px;
-@h-spacing-standard: 8px;
-@v-spacing-standard: 8px;
-@border-width-standard: 1px;
-@color-divider-line: var(--gray20);
-@color-fill-grey-light: var(--gray40);
-@color-fill-grey-inverse: var(--white);
-@color-text-subtitle: var(--gray60);
-@color-text-base: var(--text-color);
-@font-size-list: 14px;
-@font-size-content: 14px;
-@size-6: 24px;
-@size-4: 12px;
-@size-1: 4px;
-@size-2: 8px;
-@size-15: 60px;
-@line-height-paragraph: 20px;
-@font-size-subtitle: 10px;
-
 .tm-sidebar {
   width: 100vw;
   height: 100vh;
@@ -27,7 +7,6 @@
   flex-direction: row;
 
   &-bar {
-    width: @size-15 * 2;
     overflow: hidden;
     &-line {
       position: absolute;
@@ -61,12 +40,10 @@
       opacity: 0.6;
     }
     &__active {
-      font-size: @font-size-subtitle;
-      font-size: var(--tm-sidebar-fontSize-active, @font-size-subtitle);
+      font-size: var(--font-size-base);
     }
     &__same {
-      font-size: @font-size-content;
-      font-size: var(--tm-sidebar-fontSize-same, @font-size-content);
+      font-size: var(--font-size-base);
     }
     &-arrow {
       margin-left: 8px;
@@ -82,12 +59,11 @@
     &-child {
       margin-left: -16px;
       margin-right: -16px;
-      background: #fff;
+      background: var(--white);
       padding-top: 8px;
       padding-bottom: 8px;
       padding-left: 24px;
       padding-right: 16px;
-      // padding: var(--space-inline-2x-small) var(--space-inline-medium);
     }
   }
 

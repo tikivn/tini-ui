@@ -38,8 +38,6 @@ type Data = {
   wrapScrollTop: number;
 };
 
-// NOTE: Anchor of child must be unique, and not same width another tabs
-// NOTE: Disable swipeable for now
 Component({
   data: {
     tabTop: 0,
