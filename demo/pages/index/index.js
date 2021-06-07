@@ -29,6 +29,14 @@ Page({
         name: 'button',
         path: 'pages/button/index',
       },
+      {
+        name: 'tabs',
+        path: 'pages/tabs/index',
+      },
+      {
+        name: 'sidebar',
+        path: 'pages/sidebar/index',
+      },
     ],
   },
   onNavigate(e) {

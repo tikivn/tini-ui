@@ -1,0 +1,28 @@
+<sidebar items="{{tabs}}"
+  onItemClick="onTabClick"
+  onChildClick="onChildClick"
+  onChange="onChange"
+  activeItem="{{activeItem}}"
+  activeChild="{{activeChild}}"
+  sameFontSize="{{false}}"
+  swipeable="{{swipeable}}"
+  tabBarlineShow="{{false}}">
+  <block tiki:for="{{tabs}}">
+    <block tiki:if="{{!item.children || item.children.length === 0}}">
+      <sidebar-content anchor="{{item.anchor}}">
+        <view style="height: 100vh;">
+          <text>content of {{item.title}}</text>
+        </view>
+      </sidebar-content>
+    </block>
+    <block tiki:else>
+      <block tiki:for="{{item.children}}" tiki:for-item="child">
+        <sidebar-content anchor="{{child.anchor}}">
+          <view style="height: 100vh;">
+            <text>child of {{item.title}} anchor: {{child.anchor}}</text>
+          </view>
+        </sidebar-content>
+      </block>
+    </block>
+  </block>
+</sidebar>

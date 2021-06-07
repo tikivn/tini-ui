@@ -1,0 +1,127 @@
+@import (reference) '../style/themes/default.less';
+
+.tm-sidebar {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  &-bar {
+    overflow: hidden;
+    &-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      overflow: hidden;
+      font-size: 0;
+    }
+    &-placehold {
+      flex: 1 1 0%;
+    }
+  }
+
+  &-bar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-bar-tab {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-inline-2x-small) var(--space-inline-medium);
+    &__hover {
+      opacity: 0.6;
+    }
+    &__active {
+      font-size: var(--font-size-base);
+    }
+    &__same {
+      font-size: var(--font-size-base);
+    }
+    &-arrow {
+      margin-left: 8px;
+      &.down {
+        transform: rotate(0deg);
+        transition: transform 0.2s linear;
+      }
+      &.up {
+        transform: rotate(180deg);
+        transition: transform 0.2s linear;
+      }
+    }
+    &-child {
+      margin-left: -16px;
+      margin-right: -16px;
+      background: var(--white);
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 24px;
+      padding-right: 16px;
+    }
+  }
+
+  &-bar-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &.center {
+      justify-content: center;
+    }
+    &-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .ml-8 {
+        margin-left: 8px;
+      }
+      &.vertical {
+        flex-direction: column;
+      }
+      &-image {
+        width: 24px;
+        height: 24px;
+      }
+      &-text {
+        display: block;
+        &-small {
+          font-size: var(--font-size-x-small);
+          line-height: var(--font-height-x-small);
+        }
+      }
+    }
+    & .tm-sidebar-bar-tab-badge {
+      &.right {
+        margin-left: 8px;
+      }
+      &.top {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(60%, -50%);
+      }
+    }
+  }
+
+  &-content-wrap {
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+    background-color: var(--background-panel);
+  }
+
+  &-slides {
+    height: 100%;
+  }
+
+  &-slides.animate {
+    transition-duration: 300ms;
+  }
+}

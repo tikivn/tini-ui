@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/sidebar/index",
+    "pages/tabs/index",
     "pages/popup/index",
     "pages/avatar/index",
     "pages/badge/index",

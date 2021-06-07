@@ -5,3 +5,4 @@
 /// <reference path="./page.d.ts" />
 /// <reference path="./component.d.ts" />
 /// <reference path="./global.d.ts" />
+/// <reference path="./apis/index.d.ts" />
