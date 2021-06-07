@@ -146,12 +146,10 @@ Component({
     ) {
       return;
     }
-    const { activeTab: currentActiveTab, tabsName, swipeable, hasSubTitle, tabBarCls } = this.props;
+    const { activeTab: currentActiveTab, tabsName, swipeable, tabBarCls } = this.props;
 
     if (currentActiveTab !== prevProps.activeTab) {
-      const className = `tm-tabs-bar-tab ${
-        hasSubTitle ? 'tm-tabs-bar-tab__hasSubTitle' : ''
-      } ${tabBarCls}`;
+      const className = `tm-tabs-bar-tab ${tabBarCls}`;
       // To prevent trigger multiple times setData, store value in data and update 1 time
       const data: Pick<
         Data,
