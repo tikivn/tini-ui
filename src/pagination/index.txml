@@ -1,24 +1,24 @@
-<view class="t-pagination ">
+<view class="tu-pagination ">
   <view
-    class="t-pagination-jump  {{currentPage===1 && 't-pagination-jump__disabled'}}"
+    class="tu-pagination-jump  {{currentPage===1 && 'tu-pagination-jump__disabled'}}"
     onTap="jumpPrev">
     <icon type="arrow_left"
-      color="{{currentPage===1?'var(--gray40)':'var(--blue60)'}}" />
+      color="{{currentPage===1?'var(--gray20)':'var(--blue60)'}}" />
   </view>
-  <view tiki:if="{{type==='page'}}" class="t-pagination-page">
+  <view tiki:if="{{type==='page'}}" class="tu-pagination-page">
     <button tiki:for="{{pages}}" data-page="{{item.page}}" onTap="jumpToPage"
       disabled="{{loadingPage===item.page}}"
-      class="t-pagination-button {{currentPage===item.page?'t-pagination-button__active':''}}">
+      class="tu-pagination-button {{currentPage===item.page?'tu-pagination-button__active':''}}">
       {{item.label}} </button>
   </view>
-  <view tiki:if="{{type==='number'}}" class="t-pagination-number">
+  <view tiki:if="{{type==='number'}}" class="tu-pagination-number">
     <text
-      class="t-pagination-button__active">{{currentPage}}</text>/<text>{{max}}</text>
+      class="tu-pagination-button__active">{{currentPage}}</text>/<text>{{max}}</text>
   </view>
   <view
-    class="t-pagination-jump {{currentPage===max && 't-pagination-jump__disabled'}}"
+    class="tu-pagination-jump {{currentPage===max && 'tu-pagination-jump__disabled'}}"
     onTap="jumpNext">
     <icon type="arrow_right"
-      color="{{currentPage===max?'var(--gray40)':'var(--blue60)'}}" />
+      color="{{currentPage===max?'var(--gray20)':'var(--blue60)'}}" />
   </view>
 </view>
