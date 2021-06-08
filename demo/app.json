@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/pagination/index",
+    "pages/button/index",
+    "pages/stepper/index",
     "pages/index/index",
     "pages/sidebar/index",
     "pages/tabs/index",
@@ -7,9 +10,7 @@
     "pages/avatar/index",
     "pages/badge/index",
     "pages/list/index",
-    "pages/modal/index",
-    "pages/stepper/index",
-    "pages/button/index"
+    "pages/modal/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI"
