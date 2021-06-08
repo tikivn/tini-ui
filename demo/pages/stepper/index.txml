@@ -4,9 +4,10 @@
     <text class="title mb-8">Horizontal</text>
     <list>
       <list-item disabled="{{true}}">
-        Default asdjgajsagkdagdkjasgdkahgfdkjh qjkdajkshaksdgf aksjdhasjkdah
+        Default
         <view slot="extra">
-          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}" inputWidth="40px" min="{{2}}" />
+          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}"
+            inputWidth="40px" min="{{2}}" />
         </view>
       </list-item>
       <list-item disabled="{{true}}">
@@ -23,7 +24,8 @@
       <list-item disabled="{{true}}">
         Default
         <view slot="extra">
-          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}" inputWidth="40px" min="{{2}}" direction="column" />
+          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}"
+            inputWidth="40px" min="{{2}}" direction="column" />
         </view>
       </list-item>
       <list-item disabled="{{true}}">

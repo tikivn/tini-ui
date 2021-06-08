@@ -1,0 +1,14 @@
+<view class="container">
+  <view style="padding: 20px 20px 0;margin-top:24px">
+    <view tiki:if="{{loading}}" style="height: 100px;">loading...</view>
+    <view tiki:else tiki:for="{{products}}">
+      <text>{{item}}</text>
+    </view>
+    <pagination currentPage="{{currentPage}}" max="{{30}}" type="page"
+      onChange="onPageChange" />
+  </view>
+  <view style="padding: 20px 20px 0;margin-top:24px">
+    <pagination currentPage="{{currentPage}}" max="{{30}}" type="number"
+      onChange="onPageChange" />
+  </view>
+</view>

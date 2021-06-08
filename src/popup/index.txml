@@ -1,14 +1,10 @@
-<view 
-  class="tm-popup {{className}} {{show ? 'tm-popup-show' : ''}} {{ animation ? 'animation': '' }}" 
-  disable-scroll="{{disableScroll}}" 
-  style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
-  <view 
-    class="tm-popup-mask" 
-    tiki:if="{{mask}}" 
-    onTap="onMaskTap" 
-    style="{{zIndex ? `z-index: ${zIndex};` : ''}}"></view>
-  <view 
-    class="tm-popup-content tm-popup-{{position}}" 
+<view
+  class="tm-popup {{className}} {{show ? 'tm-popup-show' : ''}} {{ animation ? 'animation': '' }}"
+  disable-scroll="{{disableScroll}}" style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
+  <view class="tm-popup-mask" tiki:if="{{mask}}" onTap="onMaskTap"
+    style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
+  </view>
+  <view class="tm-popup-content tm-popup-{{position}}"
     style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
     <slot />
   </view>
