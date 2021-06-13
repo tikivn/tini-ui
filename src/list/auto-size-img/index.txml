@@ -1,5 +1,4 @@
-<view class="tm-auto-sizer-container" 
-  style="{{`width: ${size}; height: ${size};`}}">
-  <view class="tm-auto-sizer-content" 
-    style="{{(src ? `background-image: url('${src}'); background-color: transparent` : '')}}" />
+<import-sjs from="../../_util/utils.sjs" name="utils" />
+<view class="tm-auto-sizer-container" style="{{`width: ${utils.formatUnit(size)}; height: ${utils.formatUnit(size)};`}}">
+  <view class="tm-auto-sizer-content" style="{{(src ? `background-image: url('${src}'); background-color: transparent` : '')}}" />
 </view>

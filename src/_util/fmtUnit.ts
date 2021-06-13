@@ -5,13 +5,14 @@ const jsUnitRpx = '<ENV::jsUnitRpx>';
 export default function fmtUnit(oldUnit: string) {
   let getUnit = oldUnit;
 
-  if (jsUnitRpx === 'true') {
+  if (jsUnitRpx) {
     if (typeof getUnit === 'string' && getUnit === 'px') {
       getUnit = 'rpx';
     } else if (typeof getUnit === 'number') {
-      getUnit *= 2;
+      getUnit = (parseInt(getUnit) * 2).toString();
     } else if (typeof getUnit === 'string') {
-      getUnit = oldUnit.match(/(\d+|\d+\.\d+)(px)/)[1] * 2 + 'rpx';
+      const number = oldUnit.match(/(\d+|\d+\.\d+)(px)/)[1];
+      getUnit = parseInt(number) * 2 + 'rpx';
     }
   }
 

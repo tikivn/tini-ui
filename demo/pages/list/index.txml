@@ -1,19 +1,22 @@
- <list-item thumb="http://thumb.link.png"
-   arrow="{{true}}"
-   onClick="onItemClick"
-   upperSubtitle="Upper title"
-   lowerSubtitle="Lower title" >
-   Title
-   <view slot="afterTitle">
-     After title
-   </view>
-   <view slot="afterUpperSubtitle">
-     After Upper title
-   </view>
-   <view slot="afterLowerSubtitle">
-     After lower title
-   </view>
-   <view slot="extra">
+<template name="item">
+  <list-item padding arrow thumb="https://avatars.githubusercontent.com/u/15868433" thumbSize="40" arrow="{{true}}"
+    onClick="onItemClick" upperSubtitle="Upper title" lowerSubtitle="Lower title">
+    Title
+    <view slot="prefix">
+      <icon type="warning" color="#ccc" size="18" />
+    </view>
+    <view slot="afterTitle">
+      After title
+    </view>
+    <view slot="additionContent">
+      addition content
+    </view>
+    <view slot="suffix">
       Extra
-   </view>
- </list-item>
+    </view>
+  </list-item>
+</template>
+
+<template is="item" />
+<template is="item" />
+<template is="item" />
