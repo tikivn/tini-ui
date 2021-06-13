@@ -4,23 +4,31 @@
       <slot name="prefix" />
     </view>
     <view class="tm-list-item-content">
-      <view class="tm-list-item-thumb">
-        <auto-sizer tiki:if="{{thumb}}" src="{{thumb}}" size="{{thumbSize}}" />
+      <view tiki:if="{{thumb}}" class="tm-list-item-thumb">
+        <auto-sizer src="{{thumb}}" size="{{thumbSize}}" />
       </view>
       <view class="tm-list-item-content-wrapper">
-        <view class="tm-list-item-content-title">
+        <view tiki:if="{{titlePosition === 'top'}}" class="tm-list-item-content-line tm-list-item-content-title">
           <slot />
           <slot name="afterTitle" />
         </view>
-        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tm-list-item-content-subtitle">
+        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tm-list-item-content-line tm-list-item-content-subtitle">
           <view tiki:if="{{upperSubtitle}}">{{upperSubtitle}}</view>
           <slot name="afterUpperSubtitle" />
         </view>
-        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tm-list-item-content-subtitle">
+        <view tiki:if="{{titlePosition === 'middle'}}" class="tm-list-item-content-line tm-list-item-content-title">
+          <slot />
+          <slot name="afterTitle" />
+        </view>
+        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tm-list-item-content-line tm-list-item-content-subtitle">
           <view tiki:if="{{lowerSubtitle}}">{{lowerSubtitle}}</view>
           <slot name="afterLowerSubtitle" />
         </view>
-        <view tiki:if="{{$slots.additionContent}}" class="tm-list-item-content-addition">
+        <view tiki:if="{{titlePosition === 'bottom'}}" class="tm-list-item-content-line tm-list-item-content-title">
+          <slot />
+          <slot name="afterTitle" />
+        </view>
+        <view tiki:if="{{$slots.additionContent}}" class="tm-list-item-content-line tm-list-item-content-addition">
           <slot name="additionContent" />
         </view>
       </view>

@@ -1,15 +1,6 @@
 Component({
   props: {
-    className: '',
-    align: false,
-    disabled: false,
-    multipleLine: false,
-    wrap: false,
-    enforceExtra: false,
     titlePosition: 'top',
-    last: false,
-  },
-  data: {
     iconSize: '20',
   },
   didMount() {
