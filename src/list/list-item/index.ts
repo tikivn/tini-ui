@@ -1,18 +1,7 @@
-import fmtUnit from '../../_util/fmtUnit';
-
 Component({
   props: {
-    className: '',
-    align: false,
-    disabled: false,
-    multipleLine: false,
-    wrap: false,
-    enforceExtra: false,
     titlePosition: 'top',
-    last: false,
-  },
-  data: {
-    iconSize: fmtUnit(18),
+    iconSize: '20',
   },
   didMount() {
     this._updateDataSet();
