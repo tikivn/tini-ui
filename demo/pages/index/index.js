@@ -2,6 +2,10 @@ Page({
   data: {
     components: [
       {
+        name: 'button',
+        path: 'pages/button/index',
+      },
+      {
         name: 'avatar',
         path: 'pages/avatar/index',
       },
@@ -24,10 +28,6 @@ Page({
       {
         name: 'stepper',
         path: 'pages/stepper/index',
-      },
-      {
-        name: 'button',
-        path: 'pages/button/index',
       },
       {
         name: 'tabs',

@@ -12,6 +12,9 @@
 }
 
 .tm-list-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
   background-color: var(--background-list, var(--white));
 }
 
@@ -50,10 +53,6 @@
 .tm-list-item-content-title,
 .tm-list-item-content-subtitle {
   flex-direction: row;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  word-break: break-all;
 }
 
 .tm-list-item-content-line {
