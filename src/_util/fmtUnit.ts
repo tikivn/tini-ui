@@ -11,7 +11,8 @@ export default function fmtUnit(oldUnit: string) {
     } else if (typeof getUnit === 'number') {
       getUnit = (parseInt(getUnit) * 2).toString();
     } else if (typeof getUnit === 'string') {
-      const number = oldUnit.match(/(\d+|\d+\.\d+)(px)/)[1];
+      const matches = oldUnit.match(/(\d+|\d+\.\d+)(px)/);
+      const number = Array.isArray(matches) && matches.length ? matches[1] : getUnit;
       getUnit = parseInt(number) * 2 + 'rpx';
     }
   }

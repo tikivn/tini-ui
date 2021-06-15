@@ -18,8 +18,8 @@ type Props = {
 Component({
   data: {
     _buttonsLayout: '',
-    adviceClose: fmtUnit('26'),
-    normalClose: fmtUnit('18'),
+    adviceClose: fmtUnit('26px'),
+    normalClose: fmtUnit('18px'),
   },
   props: {
     className: '',
