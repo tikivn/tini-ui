@@ -1,5 +1,5 @@
-<view class="tm-list-item {{padding ? 'tm-list-item-padding' : ''}} {{class ? class : ''}}" onTap="onItemTap" data-index="{{index}}">
-  <view class="tm-list-item-wrapper">
+<view class="tm-list-item {{padding ? 'tm-list-item-padding' : ''}}" onTap="onItemTap" data-index="{{index}}">
+  <view class="tm-list-item-wrapper {{className ? className : ''}}">
     <view tiki:if="{{$slots.prefix}}" class="tm-list-item-prefix">
       <slot name="prefix" />
     </view>
