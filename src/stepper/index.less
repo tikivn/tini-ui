@@ -1,47 +1,47 @@
-.tm-stepper-content {
+.tm-stepper-content,
+.tm-stepper-operation,
+.tm-stepper-input {
   display: flex;
-  position: relative;
-  overflow: hidden;
-  font-size: 16px;
-
-  /** box-sizing: border-box; */
 }
 
 .tm-stepper-input {
-  height: 40px;
-  height: var(--tm-stepper-input-size, 40px);
-  padding: 4px;
-  margin: 0 8px;
-  margin: 0 var(--tm-stepper-input-marginLR, 8px);
-  line-height: 24px;
-  line-height: var(--tm-stepper-input-size, 24px);
-  text-align: center;
-  font-size: 15px;
-  font-size: var(--tm-stepper-input-fontSize, 16px);
-  color: #81818a;
-  color: var(--tm-stepper-input-color, #81818a);
-  border: 1px solid #dddde3;
-  border-radius: 4px;
-  background-color: transparent;
+  margin: 0 var(--space-inline-4x-small);
+  padding: var(--space-inset-2x-small);
 }
 
-.tm-stepper-input-hide {
-  /** visibility: hidden; */
+.tm-stepper-input-vertical {
+  margin: var(--space-inline-4x-small) 0;
+  padding: var(--space-inset-2x-small);
 }
 
-.tm-stepper-option {
+/* hack into input style to make its content center */
+.tm-stepper-input .t-input-content {
   display: flex;
-  width: 40px;
-  width: var(--tm-stepper-btn-size, 40px);
-  height: 40px;
-  height: var(--tm-stepper-btn-size, 40px);
+  align-items: center;
+  text-align: center;
+  font-size: var(--font-size-medium);
+  line-height: var(--font-height-medium);
+}
+
+/* hack into input style to hide input */
+.tm-stepper-input-hide .t-input-content {
+  visibility: hidden;
+}
+
+.tm-stepper-operation {
   justify-content: center;
   align-items: center;
-  border: 1px solid #1a94ff;
-  border-radius: 4px;
-
-  /** box-sizing: border-box; */
+  width: var(--tm-stepper-option-size, 40px);
+  height: var(--tm-stepper-option-size, 40px);
+  border: 1px solid var(--brand);
+  border-radius: var(--border-radius-rounded-4px);
 }
 
-.tm-stepper-add {
+.tm-stepper-operation-disable {
+  border: 1px solid var(--gray20);
+}
+
+/* hack into icon style to make icon center */
+.tm-stepper-operation icon {
+  display: flex;
 }

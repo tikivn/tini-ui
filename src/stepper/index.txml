@@ -1,20 +1,15 @@
-<view class="tm-stepper-content {{className}}"
-  style="opacity:{{disabled ? '0.4' : '1'}};flex-direction: {{direction}};"
-  max="{{max}}" min="{{min}}" onChange="{{callBackFn}}" step="{{step}}"
-  disabled="{{disabled || readOnly}}">
-  <view class="tm-stepper-option tm-stepper-reduce"
-    style="opacity:{{opaReduce}};border:{{disabled ? '1px solid #C4C4Cf' : '1px solid #1A94FF'}}"
-    data-type="reduce" onTap="changeFn">
-    <icon type="minus" color="{{disabled ? '#C4C4Cf' : '#1A94FF'}}" />
+<template name="operation">
+  <view class="tm-stepper-operation {{disabled ? 'tm-stepper-operation-disable' : ''}}" data-type="{{type}}"
+    onTap="changeFn">
+    <icon type="{{icon}}" color="{{disabled ? 'var(--gray30)' : 'var(--brand)'}}" />
   </view>
-  <input class="tm-stepper-input {{showNumber?'':'tm-stepper-input-hide'}}"
-    style="width: {{inputWidth}};{{direction === 'row' ? 'margin: 0 8px;' : 'margin: 8px 0;'}}"
-    value="{{value}}" onBlur="onBlur" onInput="onInput"
-    disabled="{{disabled || readOnly}}" type="number"
-    controlled="{{controlled}}" enableNative="{{enableNative}}" />
-  <view class="tm-stepper-option tm-stepper-add"
-    style="opacity:{{opaAdd}};{{direction === 'row' ? 'margin-left: 8px;' : 'margin-left: 0;'}};border:{{disabled ? '1px solid #C4C4Cf' : '1px solid #1A94FF'}}"
-    data-type="add" onTap="changeFn">
-    <icon type="plus" color="{{disabled ? '#C4C4Cf' : '#1A94FF'}}" />
-  </view>
+</template>
+
+<view class="tm-stepper-content {{className}}" style="{{vertical ? 'flex-direction: column;' : ''}}">
+  <template is="operation" data="{{type: 'reduce', icon: 'minus', disabled: disabled || disableReduce }}" />
+  <input
+    class="tm-stepper-input {{showNumber ? '' : 'tm-stepper-input-hide'}} {{vertical ? 'tm-stepper-input-vertical' : ''}}"
+    style="width: calc({{inputWidth}}px - 2 * var(--space-inset-2x-small));" value="{{value}}" onBlur="onBlur"
+    onInput="onInput" disabled="{{disabled || readOnly}}" type="number" controlled="{{controlled}}" />
+  <template is="operation" data="{{type: 'add', icon: 'plus', disabled: disabled || disableAdd }}" />
 </view>

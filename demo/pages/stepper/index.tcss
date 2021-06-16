@@ -1,7 +1,24 @@
-.o1 {
+.page {
+  background-color: var(--white);
+  padding: var(--space-inset-medium);
+}
+
+.list-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  color: var(--brand-primary);
-  padding-left: 12px;
-  padding-right: 12px;
+  justify-content: space-between;
+  padding: var(--space-inset-medium) 0;
+  border-bottom: 1px solid var(--gray20);
+}
+
+.list-item-title {
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--font-height-base);
+}
+
+.stepper-custom-class .tm-stepper-input {
+  margin: 0px var(--space-inline-2x-small);
 }

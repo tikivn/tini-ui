@@ -1,5 +1,5 @@
 {
-  "defaultTitle": "Steps",
+  "defaultTitle": "Stepper",
   "usingComponents": {
     "stepper": "../../es/stepper/index",
     "list": "../../es/list/index",

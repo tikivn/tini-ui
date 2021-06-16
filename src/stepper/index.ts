@@ -1,23 +1,21 @@
-import fmtUnit from '../_util/fmtUnit';
-
 Component({
   data: {
-    opaReduce: 1,
-    opaAdd: 1,
+    value: undefined,
+    disableReduce: false,
+    disableAdd: false,
   },
   props: {
     className: '',
+    value: 10,
+    inputWidth: 40,
+    step: 1,
     min: 0,
     max: 100000,
     disabled: false,
-    value: 10,
     readOnly: false,
-    showNumber: false,
-    inputWidth: fmtUnit('36px'),
-    step: 1,
-    onChange: () => {},
-    controlled: true,
-    enableNative: undefined,
+    showNumber: true,
+    vertical: false,
+    onChange: (value: number, mode: string): void => {},
   },
   didMount() {
     const { value, min, max } = this.props;
@@ -39,26 +37,27 @@ Component({
     changeFn(ev) {
       const { min, max, onChange, disabled, step } = this.props;
       const evType = ev.target.dataset.type;
-      let { opaReduce, opaAdd, value } = this.data;
+      let { disableReduce, disableAdd, value } = this.data;
       if (!disabled) {
         if (evType === 'reduce') {
           if (value > min) {
-            opaAdd = 1;
+            disableAdd = false;
             value = Math.max(min, this.getCalculateValue('reduce', +value, +step));
-            opaReduce = value === min ? 0.4 : 1;
+            disableReduce = value.toString() === min.toString();
           }
         } else {
           /* eslint-disable no-lonely-if */
           if (value < max) {
-            opaReduce = 1;
+            disableReduce = false;
             value = Math.min(this.getCalculateValue('add', +value, +step), max);
-            opaAdd = value === max ? 0.4 : 1;
+            disableAdd = value.toString() === max.toString();
           }
         }
+        console.log('data is', this.props, value, disableAdd, disableReduce);
         this.setData({
           value,
-          opaAdd,
-          opaReduce,
+          disableAdd,
+          disableReduce,
         });
         onChange(value, 'click');
       }
@@ -88,19 +87,19 @@ Component({
     resetFn(value, mode) {
       const { max, min, onChange } = this.props;
       let calculatedVal = value;
-      let opaAdd = 1;
-      let opaReduce = 1;
+      let disableAdd = false;
+      let disableReduce = false;
       if (value >= max) {
         calculatedVal = max;
-        opaAdd = 0.4;
+        disableAdd = true;
       } else if (value <= min) {
         calculatedVal = min;
-        opaReduce = 0.4;
+        disableReduce = true;
       }
       this.setData({
         value: calculatedVal,
-        opaAdd,
-        opaReduce,
+        disableAdd,
+        disableReduce,
       });
       onChange(calculatedVal, mode);
     },

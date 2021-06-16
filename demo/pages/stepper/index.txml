@@ -1,39 +1,57 @@
-<view>
-  <view class="block-content">
-    <text class="title mb-8">Variants</text>
-    <text class="title mb-8">Horizontal</text>
-    <list>
-      <list-item disabled="{{true}}">
-        Default
-        <view slot="extra">
-          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}"
-            inputWidth="40px" min="{{2}}" />
-        </view>
-      </list-item>
-      <list-item disabled="{{true}}">
-        Disable
-        <view slot="extra">
-          <stepper onChange="callBackFn" showNumber value="{{11}}" min="{{2}}" disabled />
-        </view>
-      </list-item>
-    </list>
+<view class="page">
+  <view class="first-item" />
+  <view class="list-item">
+    <view class="list-item-title">Default</view>
+    <view class="list-item-stepper">
+      <stepper />
+    </view>
   </view>
-  <view class="block-content">
-    <text class="title mb-8">Vertical</text>
-    <list>
-      <list-item disabled="{{true}}">
-        Default
-        <view slot="extra">
-          <stepper onChange="callBackFn" step="{{1}}" showNumber readOnly="{{false}}" value="{{value}}"
-            inputWidth="40px" min="{{2}}" direction="column" />
-        </view>
-      </list-item>
-      <list-item disabled="{{true}}">
-        Disable
-        <view slot="extra">
-          <stepper onChange="callBackFn" showNumber value="{{11}}" min="{{2}}" disabled direction="column" />
-        </view>
-      </list-item>
-    </list>
+  <view class="list-item">
+    <view class="list-item-title">Do not show number</view>
+    <view class="list-item-stepper">
+      <stepper showNumber="{{false}}" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Step: 2</view>
+    <view class="list-item-stepper">
+      <stepper step="{{2}}" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Set min, max and value</view>
+    <view class="list-item-stepper">
+      <stepper min="2" max="10" value="5" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Disabled</view>
+    <view class="list-item-stepper">
+      <stepper disabled />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Readonly</view>
+    <view class="list-item-stepper">
+      <stepper readOnly />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Change input width 60px</view>
+    <view class="list-item-stepper">
+      <stepper inputWidth="60" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Custom class to change space between input and operations</view>
+    <view class="list-item-stepper">
+      <stepper className="stepper-custom-class" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-title">Vertical</view>
+    <view class="list-item-stepper">
+      <stepper vertical />
+    </view>
   </view>
 </view>
