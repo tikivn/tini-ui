@@ -1,49 +1,49 @@
-<view class="tm-modal-{{show ? 'show' : 'hide'}}" 
+<view class="tu-modal-{{show ? 'show' : 'hide'}}" 
   disable-scroll="{{disableScroll}}" 
   style="{{zIndex ? `z-index: ${zIndex};`: ''}}">
-  <view class="tm-modal-document {{advice === true ? 'tm-modal-document-advice' : '' }}">
+  <view class="tu-modal-document {{advice === true ? 'tu-modal-document-advice' : '' }}">
     <view 
-      class="tm-modal-mask {{advice === true ? 'tm-modal-mask-advice': ''}}" 
+      class="tu-modal-mask {{advice === true ? 'tu-modal-mask-advice': ''}}" 
       tiki:if="{{mask}}" onTap="_onMaskTap" />
-    <view class="tm-modal {{className}}">
+    <view class="tu-modal {{className}}">
       <!-- close icon -->
-      <view class="tm-modal-close" 
-        hover-class="tm-modal-close-active" 
+      <view class="tu-modal-close" 
+        hover-class="tu-modal-close-active" 
         tiki:if="{{showClose || advice}}" 
         onTap="_onModalClose" >
-        <tm-icon 
+        <tu-icon 
           type="{{advice ? 'close_circle' : 'close'}}" 
           size="{{advice ? adviceClose : normalClose}}" 
           color="{{closeType === '1' ? 'white' : '#999'}}" />
       </view>
       <!-- modal content -->
-      <view class="tm-modal-content {{topImageSize === 'lg' ? 'tm-modal-content--fill' : ''}}">
-        <view tiki:if="{{topImage}}" class="tm-modal-image tm-modal-image-{{topImageSize}}">
-          <image class="tm-modal-image-element" src="{{topImage}}" />
+      <view class="tu-modal-content {{topImageSize === 'lg' ? 'tu-modal-content--fill' : ''}}">
+        <view tiki:if="{{topImage}}" class="tu-modal-image tu-modal-image-{{topImageSize}}">
+          <image class="tu-modal-image-element" src="{{topImage}}" />
         </view>
-        <view class="tm-modal-header" tiki:if="{{$slots.header}}">
+        <view class="tu-modal-header" tiki:if="{{$slots.header}}">
           <slot name="header" />
         </view>
-        <view class="tm-modal-body">
+        <view class="tu-modal-body">
           <slot />
         </view>
       </view>
       <view 
-        class="tm-modal-footer" 
-        hover-class="tm-modal-footer-active" 
+        class="tu-modal-footer" 
+        hover-class="tu-modal-footer-active" 
         tiki:if="{{$slots.footer}}" 
         onTap="_onModalClick">
         <slot name="footer" />
       </view>
       <!-- modal button -->
       <view 
-        class="tm-modal-buttons 
-        {{_buttonsLayout === 'vertical' ? 'tm-modal-buttons--vertical' : 'tm-modal-buttons--horizontal'}}"
+        class="tu-modal-buttons 
+        {{_buttonsLayout === 'vertical' ? 'tu-modal-buttons--vertical' : 'tu-modal-buttons--horizontal'}}"
         tiki:if="{{buttons}}">
         <view 
-          class="tm-modal-button 
+          class="tu-modal-button 
           {{button.extClass}} 
-          {{_buttonsLayout === 'vertical' ? 'tm-modal-button--vertical' : 'tm-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tm-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
+          {{_buttonsLayout === 'vertical' ? 'tu-modal-button--vertical' : 'tu-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tu-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
           {{button.text}}
         </view>
       </view>

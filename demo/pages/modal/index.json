@@ -6,6 +6,6 @@
   "usingComponents": {
     "modal": "../../es/modal/index",
     "button": "../../es/button/index",
-    "tm-icon": "../../es/tm-icon/index"
+    "tu-icon": "../../es/tu-icon/index"
   }
 }

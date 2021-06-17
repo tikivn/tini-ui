@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "badge": "../badge/index",
-    "tm-icon": "../tm-icon/index"
+    "tu-icon": "../tu-icon/index"
   }
 }

@@ -1,14 +1,14 @@
 <template name="operation">
-  <view class="tm-stepper-operation {{disabled ? 'tm-stepper-operation-disable' : ''}}" data-type="{{type}}"
+  <view class="tu-stepper-operation {{disabled ? 'tu-stepper-operation-disable' : ''}}" data-type="{{type}}"
     onTap="changeFn">
     <icon type="{{icon}}" color="{{disabled ? 'var(--gray30)' : 'var(--brand)'}}" />
   </view>
 </template>
 
-<view class="tm-stepper-content {{className}}" style="{{vertical ? 'flex-direction: column;' : ''}}">
+<view class="tu-stepper-content {{className}}" style="{{vertical ? 'flex-direction: column;' : ''}}">
   <template is="operation" data="{{type: 'reduce', icon: 'minus', disabled: disabled || disableReduce }}" />
   <input
-    class="tm-stepper-input {{showNumber ? '' : 'tm-stepper-input-hide'}} {{vertical ? 'tm-stepper-input-vertical' : ''}}"
+    class="tu-stepper-input {{showNumber ? '' : 'tu-stepper-input-hide'}} {{vertical ? 'tu-stepper-input-vertical' : ''}}"
     style="width: calc({{inputWidth}}px - 2 * var(--space-inset-2x-small));" value="{{value}}" onBlur="onBlur"
     onInput="onInput" disabled="{{disabled || readOnly}}" type="number" controlled="{{controlled}}" />
   <template is="operation" data="{{type: 'add', icon: 'plus', disabled: disabled || disableAdd }}" />

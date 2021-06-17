@@ -1,16 +1,16 @@
-<view class="tm-tabs {{className}}">
-  <view class="tm-tabs-tab-bar-wrap">
+<view class="tu-tabs {{className}}">
+  <view class="tu-tabs-tab-bar-wrap">
     <view 
-      class="tm-tabs-bar {{(stickyBar)?'tm-tabs-bar-sticky':''}}"
+      class="tu-tabs-bar {{(stickyBar)?'tu-tabs-bar-sticky':''}}"
       style="background-color: {{tabBarBackgroundColor}};}}; top: {{stickyBar ? '0' : ''}}">
-      <view class="tm-tabs-bar-content-wrap">
+      <view class="tu-tabs-bar-content-wrap">
         <scroll-view 
           scroll-left="{{viewScrollLeft}}"
           scroll-into-view="tabs-item-{{tabsName?tabsName+'-':''}}" 
           scroll-x="{{true}}"
           scroll-with-animation="{{animation}}" 
-          class="tm-tabs-bar-content"
-          id="tm-tabs-bar-{{tabsName ? tabsName+'-' :''}}content">
+          class="tu-tabs-bar-content"
+          id="tu-tabs-bar-{{tabsName ? tabsName+'-' :''}}content">
           <block tiki:for="{{tabs}}">
             <view 
               id="tabs-item-{{tabsName ? tabsName + '-' : ''}}{{index}}" 
@@ -20,18 +20,18 @@
               key="tabs-item-{{index}}" 
               onTap="handleTabClick"
               style="color: {{index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}"
-              class="tm-tabs-bar-tab {{ hasSubTitle ? 'tm-tabs-bar-tab__hasSubTitle' : ''}} {{tabBarCls}}" >
+              class="tu-tabs-bar-tab {{ hasSubTitle ? 'tu-tabs-bar-tab__hasSubTitle' : ''}} {{tabBarCls}}" >
               <view class="
-                tm-tabs-bar-title
-                {{ hasSubTitle ? 'tm-tabs-bar-title__hasSubTitle' : ''}}
+                tu-tabs-bar-title
+                {{ hasSubTitle ? 'tu-tabs-bar-title__hasSubTitle' : ''}}
                 {{ index === activeTab ? activeCls : '' }}">
               <view tiki:if="{{  index === activeTab}}" 
-                class="tm-tabs-bar-title-underline"
+                class="tu-tabs-bar-title-underline"
                 style="background-color: {{tabBarUnderlineColor}};
                   {{tabBarUnderlineWidth ? `width: ${tabBarUnderlineWidth};` : ''}}
                   {{tabBarUnderlineHeight ? `height: ${tabBarUnderlineHeight};` : ''}}"></view>
-                <view class="tm-tabs-bar-tab-mainTitle">
-                  <view class="tm-tabs-bar-tab-mainTitle-content">
+                <view class="tu-tabs-bar-tab-mainTitle">
+                  <view class="tu-tabs-bar-tab-mainTitle-content">
                     <icon 
                       tiki:if="{{item.icon}}" 
                       size="{{item.iconSize || 24}}"
@@ -39,27 +39,27 @@
                       type="{{index === activeTab && item.iconActive ? item.iconActive : item.icon}}" />
                     <image 
                       tiki:if="{{item.image}}" 
-                      class="tm-tabs-bar-tab-mainTitle-image"
+                      class="tu-tabs-bar-tab-mainTitle-image"
                       src="{{index === activeTab && item.imageActive ? item.imageActive : item.image}}" />
                     <text 
                       style="color: {{index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}"
                       class="
-                        tm-tabs-bar-tab-mainTitle-text 
-                        tm-tabs-bar-tab-mainTitle-text{{ item.image || item.icon ? '-small' : ''}}
-                        tm-tabs-bar-tab-mainTitle-text{{ index === activeTab ? '-active' : ''}}">
+                        tu-tabs-bar-tab-mainTitle-text 
+                        tu-tabs-bar-tab-mainTitle-text{{ item.image || item.icon ? '-small' : ''}}
+                        tu-tabs-bar-tab-mainTitle-text{{ index === activeTab ? '-active' : ''}}">
                       {{item.title}}
                     </text>
                   </view>
                   <badge 
                     tiki:if="{{item.showBadge}}"
-                    className="tm-tabs-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
+                    className="tu-tabs-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
                     dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
                     withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
                     direction="{{item.badge.arrow ? 'left' : ''}}"
                     stroke="{{item.badge.stroke ? item.badge.stroke : false}}"></badge>
                 </view>
                 <text 
-                  class="tm-tabs-bar-tab-subTitle tm-tabs-bar-tab-subTitle{{index === activeTab ? '-active' : ''}}" 
+                  class="tu-tabs-bar-tab-subTitle tu-tabs-bar-tab-subTitle{{index === activeTab ? '-active' : ''}}" 
                   tiki:if="{{hasSubTitle && item.subTitle}}" 
                   style="color: {{index === activeTab ? tabBarActiveTextColor: tabBarInactiveTextColor }}">
                   {{item.subTitle}}
@@ -80,14 +80,14 @@
           autoplay="{{autoplay}}" 
           duration="{{duration}}" 
           onChange="handleSwiperChange"
-          class="tm-tabs-content-wrap {{tabContentHeight ? 'tm-tabs-content-wrap_H100': ''}}">
+          class="tu-tabs-content-wrap {{tabContentHeight ? 'tu-tabs-content-wrap_H100': ''}}">
           <slot></slot>
         </carousel>
       </view>
     </block>
     <block tiki:else>
-      <view class="tm-tabs-content-wrap">
-        <view class="tm-tabs-slides" style="
+      <view class="tu-tabs-content-wrap">
+        <view class="tu-tabs-slides" style="
           transform: translate3d({{-activeTab * 100}}%, 0, 0);
           transition-duration: {{duration}}ms;
         ">

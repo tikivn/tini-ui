@@ -66,7 +66,7 @@
 >
   <view slot="header">Icon</view>
   Modal icon
-  <tm-icon type="success" color="red" />
+  <tu-icon type="success" color="red" />
   <view slot="footer">Footer</view>
 </modal>
 <modal

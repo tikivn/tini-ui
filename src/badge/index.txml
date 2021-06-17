@@ -1,17 +1,17 @@
-<view class="tm-badge {{className}} {{!$slots.inner ? 'tm-badge-not-a-wrapper' : ''}}">
+<view class="tu-badge {{className}} {{!$slots.inner ? 'tu-badge-not-a-wrapper' : ''}}">
   <view
-    class="tm-badge-text
-    {{text.toString().length > 1 ? 'tm-badge-double' : ''}}
-    {{withArrow && direction === 'right' ? 'tm-badge-text-arrow-right tm-badge-text-right' : ''}}
-    {{withArrow && direction === 'left' ? 'tm-badge-text-arrow-left tm-badge-text-left' : ''}}
-    {{withArrow && direction === 'middle' ? 'tm-badge-text-middle' : ''}}
-    {{!withArrow || direction === '' ? 'tm-badge-text-left' : ''}}
-    {{stroke?'tm-badge-stroke':''}}"
+    class="tu-badge-text
+    {{text.toString().length > 1 ? 'tu-badge-double' : ''}}
+    {{withArrow && direction === 'right' ? 'tu-badge-text-arrow-right tu-badge-text-right' : ''}}
+    {{withArrow && direction === 'left' ? 'tu-badge-text-arrow-left tu-badge-text-left' : ''}}
+    {{withArrow && direction === 'middle' ? 'tu-badge-text-middle' : ''}}
+    {{!withArrow || direction === '' ? 'tu-badge-text-left' : ''}}
+    {{stroke?'tu-badge-stroke':''}}"
     tiki:if="{{!dot}}">
-    <text class="tm-badge-text-inner tm-badge-text-inner-absolute">{{typeof text === 'number' && text > overflowCount ? '···' : text }}</text>
-    <text class="tm-badge-text-inner tm-badge-text-inner-opacity">{{typeof text === 'number' && text > overflowCount ? '···' : text }}</text>
-    <view tiki:if="{{withArrow && direction ==='middle'}}" class="tm-badge-arrow {{stroke?'tm-badge-stroke':''}}"/>
+    <text class="tu-badge-text-inner tu-badge-text-inner-absolute">{{typeof text === 'number' && text > overflowCount ? '···' : text }}</text>
+    <text class="tu-badge-text-inner tu-badge-text-inner-opacity">{{typeof text === 'number' && text > overflowCount ? '···' : text }}</text>
+    <view tiki:if="{{withArrow && direction ==='middle'}}" class="tu-badge-arrow {{stroke?'tu-badge-stroke':''}}"/>
   </view>
-  <view class="tm-badge-text is-dot tm-badge-text-left {{stroke?'tm-badge-stroke':''}}" tiki:if="{{dot}}"></view>
+  <view class="tu-badge-text is-dot tu-badge-text-left {{stroke?'tu-badge-stroke':''}}" tiki:if="{{dot}}"></view>
   <slot name="inner" />
 </view>

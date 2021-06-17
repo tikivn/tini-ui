@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "auto-sizer": "../auto-size-img/index",
-    "tm-icon": "../../tm-icon/index"
+    "tu-icon": "../../tu-icon/index"
   }
 }
