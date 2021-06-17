@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/list/index",
     "pages/index/index",
+    "pages/list/index",
     "pages/button/index",
     "pages/pagination/index",
     "pages/stepper/index",

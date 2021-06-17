@@ -1,21 +1,21 @@
-.tm-stepper-content,
-.tm-stepper-operation,
-.tm-stepper-input {
+.tu-stepper-content,
+.tu-stepper-operation,
+.tu-stepper-input {
   display: flex;
 }
 
-.tm-stepper-input {
+.tu-stepper-input {
   margin: 0 var(--space-inline-4x-small);
   padding: var(--space-inset-2x-small);
 }
 
-.tm-stepper-input-vertical {
+.tu-stepper-input-vertical {
   margin: var(--space-inline-4x-small) 0;
   padding: var(--space-inset-2x-small);
 }
 
 /* hack into input style to make its content center */
-.tm-stepper-input .t-input-content {
+.tu-stepper-input .t-input-content {
   display: flex;
   align-items: center;
   text-align: center;
@@ -24,24 +24,24 @@
 }
 
 /* hack into input style to hide input */
-.tm-stepper-input-hide .t-input-content {
+.tu-stepper-input-hide .t-input-content {
   visibility: hidden;
 }
 
-.tm-stepper-operation {
+.tu-stepper-operation {
   justify-content: center;
   align-items: center;
-  width: var(--tm-stepper-option-size, 40px);
-  height: var(--tm-stepper-option-size, 40px);
+  width: var(--tu-stepper-option-size, 40px);
+  height: var(--tu-stepper-option-size, 40px);
   border: 1px solid var(--brand);
   border-radius: var(--border-radius-rounded-4px);
 }
 
-.tm-stepper-operation-disable {
+.tu-stepper-operation-disable {
   border: 1px solid var(--gray20);
 }
 
 /* hack into icon style to make icon center */
-.tm-stepper-operation icon {
+.tu-stepper-operation icon {
   display: flex;
 }

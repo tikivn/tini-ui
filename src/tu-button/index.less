@@ -8,27 +8,27 @@
   padding-top: 0;
   padding-bottom: 0;
   &.large {
-    .t-tini-button--icon {
+    .tu-button--icon {
       width: var(--font-height-medium);
       height: var(--font-height-medium);
     }
   }
   &.medium {
-    .t-tini-button--icon {
+    .tu-button--icon {
       width: var(--font-height-base);
       height: var(--font-height-base);
     }
   }
   &.small {
-    .t-tini-button--icon {
+    .tu-button--icon {
       width: var(--font-height-base);
       height: var(--font-height-base);
     }
   }
-  & .t-tini-button--icon {
+  & .tu-button--icon {
     display: inline-flex;
     align-items: center;
-    margin-right: 4px;
+    // margin-right: 4px;
     * {
       fill: @color;
     }
@@ -46,7 +46,7 @@
   &.skeleton:disabled {
     background-color: var(--background-button-solid-disable);
     color: #0000;
-    & .t-tini-button--icon * {
+    & .tu-button--icon * {
       fill: #0000;
     }
     & .t-loading-indicator {
@@ -58,7 +58,7 @@
     background-color: @background-color-disable;
     border-color: @border-color-disable;
     color: @color-disable;
-    & .t-tini-button--icon * {
+    & .tu-button--icon * {
       fill: @color-disable;
     }
     & .t-loading-indicator {
@@ -71,7 +71,7 @@
     background-color: @background-color-active;
     border-color: @border-color-active;
 
-    & .t-tini-button--icon * {
+    & .tu-button--icon * {
       fill: @color-active;
     }
     & .t-loading-indicator {
@@ -105,13 +105,13 @@
     &.large {
       width: var(--height-large);
     }
-    & .t-tini-button--icon {
+    & .tu-button--icon {
       margin: 0;
     }
   }
 }
 
-.t-tini-button {
+.tu-button {
   --height-small: var(--font-height-medium);
   --height-medium: var(--font-height-large);
   --height-large: var(--font-height-x-large);

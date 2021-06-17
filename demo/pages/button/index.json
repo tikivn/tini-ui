@@ -5,6 +5,6 @@
   "transparentTitle": "none",
   "usingComponents": {
     "list-item": "../../es/list/list-item/index",
-    "tm-button": "../../es/button/index"
+    "tu-button": "../../es/tu-button/index"
   }
 }

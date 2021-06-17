@@ -109,7 +109,7 @@ Component({
       this.scrollWrapHeight = 0;
 
       // Select left sidebar
-      selectAsync(`.tm-sidebar-slides-${this.$id}`).then((slides) => {
+      selectAsync(`.tu-sidebar-slides-${this.$id}`).then((slides) => {
         this.wrapHeight = (<my.IBoundingClientRect>slides).height;
         const items = this.props.items || [];
 
@@ -117,9 +117,9 @@ Component({
         const allSlideSelector = items
           .reduce((arr, tab) => {
             if ((tab.children || []).length === 0) {
-              arr.push(`#tm-sidebar-slide-${tab.anchor}`);
+              arr.push(`#tu-sidebar-slide-${tab.anchor}`);
             } else {
-              const children = tab.children.map((child) => `#tm-sidebar-slide-${child.anchor}`);
+              const children = tab.children.map((child) => `#tu-sidebar-slide-${child.anchor}`);
               arr.push(...children);
             }
             return arr;

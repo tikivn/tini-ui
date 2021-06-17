@@ -1,6 +1,6 @@
-<view class="tm-avatar" style="{{style}}">
+<view class="tu-avatar" style="{{style}}">
     <image
-        class="tm-avatar-img tm-avatar-img-{{size}}"
+        class="tu-avatar-img tu-avatar-img-{{size}}"
         style="{{
         shape!=='circle' ? 'border-radius:4px':
         size==='xs'?'border-radius:20px':
@@ -12,11 +12,11 @@
         "
         src="{{src}}" lazy-load="{{lazyLoad}}"
         onError="_onError"/>
-  <view class="tm-avatar-content" tiki:if="{{name || desc}}">
-    <view class="tm-avatar-name tm-avatar-name-{{size}}" tiki:if="{{name}}">
+  <view class="tu-avatar-content" tiki:if="{{name || desc}}">
+    <view class="tu-avatar-name tu-avatar-name-{{size}}" tiki:if="{{name}}">
       {{name}}
     </view>
-    <view class="tm-avatar-desc tm-avatar-desc-{{size}}" tiki:if="{{desc}}">
+    <view class="tu-avatar-desc tu-avatar-desc-{{size}}" tiki:if="{{desc}}">
       {{desc}}
     </view>
   </view>

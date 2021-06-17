@@ -6,9 +6,9 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="large">Solid</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="large">Outline</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="large">Ghost</tm-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Solid</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Outline</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Ghost</tu-button>
       </view>
     </view>
   </view>
@@ -21,16 +21,16 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="large">Text</tm-button>
-        <tm-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Text</tu-button>
+        <tu-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="large">Text</tm-button>
-        <tm-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Text</tu-button>
+        <tu-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="large">Text</tm-button>
-        <tm-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Text</tu-button>
+        <tu-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
       </view>
     </view>
   </view>
@@ -43,13 +43,13 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="large">Rounded</tm-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Rounded</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="pill" type="solid" size="large">Pill</tm-button>
+        <tu-button class="flex-grow" shape="pill" type="solid" size="large">Pill</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button style="width: 40px;" shape="pill" type="solid" size="large" iconName="arrow_right" />
+        <tu-button style="width: 40px;" shape="pill" type="solid" size="large" iconName="arrow_right" />
       </view>
     </view>
   </view>
@@ -62,51 +62,51 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="small">Small</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="medium">Medium</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="large">Large</tm-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="small">Small</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="medium">Medium</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Large</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="small">Small</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="medium">Medium</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="large">Large</tm-button>
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="small">Small</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="medium">Medium</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Large</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="small">Small</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="medium">Medium</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="large">Large</tm-button>
-      </view>
-      <view class="page-variant-content-line">
-        <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="solid" size="small" iconName="arrow_right" />
-        </view>
-        <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="solid" size="medium" iconName="arrow_right" />
-        </view>
-        <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
-        </view>
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="small">Small</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="medium">Medium</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Large</tu-button>
       </view>
       <view class="page-variant-content-line">
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="outline" size="small" iconName="arrow_right" />
+          <tu-button shape="rounded" type="solid" size="small" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="outline" size="medium" iconName="arrow_right" />
+          <tu-button shape="rounded" type="solid" size="medium" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
+          <tu-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
         </view>
       </view>
       <view class="page-variant-content-line">
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="ghost" size="small" iconName="arrow_right" />
+          <tu-button shape="rounded" type="outline" size="small" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="ghost" size="medium" iconName="arrow_right" />
+          <tu-button shape="rounded" type="outline" size="medium" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tm-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
+          <tu-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
+        </view>
+      </view>
+      <view class="page-variant-content-line">
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="rounded" type="ghost" size="small" iconName="arrow_right" />
+        </view>
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="rounded" type="ghost" size="medium" iconName="arrow_right" />
+        </view>
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
         </view>
       </view>
     </view>
@@ -120,24 +120,24 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" shape="rounded" type="solid" size="large">Default</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="outline" size="large">Default</tm-button>
-        <tm-button class="flex-grow" shape="rounded" type="ghost" size="large">Default</tm-button>
+        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Default</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Default</tu-button>
+        <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Default</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" disabled shape="rounded" type="solid" size="large">Default</tm-button>
-        <tm-button class="flex-grow" disabled shape="rounded" type="outline" size="large">Default</tm-button>
-        <tm-button class="flex-grow" disabled shape="rounded" type="ghost" size="large">Default</tm-button>
+        <tu-button class="flex-grow" disabled shape="rounded" type="solid" size="large">Default</tu-button>
+        <tu-button class="flex-grow" disabled shape="rounded" type="outline" size="large">Default</tu-button>
+        <tu-button class="flex-grow" disabled shape="rounded" type="ghost" size="large">Default</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" loading shape="rounded" type="solid" size="large">Load</tm-button>
-        <tm-button class="flex-grow" loading shape="rounded" type="outline" size="large">Load</tm-button>
-        <tm-button class="flex-grow" loading shape="rounded" type="ghost" size="large">Load</tm-button>
+        <tu-button class="flex-grow" loading shape="rounded" type="solid" size="large">Load</tu-button>
+        <tu-button class="flex-grow" loading shape="rounded" type="outline" size="large">Load</tu-button>
+        <tu-button class="flex-grow" loading shape="rounded" type="ghost" size="large">Load</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tm-button class="flex-grow" skeleton shape="rounded" type="solid" size="large">Load</tm-button>
-        <tm-button class="flex-grow" skeleton shape="rounded" type="outline" size="large">Load</tm-button>
-        <tm-button class="flex-grow" skeleton shape="rounded" type="ghost" size="large">Load</tm-button>
+        <tu-button class="flex-grow" skeleton shape="rounded" type="solid" size="large">Load</tu-button>
+        <tu-button class="flex-grow" skeleton shape="rounded" type="outline" size="large">Load</tu-button>
+        <tu-button class="flex-grow" skeleton shape="rounded" type="ghost" size="large">Load</tu-button>
       </view>
     </view>
   </view>

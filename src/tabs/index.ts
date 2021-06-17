@@ -127,7 +127,7 @@ Component({
         if (+activeTab > 0) {
           Promise.all([
             selectAsync(`#tabs-item-${tabsName}-${activeTab}`),
-            selectAsync(`#tm-tabs-bar-${tabsName}-content`),
+            selectAsync(`#tu-tabs-bar-${tabsName}-content`),
           ]).then((rs) => {
             const [activeTabEle, tabContentEle] = rs;
             data.elWidth = (<my.IBoundingClientRect>activeTabEle).width;
@@ -152,7 +152,7 @@ Component({
     const { activeTab: currentActiveTab, tabsName, swipeable, tabBarCls } = this.props;
 
     if (currentActiveTab !== prevProps.activeTab) {
-      const className = `tm-tabs-bar-tab ${tabBarCls}`;
+      const className = `tu-tabs-bar-tab ${tabBarCls}`;
       // To prevent trigger multiple times setData, store value in data and update 1 time
       const data: Pick<
         Data,
@@ -174,7 +174,7 @@ Component({
         data.elWidth = (<my.IBoundingClientRect>currentTab).width;
         data.elLeft = (<my.IBoundingClientRect>currentTab).left;
 
-        selectAsync(`#tm-tabs-bar-${tabsName}-content`).then((tabContent) => {
+        selectAsync(`#tu-tabs-bar-${tabsName}-content`).then((tabContent) => {
           data.boxWidth = (<my.IBoundingClientRect>tabContent).width;
 
           // mock el.offsetLeft
