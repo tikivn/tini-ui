@@ -15,102 +15,62 @@ Component({
     readOnly: false,
     showNumber: true,
     vertical: false,
+    controlled: true,
     onChange: (value: number, mode: string): void => {},
   },
   didMount() {
-    const { value, min, max } = this.props;
-    this.setData({
-      value: Math.min(Math.max(min, value), max),
-    });
+    this.resetFn(this.props.value, 'didMount');
   },
   didUpdate(preProps) {
-    const { value, min, max } = this.props;
+    const { value } = this.props;
     if (preProps.value !== value) {
-      const newValue = Math.min(Math.max(min, value), max);
-      this.setData({
-        value: newValue,
-      });
-      this.resetFn(newValue);
+      this.resetFn(value, 'didUpdate');
     }
   },
   methods: {
-    changeFn(ev) {
-      const { min, max, onChange, disabled, step } = this.props;
-      const evType = ev.target.dataset.type;
-      let { disableReduce, disableAdd, value } = this.data;
-      if (!disabled) {
-        if (evType === 'reduce') {
-          if (value > min) {
-            disableAdd = false;
-            value = Math.max(min, this.getCalculateValue('reduce', +value, +step));
-            disableReduce = value.toString() === min.toString();
-          }
-        } else {
-          /* eslint-disable no-lonely-if */
-          if (value < max) {
-            disableReduce = false;
-            value = Math.min(this.getCalculateValue('add', +value, +step), max);
-            disableAdd = value.toString() === max.toString();
-          }
-        }
-        console.log('data is', this.props, value, disableAdd, disableReduce);
-        this.setData({
-          value,
-          disableAdd,
-          disableReduce,
-        });
-        onChange(value, 'click');
+    changeFn(e) {
+      const { disabled, step } = this.props;
+      const { disableReduce, disableAdd, value } = this.data;
+      const type = e.target.dataset.type;
+      if (disabled || (type === 'add' && disableAdd) || (type === 'reduce' && disableReduce)) {
+        return;
       }
+      const newValue = this.getCalculateValue(type, +value, +step);
+      this.resetFn(newValue, 'click');
     },
     onInput(e) {
-      const { max } = this.props;
-      const { value } = e.detail;
-      if (value >= max) {
-        e.detail.value = max;
-        this.setData({
-          value: max,
-        });
-      }
-      this.resetFn(Number(value), 'input');
+      const value = parseFloat(e.detail.value) || this.props.min;
+      this.resetFn(value, 'input');
     },
-    onBlur(event) {
-      const { value } = event.detail;
-      const { max } = this.props;
-      if (value >= max) {
-        event.detail.value = max;
-        this.setData({
-          value: max,
-        });
-      }
-      this.resetFn(Number(value), 'input');
+    onBlur(e) {
+      const value = parseFloat(e.detail.value) || this.props.min;
+      this.resetFn(value, 'blur');
     },
-    resetFn(value, mode) {
+    resetFn(value: number, mode: string) {
+      console.log('reset value', value, mode);
       const { max, min, onChange } = this.props;
-      let calculatedVal = value;
-      let disableAdd = false;
-      let disableReduce = false;
-      if (value >= max) {
-        calculatedVal = max;
-        disableAdd = true;
-      } else if (value <= min) {
-        calculatedVal = min;
-        disableReduce = true;
-      }
+      const newValue = Math.min(max, Math.max(min, value));
+      const disableAdd = newValue >= max;
+      const disableReduce = newValue <= min;
       this.setData({
-        value: calculatedVal,
+        value: newValue,
         disableAdd,
         disableReduce,
       });
-      onChange(calculatedVal, mode);
+      if (onChange) {
+        onChange(newValue, mode);
+      }
     },
-    getCalculateValue(type, arg1, arg2) {
+    getCalculateValue(type: string, arg1: number, arg2: number): number {
       const numFloat = arg1.toString().split('.')[1] || '';
       const num2Float = arg2.toString().split('.')[1] || '';
       const length = Math.max(numFloat.length, num2Float.length);
       const times = 10 ** length;
-      return type === 'reduce'
-        ? ((+arg1 * times - +arg2 * times) / times).toFixed(length)
-        : ((+arg1 * times + +arg2 * times) / times).toFixed(length);
+      const result =
+        type === 'reduce'
+          ? ((+arg1 * times - +arg2 * times) / times).toFixed(length)
+          : ((+arg1 * times + +arg2 * times) / times).toFixed(length);
+      return parseFloat(result);
     },
   },
 });
