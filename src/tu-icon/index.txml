@@ -1,1 +1,1 @@
-<icon type="{{type}}" color="{{color}}" size="{{size}}" />
+<icon class="tu-icon {{className}}" type="{{type}}" color="{{color}}" size="{{size}}" />

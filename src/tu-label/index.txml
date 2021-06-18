@@ -1,0 +1,14 @@
+<label className="{{className}}" class="tu-label">
+  <block tiki:if="{{loading}}">
+    <view class="tu-label-loading" />
+  </block>
+  <view tiki:else class="tu-label-inline 
+    {{disabled ? 'tu-label-inline-disabled' : ''}}
+    {{helperText ? 'tu-label-inline-has-helper' : ''}}">
+    <badge class="tu-label-dot" tiki:if="{{showBadge}}" dot />
+    <view>{{text}}</view>
+    <tu-icon className="tu-label-icon" tiki:if="{{icon}}" type="{{icon}}" color="{{iconColor}}" />
+  </view>
+  <view class="tu-label-helper" tiki:if="{{helperText}}">{{helperText}}</view>
+  <slot />
+</label>
