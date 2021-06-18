@@ -1,0 +1,62 @@
+/* hack to set border radius of popup */
+.tu-bottom-sheet .tu-popup-content {
+  border-radius: var(--border-radius-rounded-4px) var(--border-radius-rounded-4px) 0 0;
+  overflow: hidden;
+}
+
+.tu-bottom-sheet-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.tu-bottom-sheet-header {
+  border-bottom: 1px solid var(--background-divider, var(--gray20));
+}
+
+.tu-bottom-sheet-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-inset-2x-small) 0;
+  border-bottom: 1px solid var(--color-border-thin);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+  line-height: var(--font-height-medium);
+  color: var(--text-navigation);
+}
+
+.tu-bottom-sheet-header-close-button {
+  position: absolute;
+  top: var(--space-inset-2x-small);
+  right: var(--space-inline-medium);
+  width: 20px;
+  height: 20px;
+}
+
+.tu-bottom-sheet-footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-inset-2x-small) var(--space-inset-medium);
+  /* hack to avoid bug with iOS with fallback value */
+  padding-bottom: calc(var(--space-inset-2x-small) + var(--safe-area-inset-bottom, 0));
+  border-top: 1px solid var(--background-divider, var(--gray20));
+  background-color: var(--white);
+}
+
+.tu-buttom-sheet-footer-button {
+  display: flex;
+  flex-grow: 1;
+}
+
+.tu-bottom-sheet-addition {
+  display: flex;
+  flex-grow: 1;
+  padding: var(--space-inset-2x-small) var(--space-inset-medium);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--font-height-base);
+  color: var(--text-content-secondary);
+}
