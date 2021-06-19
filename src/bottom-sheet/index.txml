@@ -18,7 +18,7 @@
   </block>
   <block tiki:else>
     <view class="tu-bottom-sheet-footer">
-      <tu-button class="tu-buttom-sheet-footer-button" shape="pill">{{buttonTitle}}</tu-button>
+      <tu-button class="tu-buttom-sheet-footer-button" shape="pill" onTap="onClick">{{buttonTitle}}</tu-button>
     </view>
   </block>
 </template>
