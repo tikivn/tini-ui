@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/bottom-sheet/index",
+
     "pages/index/index",
     "pages/list/index",
     "pages/button/index",
@@ -12,9 +14,12 @@
     "pages/avatar/index",
     "pages/badge/index",
     "pages/modal/index",
-    "pages/list/index"
+    "pages/list/index",
+    "pages/bottom-sheet/index"
   ],
   "window": {
-    "defaultTitle": "Tiki Tini UI"
+    "defaultTitle": "Tiki Tini UI",
+    "pullRefresh": "NO",
+    "allowsBounceVertical": "NO"
   }
 }

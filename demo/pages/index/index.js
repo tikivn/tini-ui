@@ -37,6 +37,10 @@ Page({
         name: 'sidebar',
         path: 'pages/sidebar/index',
       },
+      {
+        name: 'bottom sheet',
+        path: 'pages/bottom-sheet/index',
+      },
     ],
   },
   onNavigate(e) {
