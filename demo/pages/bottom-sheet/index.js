@@ -2,20 +2,16 @@ Page({
   data: {
     show: false,
   },
-  onShowBottomSheet(template) {
+  onShowBottomSheet(e) {
+    const { template } = e.target.dataset;
+    console.log({
+      e,
+      template,
+    });
     this.setData({
       show: true,
       template,
     });
-  },
-  onShowBottomSheetList() {
-    this.onShowBottomSheet('list');
-  },
-  onShowBottomSheetText() {
-    this.onShowBottomSheet('text');
-  },
-  onShowBottomSheetPicker() {
-    this.onShowBottomSheet('picker');
   },
   onClose() {
     this.setData({

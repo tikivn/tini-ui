@@ -1,5 +1,19 @@
+type BottomSheetProps = {
+  className?: string;
+  style?: string;
+  mark: boolean;
+  animation: boolean;
+  show: boolean;
+  disableScroll: boolean;
+  distanceFromTop: number;
+  zIndex: number;
+  title: string;
+  buttonTitle: string;
+  onClose?: (event: any) => void;
+  onClick?: (event: any) => void;
+};
+
 Component({
-  data: {},
   props: {
     mark: true,
     animation: true,
@@ -11,21 +25,43 @@ Component({
     buttonTitle: 'ok',
     onClose: undefined,
     onClick: undefined,
+  } as BottomSheetProps,
+  didMount(): void {
+    this._updateDataSet();
+  },
+  didUpdate(): void {
+    this._updateDataSet();
   },
   methods: {
-    onClose() {
+    _updateDataSet(): void {
+      this.dataset = {};
+      for (const key in this.props) {
+        if (/data-/gi.test(key)) {
+          this.dataset[key.replace(/data-/gi, '')] = this.props[key];
+        }
+      }
+    },
+    onClose(): void {
       this.setData({
         show: false,
       });
       const { onClose } = this.props;
       if (onClose) {
-        onClose();
+        onClose({
+          target: {
+            dataset: this.dataset,
+          },
+        });
       }
     },
-    onClick() {
+    onClick(): void {
       const { onClick } = this.props;
       if (onClick) {
-        onClick();
+        onClick({
+          target: {
+            dataset: this.dataset,
+          },
+        });
       }
     },
   },

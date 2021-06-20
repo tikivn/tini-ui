@@ -1,5 +1,5 @@
 <view class="tu-list-item {{padding ? 'tu-list-item-padding' : ''}}" onTap="onItemTap" data-index="{{index}}">
-  <view class="tu-list-item-wrapper {{className ? className : ''}}">
+  <view class="tu-list-item-wrapper {{className ? className : ''}}" style="{{style ? style : ''}}">
     <view tiki:if="{{$slots.prefix}}" class="tu-list-item-prefix">
       <slot name="prefix" />
     </view>

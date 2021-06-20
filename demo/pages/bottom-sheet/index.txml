@@ -47,11 +47,12 @@
 </template>
 
 <view class="page-bottom-sheet">
-  <tu-button onTap="onShowBottomSheetList">Bottom sheet with list</tu-button>
-  <tu-button onTap="onShowBottomSheetText">Bottom sheet with text</tu-button>
-  <tu-button onTap="onShowBottomSheetPicker">Bottom sheet with picker</tu-button>
+  <tu-button data-template="list" onTap="onShowBottomSheet">Bottom sheet with list</tu-button>
+  <tu-button data-template="text" onTap="onShowBottomSheet">Bottom sheet with text</tu-button>
+  <tu-button data-template="picker" onTap="onShowBottomSheet">Bottom sheet with picker</tu-button>
   <block tiki:if="{{show}}">
-    <buttom-sheet title="List" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose" onClick="onClick">
+    <buttom-sheet title="Bottom sheet with {{template}}" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose"
+      onClick="onClick">
       <template is="bottom-sheet-{{template}}" />
     </buttom-sheet>
   </block>

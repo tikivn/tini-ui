@@ -27,7 +27,7 @@
   disableScroll="{{disableScroll}}" zIndex="{{zIndex}}" onClose="onClose">
   <view class="tu-bottom-sheet-wrapper {{className}}" style="max-height: calc(
     var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{distanceFromTop}}px;
-  );">
+  );{{style ? style: ''}}">
     <template is="header" data="{{ $slots, title }}" />
     <view tiki:if="{{addition}}" class="tu-bottom-sheet-addition">{{addition}}</view>
     <scroll-view scroll-y style="height: 100%">
