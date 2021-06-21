@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/textfield/index",
     "pages/label/index",
     "pages/index/index",
     "pages/list/index",

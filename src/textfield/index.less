@@ -1,0 +1,43 @@
+.tu-textfield{
+
+  .tu-textfield-input {
+    &.pill {
+      border-radius: var(--border-radius-pill);
+    }
+  }
+
+  &.error {
+    .tu-textfield-input {
+      border-color: var(--error);
+    }
+  }
+
+  .tu-textfield-error-message {
+    color: var(--error);
+    font-size: var(--font-size-small);
+    margin-top: var(--space-stack-4x-small);
+  }
+
+  .tu-textfield-error-icon {
+    position: absolute;
+    // NOTE: Info icon has small size than the others
+    top: calc(var(--space-inset-2x-small) + 2px);
+    padding: 0 2px;
+  }
+
+  .tu-textfield-icon {
+    position: absolute;
+    right: 8px;
+    top: var(--space-inset-2x-small);
+  }
+
+  .tu-textfield-inline {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & .tu-textfield-input {
+      flex: 1;
+    }
+  }
+}

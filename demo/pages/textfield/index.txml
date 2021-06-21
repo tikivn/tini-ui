@@ -1,0 +1,34 @@
+<view>
+  <view class="block-content">
+
+    <textfield placeholder="Default" />
+
+    <textfield placeholder="Label" labelText="Label" />
+    
+    <textfield placeholder="Pill" shape="pill" />
+
+    <textfield placeholder="Icon Right" iconRight="calendar" />
+
+    <textfield placeholder="Error" hasError errorMsg="This is error message" />
+
+    <textfield placeholder="Icon" iconRight="calendar" hasError errorMsg="This is error message" />
+
+    <textfield shape="pill" placeholder="Icon" iconRight="calendar" hasError errorMsg="This is error message" />
+
+    <!-- <tu-label text="Default" /> -->
+
+    <!-- <tu-label text="Badge" showBadge /> -->
+
+    <!-- <tu-label text="icon" icon="question" /> -->
+
+    <!-- <tu-label text="Helper text" helperText="with helper text" /> -->
+
+    <!-- <tu-label text="Input"> -->
+    <!--   <input placeholder="Input inside label" /> -->
+    <!-- </tu-label> -->
+
+    <!-- <tu-label text="Disabled" disabled/> -->
+
+    <!-- <tu-label text="Loading" loading/> -->
+  </view>
+</view>
