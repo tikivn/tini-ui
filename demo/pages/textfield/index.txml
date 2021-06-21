@@ -15,6 +15,10 @@
 
     <textfield shape="pill" placeholder="Icon" iconRight="calendar" hasError errorMsg="This is error message" />
 
+    <textfield placeholder="Square" shape="square" />
+
+    <textfield placeholder="Circle" shape="circle" />
+
     <!-- <tu-label text="Default" /> -->
 
     <!-- <tu-label text="Badge" showBadge /> -->

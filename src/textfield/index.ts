@@ -1,4 +1,5 @@
 import fmtEvent from '../_util/fmtEvent';
+import fmtClass from '../_util/fmtClass';
 
 type LabelInputProps = {
   labelCls?: string;
@@ -12,7 +13,7 @@ type InputProps = {
   iconRight?: string;
   iconLeft?: string;
   iconColor?: string;
-  shape?: 'pill' | 'rounded' | 'circle';
+  shape?: 'pill' | 'rounded' | 'square' | 'circle';
   loading?: boolean;
   inputCls?: string;
   className?: string;
@@ -40,6 +41,7 @@ type InputProps = {
 Component({
   data: {
     paddingHorizontal: 16,
+    wrapClass: '',
   },
   props: {
     // Label props
@@ -78,11 +80,32 @@ Component({
     onFocus: () => {},
     onBlur: () => {},
   } as InputProps & LabelInputProps,
+  onInit() {
+    this.setData({
+      wrapClass: this.getWrapClass(this.props),
+    });
+  },
+  deriveDataFromProps(nextProps) {
+    if (this.isClassChange(this.props, nextProps)) {
+      this.setData({ wrapClass: this.getWrapClass(nextProps) });
+    }
+  },
   methods: {
-    onBlur(e) {
-      this.setData({
-        _focus: false,
+    getWrapClass(props) {
+      const { shape, hasError } = props;
+      const ret = fmtClass({
+        ['error']: hasError,
+        ['rounded']: shape === 'rounded',
+        ['square']: shape === 'square',
+        ['pill']: shape === 'pill',
+        ['circle']: shape === 'circle',
       });
+      return ret;
+    },
+    isClassChange(prevProps, nextProps) {
+      return prevProps.shape !== nextProps.shape || prevProps.hasError !== nextProps.hasError;
+    },
+    onBlur(e) {
       const event = fmtEvent(this.props, e);
       this.props.onBlur(event);
     },
@@ -91,9 +114,6 @@ Component({
       this.props.onConfirm(event);
     },
     onFocus(e) {
-      this.setData({
-        _focus: true,
-      });
       const event = fmtEvent(this.props, e);
       this.props.onFocus(event);
     },

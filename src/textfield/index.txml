@@ -1,6 +1,4 @@
-<view class="tu-textfield 
-  {{className}} 
-  {{hasError ? 'error' : ''}}">
+<view class="tu-textfield {{wrapClass}} {{className}}">
   <tu-label 
     text="{{labelText}}"
     className="{{labelCls}}" 
@@ -9,12 +7,30 @@
     labelIconColor="{{labelIconColor}}"
     helperText="{{labelHelperText}}"
   >
-    <view class="tu-textfield-inline">
+    <view class="tu-textfield-inline" tiki:if="{{shape === 'circle' || shape === 'square'}}">
       <input
-        class="tu-textfield-input
-        {{inputCls}} 
-        {{shape === 'pill' ? 'pill' : ''}}
-        {{shape === 'circle' ? 'circle' : ''}}" 
+        class="tu-textfield-input {{inputCls}}"
+        value="{{value}}" 
+        name="{{name}}" 
+        type="{{type}}" 
+        password="{{password}}" 
+        placeholder="{{placeholder}}" 
+        placeholderClass="{{placeholderClass}}" 
+        placeholderStyle="{{placeholderStyle}}" 
+        disabled="{{disabled}}" 
+        maxlength="{{maxlength}}" 
+        focus="{{focus}}" 
+        onInput="onInput" 
+        onConfirm="onConfirm" 
+        onFocus="onFocus" 
+        onBlur="onBlur"
+        controlled="{{controlled}}" />
+    </view>
+
+    <view class="tu-textfield-inline" tiki:else>
+      {{rightIcon}}
+      <input
+        class="tu-textfield-input {{inputCls}}"
         style="padding-right: {{paddingHorizontal + (hasError ? 20 : 0) + (iconRight ? 20 : 0) + (hasError && iconRight ? 8 : 0)}}px;"
         value="{{value}}" 
         name="{{name}}" 
