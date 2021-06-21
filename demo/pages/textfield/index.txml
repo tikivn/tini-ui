@@ -1,5 +1,15 @@
 <view>
   <view class="block-content">
+    <textfield labelText="Default" value="Disabled" disabled />
+    <textfield labelText="Default" value="Disabled" disabled iconLeft="calendar" />
+    <textfield labelText="Default" value="Disabled" disabled iconRight="calendar" />
+    <textfield labelText="Default" value="Disabled" disabled iconLeft="calendar" iconRight="calendar" />
+
+    <textfield loading placeholder="Default" value="Loading" />
+    <textfield loading placeholder="Default" value="Loading" hasError />
+    <textfield loading placeholder="Icon left" value="Loading" iconLeft="success" />
+    <textfield loading placeholder="Icon left" value="Loading" iconLeft="success" iconRight="checked" />
+    <textfield loading placeholder="Icon left" value="Loading" iconRight="checked" />
 
     <textfield placeholder="Default" />
 
@@ -8,6 +18,8 @@
     <textfield placeholder="Pill" shape="pill" />
 
     <textfield placeholder="Icon Right" iconRight="calendar" />
+
+    <textfield placeholder="Icon Right" iconLeft="success" />
 
     <textfield placeholder="Error" hasError errorMsg="This is error message" />
 
@@ -18,6 +30,8 @@
     <textfield placeholder="Square" shape="square" />
 
     <textfield placeholder="Circle" shape="circle" />
+
+    <textfield disabled labelText="Hello"/>
 
     <!-- <tu-label text="Default" /> -->
 

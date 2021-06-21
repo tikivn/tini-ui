@@ -41,6 +41,7 @@ type InputProps = {
 Component({
   data: {
     paddingHorizontal: 16,
+    iconDisabledColor: 'rgba(166, 166, 176, 0.6)',
     wrapClass: '',
   },
   props: {
