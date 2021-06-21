@@ -28,7 +28,6 @@
     </view>
 
     <view class="tu-textfield-inline" tiki:else>
-      {{rightIcon}}
       <input
         class="tu-textfield-input {{inputCls}}"
         style="padding-right: {{paddingHorizontal + (hasError ? 20 : 0) + (iconRight ? 20 : 0) + (hasError && iconRight ? 8 : 0)}}px;"
