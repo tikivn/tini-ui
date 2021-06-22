@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/bottom-sheet/index",
-
     "pages/index/index",
+    "pages/bottom-sheet/index",
+    "pages/textfield/index",
+    "pages/label/index",
     "pages/list/index",
     "pages/button/index",
     "pages/pagination/index",

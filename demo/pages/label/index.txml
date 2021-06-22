@@ -1,0 +1,19 @@
+<view>
+  <view class="block-content">
+    <tu-label text="Default" />
+
+    <tu-label text="Badge" showBadge />
+
+    <tu-label text="icon" icon="question" />
+
+    <tu-label text="Helper text" helperText="with helper text" />
+
+    <tu-label text="Input">
+      <input placeholder="Input inside label" />
+    </tu-label>
+
+    <tu-label text="Disabled" disabled/>
+
+    <tu-label text="Loading" loading/>
+  </view>
+</view>

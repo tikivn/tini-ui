@@ -38,6 +38,14 @@ Page({
         path: 'pages/sidebar/index',
       },
       {
+        name: 'label',
+        path: 'pages/label/index',
+      },
+      {
+        name: 'textfield',
+        path: 'pages/textfield/index',
+      },
+      {
         name: 'bottom sheet',
         path: 'pages/bottom-sheet/index',
       },
