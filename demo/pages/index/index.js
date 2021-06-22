@@ -37,6 +37,14 @@ Page({
         name: 'sidebar',
         path: 'pages/sidebar/index',
       },
+      {
+        name: 'label',
+        path: 'pages/label/index',
+      },
+      {
+        name: 'textfield',
+        path: 'pages/textfield/index',
+      },
     ],
   },
   onNavigate(e) {
