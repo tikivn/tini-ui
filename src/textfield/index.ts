@@ -19,7 +19,7 @@ type InputProps = {
   className?: string;
   errorMsg?: string;
   hasError?: boolean;
-  showErrorIcon?: boolean;
+  // showErrorIcon?: boolean;
 
   type?: string;
   password?: boolean;
@@ -62,7 +62,8 @@ Component({
     inputCls: '',
     className: '',
     errorMsg: '',
-    showErrorIcon: true,
+    // showErrorIcon: true,
+    hasError: false,
     errorIconColor: '#ff424f',
 
     // Input props
@@ -75,6 +76,7 @@ Component({
     placeholderStyle: '',
     disabled: false,
     maxlength: 140,
+    focus: false,
     controlled: false,
     onInput: () => {},
     onConfirm: () => {},
