@@ -13,7 +13,7 @@ type InputProps = {
   iconRight?: string;
   iconLeft?: string;
   iconColor?: string;
-  shape?: 'pill' | 'rounded' | 'square' | 'circle';
+  shape?: 'pill' | 'rounded';
   loading?: boolean;
   inputCls?: string;
   className?: string;
@@ -97,9 +97,7 @@ Component({
       const ret = fmtClass({
         ['error']: hasError,
         ['rounded']: shape === 'rounded',
-        ['square']: shape === 'square',
         ['pill']: shape === 'pill',
-        ['circle']: shape === 'circle',
       });
       return ret;
     },

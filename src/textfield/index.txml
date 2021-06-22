@@ -9,27 +9,7 @@
     loading="{{loading}}"
     disabled="{{disabled}}"
   >
-    <view class="tu-textfield-inline" tiki:if="{{shape === 'circle' || shape === 'square'}}">
-      <input
-        class="tu-textfield-input {{inputCls}}"
-        value="{{value}}" 
-        name="{{name}}" 
-        type="{{type}}" 
-        password="{{password}}" 
-        placeholder="{{placeholder}}" 
-        placeholderClass="tu-textfield-placeholder {{placeholderClass}}" 
-        placeholderStyle="{{placeholderStyle}}" 
-        disabled="{{disabled}}" 
-        maxlength="{{maxlength}}" 
-        focus="{{focus}}" 
-        onInput="onInput" 
-        onConfirm="onConfirm" 
-        onFocus="onFocus" 
-        onBlur="onBlur"
-        controlled="{{controlled}}" />
-    </view>
-
-    <view class="tu-textfield-inline" tiki:else>
+    <view class="tu-textfield-inline">
       <view class="tu-textfield-loading" tiki:if="{{loading && !disabled}}">
         <view class="tu-textfield-loading-inline">
           <view class="tu-textfield-loading-inline-icon left" tiki:if="{{iconLeft}}" />
