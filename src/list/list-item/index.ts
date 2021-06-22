@@ -1,16 +1,33 @@
+type ListItemProps = {
+  className?: string;
+  style?: string;
+  padding: boolean;
+  thumb?: string;
+  thumbSize?: number;
+  upperSubtitle?: string;
+  lowerSubtitle?: string;
+  titlePosition: 'top' | 'middle' | 'bottom';
+  arrow: boolean;
+  iconSize: number;
+  disabled: boolean;
+  onClick?: (event: any) => void;
+};
+
 Component({
   props: {
     titlePosition: 'top',
-    iconSize: '20',
-  },
-  didMount() {
+    arrow: false,
+    iconSize: 20,
+    disabled: false,
+  } as ListItemProps,
+  didMount(): void {
     this._updateDataSet();
   },
-  didUpdate() {
+  didUpdate(): void {
     this._updateDataSet();
   },
   methods: {
-    _updateDataSet() {
+    _updateDataSet(): void {
       this.dataset = {};
       for (const key in this.props) {
         if (/data-/gi.test(key)) {
@@ -18,11 +35,11 @@ Component({
         }
       }
     },
-    onItemTap(ev) {
+    onItemTap(e): void {
       const { onClick, disabled } = this.props;
       if (onClick && !disabled) {
         onClick({
-          index: ev.target.dataset.index,
+          index: e.target.dataset.index,
           target: { dataset: this.dataset },
         });
       }

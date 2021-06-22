@@ -45,6 +45,10 @@ Page({
         name: 'textfield',
         path: 'pages/textfield/index',
       },
+      {
+        name: 'bottom sheet',
+        path: 'pages/bottom-sheet/index',
+      },
     ],
   },
   onNavigate(e) {

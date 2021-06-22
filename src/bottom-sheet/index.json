@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "popup": "../popup/index",
+    "tu-button": "../tu-button/index"
+  }
+}
