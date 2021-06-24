@@ -47,7 +47,6 @@ Component({
       this.resetFn(value, 'blur');
     },
     resetFn(value: number, mode: string) {
-      console.log('reset value', value, mode);
       const { max, min, onChange } = this.props;
       const newValue = Math.min(max, Math.max(min, value));
       const disableAdd = newValue >= max;
