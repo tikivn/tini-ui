@@ -1,26 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "root",
   "private": true,
-=======
-  "name": "@tiki.vn/tini-ui",
-  "version": "0.0.21",
-  "description": "Tiki Design System for TiniApp",
-  "homepage": "https://developers.tiki.vn",
-  "license": "MIT",
-  "files": [
-    "es"
-  ],
-  "keywords": [
-    "tiki",
-    "mini-program",
-    "miniapp",
-    "tiniapp",
-    "tiki-miniapp",
-    "tini",
-    "tini-ui"
-  ],
->>>>>>> main
   "scripts": {
     "prepare": "yarn husky install",
     "dev": "lerna run dev --stream",
