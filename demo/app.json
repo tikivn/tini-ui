@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/button/index",
     "pages/index/index",
     "pages/bottom-sheet/index",
     "pages/textfield/index",
     "pages/label/index",
     "pages/list/index",
-    "pages/button/index",
     "pages/pagination/index",
     "pages/stepper/index",
     "pages/index/index",

@@ -1,4 +1,5 @@
 <template name="variant-style">
+  <button>Helloooooooooooooooooooo</button>
   <view class="page-block">
     <view class="page-block-title">Variants</view>
     <list-item upperSubtitle="Solid, Outlined and Ghost.">
@@ -22,15 +23,15 @@
     <view class="page-variant-content">
       <view class="page-variant-content-line">
         <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Text</tu-button>
-        <tu-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
+        <tu-button shape="square" type="solid" size="large" iconName="arrow_right" />
       </view>
       <view class="page-variant-content-line">
         <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Text</tu-button>
-        <tu-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
+        <tu-button shape="square" type="outline" size="large" iconName="arrow_right" />
       </view>
       <view class="page-variant-content-line">
         <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Text</tu-button>
-        <tu-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
+        <tu-button shape="square" type="ghost" size="large" iconName="arrow_right" />
       </view>
     </view>
   </view>
@@ -49,7 +50,10 @@
         <tu-button class="flex-grow" shape="pill" type="solid" size="large">Pill</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tu-button style="width: 40px;" shape="pill" type="solid" size="large" iconName="arrow_right" />
+        <tu-button shape="square" type="solid" size="large" iconName="arrow_right" />
+      </view>
+      <view class="page-variant-content-line">
+        <tu-button shape="circle" type="solid" size="large" iconName="arrow_right" />
       </view>
     </view>
   </view>
@@ -78,35 +82,35 @@
       </view>
       <view class="page-variant-content-line">
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="solid" size="small" iconName="arrow_right" />
+          <tu-button shape="square" type="solid" size="small" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="solid" size="medium" iconName="arrow_right" />
+          <tu-button shape="square" type="solid" size="medium" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="solid" size="large" iconName="arrow_right" />
-        </view>
-      </view>
-      <view class="page-variant-content-line">
-        <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="outline" size="small" iconName="arrow_right" />
-        </view>
-        <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="outline" size="medium" iconName="arrow_right" />
-        </view>
-        <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="outline" size="large" iconName="arrow_right" />
+          <tu-button shape="square" type="solid" size="large" iconName="arrow_right" />
         </view>
       </view>
       <view class="page-variant-content-line">
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="ghost" size="small" iconName="arrow_right" />
+          <tu-button shape="square" type="outline" size="small" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="ghost" size="medium" iconName="arrow_right" />
+          <tu-button shape="square" type="outline" size="medium" iconName="arrow_right" />
         </view>
         <view class="flex-grow flex-line-center">
-          <tu-button shape="rounded" type="ghost" size="large" iconName="arrow_right" />
+          <tu-button shape="square" type="outline" size="large" iconName="arrow_right" />
+        </view>
+      </view>
+      <view class="page-variant-content-line">
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="square" type="ghost" size="small" iconName="arrow_right" />
+        </view>
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="square" type="ghost" size="medium" iconName="arrow_right" />
+        </view>
+        <view class="flex-grow flex-line-center">
+          <tu-button shape="square" type="ghost" size="large" iconName="arrow_right" />
         </view>
       </view>
     </view>
@@ -120,24 +124,24 @@
     </list-item>
     <view class="page-variant-content">
       <view class="page-variant-content-line">
-        <tu-button class="flex-grow" shape="rounded" type="solid" size="large">Default</tu-button>
-        <tu-button class="flex-grow" shape="rounded" type="outline" size="large">Default</tu-button>
-        <tu-button class="flex-grow" shape="rounded" type="ghost" size="large">Default</tu-button>
+        <tu-button class="flex-grow" type="solid">Default</tu-button>
+        <tu-button class="flex-grow" type="outline">Default</tu-button>
+        <tu-button class="flex-grow" type="ghost">Default</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tu-button class="flex-grow" disabled shape="rounded" type="solid" size="large">Default</tu-button>
-        <tu-button class="flex-grow" disabled shape="rounded" type="outline" size="large">Default</tu-button>
-        <tu-button class="flex-grow" disabled shape="rounded" type="ghost" size="large">Default</tu-button>
+        <tu-button class="flex-grow" disabled type="solid">Disabled</tu-button>
+        <tu-button class="flex-grow" disabled type="outline">Disabled</tu-button>
+        <tu-button class="flex-grow" disabled type="ghost">Disabled</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tu-button class="flex-grow" loading shape="rounded" type="solid" size="large">Load</tu-button>
-        <tu-button class="flex-grow" loading shape="rounded" type="outline" size="large">Load</tu-button>
-        <tu-button class="flex-grow" loading shape="rounded" type="ghost" size="large">Load</tu-button>
+        <tu-button class="flex-grow" loading type="solid">Loading</tu-button>
+        <tu-button class="flex-grow" loading type="outline">Loading</tu-button>
+        <tu-button class="flex-grow" loading type="ghost">Loading</tu-button>
       </view>
       <view class="page-variant-content-line">
-        <tu-button class="flex-grow" skeleton shape="rounded" type="solid" size="large">Load</tu-button>
-        <tu-button class="flex-grow" skeleton shape="rounded" type="outline" size="large">Load</tu-button>
-        <tu-button class="flex-grow" skeleton shape="rounded" type="ghost" size="large">Load</tu-button>
+        <tu-button class="flex-grow" skeleton type="solid">Skeleton</tu-button>
+        <tu-button class="flex-grow" skeleton type="outline">Skeleton</tu-button>
+        <tu-button class="flex-grow" skeleton type="ghost" size="large">Skeleton</tu-button>
       </view>
     </view>
   </view>

@@ -1,9 +1,12 @@
+import fmtEvent from '../_util/fmtEvent';
+
 type ButtonProps = {
   className?: string;
   style?: string;
   iconName?: string;
-  shape?: 'pill' | 'rounded' | 'circle';
+  shape?: 'pill' | 'rounded' | 'circle' | 'square';
   size?: 'medium' | 'small' | 'large';
+  formType?: 'submit' | 'reset';
   skeleton?: boolean;
   loading?: boolean;
   disabled?: boolean;
@@ -20,32 +23,13 @@ Component({
     loading: false,
     disabled: false,
   } as ButtonProps,
-  didMount(): void {
-    this._updateDataSet();
-  },
-  didUpdate(): void {
-    this._updateDataSet();
-  },
   methods: {
-    _updateDataSet(): void {
-      this.dataset = {};
-      for (const key in this.props) {
-        if (/data-/gi.test(key)) {
-          this.dataset[key.replace(/data-/gi, '')] = this.props[key];
-        }
-      }
-    },
     onTap(e) {
-      const { onTap } = this.props;
-      if (!onTap) {
+      const { onTap, disabled, skeleton, loading } = this.props;
+      if (!onTap || disabled || skeleton || loading) {
         return;
       }
-
-      this.props.onTap({
-        target: {
-          dataset: this.dataset,
-        },
-      });
+      onTap(fmtEvent(this.props, e));
     },
   },
 });
