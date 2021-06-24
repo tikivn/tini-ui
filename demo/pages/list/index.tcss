@@ -8,7 +8,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-large);
-  line-height: var(--font-height-large);
 }
 
 .page-list-header-content {
@@ -16,7 +15,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-base);
-  line-height: var(--font-height-base);
 }
 
 .page-list-content {
@@ -27,7 +25,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-large);
-  line-height: var(--font-height-large);
   margin-bottom: var(--space-stack-medium);
 }
 
@@ -43,7 +40,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
-  line-height: var(--font-height-base);
   margin-bottom: var(--space-stack-2x-small);
 }
 
@@ -55,7 +51,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
-  line-height: var(--font-height-base);
   color: var(--text-list-primary, var(--gray100));
 }
 
