@@ -1,0 +1,9 @@
+@import '../variables';
+
+each(@colors, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .devide-@{normalizeValue} > * + * {
+		border-color: var(~"--@{normalizeValue}");
+  }
+});

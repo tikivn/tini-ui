@@ -1,0 +1,5 @@
+<view
+  class="tu-mask {{type === 'market'?'tu-mask__m':''}} {{fixMaskFull ? 'tu-mask__fix' : ''}}"
+  style="{{show?'':'display: none;'}}{{maskZindex?'z-index: ' + maskZindex + ';':''}}"
+  onTap="onMaskClick"
+></view>

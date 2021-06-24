@@ -1,0 +1,65 @@
+@import '../variables.less';
+
+each(@spacingSizes, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .p-@{normalizeValue} {
+    padding: var(~"--space-inset-@{normalizeValue}") var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .pt-@{normalizeValue} {
+    padding-top: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .pl-@{normalizeValue} {
+    padding-left: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .pb-@{normalizeValue} {
+    padding-bottom: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .pr-@{normalizeValue} {
+    padding-right: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .px-@{normalizeValue} {
+    padding-left: var(~"--space-inset-@{normalizeValue}");
+    padding-right: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .py-@{normalizeValue} {
+    padding-top: var(~"--space-inset-@{normalizeValue}");
+    padding-bottom: var(~"--space-inset-@{normalizeValue}");
+  }
+
+  .-p-@{normalizeValue} {
+    padding: calc(-1 * var(~"--space-inset-@{normalizeValue}")) calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-pt-@{normalizeValue} {
+    padding-top: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-pl-@{normalizeValue} {
+    padding-left: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-pb-@{normalizeValue} {
+    padding-bottom: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-pr-@{normalizeValue} {
+    padding-right: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-px-@{normalizeValue} {
+    padding-left: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+    padding-right: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+
+  .-py-@{normalizeValue} {
+    padding-top: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+    padding-bottom: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
+  }
+});

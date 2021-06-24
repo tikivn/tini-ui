@@ -1,0 +1,10 @@
+@import '../variables.less';
+
+each(@fontSizes, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .text-@{normalizeValue} {
+    font-size: var(~"--font-size-@{normalizeValue}");
+    line-height: calc(var(--font-height-default, 1.5) * var(~"--font-size-@{normalizeValue}"));
+  }
+});

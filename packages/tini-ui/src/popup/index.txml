@@ -1,0 +1,11 @@
+<view
+  class="tu-popup {{className}} {{show ? 'tu-popup-show' : ''}} {{ animation ? 'animation': '' }}"
+  disable-scroll="{{disableScroll}}" style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
+  <view class="tu-popup-mask" tiki:if="{{mask}}" onTap="onMaskTap"
+    style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
+  </view>
+  <view class="tu-popup-content tu-popup-{{position}}"
+    style="{{zIndex ? `z-index: ${zIndex};` : ''}}">
+    <slot />
+  </view>
+</view>

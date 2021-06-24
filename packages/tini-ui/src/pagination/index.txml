@@ -1,0 +1,24 @@
+<view class="tu-pagination ">
+  <view
+    class="tu-pagination-jump  {{currentPage===1 && 'tu-pagination-jump__disabled'}}"
+    onTap="jumpPrev">
+    <icon type="arrow_left"
+      color="{{currentPage===1?'var(--gray20)':'var(--blue60)'}}" />
+  </view>
+  <view tiki:if="{{type==='page'}}" class="tu-pagination-page">
+    <button tiki:for="{{pages}}" data-page="{{item.page}}" onTap="jumpToPage"
+      disabled="{{loadingPage===item.page}}"
+      class="tu-pagination-button {{currentPage===item.page?'tu-pagination-button__active':''}}">
+      {{item.label}} </button>
+  </view>
+  <view tiki:if="{{type==='number'}}" class="tu-pagination-number">
+    <text
+      class="tu-pagination-button__active">{{currentPage}}</text>/<text>{{max}}</text>
+  </view>
+  <view
+    class="tu-pagination-jump {{currentPage===max && 'tu-pagination-jump__disabled'}}"
+    onTap="jumpNext">
+    <icon type="arrow_right"
+      color="{{currentPage===max?'var(--gray20)':'var(--blue60)'}}" />
+  </view>
+</view>

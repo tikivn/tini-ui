@@ -1,0 +1,52 @@
+<view class="tu-modal-{{show ? 'show' : 'hide'}}" 
+  disable-scroll="{{disableScroll}}" 
+  style="{{zIndex ? `z-index: ${zIndex};`: ''}}">
+  <view class="tu-modal-document {{advice === true ? 'tu-modal-document-advice' : '' }}">
+    <view 
+      class="tu-modal-mask {{advice === true ? 'tu-modal-mask-advice': ''}}" 
+      tiki:if="{{mask}}" onTap="_onMaskTap" />
+    <view class="tu-modal {{className}}">
+      <!-- close icon -->
+      <view class="tu-modal-close" 
+        hover-class="tu-modal-close-active" 
+        tiki:if="{{showClose || advice}}" 
+        onTap="_onModalClose" >
+        <tu-icon 
+          type="{{advice ? 'close_circle' : 'close'}}" 
+          size="{{advice ? adviceClose : normalClose}}" 
+          color="{{closeType === '1' ? 'white' : '#999'}}" />
+      </view>
+      <!-- modal content -->
+      <view class="tu-modal-content {{topImageSize === 'lg' ? 'tu-modal-content--fill' : ''}}">
+        <view tiki:if="{{topImage}}" class="tu-modal-image tu-modal-image-{{topImageSize}}">
+          <image class="tu-modal-image-element" src="{{topImage}}" />
+        </view>
+        <view class="tu-modal-header" tiki:if="{{$slots.header}}">
+          <slot name="header" />
+        </view>
+        <view class="tu-modal-body">
+          <slot />
+        </view>
+      </view>
+      <view 
+        class="tu-modal-footer" 
+        hover-class="tu-modal-footer-active" 
+        tiki:if="{{$slots.footer}}" 
+        onTap="_onModalClick">
+        <slot name="footer" />
+      </view>
+      <!-- modal button -->
+      <view 
+        class="tu-modal-buttons 
+        {{_buttonsLayout === 'vertical' ? 'tu-modal-buttons--vertical' : 'tu-modal-buttons--horizontal'}}"
+        tiki:if="{{buttons}}">
+        <view 
+          class="tu-modal-button 
+          {{button.extClass}} 
+          {{_buttonsLayout === 'vertical' ? 'tu-modal-button--vertical' : 'tu-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tu-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
+          {{button.text}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

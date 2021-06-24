@@ -1,0 +1,25 @@
+@import '../variables.less';
+
+each(@divideSizes, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .divide-x-@{normalizeValue} > * + * {
+		--tf-divide-x-reverse: 0;
+		border-right-width: calc(var(~"--device-@{normalizeValue}") * var(--tf-divide-x-reverse));
+		border-left-width: calc(var(~"--device-@{normalizeValue}") * calc(1 - var(--tf-divide-x-reverse)));
+  }
+
+  .divide-y-@{normalizeValue} > * + * {
+		--tf-divide-y-reverse: 0;
+		border-top-width: calc(var(~"--device-@{normalizeValue}") * calc(1 - var(--tf-divide-y-reverse)));
+		border-bottom-width: calc(var(~"--device-@{normalizeValue}") * var(--tf-divide-y-reverse));
+  }
+});
+
+.divide-x-reverse > * + * {
+  --tf-divide-x-reverse: 1;
+}
+
+.divide-y-reverse > * + * {
+  --tf-divide-y-reverse: 1;
+}

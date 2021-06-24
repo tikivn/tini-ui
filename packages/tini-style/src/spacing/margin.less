@@ -1,0 +1,65 @@
+@import '../variables.less';
+
+each(@spacingSizes, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .m-@{normalizeValue} {
+    margin: var(~"--space-stack-@{normalizeValue}") var(~"--space-inline-@{normalizeValue}");
+  }
+
+  .mt-@{normalizeValue} {
+    margin-top: var(~"--space-stack-@{normalizeValue}");
+  }
+
+  .ml-@{normalizeValue} {
+    margin-left: var(~"--space-inline-@{normalizeValue}");
+  }
+
+  .mb-@{normalizeValue} {
+    margin-bottom: var(~"--space-stack-@{normalizeValue}");
+  }
+
+  .mr-@{normalizeValue} {
+    margin-right: var(~"--space-inline-@{normalizeValue}");
+  }
+
+  .mx-@{normalizeValue} {
+    margin-left: var(~"--space-inline-@{normalizeValue}");
+    margin-right: var(~"--space-inlin-@{normalizeValue}");
+  }
+
+  .my-@{normalizeValue} {
+    margin-top: var(~"--space-stack-@{normalizeValue}");
+    margin-bottom: var(~"--space-stack-@{normalizeValue}");
+  }
+
+  .-m-@{normalizeValue} {
+    margin: calc(-1 * var(~"--space-stack-@{normalizeValue}")) calc(-1 * var(~"--space-inline-@{normalizeValue}"));
+  }
+
+  .-mt-@{normalizeValue} {
+    margin-top: calc(-1 * var(~"--space-stack-@{normalizeValue}"));
+  }
+
+  .-ml-@{normalizeValue} {
+    margin-left: calc(-1 * var(~"--space-inline-@{normalizeValue}"));
+  }
+
+  .-mb-@{normalizeValue} {
+    margin-bottom: calc(-1 * var(~"--space-inline-@{normalizeValue}"));
+  }
+
+  .-mr-@{normalizeValue} {
+    margin-right: calc(-1 * var(~"--space-stack-@{normalizeValue}"));
+  }
+
+  .-mx-@{normalizeValue} {
+    margin-left: calc(-1 * var(~"--space-inline-@{normalizeValue}"));
+    margin-right: calc(-1 * var(~"--space-inline-@{normalizeValue}"));
+  }
+
+  .-my-@{normalizeValue} {
+    margin-top: calc(-1 * var(~"--space-stack-@{normalizeValue}"));
+    margin-bottom: calc(-1 * var(~"--space-stack-@{normalizeValue}"));
+  }
+});

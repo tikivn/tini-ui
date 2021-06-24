@@ -1,0 +1,15 @@
+{
+  "version": "0.0.0",
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "allowBranch": ["main"],
+      "conventionalCommits": true,
+      "exact": true,
+      "message": "chore(release): %s",
+      "ignoreChanges": ["ignored-file", "**/__fixtures__/**", "**/__tests__/**"]
+    }
+  }
+}

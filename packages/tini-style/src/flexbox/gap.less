@@ -1,0 +1,17 @@
+@import "../variables.less";
+
+each(@spacingSizes, {
+	@normalizeValue: replace(~"@{value}", ' ', '-');
+
+	.gap-@{normalizeValue} {
+		gap: var(~"--space-stack-@{normalizeValue}");
+	}
+
+	.gapx-@{normalizeValue} {
+		row-gap: var(~"--space-inline-@{normalizeValue}");
+	}
+
+	.gapy-@{normalizeValue} {
+		column-gap: var(~"--space-stack-@{normalizeValue}");
+	}
+})

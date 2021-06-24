@@ -1,0 +1,108 @@
+<view class="tu-sidebar {{className}}">
+  <view class="tu-sidebar-bar" style="width: {{width}};">
+    <scroll-view 
+      style="{{sidebarActiveBgColor?'background-color: ' + sidebarActiveBgColor + ';':''}}"
+      class="tu-sidebar-bar-content"
+      scroll-top="{{tabTop}}"
+      scroll-y="{{true}}">
+      <block tiki:for="{{items}}">
+        <view data-index="{{index}}"
+          data-anchor="{{item.anchor}}"
+          onTap="handleTabClick"
+          class="tu-sidebar-bar-tab {{activeItem === index
+              ? 'tu-sidebar-bar-tab__active'
+              : 'tu-sidebar-bar-tab__same'}}"
+          style="{{
+            activeItem == index || (item.children && item.expandChildren)
+          ? 'background-color: ' + sidebarActiveBgColor + ';'
+          : 'background-color: ' + sidebarInactiveBgColor + ';'
+        }}
+        ">
+          <view class="tu-sidebar-bar-title {{direction === 'vertical' && !item.children ? 'center' : ''}}">
+            <view class="tu-sidebar-bar-title-content {{direction}}">
+              <icon 
+                tiki:if="{{item.icon}}" 
+                size="{{item.iconSize || 24}}"
+                color="{{index === activeItem ? sidebarActiveIconColor : sidebarInactiveIconColor }}"
+                type="{{index === activeItem && item.iconActive ? item.iconActive : item.icon}}" />
+              <image 
+                tiki:if="{{item.image}}" 
+                class="tu-sidebar-bar-title-content-image"
+                src="{{index === activeItem && item.imageActive ? item.imageActive : item.image}}" />
+              <text 
+                class="tu-sidebar-bar-title-content-text{{direction === 'vertical' && (item.icon || item.image) ? '-small' : ''}} {{direction === 'horizontal' && (item.icon || item.image) ? 'ml-8' : ''}}" 
+                style="{{
+                    activeItem == index || (item.children && item.expandChildren)
+                  ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
+                  : 'color: ' + sidebarInactiveTextColor + ';'}}"
+                >
+                {{item.title}}
+              </text>
+              <badge 
+                tiki:if="{{item.showBadge && (!item.children || item.children.length === 0)}}"
+                className="tu-sidebar-bar-tab-badge {{item.icon || item.image ? 'top' : 'right'}}" 
+                dot="{{item.badgeText ? false : true}}" text="{{item.badgeText}}"
+                withArrow="{{item.badge.arrow ? item.badge.arrow : false}}"
+                direction="{{item.badge.arrow ? 'left' : ''}}"
+                stroke="{{item.badge.stroke ? item.badge.stroke : false}}" />
+            </view>
+            <icon
+              tiki:if="{{item.children.length > 0}}"
+              type="arrow_down"
+              class="tu-sidebar-bar-tab-arrow {{item.expandChildren ? 'up' : 'down'}}"
+              color="{{item.expandChildren ? sidebarActiveTextColor : sidebarInactiveTextColor}}"
+            />
+          </view>
+          <view tiki:if="{{activeItem === index && sidebarlineShow}}"
+            class="tu-sidebar-bar-line"
+            style="{{sidebarlineColor ? 'background-color: ' + sidebarlineColor + ';' : ''}}"></view>
+
+          <!-- Children -->
+          <view tiki:if="{{item.children.length > 0}}"
+            style="display: {{item.expandChildren ? 'auto' : 'none'}}"  >
+            <block 
+              tiki:for="{{item.children}}" 
+              tiki:for-index="childIndex"
+              tiki:for-item="child">
+              <view 
+                class="tu-sidebar-bar-tab-child tu-sidebar-bar-tab-child__{{childIndex}}"
+                data-anchor="{{child.anchor}}"
+                data-parent="{{index}}"
+                data-index="{{childIndex}}"
+                catchTap="handleChildClick">
+                <text style="{{
+                  activeChild == childIndex && activeItem === index
+                  ? 'font-weight: bold; color: ' + sidebarActiveTextColor + ';'
+                  : 'color: ' + sidebarInactiveTextColor + ';'}}">
+                  {{child.title}}
+                </text>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view tiki:if="{{index + 1 === items.length}}"
+          style="
+          {{width ? width + ';' : ''}}
+          {{sidebarInactiveBgColor ? 'background-color: ' + sidebarInactiveBgColor + ';':''}}"
+          class="tu-sidebar-bar-placehold"></view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="tu-sidebar-content-wrap">
+    <block tiki:if="{{swipeable}}">
+      <scroll-view 
+        class="tu-sidebar-slides tu-sidebar-slides-{{$id}}"
+        scroll-with-animation="{{animated}}"
+        scroll-y="{{true}}"
+        scroll-top="{{wrapScrollTop}}">
+        <slot></slot>
+      </scroll-view>
+    </block>
+    <block tiki:else>
+      <view class="tu-sidebar-slides tu-sidebar-slides-{{$id}} {{animated ? 'animate' : ''}}"
+        style="{{ transform: 'translate3d(0, ' +(-wrapScrollTop) + 'px, 0)' }}">
+        <slot></slot>
+      </view>
+    </block>
+  </view>
+</view>
