@@ -49,6 +49,10 @@ Page({
         name: 'bottom sheet',
         path: 'pages/bottom-sheet/index',
       },
+      {
+        name: 'pagination',
+        path: 'pages/pagination/index',
+      },
     ],
   },
   onNavigate(e) {
