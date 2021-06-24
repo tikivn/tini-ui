@@ -17,7 +17,6 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-base);
-  line-height: var(--font-height-base);
 }
 
 .list-item-suffix {
@@ -26,5 +25,4 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
-  line-height: var(--font-height-base);
 }

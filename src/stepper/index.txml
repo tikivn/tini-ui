@@ -9,7 +9,7 @@
   <template is="operation" data="{{type: 'reduce', icon: 'minus', disabled: disabled || disableReduce }}" />
   <input
     class="tu-stepper-input {{showNumber ? '' : 'tu-stepper-input-hide'}} {{vertical ? 'tu-stepper-input-vertical' : ''}}"
-    style="width: calc({{inputWidth}}px - 2 * var(--space-inset-2x-small));" value="{{value}}" onBlur="onBlur"
+    style="width: {{inputWidth}}px;" value="{{value}}" onBlur="onBlur"
     onInput="onInput" disabled="{{disabled || readOnly}}" type="number" controlled="{{controlled}}" />
   <template is="operation" data="{{type: 'add', icon: 'plus', disabled: disabled || disableAdd }}" />
 </view>
