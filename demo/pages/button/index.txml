@@ -1,5 +1,4 @@
 <template name="variant-style">
-  <button>Helloooooooooooooooooooo</button>
   <view class="page-block">
     <view class="page-block-title">Variants</view>
     <list-item upperSubtitle="Solid, Outlined and Ghost.">
