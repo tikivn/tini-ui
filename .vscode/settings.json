@@ -3,6 +3,6 @@
   "prettier.singleQuote": true,
   "files.associations": {
     "*.txml": "xml",
-    "*k.tcss": "css"
+    "*.tcss": "css"
   }
 }

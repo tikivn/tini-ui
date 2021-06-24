@@ -1,0 +1,9 @@
+@import '../variables.less';
+
+each(@fontWeights, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .font-@{normalizeValue} {
+    font-weight: var(~"--font-weight-@{normalizeValue}");
+  }
+});

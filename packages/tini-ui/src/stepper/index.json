@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tu-icon": "../tu-icon/index"
+  }
+}

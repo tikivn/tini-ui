@@ -1,0 +1,6 @@
+<icon 
+  class="tu-icon {{className}}" 
+  type="{{type}}" 
+  color="{{color}}" 
+  style="{{style}}"
+  size="{{size}}" />

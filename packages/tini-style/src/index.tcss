@@ -1,0 +1,37 @@
+@import './background/background-color.tcss';
+
+@import './border/border-color.tcss';
+@import './border/border-radius.tcss';
+@import './border/border-style.tcss';
+@import './border/border-width.tcss';
+@import './border/divide-color.tcss';
+@import './border/divide-width.tcss';
+
+@import './flexbox/align-content.tcss';
+@import './flexbox/align-items.tcss';
+@import './flexbox/align-self.tcss';
+@import './flexbox/flex-grow.tcss';
+@import './flexbox/flex-wrap.tcss';
+@import './flexbox/flex.tcss';
+@import './flexbox/gap.tcss';
+@import './flexbox/justify-content.tcss';
+@import './flexbox/justify-items.tcss';
+@import './flexbox/justify-self.tcss';
+
+@import './layout/display.tcss';
+@import './layout/position.tcss';
+
+@import './sizing/height.tcss';
+@import './sizing/width.tcss';
+
+@import './spacing/margin.tcss';
+@import './spacing/padding.tcss';
+@import './spacing/spacing.tcss';
+
+@import './typography/font-size.tcss';
+@import './typography/font-weight.tcss';
+@import './typography/font-style.tcss';
+@import './typography/text-align.tcss';
+@import './typography/text-color.tcss';
+@import './typography/text-overflow.tcss';
+@import './typography/word-break.tcss';

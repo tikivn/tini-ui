@@ -1,0 +1,9 @@
+@import '../variables.less';
+
+each(@colors, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .border-@{normalizeValue} {
+		border-color: var(~"--@{normalizeValue}");
+  }
+});

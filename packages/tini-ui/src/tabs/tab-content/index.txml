@@ -1,0 +1,14 @@
+<block>
+  <view tiki:if="{{style}}"
+    style="{{style}}"
+    class="tu-tabs-pane-wrap tu-tabs-pane-swiper-item"
+    key="tabs-pane-{{key}}">
+    <slot></slot>
+  </view>
+  <view tiki:else
+    style="{{tabId !== '' && activeTab !== '' ? tabId === activeTab ? '' : 'height: 0px;' : ''}}"
+    class="tu-tabs-pane-wrap {{tabId === activeTab ? 'tu-tabs-pane-swiper-item tu-tabs-pane-swiper-item-position' : ''}}"
+    key="tabs-pane-{{key}}">
+    <slot></slot>
+  </view>
+</block>

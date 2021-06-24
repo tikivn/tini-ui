@@ -1,0 +1,13 @@
+@import '../variables.less';
+
+.text-transparent {
+  color: transparent;
+}
+
+each(@colors, {
+  @normalizeValue: replace(~"@{value}", ' ', '-');
+
+  .text-@{normalizeValue} {
+		color: var(~"--@{normalizeValue}");
+  }
+});

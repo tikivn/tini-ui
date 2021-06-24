@@ -1,0 +1,46 @@
+@import '../variables.less';
+
+each(@radiusSizes, {
+  @normalizeName: replace(~"@{value}", ' ', '-');
+	@normalizeValue: extract(@radiusValues, @index);
+
+  .radius-@{normalizeName} {
+		border-radius: @normalizeValue;
+  }
+
+  .radius-tl-@{normalizeName} {
+		border-top-left-radius: @normalizeValue;
+  }
+
+  .radius-tr-@{normalizeName} {
+		border-top-right-radius: @normalizeValue;
+  }
+
+  .radius-bl-@{normalizeName} {
+		border-bottom-left-radius: @normalizeValue;
+  }
+
+  .radius-br-@{normalizeName} {
+		border-bottom-right-radius: @normalizeValue;
+  }
+
+  .radius-t-@{normalizeName} {
+		border-top-left-radius: @normalizeValue;
+		border-top-right-radius: @normalizeValue;
+  }
+
+  .radius-r-@{normalizeName} {
+		border-top-right-radius: @normalizeValue;
+		border-bottom-right-radius: @normalizeValue;
+  }
+
+  .radius-l-@{normalizeName} {
+		border-top-left-radius: @normalizeValue;
+		border-bottom-left-radius: @normalizeValue;
+  }
+
+  .radius-b-@{normalizeName} {
+		border-bottom-left-radius: @normalizeValue;
+		border-bottom-right-radius: @normalizeValue;
+  }
+});

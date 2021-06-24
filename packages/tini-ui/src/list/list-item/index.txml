@@ -1,0 +1,41 @@
+<view class="tu-list-item {{padding ? 'tu-list-item-padding' : ''}}" onTap="onItemTap" data-index="{{index}}">
+  <view class="tu-list-item-wrapper {{className ? className : ''}}" style="{{style ? style : ''}}">
+    <view tiki:if="{{$slots.prefix}}" class="tu-list-item-prefix">
+      <slot name="prefix" />
+    </view>
+    <view class="tu-list-item-content">
+      <view tiki:if="{{thumb}}" class="tu-list-item-thumb">
+        <auto-sizer src="{{thumb}}" size="{{thumbSize}}" />
+      </view>
+      <view class="tu-list-item-content-wrapper">
+        <view tiki:if="{{titlePosition === 'top'}}" class="tu-list-item-content-line tu-list-item-content-title">
+          <slot />
+          <slot name="afterTitle" />
+        </view>
+        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tu-list-item-content-line tu-list-item-content-subtitle">
+          <view tiki:if="{{upperSubtitle}}">{{upperSubtitle}}</view>
+          <slot name="afterUpperSubtitle" />
+        </view>
+        <view tiki:if="{{titlePosition === 'middle'}}" class="tu-list-item-content-line tu-list-item-content-title">
+          <slot />
+          <slot name="afterTitle" />
+        </view>
+        <view tiki:if="{{upperSubtitle || $slots.afterUpperSubtitle}}" class="tu-list-item-content-line tu-list-item-content-subtitle">
+          <view tiki:if="{{lowerSubtitle}}">{{lowerSubtitle}}</view>
+          <slot name="afterLowerSubtitle" />
+        </view>
+        <view tiki:if="{{titlePosition === 'bottom'}}" class="tu-list-item-content-line tu-list-item-content-title">
+          <slot />
+          <slot name="afterTitle" />
+        </view>
+        <view tiki:if="{{$slots.additionContent}}" class="tu-list-item-content-line tu-list-item-content-addition">
+          <slot name="additionContent" />
+        </view>
+      </view>
+    </view>
+    <view tiki:if="{{arrow || $slots.suffix}}" class="tu-list-item-suffix">
+      <slot name="suffix" />
+      <icon tiki:if="{{arrow}}" type="arrow_right" size="{{iconSize}}" color=" #ccc" />
+    </view>
+  </view>
+</view>
