@@ -1,0 +1,29 @@
+name: Publish version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.13.0
+
+      - name: Setup npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Publish
+        run: yarn deploy:ci

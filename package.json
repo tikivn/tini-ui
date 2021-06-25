@@ -10,7 +10,7 @@
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:write": "yarn lint:ts --fix && yarn lint:css --fix",
     "deploy:minor": "scripts/version.sh && yarn publish minor --yes",
-    "deploy:ci": "lerna publish --canary --preid next patch --yes"
+    "deploy:ci": "lerna publish --canary --preid rc patch --yes"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
