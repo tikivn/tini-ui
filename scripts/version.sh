@@ -6,5 +6,4 @@ else
 	echo $(date '+%s') >packages/tini-ui/time
 	git add .
 	git commit -m 'chore: change package automatically'
-	yarn lerna publish minor --yes
 fi
