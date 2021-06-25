@@ -1,16 +1,14 @@
 {
-  "version": "independent",
   "packages": ["packages/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "version": "independent",
   "command": {
     "publish": {
-      "graphType": "all",
-      "allowBranch": ["main"],
+      "allowBranch": ["master"],
       "conventionalCommits": true,
       "exact": true,
-      "message": "chore(release): new version",
-      "ignoreChanges": ["ignored-file", "**/__fixtures__/**", "**/__tests__/**"]
+      "message": "chore(release): %s"
     }
   }
 }

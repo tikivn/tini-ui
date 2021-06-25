@@ -30,10 +30,6 @@
   "bugs": {
     "url": "https://github.com/tikivn/tini-ui/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tikivn/tini-ui.git"
-  },
   "devDependencies": {
     "@babel/core": "^7.13.15",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
