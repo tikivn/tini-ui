@@ -1,6 +1,4 @@
-import fmtUnit from '../_util/fmtUnit';
-
-type Props = {
+type ModalProps = {
   className: string;
   topImageSize: 'lg' | 'md' | 'sm';
   showClose: boolean;
@@ -18,8 +16,8 @@ type Props = {
 Component({
   data: {
     _buttonsLayout: '',
-    adviceClose: fmtUnit('26px'),
-    normalClose: fmtUnit('18px'),
+    adviceClose: 26,
+    normalClose: 18,
   },
   props: {
     className: '',
@@ -35,7 +33,7 @@ Component({
     onButtonClick: () => {},
     onModalClose: () => {},
     onMaskClick: () => {},
-  } as Props,
+  } as ModalProps,
   didMount() {
     const { buttons, buttonsLayout } = this.props;
     if (buttons && buttons.length > 2) {

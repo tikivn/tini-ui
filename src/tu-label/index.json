@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "badge": "../badge/index",
-    "tu-icon": "../tu-icon/index"
-  }
-}

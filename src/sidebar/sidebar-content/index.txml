@@ -1,3 +1,0 @@
-<view id="tu-sidebar-slide-{{anchor}}">
-  <slot></slot>
-</view>
