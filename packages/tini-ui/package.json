@@ -17,8 +17,9 @@
     "tini-ui"
   ],
   "scripts": {
-    "dev": "yarn && node scripts/compiler.js",
-    "build": "yarn && NODE_ENV=production node scripts/compiler.js",
+    "clean": "rm -rf es ../../demo/node_module/@tiki.vn/tini-ui",
+    "dev": "yarn clean && node scripts/compiler.js",
+    "build": "yarn clean && NODE_ENV=production node scripts/compiler.js",
     "pub": "npm run build && node scripts/pub.js"
   },
   "publishConfig": {
