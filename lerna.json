@@ -9,7 +9,7 @@
       "allowBranch": ["main"],
       "conventionalCommits": true,
       "exact": true,
-      "message": "chore(release): %s",
+      "message": "chore(release): new version",
       "ignoreChanges": ["ignored-file", "**/__fixtures__/**", "**/__tests__/**"]
     }
   }
