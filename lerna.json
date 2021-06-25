@@ -5,6 +5,7 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
+      "graphType": "all",
       "allowBranch": ["main"],
       "conventionalCommits": true,
       "exact": true,
