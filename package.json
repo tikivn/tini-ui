@@ -9,8 +9,8 @@
     "lint:ts": "eslint packages --ext .ts,.sjs",
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:write": "yarn lint:ts --fix && yarn lint:css --fix",
-    "deploy:minor": "echo $(date '+%s') > packages/tini-style/time && git add . && git commit -m 'chore: publish a new minor version' && yarn lerna publish minor --yes",
-    "deploy:ci": "lerna publish --canary patch --yes"
+    "deploy:minor": "scripts/version.sh",
+    "deploy:ci": "lerna publish --canary --preid next patch --yes"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
