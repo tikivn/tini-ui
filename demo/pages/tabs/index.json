@@ -1,7 +1,0 @@
-{
-  "defaultTitle": "Tabs",
-  "usingComponents": {
-    "tabs": "../../es/tabs/index",
-    "tab-content": "../../es/tabs/tab-content/index"
-  }
-}

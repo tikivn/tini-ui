@@ -1,9 +1,0 @@
-{
-  "defaultTitle": "sidebar",
-  "usingComponents": {
-    "sidebar": "../../es/sidebar/index",
-    "sidebar-content": "../../es/sidebar/sidebar-content/index",
-    "button": "../../es/button/index"
-  },
-  "allowsBounceVertical": false
-}

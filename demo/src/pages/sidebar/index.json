@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "sidebar",
+  "usingComponents": {
+    "sidebar": "@tiki.vn/tini-ui/es/sidebar/index",
+    "sidebar-content": "@tiki.vn/tini-ui/es/sidebar/sidebar-content/index",
+    "button": "@tiki.vn/tini-ui/es/button/index"
+  },
+  "allowsBounceVertical": false
+}

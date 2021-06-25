@@ -6,7 +6,9 @@ const cleanCss = require('gulp-clean-css');
 const gulpif = require('gulp-if');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const dist = isProduction ? path.join(__dirname, '../es') : path.join(__dirname, '../demo/es');
+const dist = isProduction
+  ? path.join(__dirname, '..', 'es')
+  : path.join(__dirname, '..', '..', '..', 'demo', 'node_modules', '@tiki.vn', 'tini-style', 'es');
 const src = path.join(__dirname, '../src');
 const extTypes = ['less', 'tcss'];
 

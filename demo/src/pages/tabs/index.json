@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "Tabs",
+  "usingComponents": {
+    "tabs": "@tiki.vn/tini-ui/es/tabs/index",
+    "tab-content": "@tiki.vn/tini-ui/es/tabs/tab-content/index"
+  }
+}

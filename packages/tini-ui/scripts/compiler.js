@@ -8,8 +8,10 @@ const gulpif = require('gulp-if');
 const injectEnvs = require('gulp-inject-envs');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const dist = isProduction ? path.join(__dirname, '../es') : path.join(__dirname, '../demo/es');
-const src = path.join(__dirname, '../src');
+const dist = isProduction
+  ? path.join(__dirname, '..', 'es')
+  : path.join(__dirname, '..', '..', '..', 'demo', 'node_modules', '@tiki.vn', 'tini-ui', 'es');
+const src = path.join(__dirname, '..', 'src');
 const extTypes = ['ts', 'less', 'json', 'txml', 'sjs'];
 const isRpx = process.argv.splice(2)[0] === '--rpx';
 const env = { jsUnitRpx: isRpx };

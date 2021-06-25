@@ -1,0 +1,11 @@
+{
+  "defaultTitle": "Modal",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "modal": "@tiki.vn/tini-ui/es/modal/index",
+    "button": "@tiki.vn/tini-ui/es/button/index",
+    "tu-icon": "@tiki.vn/tini-ui/es/tu-icon/index"
+  }
+}

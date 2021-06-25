@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "prepare": "yarn husky install",
-    "dev": "lerna run dev --stream",
+    "dev": "lerna run dev --parallel",
     "build": "lerna run build --stream",
     "lint:css": "stylelint 'packages/*/src/**/*.tcss'",
     "lint:ts": "eslint packages --ext .ts,.sjs",

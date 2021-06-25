@@ -1,8 +1,0 @@
-{
-  "defaultTitle": "Bottom Sheet",
-  "usingComponents": {
-    "list-item": "../../es/list/list-item/index",
-    "tu-button": "../../es/tu-button/index",
-    "buttom-sheet": "../../es/bottom-sheet/index"
-  }
-}

@@ -4,6 +4,6 @@
   "titleColor": "#fff",
   "transparentTitle": "none",
   "usingComponents": {
-    "textfield": "../../es/textfield/index"
+    "textfield": "@tiki.vn/tini-ui/es/textfield/index"
   }
 }

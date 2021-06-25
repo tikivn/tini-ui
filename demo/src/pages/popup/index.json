@@ -1,6 +1,6 @@
 {
   "defaultTitle": "Popup",
   "usingComponents": {
-    "popup": "../../es/popup/index"
+    "popup": "@tiki.vn/tini-ui/es/popup/index"
   }
 }

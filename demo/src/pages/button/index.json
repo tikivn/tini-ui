@@ -4,7 +4,7 @@
   "titleColor": "#fff",
   "transparentTitle": "none",
   "usingComponents": {
-    "list-item": "../../es/list/list-item/index",
-    "tu-button": "../../es/tu-button/index"
+    "list-item": "@tiki.vn/tini-ui/es/list/list-item/index",
+    "tu-button": "@tiki.vn/tini-ui/es/tu-button/index"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "Stepper",
+  "usingComponents": {
+    "stepper": "@tiki.vn/tini-ui/es/stepper/index"
+  }
+}
