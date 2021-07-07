@@ -5,6 +5,7 @@ type Props = {
   className: string;
   activeCls: string;
   tabBarCls: string;
+  tabContentCls: string;
   tabBarUnderlineColor: string;
   tabBarActiveTextColor: string;
   tabBarInactiveTextColor: string;
@@ -66,6 +67,7 @@ Component({
     className: '',
     activeCls: '',
     tabBarCls: '',
+    tabContentCls: '',
     tabBarUnderlineColor: '',
     tabBarActiveTextColor: '',
     tabBarInactiveTextColor: '',

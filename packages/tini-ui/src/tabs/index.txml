@@ -80,13 +80,13 @@
           autoplay="{{autoplay}}" 
           duration="{{duration}}" 
           onChange="handleSwiperChange"
-          class="tu-tabs-content-wrap {{tabContentHeight ? 'tu-tabs-content-wrap_H100': ''}}">
+          class="tu-tabs-content-wrap {{tabContentCls}} {{tabContentHeight ? 'tu-tabs-content-wrap_H100': ''}}">
           <slot></slot>
         </carousel>
       </view>
     </block>
     <block tiki:else>
-      <view class="tu-tabs-content-wrap">
+      <view class="tu-tabs-content-wrap {{tabContentCls}}">
         <view class="tu-tabs-slides" style="
           transform: translate3d({{-activeTab * 100}}%, 0, 0);
           transition-duration: {{duration}}ms;

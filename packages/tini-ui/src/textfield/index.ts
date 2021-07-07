@@ -88,9 +88,11 @@ Component({
       wrapClass: this.getWrapClass(this.props),
     });
   },
-  deriveDataFromProps(nextProps) {
-    if (this.isClassChange(this.props, nextProps)) {
-      this.setData({ wrapClass: this.getWrapClass(nextProps) });
+  didUpdate(prevProps) {
+    if (this.isClassChange(prevProps, this.props)) {
+      this.setData({
+        wrapClass: this.getWrapClass(this.props),
+      });
     }
   },
   methods: {
