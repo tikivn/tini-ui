@@ -51,9 +51,9 @@
   <tu-button data-template="text" onTap="onShowBottomSheet">Bottom sheet with text</tu-button>
   <tu-button data-template="picker" onTap="onShowBottomSheet">Bottom sheet with picker</tu-button>
   <block tiki:if="{{show}}">
-    <buttom-sheet title="Bottom sheet with {{template}}" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose"
+    <bottom-sheet title="Bottom sheet with {{template}}" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose"
       onClick="onClick">
       <template is="bottom-sheet-{{template}}" />
-    </buttom-sheet>
+    </bottom-sheet>
   </block>
 </view>
