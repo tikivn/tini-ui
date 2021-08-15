@@ -1,5 +1,6 @@
 <view class="m-small">
   <dropdown 
+    labelText="Thành phố"
     items="{{cities}}"
     showSearch
     value="{{selected}}"

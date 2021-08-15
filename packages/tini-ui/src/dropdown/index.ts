@@ -12,6 +12,7 @@ type DropdownProps = {
   showSearch?: boolean;
   closeAfterSelect?: boolean;
   searchPlaceholder?: string;
+  labelText?: string;
   bottomSheetHeight?: number;
   bottomSheetTitle?: string;
   bottomSheetButton?: string; // Available when multiple is true
@@ -44,6 +45,7 @@ Component({
     idKey: 'id',
     showSearch: false,
     searchPlaceholder: 'Tìm kiếm',
+    labelText: '',
     closeAfterSelect: true,
     bottomSheetHeight: null,
     bottomSheetTitle: 'Dropdown',
