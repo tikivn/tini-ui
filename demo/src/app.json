@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/dropdown/index",
     "pages/index/index",
     "pages/bottom-sheet/index",
     "pages/textfield/index",

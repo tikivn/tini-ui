@@ -1,0 +1,42 @@
+<view class="m-small">
+  <dropdown 
+    items="{{cities}}"
+    showSearch
+    value="{{selected}}"
+    onSelect="onSelect"
+    onSearch="onSearch"
+    hasError
+    errorMsg="Có lỗi xảy ra"
+    placeholder="Thành phố">
+  </dropdown>
+
+  <dropdown 
+    bottomSheetHeight="300"
+    items="{{items1}}"
+    value="{{selected1}}"
+    onSelect="onSelect1"
+    placeholder="Chọn khối lượng">
+  </dropdown>
+
+  <dropdown 
+    bottomSheetHeight="200"
+    bottomSheetTitle="Custom"
+    labelKey="label"
+    idKey="key"
+    items="{{items2}}"
+    value="{{selected2}}"
+    onSelect="onSelect2"
+    placeholder="Chọn custom">
+  </dropdown>
+
+  <dropdown 
+    bottomSheetTitle="Custom"
+    labelKey="label"
+    idKey="key"
+    multiple
+    items="{{items2}}"
+    value="{{selected3}}"
+    onSelect="onSelect3"
+    placeholder="multiple">
+  </dropdown>
+</view>

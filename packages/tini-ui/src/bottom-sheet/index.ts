@@ -1,11 +1,12 @@
 type BottomSheetProps = {
   className?: string;
   style?: string;
-  mark: boolean;
+  mask: boolean;
   animation: boolean;
   show: boolean;
   disableScroll: boolean;
   distanceFromTop: number;
+  isContentScrollView?: boolean;
   zIndex: number;
   title: string;
   buttonTitle: string;
@@ -15,10 +16,11 @@ type BottomSheetProps = {
 
 Component({
   props: {
-    mark: true,
+    mask: true,
     animation: true,
     show: true,
     disableScroll: false,
+    isContentScrollView: true,
     distanceFromTop: 50,
     zIndex: 2,
     title: 'Bottom sheet',

@@ -19,6 +19,7 @@ type InputProps = {
   className?: string;
   errorMsg?: string;
   hasError?: boolean;
+  readOnly?: boolean;
   // showErrorIcon?: boolean;
 
   type?: string;
@@ -32,6 +33,7 @@ type InputProps = {
   maxlength?: number;
   focus?: boolean;
   controlled?: boolean;
+  onTap?: (event: unknown) => void;
   onInput?: (event: unknown) => void;
   onConfirm?: (event: unknown) => void;
   onFocus?: (event: unknown) => void;
@@ -62,6 +64,7 @@ Component({
     inputCls: '',
     className: '',
     errorMsg: '',
+    readonly: false,
     // showErrorIcon: true,
     hasError: false,
     errorIconColor: '#ff424f',
@@ -78,10 +81,11 @@ Component({
     maxlength: 140,
     focus: false,
     controlled: false,
-    onInput: () => {},
-    onConfirm: () => {},
-    onFocus: () => {},
-    onBlur: () => {},
+    onTap: undefined,
+    onInput: undefined,
+    onConfirm: undefined,
+    onFocus: undefined,
+    onBlur: undefined,
   } as InputProps & LabelInputProps,
   onInit() {
     this.setData({
@@ -108,21 +112,27 @@ Component({
     isClassChange(prevProps, nextProps) {
       return prevProps.shape !== nextProps.shape || prevProps.hasError !== nextProps.hasError;
     },
+    onEvent(eventName, event) {
+      const eventFunc = this.props[eventName];
+      if (eventFunc && event) {
+        const e = fmtEvent(this.props, event);
+        eventFunc(e);
+      }
+    },
+    onTap(e) {
+      this.onEvent('onTap', e);
+    },
     onBlur(e) {
-      const event = fmtEvent(this.props, e);
-      this.props.onBlur(event);
+      this.onEvent('onBlur', e);
     },
     onConfirm(e) {
-      const event = fmtEvent(this.props, e);
-      this.props.onConfirm(event);
+      this.onEvent('onConfirm', e);
     },
     onFocus(e) {
-      const event = fmtEvent(this.props, e);
-      this.props.onFocus(event);
+      this.onEvent('onFocus', e);
     },
     onInput(e) {
-      const event = fmtEvent(this.props, e);
-      this.props.onInput(event);
+      this.onEvent('onInput', e);
     },
   },
 });

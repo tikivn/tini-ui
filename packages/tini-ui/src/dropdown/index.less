@@ -1,0 +1,20 @@
+.tu-dropdown * {
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.dropdown-item {
+  padding: 0 var(--space-inset-x-small);
+
+  &-selected {
+    background: var(--background-list-hover);
+  }
+  &-content {
+    height: 40px;
+    border-bottom: solid 1px var(--gray20);
+  }
+  checkbox {
+    min-width: 20px; // TODO: Fix on core
+  }
+}
+
