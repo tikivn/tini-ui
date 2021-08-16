@@ -59,6 +59,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@babel/runtime": "^7.15.3",
     "@tiki.vn/tini-style": "0.1.1"
   }
 }
