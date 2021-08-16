@@ -10,18 +10,18 @@ Page({
     // wardErrorMsg: 'Vui lòng nhập phường',
   },
   onLoad() {
-    setTimeout(() => {
-      this.setData({
-        street: '128 CMT8',
-        city: 278,
-        district: 617,
-        ward: 64,
-        // streetErrorMsg: '',
-        // cityErrorMsg: '',
-        // districtErrorMsg: '',
-        // wardErrorMsg: '',
-      });
-    }, 1000);
+    // setTimeout(() => {
+    //   this.setData({
+    //     street: '128 CMT8',
+    //     city: 278,
+    //     district: 617,
+    //     ward: 64,
+    //     // streetErrorMsg: '',
+    //     // cityErrorMsg: '',
+    //     // districtErrorMsg: '',
+    //     // wardErrorMsg: '',
+    //   });
+    // }, 1000);
   },
   onChangeAddress(address) {
     console.log('address :>> ', address);

@@ -1,5 +1,6 @@
 import { debounce } from '../_util/debounce';
 import compareNormalize from '../_util/search';
+import { getSystemInfoAsync } from '../_util/system';
 
 type DropdownProps = {
   placeholder?: string;
@@ -21,6 +22,7 @@ type DropdownProps = {
   value?: any;
   errorMsg?: string;
   hasError?: boolean;
+  showCheck?: boolean;
   multiple?: boolean; // If true, value must be array
   onTap?: (event: unknown) => void;
   onSelect?: (item: any) => void;
@@ -33,6 +35,8 @@ type DropdownData = {
   label: string;
   showBottomSheet: boolean;
   localValue: string | Array<string> | Array<any>;
+  bottomSheetContainerHeight: number;
+  bottomSheetScrollViewHeight: number;
 };
 
 Component({
@@ -49,6 +53,7 @@ Component({
     labelText: '',
     closeAfterSelect: true,
     useBottomSheet: true,
+    showCheck: true,
     bottomSheetHeight: null,
     bottomSheetTitle: 'Dropdown',
     bottomSheetButton: 'Chọn',
@@ -97,11 +102,23 @@ Component({
       this.setData({ localValue: value });
     }
   },
-  didMount() {
-    const { items, value, multiple } = this.props;
-
-    this.setData({ searchItems: items, localValue: value || (multiple ? [] : '') });
+  async didMount() {
     this.onSearch = debounce(this.onSearch.bind(this));
+
+    const { items, value, multiple, bottomSheetHeight, bottomSheetDistanceFromTop, showSearch } =
+      this.props;
+    const data = { searchItems: items, localValue: value || (multiple ? [] : '') } as DropdownData;
+    const sysInfo = await getSystemInfoAsync();
+
+    if (bottomSheetHeight) {
+      data.bottomSheetContainerHeight = bottomSheetHeight;
+      data.bottomSheetScrollViewHeight = bottomSheetHeight - (showSearch ? 60 : 0);
+    } else {
+      data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop - 40; // 40: header height
+      data.bottomSheetScrollViewHeight = data.bottomSheetContainerHeight - (showSearch ? 60 : 0);
+    }
+
+    this.setData(data);
   },
   methods: {
     onSearch(text) {

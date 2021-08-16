@@ -15,9 +15,8 @@
 
 <popup mask="{{mask}}" class="tu-bottom-sheet" animation="{{animation}}" position="bottom" show="{{show}}"
   disableScroll="{{disableScroll}}" zIndex="{{zIndex}}" onClose="onClose">
-  <view class="tu-bottom-sheet-wrapper {{className}}" style="max-height: calc(
-    var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{distanceFromTop}}px;
-  );{{style ? style: ''}}">
+  <view class="tu-bottom-sheet-wrapper {{className}}" 
+    style="max-height: calc(var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{distanceFromTop}}px);{{style || ''}}">
     <!-- header -->
     <block tiki:if="{{$slots.header}}">
       <slot name="header" />

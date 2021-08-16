@@ -1,17 +1,5 @@
 <view class="m-small">
   <dropdown 
-    labelText="Thành phố"
-    items="{{cities}}"
-    showSearch
-    value="{{selected}}"
-    onSelect="onSelect"
-    onSearch="onSearch"
-    hasError
-    errorMsg="Có lỗi xảy ra"
-    placeholder="Thành phố">
-  </dropdown>
-
-  <dropdown 
     bottomSheetHeight="300"
     items="{{items1}}"
     value="{{selected1}}"

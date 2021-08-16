@@ -19,8 +19,8 @@
     buttonTitle="{{bottomSheetButton}}" 
     distanceFromTop="{{bottomSheetDistanceFromTop}}" 
     disableScroll
-    style="height: {{bottomSheetHeight ? bottomSheetHeight + 'px' : `calc(
-    var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{bottomSheetDistanceFromTop}}px;);`}}"
+    isContentScrollView="{{false}}"
+    style="height: {{bottomSheetContainerHeight}}px"
     onClose="onClose">
     <view class="flex flex-col">
       <textfield 
@@ -32,11 +32,7 @@
         placeholder="{{searchPlaceholder}}" />
       <scroll-view 
         scroll-y 
-        style="height: 
-        {{bottomSheetHeight 
-          ? (bottomSheetHeight - (showSearch ? 60 : 0)) + 'px' 
-          : 'calc(var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - ' + bottomSheetDistanceFromTop + 'px - ' + (showSearch ? 60: 0) + 'px)'}}"
-      >
+        style="height: {{bottomSheetScrollViewHeight}}px">
         <!-- TODO: Implement slot -->
         <block tiki:if="{{$slots.dropdownItem}}">
           <view 
@@ -69,7 +65,7 @@
                 </view>
               </view>
               <icon 
-                tiki:if="{{isSelected(localValue, item, idKey)}}" 
+                tiki:if="{{showCheck && !multiple && isSelected(localValue, item, idKey)}}" 
                 color="#2EC275"
                 type="success_glyph" />
             </view>

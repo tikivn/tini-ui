@@ -1,5 +1,3 @@
-import { getCities } from './address';
-
 Page({
   data: {
     selected: null,
@@ -21,13 +19,6 @@ Page({
       { key: 2, label: 'Item 2' },
       { key: 3, label: 'Item 3' },
     ],
-  },
-  async getCities() {
-    const cities = await getCities();
-    this.setData({ cities });
-  },
-  async onLoad() {
-    await this.getCities();
   },
   onSelect(selected) {
     this.setData({ selected });
