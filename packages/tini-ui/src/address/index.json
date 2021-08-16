@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "dropdown": "../dropdown/index",
+    "bottom-sheet": "../bottom-sheet/index",
+    "textfield": "../textfield/index"
+  }
+}

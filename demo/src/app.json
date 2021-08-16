@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/address/index",
     "pages/dropdown/index",
     "pages/index/index",
     "pages/bottom-sheet/index",

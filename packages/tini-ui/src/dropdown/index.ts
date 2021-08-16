@@ -13,6 +13,7 @@ type DropdownProps = {
   closeAfterSelect?: boolean;
   searchPlaceholder?: string;
   labelText?: string;
+  useBottomSheet?: boolean;
   bottomSheetHeight?: number;
   bottomSheetTitle?: string;
   bottomSheetButton?: string; // Available when multiple is true
@@ -47,6 +48,7 @@ Component({
     searchPlaceholder: 'Tìm kiếm',
     labelText: '',
     closeAfterSelect: true,
+    useBottomSheet: true,
     bottomSheetHeight: null,
     bottomSheetTitle: 'Dropdown',
     bottomSheetButton: 'Chọn',
@@ -79,7 +81,7 @@ Component({
       label = (value || []).map((v: any) => (typeof v === 'object' ? v[labelKey] : v)).join(', ');
     } else {
       label =
-        typeof value === 'object'
+        value && typeof value === 'object'
           ? value[labelKey] ?? items.find((i) => i[idKey] === value[idKey])?.[labelKey]
           : value;
     }
@@ -122,11 +124,11 @@ Component({
       }
     },
     onTap(e) {
-      const { disabled, items, onTap } = this.props;
+      const { disabled, onTap, useBottomSheet } = this.props;
       if (disabled) {
         return;
       }
-      if (items && items.length) {
+      if (useBottomSheet) {
         this.setData({ showBottomSheet: true });
       }
       onTap && onTap(e);

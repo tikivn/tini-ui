@@ -1,0 +1,46 @@
+<textfield 
+  value="{{value.street}}"
+  className="mb-small" 
+  labelText="{{streetLabel}}"
+  onInput="changeStreet"
+  errorMsg="{{streetErrorMsg}}"
+  hasError="{{!!streetErrorMsg}}"
+  placeholder="{{streetPlaceholder}}" />
+
+<dropdown 
+  labelText="{{cityLabel}}"
+  items="{{cities}}"
+  showSearch
+  value="{{value.city}}"
+  onSelect="selectCity"
+  className="mb-small" 
+  errorMsg="{{cityErrorMsg}}"
+  hasError="{{!!cityErrorMsg}}"
+  bottomSheetTitle="{{cityLabel}}"
+  placeholder="{{cityPlaceholder}}" />
+
+<dropdown 
+  placeholder="{{districtPlaceholder}}"
+  labelText="{{districtLabel}}"
+  bottomSheetTitle="{{districtLabel}}"
+  showSearch
+  className="mb-small" 
+  disabled="{{!value.city}}"
+  items="{{districts}}"
+  value="{{value.district}}"
+  errorMsg="{{districtErrorMsg}}"
+  hasError="{{!!districtErrorMsg}}"
+  onSelect="selectDistrict"/>
+
+<dropdown 
+  placeholder="{{wardPlaceholder}}"
+  labelText="{{wardLabel}}"
+  bottomSheetTitle="{{wardLabel}}"
+  showSearch
+  className="mb-small" 
+  disabled="{{!value.district}}"
+  items="{{wards}}"
+  value="{{value.ward}}"
+  errorMsg="{{wardErrorMsg}}"
+  hasError="{{!!wardErrorMsg}}"
+  onSelect="selectWard"/>
