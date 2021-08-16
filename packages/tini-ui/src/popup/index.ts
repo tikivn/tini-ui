@@ -3,6 +3,7 @@ type Props = {
   show: boolean;
   position: 'top' | 'left' | 'right' | 'bottom';
   mask: boolean;
+  maskClose: boolean;
   animation: boolean;
   disableScroll: boolean;
   onClose(): void;
@@ -14,14 +15,15 @@ Component({
     show: false,
     position: 'bottom',
     mask: true,
+    maskClose: true,
     animation: true,
     disableScroll: true,
   } as Props,
   methods: {
     onMaskTap() {
-      const { onClose, animation } = this.props;
+      const { maskClose, onClose, animation } = this.props;
 
-      if (onClose) {
+      if (maskClose && onClose) {
         if (animation) {
           onClose();
         } else {

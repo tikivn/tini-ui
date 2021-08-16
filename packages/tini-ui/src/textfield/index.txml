@@ -1,4 +1,4 @@
-<view class="tu-textfield {{wrapClass}} {{className}}">
+<view class="tu-textfield {{wrapClass}} {{className}}" onTap="onTap">
   <tu-label 
     text="{{labelText}}"
     className="{{labelCls}}" 
@@ -27,6 +27,7 @@
         type="{{type}}" 
         password="{{password}}" 
         placeholder="{{placeholder}}" 
+        readonly="{{readonly}}"
         placeholderClass="tu-textfield-placeholder {{placeholderClass}}" 
         placeholderStyle="{{placeholderStyle}}" 
         disabled="{{disabled}}" 

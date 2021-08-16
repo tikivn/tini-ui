@@ -29,10 +29,11 @@ declare namespace tiniapp {
   type ComponentOptions<
     P extends Record<string, any> = Record<string, any>,
     D = any,
-    M extends IComponentMethods = IComponentMethods
+    M extends IComponentMethods = IComponentMethods,
   > = IComponentLifeCycleMethods<D, P> & {
     data?: D;
     props?: P;
+    [key: string]: any;
 
     methods?: M & ThisType<IComponentInstance<P, D> & M>;
   } & ThisType<IComponentInstance<P, D> & M>;

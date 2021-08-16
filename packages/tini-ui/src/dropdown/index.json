@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "textfield": "../textfield/index",
+    "bottom-sheet": "../bottom-sheet/index",
+    "tu-button": "../tu-button/index"
+  }
+}

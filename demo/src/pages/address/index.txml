@@ -1,0 +1,15 @@
+<view class="m-small">
+  <address 
+    streetErrorMsg="{{streetErrorMsg}}"
+    cityErrorMsg="{{cityErrorMsg}}"
+    districtErrorMsg="{{districtErrorMsg}}"
+    wardErrorMsg="{{wardErrorMsg}}"
+    streetLabel="Địa chỉ nhận hàng"
+    streetPlaceholder="Nhập số nhà, tên đường..."
+    street="{{street}}"
+    city="{{city}}"
+    district="{{district}}"
+    ward="{{ward}}"
+    onChangeAddress="onChangeAddress" 
+    onFullAddress="onFullAddress" />
+</view>

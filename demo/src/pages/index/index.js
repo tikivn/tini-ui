@@ -6,6 +6,14 @@ Page({
         path: 'pages/button/index',
       },
       {
+        name: 'dropdown',
+        path: 'pages/dropdown/index',
+      },
+      {
+        name: 'address',
+        path: 'pages/address/index',
+      },
+      {
         name: 'avatar',
         path: 'pages/avatar/index',
       },

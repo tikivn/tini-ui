@@ -2,3 +2,4 @@
 
 /// <reference path="./query.d.ts" />
 /// <reference path="./system.d.ts" />
+/// <reference path="./request.d.ts" />

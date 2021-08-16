@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "Address",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "address": "@tiki.vn/tini-ui/es/address/index"
+  }
+}
