@@ -1,5 +1,6 @@
 <view class="m-small">
   <dropdown 
+    maskClose="{{false}}"
     bottomSheetHeight="300"
     items="{{items1}}"
     value="{{selected1}}"

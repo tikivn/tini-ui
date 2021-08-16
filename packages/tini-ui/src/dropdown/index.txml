@@ -19,6 +19,7 @@
     buttonTitle="{{bottomSheetButton}}" 
     distanceFromTop="{{bottomSheetDistanceFromTop}}" 
     disableScroll
+    maskClose="{{maskClose}}"
     isContentScrollView="{{false}}"
     style="height: {{bottomSheetContainerHeight}}px"
     onClose="onClose">

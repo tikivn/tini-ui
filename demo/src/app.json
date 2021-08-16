@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/address/index",
     "pages/dropdown/index",
-    "pages/index/index",
     "pages/bottom-sheet/index",
     "pages/textfield/index",
     "pages/label/index",

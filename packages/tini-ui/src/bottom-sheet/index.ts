@@ -2,6 +2,7 @@ type BottomSheetProps = {
   className?: string;
   style?: string;
   mask: boolean;
+  maskClose: boolean;
   animation: boolean;
   show: boolean;
   disableScroll: boolean;
@@ -17,6 +18,7 @@ type BottomSheetProps = {
 Component({
   props: {
     mask: true,
+    maskClose: true,
     animation: true,
     show: true,
     disableScroll: false,

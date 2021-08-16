@@ -19,6 +19,7 @@ type DropdownProps = {
   bottomSheetTitle?: string;
   bottomSheetButton?: string; // Available when multiple is true
   bottomSheetDistanceFromTop?: number;
+  maskClose?: boolean;
   value?: any;
   errorMsg?: string;
   hasError?: boolean;
@@ -58,6 +59,7 @@ Component({
     bottomSheetTitle: 'Dropdown',
     bottomSheetButton: 'Chọn',
     bottomSheetDistanceFromTop: 100,
+    maskClose: true,
     multiple: false,
     onSelect: () => {},
   } as DropdownProps,
