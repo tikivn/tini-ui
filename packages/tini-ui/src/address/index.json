@@ -3,6 +3,7 @@
   "usingComponents": {
     "dropdown": "../dropdown/index",
     "bottom-sheet": "../bottom-sheet/index",
+    "tu-label": "../tu-label/index",
     "textfield": "../textfield/index"
   }
 }

@@ -3,6 +3,7 @@
   "usingComponents": {
     "textfield": "../textfield/index",
     "bottom-sheet": "../bottom-sheet/index",
+    "tu-label": "../tu-label/index",
     "tu-button": "../tu-button/index"
   }
 }
