@@ -114,10 +114,12 @@ Component({
 
     if (bottomSheetHeight) {
       data.bottomSheetContainerHeight = bottomSheetHeight;
-      data.bottomSheetScrollViewHeight = bottomSheetHeight - (showSearch ? 60 : 0);
+      data.bottomSheetScrollViewHeight =
+        bottomSheetHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0);
     } else {
       data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop - 40; // 40: header height
-      data.bottomSheetScrollViewHeight = data.bottomSheetContainerHeight - (showSearch ? 60 : 0);
+      data.bottomSheetScrollViewHeight =
+        data.bottomSheetContainerHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0);
     }
 
     this.setData(data);
