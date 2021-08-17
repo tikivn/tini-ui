@@ -15,7 +15,6 @@ type AddressData = {
 };
 
 type AddresProps = {
-  appId: string;
   firstCities: string[];
   // Value
   street: string;
@@ -77,10 +76,9 @@ Component({
   } as AddressData,
   addressService: null,
   async didMount() {
-    const { appId, firstCities } = this.props;
+    const { firstCities } = this.props;
 
     this.addressService = new AddressService({
-      appId,
       firstCities,
     });
 

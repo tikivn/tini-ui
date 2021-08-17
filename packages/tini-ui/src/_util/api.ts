@@ -9,7 +9,8 @@ export default class API {
   userAgent = 'TikiNative';
   headers = {};
 
-  constructor({ appId, userAgent }: { appId: string; userAgent?: string }) {
+  constructor(params?: { appId: string; userAgent?: string }) {
+    const { appId, userAgent } = params || {};
     this.setAppId(appId);
     if (userAgent) {
       this.setUserAgent(userAgent);

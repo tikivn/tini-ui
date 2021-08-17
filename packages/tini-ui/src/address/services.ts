@@ -9,18 +9,17 @@ export type AddressItem = {
 };
 
 export default class AddressServices {
-  api = new API({ appId: '' });
+  api = new API();
   baseUrl = 'https://api.tiki.vn/directory/v1/countries/VN';
   firstCities: string[] = ['Hồ Chí Minh', 'Hà Nội'];
   cities: AddressItem[] = [];
   districts: Record<number, AddressItem[]> = {};
   wards: Record<number, AddressItem[]> = {};
 
-  constructor({ appId, firstCities }: { appId: string; firstCities: string[] }) {
+  constructor({ firstCities }: { firstCities: string[] }) {
     if (firstCities) {
       this.firstCities = firstCities;
     }
-    this.api.setAppId(appId);
   }
 
   async getCities(): Promise<AddressItem[]> {
