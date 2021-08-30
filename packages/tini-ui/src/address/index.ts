@@ -1,3 +1,4 @@
+import { isNotEmpty } from '../_util/validate';
 import AddressService, { AddressItem } from './services';
 
 type AddressValue = {
@@ -5,6 +6,8 @@ type AddressValue = {
   city: AddressItem;
   district: AddressItem;
   ward: AddressItem;
+  full_name?: string;
+  phone_number?: string;
 };
 
 type AddressData = {
@@ -15,13 +18,14 @@ type AddressData = {
 };
 
 type AddresProps = {
-  appId: string;
   firstCities: string[];
   // Value
   street: string;
   city: number | AddressItem;
   district: number | AddressItem;
   ward: number | AddressItem;
+  full_name?: string;
+  phone_number?: string;
   // Label and Placeholder
   streetLabel?: string;
   streetPlaceholder?: string;
@@ -31,13 +35,24 @@ type AddresProps = {
   districtPlaceholder?: string;
   wardLabel?: string;
   wardPlaceholder?: string;
+  nameLabel?: string;
+  namePlaceholder?: string;
+  phoneLabel?: string;
+  phonePlaceholder?: string;
   // Error
   streetErrorMsg?: string;
   cityErrorMsg?: string;
   districtErrorMsg?: string;
   wardErrorMsg?: string;
+  nameErrorMsg?: string;
+  phoneErrorMsg?: string;
+  // Extend fields
+  showName?: boolean;
+  showPhone?: boolean;
   // Events
   onChangeStreet?: (street: string) => void;
+  onChangeName?: (name: string) => void;
+  onChangePhone?: (phone: string) => void;
   onChangeCity?: (city: AddressItem) => void;
   onChangeDistrict?: (district: AddressItem) => void;
   onChangeWard?: (ward: AddressItem) => void;
@@ -63,6 +78,14 @@ Component({
     cityErrorMsg: '',
     districtErrorMsg: '',
     wardErrorMsg: '',
+    showName: true,
+    nameLabel: 'Tên người nhận',
+    namePlaceholder: 'Nhập họ & tên người nhận',
+    full_name: '',
+    showPhone: true,
+    phoneLabel: 'Số điện thoại liên lạc',
+    phonePlaceholder: 'Nhập số điện thoại người nhận',
+    phone_number: '',
   } as AddresProps,
   data: {
     value: {
@@ -70,6 +93,8 @@ Component({
       city: null,
       district: null,
       ward: null,
+      full_name: '',
+      phone_number: '',
     },
     cities: [],
     districts: [],
@@ -77,34 +102,53 @@ Component({
   } as AddressData,
   addressService: null,
   async didMount() {
-    const { appId, firstCities } = this.props;
+    const { firstCities } = this.props;
 
     this.addressService = new AddressService({
-      appId,
       firstCities,
     });
 
     this.initDataFromProps();
   },
-  deriveDataFromProps({ street, city, district, ward }) {
+  deriveDataFromProps({
+    street,
+    city,
+    district,
+    ward,
+    full_name,
+    phone_number,
+    showPhone,
+    showName,
+  }) {
     if (
       street !== this.data.value.street ||
       city !== this.data.value.city ||
       district !== this.data.value.district ||
-      ward !== this.data.value.ward
+      ward !== this.data.value.ward ||
+      (showName && full_name !== this.data.value.full_name) ||
+      (showPhone && phone_number !== this.data.value.phone_number)
     ) {
       this.initDataFromProps();
     }
   },
   methods: {
     async initDataFromProps() {
-      const { street = '', city, district, ward } = this.props;
+      const {
+        street = '',
+        city,
+        district,
+        ward,
+        full_name,
+        phone_number,
+        showName,
+        showPhone,
+      } = this.props;
 
       const promiseAll = [this.getCities()];
       if (this.getId(city)) {
         promiseAll.push(this.getDistricts(this.getId(city)));
         if (this.getId(district)) {
-          promiseAll.push(this.getWards(this.getId(city), this.getId(district)));
+          promiseAll.push(this.getWards(this.getId(district)));
         }
       }
       await Promise.all(promiseAll);
@@ -118,6 +162,12 @@ Component({
       }
       if (ward) {
         value.ward = this.data.wards.find((c) => c.id === this.getId(ward)) ?? null;
+      }
+      if (showName) {
+        value.full_name = full_name ?? '';
+      }
+      if (showPhone) {
+        value.phone_number = phone_number ?? '';
       }
       this.setData({ value });
     },
@@ -135,29 +185,68 @@ Component({
       const districts = await this.addressService.getDistricts(cityId);
       this.setData({ districts });
     },
-    async getWards(cityId, districtId) {
-      const wards = await this.addressService.getWards(cityId, districtId);
+    async getWards(districtId) {
+      const wards = await this.addressService.getWards(districtId);
       this.setData({ wards });
     },
-    onChangeAddress() {
-      const { onChangeAddress, onFullAddress } = this.props;
-      const { value } = this.data;
 
-      if (onChangeAddress) {
-        onChangeAddress(value);
-      }
-      if (onFullAddress && value.street && value.city && value.district && value.ward) {
-        onFullAddress(value);
+    onChangeAddress() {
+      const { onChangeAddress, onFullAddress, showName, showPhone } = this.props;
+      const { value } = this.data;
+      const { street, city, district, ward, full_name, phone_number } = value;
+      const data = {
+        street,
+        city,
+        district,
+        ward,
+        ...(showName ? { full_name } : {}),
+        ...(showPhone ? { phone_number } : {}),
+      };
+
+      onChangeAddress && onChangeAddress(data);
+
+      if (onFullAddress) {
+        const isFull =
+          [
+            isNotEmpty(data.street),
+            isNotEmpty(data.city),
+            isNotEmpty(data.district),
+            isNotEmpty(data.ward),
+            showName ? isNotEmpty(data.full_name) : true,
+            showPhone ? isNotEmpty(data.phone_number) : true,
+          ].indexOf(false) < 0;
+        isFull && onFullAddress(data);
       }
     },
     changeStreet(e) {
       const street = e.detail.value;
 
-      this.setData({ value: { ...this.data.value, street } });
-      if (this.props.onChangeStreet) {
-        this.props.onChangeStreet(street);
-      }
-      this.onChangeAddress();
+      this.setData({ value: { ...this.data.value, street } }, () => {
+        if (this.props.onChangeStreet) {
+          this.props.onChangeStreet(street);
+        }
+        this.onChangeAddress();
+      });
+    },
+    changeName(e) {
+      const full_name = e.detail.value;
+
+      this.setData({ value: { ...this.data.value, full_name } }, () => {
+        if (this.props.onChangeName) {
+          this.props.onChangeName(full_name);
+        }
+        this.onChangeAddress();
+      });
+    },
+    changePhone(e) {
+      const phone_number = e.detail.value;
+
+      this.setData({ value: { ...this.data.value, phone_number } }, () => {
+        if (this.props.onChangePhone) {
+          this.props.onChangePhone(phone_number);
+        }
+        this.onChangeAddress();
+      });
     },
     async selectCity(city) {
       const value = {
@@ -186,7 +275,7 @@ Component({
         }
         this.onChangeAddress();
       });
-      this.getWards(value.city.id, district.id);
+      this.getWards(district.id);
     },
     async selectWard(ward) {
       const value = {

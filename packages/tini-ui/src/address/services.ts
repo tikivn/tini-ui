@@ -3,24 +3,20 @@ import API from '../_util/api';
 export type AddressItem = {
   id: number;
   name: string;
-  tiki_code: string;
-  geo_lat?: string;
-  geo_long?: string;
 };
 
 export default class AddressServices {
-  api = new API({ appId: '' });
-  baseUrl = 'https://api.tiki.vn/directory/v1/countries/VN';
+  api = new API();
+  baseUrl = 'https://api.tiki.vn/v2/directory';
   firstCities: string[] = ['Hồ Chí Minh', 'Hà Nội'];
   cities: AddressItem[] = [];
   districts: Record<number, AddressItem[]> = {};
   wards: Record<number, AddressItem[]> = {};
 
-  constructor({ appId, firstCities }: { appId: string; firstCities: string[] }) {
+  constructor({ firstCities }: { firstCities: string[] }) {
     if (firstCities) {
       this.firstCities = firstCities;
     }
-    this.api.setAppId(appId);
   }
 
   async getCities(): Promise<AddressItem[]> {
@@ -29,10 +25,10 @@ export default class AddressServices {
         return Promise.resolve(this.cities);
       }
 
-      const rs = await this.api.get(`${this.baseUrl}/regions`);
+      const rs = await this.api.get(`${this.baseUrl}/regions?country_id=vn`);
       const firstCities = this.firstCities.reduce(
         (acc: Record<string, AddressItem>, item: string) => {
-          acc[item] = { id: 0, name: '', tiki_code: '' };
+          acc[item] = { id: 0, name: '' };
           return acc;
         },
         {},
@@ -59,7 +55,7 @@ export default class AddressServices {
         return this.districts[cityId];
       }
 
-      const rs = await this.api.get(`${this.baseUrl}/regions/${cityId}/districts`);
+      const rs = await this.api.get(`${this.baseUrl}/districts?region_id=${cityId}`);
       this.districts[cityId] = rs.data;
       return this.districts[cityId];
     } catch {
@@ -67,15 +63,13 @@ export default class AddressServices {
     }
   }
 
-  async getWards(cityId: number, districtId: number): Promise<AddressItem[]> {
+  async getWards(districtId: number): Promise<AddressItem[]> {
     try {
       if (this.wards[districtId]) {
         return this.wards[districtId];
       }
 
-      const rs = await this.api.get(
-        `${this.baseUrl}/regions/${cityId}/districts/${districtId}/wards`,
-      );
+      const rs = await this.api.get(`${this.baseUrl}/wards?district_id=${districtId}`);
       this.wards[districtId] = rs.data;
       return this.wards[districtId];
     } catch {

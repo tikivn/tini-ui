@@ -22,6 +22,7 @@ Component({
     animation: true,
     show: true,
     disableScroll: false,
+    className: '',
     isContentScrollView: true,
     distanceFromTop: 50,
     zIndex: 2,
