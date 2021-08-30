@@ -7,6 +7,7 @@
   errorMsg="{{errorMsg}}"
   hasError="{{hasError}}"
   value="{{label}}"
+  loading="{{loading}}"
   inputCls="{{inputCls}}"
   labelText="{{labelText}}"
   className="tu-dropdown {{className}}"
