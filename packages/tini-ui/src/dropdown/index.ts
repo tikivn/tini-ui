@@ -6,6 +6,7 @@ import { getSystemInfoAsync } from '../_util/system';
 type DropdownProps = {
   placeholder?: string;
   disabled?: boolean;
+  shape?: 'pill' | 'rounded';
   inputCls?: string;
   className?: string;
   items?: Array<string> | Array<any>;
@@ -62,6 +63,7 @@ Component({
     bottomSheetDistanceFromTop: 100,
     maskClose: true,
     multiple: false,
+    shape: 'rounded',
     onSelect: () => {},
   } as DropdownProps,
   data: {

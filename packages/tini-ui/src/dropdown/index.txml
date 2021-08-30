@@ -3,6 +3,7 @@
 <textfield 
   readonly
   onTap="onTap"
+  shape="{{shape}}"
   errorMsg="{{errorMsg}}"
   hasError="{{hasError}}"
   value="{{label}}"
