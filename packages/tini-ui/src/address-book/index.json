@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "bottom-sheet": "../bottom-sheet/index",
-    "tu-button": "../tu-button/index",
-    "loading": "../loading/index"
-  }
-}
