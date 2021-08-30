@@ -1,3 +1,4 @@
+import { isHasValue } from '../_util/validate';
 import { debounce } from '../_util/debounce';
 import compareNormalize from '../_util/search';
 import { getSystemInfoAsync } from '../_util/system';
@@ -96,11 +97,7 @@ Component({
       this.setData({ label });
     }
 
-    if (
-      value !== null &&
-      value !== undefined &&
-      JSON.stringify(value) !== JSON.stringify(localValue)
-    ) {
+    if (isHasValue(value) && JSON.stringify(value) !== JSON.stringify(localValue)) {
       this.setData({ localValue: value });
     }
   },

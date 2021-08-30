@@ -1,4 +1,4 @@
-// TypeScript Version: 3.3
+// TypeScript Version: 4.3.4
 
 /// <reference path="./app.d.ts" />
 /// <reference path="./page.d.ts" />

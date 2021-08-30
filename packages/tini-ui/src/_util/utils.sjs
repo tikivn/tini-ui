@@ -7,6 +7,16 @@ function formatUnit(unit) {
   return `${value}px`;
 }
 
+function formatAddress(address = {}) {
+  return [
+    address.street || '',
+    address.ward || '',
+    address.district || '',
+    address.city || '',
+  ].join(', ');
+}
+
 export default {
   formatUnit,
+  formatAddress,
 };

@@ -1,4 +1,4 @@
-const isHasValue = (value?: string) => value !== null && value !== undefined;
+import { isHasValue } from './validate';
 
 function normalize(text: string) {
   return `${text}`

@@ -44,3 +44,27 @@
   errorMsg="{{wardErrorMsg}}"
   hasError="{{!!wardErrorMsg}}"
   onSelect="selectWard"/>
+
+<textfield 
+  tiki:if="{{showName}}"
+  value="{{value.full_name}}"
+  className="mb-small" 
+  labelText="{{nameLabel}}"
+  tiki:key="ward"
+  onInput="changeName"
+  maxlength="50"
+  errorMsg="{{nameErrorMsg}}"
+  hasError="{{!!nameErrorMsg}}"
+  placeholder="{{namePlaceholder}}" />
+
+<textfield 
+  tiki:if="{{showPhone}}"
+  value="{{value.phone_number}}"
+  className="mb-small" 
+  labelText="{{phoneLabel}}"
+  onInput="changePhone"
+  errorMsg="{{phoneErrorMsg}}"
+  type="tel"
+  maxlength="11"
+  hasError="{{!!phoneErrorMsg}}"
+  placeholder="{{phonePlaceholder}}" />

@@ -48,6 +48,7 @@
             class="dropdown-item {{isSelected(localValue, item, idKey) ? 'dropdown-item-selected' : ''}}" 
             onTap="onSelect"
             data-item="{{item}}"
+            tiki:key="{{idKey}}"
             tiki:for="{{searchItems}}">
             <view class="dropdown-item-content flex items-center justify-between">
               <view 
