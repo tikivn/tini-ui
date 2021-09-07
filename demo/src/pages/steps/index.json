@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "Step",
+  "usingComponents": {
+    "steps": "@tiki.vn/tini-ui/es/steps/index"
+  }
+}

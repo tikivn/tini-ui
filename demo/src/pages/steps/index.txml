@@ -1,0 +1,38 @@
+ 
+
+<view class="container">
+
+  <steps 
+  className="demo-steps-class"
+  activeIndex="{{activeIndex}}"
+  direction="vertical"
+  failIndex="{{failIndex}}"
+  items="{{items}}"
+
+  >
+  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
+  <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>
+
+  </steps>
+
+  <steps
+  onTapStep="onTapStep"
+  className="demo-steps-class"
+  activeIndex="{{activeIndex}}"
+  failIndex="{{failIndex}}"
+  items="{{items}}"
+  >
+  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
+  <view slot="desc_4">当前 item 没有 <text style="color: green;">description</text> 时，使用 slot 内容。</view>
+  </steps>
+</view>
+ 
+
+<view class="demo-btn-container">
+  <button class="demo-btn" onTap="preStep">
+    <icon size="24" type="minus" color="white"/>
+  </button>
+  <button class="demo-btn" onTap="nextStep"><icon size="24" type="plus" color="white"/></button>
+  <button class="demo-btn" onTap="setFailIndex"><icon size="24" type="close_glyph" color="red"/></button>
+  <button class="demo-btn" onTap="cancelFailIndex"><icon size="24" type="success_glyph" color="green"/></button>
+</view>  

@@ -61,6 +61,10 @@ Page({
         name: 'pagination',
         path: 'pages/pagination/index',
       },
+      {
+        name: 'steps',
+        path: 'pages/steps/index',
+      },
     ],
   },
   onNavigate(e) {

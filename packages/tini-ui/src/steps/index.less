@@ -1,0 +1,210 @@
+// ======== variables ========
+@dot-width: var(--space-inline-medium, 16px);
+@dot-space: var(--space-stack-4x-small, 4px);
+@connect-line-width: var(--space-stack-4x-small, 4px);
+@background-progress-inactive: rgba(0, 0, 0, 0.1);
+@background-progress-active: var(--brand, #1a94ff);
+@background-progress-error: #ff424f;
+@step-description-color: rgba(128, 128, 137);
+@step-transition: all 0.2s linear;
+
+@font-size-title: var(--font-size-large);
+
+// ======== mixins ========
+.description-text() {
+  font-style: var(--font-style-normal, normal);
+  font-weight: var(--font-weight-normal, normal);
+  font-size: var(--font-size-base, 14px);
+  line-height: 21px;
+  color: @step-description-color;
+}
+
+.title-text() {
+  font-style: var(--font-style-normal, normal);
+  font-weight: var(--font-weight-normal, normal);
+  font-size: var(--font-size-medium, 16px);
+  line-height: var(--font-height-default, 21px);
+  line-height: 24px;
+}
+
+.step-container {
+  .step {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    .title {
+      .title-text();
+    }
+    .description {
+      .description-text();
+    }
+    .dot {
+      width: @dot-width;
+      height: @dot-width;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      border-width: @dot-space;
+      border-color: transparent;
+      border-style: solid;
+      display: inline-block;
+      align-self: center;
+      z-index: 200;
+      box-sizing: content-box;
+
+      &::before {
+        z-index: 200;
+        content: '';
+        display: flex;
+        align-self: center;
+        width: @dot-width;
+        height: @dot-width;
+        border-radius: 50%;
+        background-color: @background-progress-inactive;
+        transition: @step-transition;
+      }
+    }
+  }
+
+  &.horizontal {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    .step {
+      &::before {
+        transition: @step-transition;
+        z-index: 100;
+        position: absolute;
+        top: calc((@dot-width + @connect-line-width) / 2);
+        content: '';
+        background-color: @background-progress-inactive;
+        width: calc(100% - @dot-width - (@dot-space * 2)) !important;
+        height: @connect-line-width;
+        right: calc(50% + (@dot-width / 2) + @dot-space) !important;
+      }
+
+      // ======== active style ========
+      &.active {
+        .dot:before {
+          background-color: @background-progress-active;
+        }
+
+        &::before {
+          background-color: @background-progress-active;
+        }
+      }
+      // ======== error style ========
+      &.error {
+        .dot:before {
+          background-color: @background-progress-error;
+        }
+      }
+
+      // ======== current step style ========
+      &.current {
+        .title {
+          font-weight: bold;
+        }
+      }
+
+      // ======== overide style ========
+      &:first-child:before {
+        background-color: transparent;
+      }
+      &:last-child:after {
+        background-color: transparent;
+      }
+    }
+  }
+  &.vertical {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    .step {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-left: 32px;
+      max-width: calc(100% - 32px);
+      text-align: left;
+
+      .description {
+        display: block;
+        .description-text();
+      }
+      .dot {
+        position: absolute;
+        left: 0;
+        width: @dot-width;
+        height: @dot-width;
+        margin-bottom: 8px;
+        margin-left: 4px;
+        margin-right: 4px;
+        border-radius: 50%;
+        border-width: @dot-space;
+        border-color: transparent;
+        border-style: solid;
+        display: inline-block;
+        align-self: center;
+        z-index: 200;
+        box-sizing: content-box;
+        transition: @step-transition;
+        &::before {
+          z-index: 200;
+          content: '';
+          display: flex;
+          align-self: center;
+          width: @dot-width;
+          height: @dot-width;
+          border-radius: 50%;
+          background-color: @background-progress-inactive;
+        }
+      }
+      &::after {
+        transition: @step-transition;
+        z-index: 100;
+        position: absolute;
+        top: calc(@dot-width + (@dot-space * 2));
+        content: '';
+        background-color: @background-progress-inactive;
+        height: calc(100% - @dot-width - (@dot-space * 2)) !important;
+        width: @connect-line-width;
+        left: calc(16px - @dot-space / 2);
+      }
+
+      // ======== active style ========
+      &.active {
+        .dot:before {
+          background-color: @background-progress-active;
+        }
+      }
+      &.active-line {
+        &::after {
+          background-color: @background-progress-active;
+        }
+      }
+
+      // ======== error style ========
+      &.error {
+        .dot:before {
+          background-color: @background-progress-error;
+        }
+      }
+
+      // ======== current step style ========
+      &.current {
+        .title {
+          font-weight: bold;
+        }
+      }
+
+      // ======== overide style ========
+
+      &:last-child:after {
+        background-color: transparent;
+      }
+    }
+  }
+}

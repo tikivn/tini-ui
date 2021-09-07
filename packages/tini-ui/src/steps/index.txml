@@ -1,0 +1,30 @@
+
+<view class="step-container {{direction}} {{className}}">
+  <block tiki:for="{{items}}" tiki:key="title">
+    <view class="step
+    {{index <= activeIndex && index + 1 <= activeIndex && direction === 'vertical' ? 'active-line' : ''}}
+    {{index <= activeIndex ? 'active' : ''}} 
+    {{index === activeIndex ? 'current' : ''}} 
+    {{index === failIndex ? 'error' : ''}}" > 
+      <view class="dot"></view>
+
+      <block tiki:if="{{item.title}}">
+        <text class="title title_{{index}}">{{item.title}}</text> 
+      </block>
+      <block tiki:else>
+        <slot name="title_{{index + 1}}" />
+      </block>
+      <block tiki:if="{{item.description}}">
+        <text class="description">{{item.description}}</text> 
+      </block>
+      <block tiki:else>
+        <slot name="desc_{{index + 1}}" />
+      </block>
+    </view>
+  </block> 
+</view>  
+
+  
+ 
+ 
+ 

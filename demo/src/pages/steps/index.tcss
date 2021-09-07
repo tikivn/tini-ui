@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  max-width: calc(100vw - 20px);
+  flex-direction: column;
+  margin: 10px;
+}
+.demo-steps-class {
+  border-bottom: 20px solid #fff0;
+  margin: 10px 0;
+  padding: 10px 0;
+  background-color: #fff;
+}
+.demo-btn-container {
+  justify-content: space-between;
+
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  width: 100vw;
+}
+.demo-btn {
+  width: 50vw;
+}
