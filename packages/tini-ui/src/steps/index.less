@@ -24,7 +24,6 @@
   font-weight: var(--font-weight-normal, normal);
   font-size: var(--font-size-medium, 16px);
   line-height: var(--font-height-default, 21px);
-  line-height: 24px;
 }
 
 .step-container {
@@ -51,11 +50,11 @@
       border-style: solid;
       display: inline-block;
       align-self: center;
-      z-index: 200;
+      z-index: 2;
       box-sizing: content-box;
 
       &::before {
-        z-index: 200;
+        z-index: 2;
         content: '';
         display: flex;
         align-self: center;
@@ -75,7 +74,7 @@
     .step {
       &::before {
         transition: @step-transition;
-        z-index: 100;
+        z-index: 1;
         position: absolute;
         top: calc((@dot-width + @connect-line-width) / 2);
         content: '';
@@ -148,11 +147,11 @@
         border-style: solid;
         display: inline-block;
         align-self: center;
-        z-index: 200;
+        z-index: 2;
         box-sizing: content-box;
         transition: @step-transition;
         &::before {
-          z-index: 200;
+          z-index: 2;
           content: '';
           display: flex;
           align-self: center;
@@ -164,7 +163,7 @@
       }
       &::after {
         transition: @step-transition;
-        z-index: 100;
+        z-index: 1;
         position: absolute;
         top: calc(@dot-width + (@dot-space * 2));
         content: '';
