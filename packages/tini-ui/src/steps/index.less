@@ -1,10 +1,11 @@
 // ======== variables ========
-@dot-width: var(--space-inline-medium, 16px);
 @dot-space: var(--space-stack-4x-small, 4px);
 @connect-line-width: var(--space-stack-4x-small, 4px);
-@background-progress-inactive: rgba(0, 0, 0, 0.1);
-@background-progress-active: var(--brand, #1a94ff);
-@background-progress-error: #ff424f;
+@background-progress-inactive: var(--inactive-color, rgba(0, 0, 0, 0.1));
+@background-progress-active: var(--active-color, var(--brand, #1a94ff));
+@background-progress-error: var(--dot-error-color, #ff424f);
+@dot-width: var(--dot-size, var(--space-inline-medium, 16px));
+
 @step-description-color: rgba(128, 128, 137);
 @step-transition: all 0.2s linear;
 
@@ -79,17 +80,14 @@
         top: calc((@dot-width + @connect-line-width) / 2);
         content: '';
         background-color: @background-progress-inactive;
-        width: calc(100% - @dot-width - (@dot-space * 2)) !important;
+        width: calc(100% - @dot-width - (@dot-space * 2));
         height: @connect-line-width;
-        right: calc(50% + (@dot-width / 2) + @dot-space) !important;
+        right: calc(50% + (@dot-width / 2) + @dot-space);
       }
 
       // ======== active style ========
       &.active {
-        .dot:before {
-          background-color: @background-progress-active;
-        }
-
+        .dot:before,
         &::before {
           background-color: @background-progress-active;
         }
@@ -109,9 +107,7 @@
       }
 
       // ======== overide style ========
-      &:first-child:before {
-        background-color: transparent;
-      }
+      &:first-child:before,
       &:last-child:after {
         background-color: transparent;
       }
@@ -125,8 +121,8 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      padding-left: 32px;
-      max-width: calc(100% - 32px);
+      padding-left: calc(@dot-width + 16px);
+      max-width: calc(100% - calc(@dot-width + 16px));
       text-align: left;
 
       .description {
@@ -168,9 +164,9 @@
         top: calc(@dot-width + (@dot-space * 2));
         content: '';
         background-color: @background-progress-inactive;
-        height: calc(100% - @dot-width - (@dot-space * 2)) !important;
+        height: calc(100% - @dot-width - (@dot-space * 2));
         width: @connect-line-width;
-        left: calc(16px - @dot-space / 2);
+        left: calc(@dot-width / 2 + @dot-space / 2 + @connect-line-width);
       }
 
       // ======== active style ========

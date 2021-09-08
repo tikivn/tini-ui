@@ -8,7 +8,8 @@
   direction="vertical"
   failIndex="{{failIndex}}"
   items="{{items}}"
-
+  activeColor="green"
+  dotSize="30px"
   >
   <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
   <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>

@@ -1,5 +1,12 @@
 
-<view class="step-container {{direction}} {{className}}">
+<view class="step-container {{direction}} {{className}}" 
+  style="
+  --inactive-color: {{inactiveColor}}; 
+  --active-color: {{activeColor}}; 
+  --dot-error-color: {{dotErrorColor}};
+  --dot-size: {{dotSize}};
+  {{style}}"
+  >
   <block tiki:for="{{items}}" tiki:key="title">
     <view class="step
     {{index <= activeIndex && index + 1 <= activeIndex && direction === 'vertical' ? 'active-line' : ''}}
