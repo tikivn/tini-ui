@@ -10,12 +10,29 @@
   items="{{items}}"
   activeColor="green"
   dotSize="30px"
+  dotErrorColor="yellow"
   >
   <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
   <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>
 
   </steps>
 
+
+  <steps 
+  className="demo-steps-class"
+  activeIndex="{{activeIndex}}"
+  direction="vertical"
+  reverseVertical="{{true}}"
+  failIndex="{{failIndex}}"
+  items="{{items}}"
+  activeColor="green"
+  dotSize="30px"
+  dotErrorColor="yellow"
+  >
+  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
+  <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>
+
+  </steps>
   <steps
   onTapStep="onTapStep"
   className="demo-steps-class"

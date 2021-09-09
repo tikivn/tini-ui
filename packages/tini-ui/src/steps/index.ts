@@ -1,3 +1,16 @@
+export interface IStepsComponentProps {
+  className?: string;
+  style?: string;
+  activeIndex: number;
+  failIndex?: number;
+  direction: string;
+  items: any[];
+  inactiveColor?: string;
+  activeColor?: string;
+  dotErrorColor?: string;
+  dotSize?: string;
+  reverseVertical?: boolean;
+}
 Component({
   props: {
     className: '',
@@ -10,6 +23,7 @@ Component({
     activeColor: 'var(--brand, #1a94ff)',
     dotErrorColor: '#ff424f',
     dotSize: 'var(--space-inline-medium, 16px)',
+    reverseVertical: false
   },
   data: {
   },

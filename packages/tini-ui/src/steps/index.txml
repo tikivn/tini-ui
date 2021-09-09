@@ -1,10 +1,12 @@
 
-<view class="step-container {{direction}} {{className}}" 
+<view class="tu-step-container {{direction}} {{className}}" 
   style="
   --inactive-color: {{inactiveColor}}; 
   --active-color: {{activeColor}}; 
   --dot-error-color: {{dotErrorColor}};
   --dot-size: {{dotSize}};
+  --vertical-reverse-direction: {{reverseVertical?'column-reverse':'column'}};
+  --vertical-reverse-after-color: {{reverseVertical?'column-reverse':'column'}};
   {{style}}"
   >
   <block tiki:for="{{items}}" tiki:key="title">
