@@ -1,0 +1,39 @@
+
+<view class="tu-steps-container tu-steps-{{direction}} {{className}}" 
+  style="
+  --inactive-color: {{inactiveColor}}; 
+  --active-color: {{activeColor}}; 
+  --dot-error-color: {{dotErrorColor}};
+  --dot-size: {{dotSize}};
+  --vertical-reverse-direction: {{reverseVertical?'column-reverse':'column'}};
+  --vertical-reverse-after-color: {{reverseVertical?'column-reverse':'column'}};
+  {{style}}"
+  >
+  <block tiki:for="{{items}}" tiki:key="title">
+    <view class="tu-steps-step
+    {{index <= activeIndex && index + 1 <= activeIndex && direction === 'tu-steps-vertical' ? 'tu-steps-active-line' : ''}}
+    {{index <= activeIndex ? 'tu-steps-active' : ''}} 
+    {{index === activeIndex ? 'tu-steps-current' : ''}} 
+    {{index === failIndex ? 'tu-steps-error' : ''}}" > 
+      <view class="tu-steps-dot"></view>
+
+      <block tiki:if="{{item.title}}">
+        <text class="tu-steps-title tu-steps-title_{{index}}">{{item.title}}</text> 
+      </block>
+      <block tiki:else>
+        <slot name="title_{{index + 1}}" />
+      </block>
+      <block tiki:if="{{item.description}}">
+        <text class="tu-steps-description">{{item.description}}</text> 
+      </block>
+      <block tiki:else>
+        <slot name="desc_{{index + 1}}" />
+      </block>
+    </view>
+  </block> 
+</view>  
+
+  
+ 
+ 
+ 

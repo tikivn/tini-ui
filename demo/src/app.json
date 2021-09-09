@@ -18,6 +18,7 @@
     "pages/badge/index",
     "pages/modal/index",
     "pages/list/index",
+    "pages/steps/index",
     "pages/bottom-sheet/index"
   ],
   "window": {

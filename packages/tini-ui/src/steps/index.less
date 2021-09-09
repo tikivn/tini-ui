@@ -1,0 +1,194 @@
+// ======== variables ========
+@dot-space: var(--space-stack-4x-small, 4px);
+@connect-line-width: var(--space-stack-4x-small, 4px);
+@background-progress-inactive: var(--inactive-color, rgba(0, 0, 0, 0.1));
+@background-progress-active: var(--active-color, var(--brand, #1a94ff));
+@background-progress-error: var(--dot-error-color, #ff424f);
+@dot-width: var(--dot-size, var(--space-inline-medium, 16px));
+
+@step-description-color: rgba(128, 128, 137);
+@step-transition: all 0.2s linear;
+
+@font-size-title: var(--font-size-large);
+
+// ======== mixins ========
+.tu-steps-description-text() {
+  font-style: var(--font-style-normal, normal);
+  font-weight: var(--font-weight-normal, normal);
+  font-size: var(--font-size-base, 14px);
+  line-height: 21px;
+  color: @step-description-color;
+}
+
+.tu-steps-title-text() {
+  font-style: var(--font-style-normal, normal);
+  font-weight: var(--font-weight-normal, normal);
+  font-size: var(--font-size-medium, 16px);
+  line-height: var(--font-height-default, 21px);
+}
+
+.tu-steps-container {
+  .tu-steps-step {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    .tu-steps-title {
+      .tu-steps-title-text();
+    }
+    .tu-steps-description {
+      .tu-steps-description-text();
+    }
+    .tu-steps-dot {
+      width: @dot-width;
+      height: @dot-width;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      border-width: @dot-space;
+      border-color: transparent;
+      border-style: solid;
+      display: inline-block;
+      align-self: center;
+      box-sizing: content-box;
+
+      &::before {
+        content: '';
+        display: flex;
+        align-self: center;
+        width: @dot-width;
+        height: @dot-width;
+        border-radius: 50%;
+        background-color: @background-progress-inactive;
+        transition: @step-transition;
+      }
+    }
+  }
+
+  &.tu-steps-horizontal {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    .tu-steps-step {
+      &::before {
+        transition: @step-transition;
+        position: absolute;
+        top: calc((@dot-width + @connect-line-width) / 2);
+        content: '';
+        background-color: @background-progress-inactive;
+        width: calc(100% - @dot-width - (@dot-space * 2));
+        height: @connect-line-width;
+        right: calc(50% + (@dot-width / 2) + @dot-space);
+      }
+
+      // ======== active style ========
+      &.tu-steps-active {
+        .tu-steps-dot:before,
+        &::before {
+          background-color: @background-progress-active;
+        }
+      }
+      // ======== error style ========
+      &.tu-steps-error {
+        .tu-steps-dot:before {
+          background-color: @background-progress-error;
+        }
+      }
+
+      // ======== current step style ========
+      &.tu-steps-current {
+        .tu-steps-title {
+          font-weight: bold;
+        }
+      }
+
+      // ======== overide style ========
+      &:first-child:before,
+      &:last-child:after {
+        background-color: transparent;
+      }
+    }
+  }
+  &.tu-steps-vertical {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: var(--vertical-reverse-direction, column);
+    // flex-direction: column;
+    .tu-steps-step {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-left: calc(@dot-width + 16px);
+      max-width: calc(100% - calc(@dot-width + 16px));
+      text-align: left;
+
+      .tu-steps-description {
+        display: block;
+        .tu-steps-description-text();
+      }
+      .tu-steps-dot {
+        position: absolute;
+        left: 0;
+        width: @dot-width;
+        height: @dot-width;
+        margin-bottom: 8px;
+        margin-left: 4px;
+        margin-right: 4px;
+        border-radius: 50%;
+        border-width: @dot-space;
+        border-color: transparent;
+        border-style: solid;
+        display: inline-block;
+        align-self: center;
+        box-sizing: content-box;
+        transition: @step-transition;
+        &::before {
+          content: '';
+          display: flex;
+          align-self: center;
+          width: @dot-width;
+          height: @dot-width;
+          border-radius: 50%;
+          background-color: @background-progress-inactive;
+        }
+      }
+      &::after {
+        transition: @step-transition;
+        position: absolute;
+        top: calc(@dot-width + (@dot-space * 2));
+        content: '';
+        background-color: @background-progress-inactive;
+        height: calc(100% - @dot-width - (@dot-space * 2));
+        width: @connect-line-width;
+        left: calc(@dot-width / 2 + @dot-space / 2 + @connect-line-width);
+      }
+
+      // ======== active style ========
+      &.tu-steps-active {
+        .tu-steps-dot:before {
+          background-color: @background-progress-active;
+        }
+      }
+      &.tu-steps-active-line {
+        &::after {
+          background-color: @background-progress-active;
+        }
+      }
+
+      // ======== error style ========
+      &.tu-steps-error {
+        .tu-steps-dot:before {
+          background-color: @background-progress-error;
+        }
+      }
+
+      // ======== current step style ========
+      &.tu-steps-current {
+        .tu-steps-title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
