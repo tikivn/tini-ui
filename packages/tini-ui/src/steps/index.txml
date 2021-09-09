@@ -1,5 +1,5 @@
 
-<view class="tu-step-container {{direction}} {{className}}" 
+<view class="tu-steps-container tu-steps-{{direction}} {{className}}" 
   style="
   --inactive-color: {{inactiveColor}}; 
   --active-color: {{activeColor}}; 
@@ -10,21 +10,21 @@
   {{style}}"
   >
   <block tiki:for="{{items}}" tiki:key="title">
-    <view class="step
-    {{index <= activeIndex && index + 1 <= activeIndex && direction === 'vertical' ? 'active-line' : ''}}
-    {{index <= activeIndex ? 'active' : ''}} 
-    {{index === activeIndex ? 'current' : ''}} 
-    {{index === failIndex ? 'error' : ''}}" > 
-      <view class="dot"></view>
+    <view class="tu-steps-step
+    {{index <= activeIndex && index + 1 <= activeIndex && direction === 'tu-steps-vertical' ? 'tu-steps-active-line' : ''}}
+    {{index <= activeIndex ? 'tu-steps-active' : ''}} 
+    {{index === activeIndex ? 'tu-steps-current' : ''}} 
+    {{index === failIndex ? 'tu-steps-error' : ''}}" > 
+      <view class="tu-steps-dot"></view>
 
       <block tiki:if="{{item.title}}">
-        <text class="title title_{{index}}">{{item.title}}</text> 
+        <text class="tu-steps-title tu-steps-title_{{index}}">{{item.title}}</text> 
       </block>
       <block tiki:else>
         <slot name="title_{{index + 1}}" />
       </block>
       <block tiki:if="{{item.description}}">
-        <text class="description">{{item.description}}</text> 
+        <text class="tu-steps-description">{{item.description}}</text> 
       </block>
       <block tiki:else>
         <slot name="desc_{{index + 1}}" />

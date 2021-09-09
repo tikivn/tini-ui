@@ -12,7 +12,7 @@
 @font-size-title: var(--font-size-large);
 
 // ======== mixins ========
-.description-text() {
+.tu-steps-description-text() {
   font-style: var(--font-style-normal, normal);
   font-weight: var(--font-weight-normal, normal);
   font-size: var(--font-size-base, 14px);
@@ -20,28 +20,28 @@
   color: @step-description-color;
 }
 
-.title-text() {
+.tu-steps-title-text() {
   font-style: var(--font-style-normal, normal);
   font-weight: var(--font-weight-normal, normal);
   font-size: var(--font-size-medium, 16px);
   line-height: var(--font-height-default, 21px);
 }
 
-.tu-step-container {
-  .step {
+.tu-steps-container {
+  .tu-steps-step {
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
     position: relative;
 
-    .title {
-      .title-text();
+    .tu-steps-title {
+      .tu-steps-title-text();
     }
-    .description {
-      .description-text();
+    .tu-steps-description {
+      .tu-steps-description-text();
     }
-    .dot {
+    .tu-steps-dot {
       width: @dot-width;
       height: @dot-width;
       margin-bottom: 8px;
@@ -66,11 +66,11 @@
     }
   }
 
-  &.horizontal {
+  &.tu-steps-horizontal {
     justify-content: space-around;
     display: flex;
     flex-direction: row;
-    .step {
+    .tu-steps-step {
       &::before {
         transition: @step-transition;
         position: absolute;
@@ -83,22 +83,22 @@
       }
 
       // ======== active style ========
-      &.active {
-        .dot:before,
+      &.tu-steps-active {
+        .tu-steps-dot:before,
         &::before {
           background-color: @background-progress-active;
         }
       }
       // ======== error style ========
-      &.error {
-        .dot:before {
+      &.tu-steps-error {
+        .tu-steps-dot:before {
           background-color: @background-progress-error;
         }
       }
 
       // ======== current step style ========
-      &.current {
-        .title {
+      &.tu-steps-current {
+        .tu-steps-title {
           font-weight: bold;
         }
       }
@@ -110,12 +110,12 @@
       }
     }
   }
-  &.vertical {
+  &.tu-steps-vertical {
     justify-content: space-around;
     display: flex;
     flex-direction: var(--vertical-reverse-direction, column);
     // flex-direction: column;
-    .step {
+    .tu-steps-step {
       display: flex;
       flex-direction: column;
       position: relative;
@@ -123,11 +123,11 @@
       max-width: calc(100% - calc(@dot-width + 16px));
       text-align: left;
 
-      .description {
+      .tu-steps-description {
         display: block;
-        .description-text();
+        .tu-steps-description-text();
       }
-      .dot {
+      .tu-steps-dot {
         position: absolute;
         left: 0;
         width: @dot-width;
@@ -165,27 +165,27 @@
       }
 
       // ======== active style ========
-      &.active {
-        .dot:before {
+      &.tu-steps-active {
+        .tu-steps-dot:before {
           background-color: @background-progress-active;
         }
       }
-      &.active-line {
+      &.tu-steps-active-line {
         &::after {
           background-color: @background-progress-active;
         }
       }
 
       // ======== error style ========
-      &.error {
-        .dot:before {
+      &.tu-steps-error {
+        .tu-steps-dot:before {
           background-color: @background-progress-error;
         }
       }
 
       // ======== current step style ========
-      &.current {
-        .title {
+      &.tu-steps-current {
+        .tu-steps-title {
           font-weight: bold;
         }
       }
