@@ -1,5 +1,5 @@
-import fmtEvent from '../_util/fmtEvent';
 import fmtClass from '../_util/fmtClass';
+import fmtEvent from '../_util/fmtEvent';
 
 type LabelInputProps = {
   labelCls?: string;
@@ -34,12 +34,15 @@ type InputProps = {
   focus?: boolean;
   controlled?: boolean;
   onTap?: (event: unknown) => void;
+  onTapRightIcon?: (event: unknown) => void;
+  onTapLeftIcon?: (event: unknown) => void;
   onInput?: (event: unknown) => void;
   onConfirm?: (event: unknown) => void;
   onFocus?: (event: unknown) => void;
   onBlur?: (event: unknown) => void;
 };
 
+export type ITextfieldComponentProps = LabelInputProps & InputProps;
 Component({
   data: {
     paddingHorizontal: 16,
@@ -82,11 +85,13 @@ Component({
     focus: false,
     controlled: false,
     onTap: undefined,
+    onTapRightIcon: undefined,
+    onTapLeftIcon: undefined,
     onInput: undefined,
     onConfirm: undefined,
     onFocus: undefined,
     onBlur: undefined,
-  } as InputProps & LabelInputProps,
+  } as ITextfieldComponentProps,
   onInit() {
     this.setData({
       wrapClass: this.getWrapClass(this.props),
@@ -121,6 +126,12 @@ Component({
     },
     onTap(e) {
       this.onEvent('onTap', e);
+    },
+    onTapIconLeft(e) {
+      this.onEvent('onTapIconLeft', e);
+    },
+    onTapIconRight(e) {
+      this.onEvent('onTapIconRight', e);
     },
     onBlur(e) {
       this.onEvent('onBlur', e);

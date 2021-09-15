@@ -1,13 +1,19 @@
 .tu-textfield {
   @size: 40px;
-
+  .t-input-content {
+    caret-color: var(--brand, #1a94ff);
+  }
+  .tu-textfield-inline {
+    display: inline;
+  }
   &.rounded {
     .tu-textfield-loading {
       border-radius: var(--border-radius-rounded-4px);
     }
   }
   &.pill {
-    .tu-textfield-input, .tu-textfield-loading {
+    .tu-textfield-input,
+    .tu-textfield-loading {
       border-radius: var(--border-radius-pill);
     }
   }
@@ -48,6 +54,7 @@
 
     & .tu-textfield-input {
       flex: 1;
+      background: transparent;
     }
   }
 
@@ -58,7 +65,7 @@
     bottom: 1px;
     right: 1px;
     z-index: 1;
-    background: var(--white);
+
     &-inline {
       position: relative;
       flex: 1;
@@ -73,13 +80,16 @@
         width: 128px;
         max-width: 100%;
         height: 12px;
+        color: transparent;
       }
+
       &-icon {
         width: 24px;
         height: 24px;
         border-radius: 50%;
         margin-right: var(--space-inline-2x-small);
         background: var(--icon-disabled);
+
         &.left {
           margin-left: calc(var(--space-inline-2x-small) * -1);
         }

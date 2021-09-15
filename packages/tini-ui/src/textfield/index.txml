@@ -22,11 +22,11 @@
         style="
           padding-left: {{paddingHorizontal + (iconLeft ? 20 : 0)}}px;
           padding-right: {{paddingHorizontal + (hasError ? 20 : 0) + (iconRight ? 20 : 0) + (hasError && iconRight ? 8 : 0)}}px;"
-        value="{{value}}" 
+        value="{{loading ? '':value}}" 
         name="{{name}}" 
         type="{{type}}" 
         password="{{password}}" 
-        placeholder="{{placeholder}}" 
+        placeholder="{{loading ? '':placeholder}}" 
         readonly="{{readonly}}"
         placeholderClass="tu-textfield-placeholder {{placeholderClass}}" 
         placeholderStyle="{{placeholderStyle}}" 
@@ -45,14 +45,15 @@
         type="info" />
       <tu-icon class="tu-textfield-icon left" 
         tiki:if="{{iconLeft}}" 
+        onTap="onTapIconLeft"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
-        type="{{iconLeft}}" />
+        type="{{loading ? 'no-icon':iconLeft}}" />
       <tu-icon class="tu-textfield-icon right" 
         tiki:if="{{iconRight}}" 
+        onTap="onTapIconRight"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
         type="{{iconRight}}" />
     </view>
     <text class="tu-textfield-error-message" tiki:if="{{hasError && errorMsg}}">{{errorMsg}}</text>
   </tu-label>
 </view>
-

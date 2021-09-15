@@ -1,0 +1,9 @@
+.p-5 {
+  padding: 5px;
+}
+text.p-5 {
+  display: block;
+}
+.block-content {
+  padding: 20px;
+}
