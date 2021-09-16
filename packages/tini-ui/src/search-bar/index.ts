@@ -70,6 +70,9 @@ Component({
 
   },
   data: { __value: '' },
+  didMount() {
+    this.deriveDataFromProps(this.props); // for passing static values(props never change)
+  },
   deriveDataFromProps: function (this: { data: { __value: string }, setData: (data) => void }, nextProps) {
     if (this.data.__value !== nextProps.value) {
       this.setData({

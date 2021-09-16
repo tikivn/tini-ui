@@ -1,7 +1,7 @@
 
   <textfield 
   style="{{style}}"
-  className="{{className}}"
+  className="tu-search-bar {{className}}"
   shape="{{shape}}"
   errorIconColor="{{errorIconColor}}"
   
