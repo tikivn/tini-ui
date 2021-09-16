@@ -5,7 +5,7 @@
   shape="{{shape}}"
   errorIconColor="{{errorIconColor}}"
   
-  value="{{!loading?value:''}}"
+  value="{{!loading?__value:''}}"
   maxlength="{{maxlength}}" 
   errorMsg="{{errorMsg}}"
   

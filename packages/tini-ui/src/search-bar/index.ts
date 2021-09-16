@@ -69,13 +69,34 @@ Component({
     errorIconColor: '#ff424f',
 
   },
+  data: { __value: '' },
+  deriveDataFromProps: function (this: { data: { __value: string }, setData: (data) => void }, nextProps) {
+    if (this.data.__value !== nextProps.value) {
+      this.setData({
+        __value: nextProps.value
+      });
+    }
+  },
 
-  methods: mapPropsEvent<ISearchBarComponentPropsEvents>([
-    "onFocus",
-    "onBlur",
-    "onConfirm",
-    "onInput",
-    "onTapCloseIcon",
-    "onTapSearchIcon",
-  ]),
+  methods: {
+    ...mapPropsEvent<ISearchBarComponentPropsEvents>([
+      "onFocus",
+      "onBlur",
+      "onConfirm",
+      "onInput",
+      "onTapSearchIcon",
+    ]),
+
+    onTapCloseIcon(e) {
+      try {
+        this.setData({
+          __value: ''
+        });
+        const onTapCloseIcon = mapPropsEvent<ISearchBarComponentPropsEvents>(['onTapCloseIcon']).onTapCloseIcon.bind(this);
+        onTapCloseIcon(e)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  },
 });
