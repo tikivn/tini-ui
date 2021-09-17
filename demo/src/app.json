@@ -19,7 +19,8 @@
     "pages/modal/index",
     "pages/list/index",
     "pages/steps/index",
-    "pages/bottom-sheet/index"
+    "pages/bottom-sheet/index",
+    "pages/search-bar/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",

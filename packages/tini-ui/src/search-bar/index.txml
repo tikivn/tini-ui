@@ -1,0 +1,36 @@
+
+  <textfield 
+  style="{{style}}"
+  className="tu-search-bar {{className}}"
+  shape="{{shape}}"
+  errorIconColor="{{errorIconColor}}"
+  
+  value="{{!loading?__value:''}}"
+  maxlength="{{maxlength}}" 
+  errorMsg="{{errorMsg}}"
+  
+  placeholder="{{!loading?placeholder:''}}"
+  placeholderClass="{{placeholderClass}}" 
+  placeholderStyle="{{placeholderStyle}}" 
+
+
+  labelText="{{labelText}}"
+  labelCls="{{labelCls}}"
+
+  
+  iconLeft="{{!loading?'search':'no-icon'}}"
+  iconRight="{{ value.length > 0  && !loading ? 'close' : '' }}"
+
+  disabled="{{disabled}}"
+  focus="{{!loading?focus:''}}"
+  controlled="{{controlled}}"
+  loading="{{loading}}"
+  hasError="{{hasError}}"
+  
+  onFocus="onFocus" 
+  onBlur="onBlur"
+  onTapIconRight="onTapCloseIcon"
+  onTapIconLeft="onTapSearchIcon"
+  onConfirm="onTapSearchIcon"
+  onInput="onInput"  
+  />

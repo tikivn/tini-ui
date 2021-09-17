@@ -1,0 +1,92 @@
+<view class="block-content">
+  <text class="p-5">Variants</text>
+  <text class="p-5">1. Format</text>
+  <text class="p-5">Label and Input only.</text>
+  <search-bar
+    value="{{value}}"
+    focus
+    className="p-5"
+    placeholder="Search..."
+    shape="rounded"
+    onInput="handleInput"
+    labelText="Labeled Input"
+
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon"
+  /> 
+  <search-bar
+    value="{{value}}"
+    className="p-5"
+    placeholder="Search..."
+    onInput="handleInput"
+
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon"
+  /> 
+  <text class="p-5">2. Shape</text>
+  <text class="p-5">Rounded, Pill.</text>
+  <search-bar
+    value="{{value}}"
+    className="p-5"
+    placeholder="Search..."
+    shape="rounded"
+    onInput="handleInput"
+    labelText="Rounded Input"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon"
+  />
+  <search-bar
+    value="{{value}}"
+    className="p-5"
+    placeholder="Search..."
+    shape="pill"
+    onInput="handleInput"
+
+    labelText="Pill Input"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon"
+    /> 
+  <text class="p-5">3. State</text>
+  <text class="p-5">Empty, Hover, Active, Filled, Disabled, Error, Skeleton loading.</text>
+  <search-bar
+    value="{{value}}"
+    className="p-5"
+    placeholder="Search..."
+    onInput="handleInput"
+    labelText="Empty, Hover, Active, Filled Input"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon"
+    /> 
+
+    <search-bar
+    value="Error value"
+    className="p-5"
+    hasError
+    errorMsg="This is an error message"
+    placeholder="Search..." 
+    labelText="Error Input"
+    controlled
+    /> 
+
+  <search-bar
+    value="{{value}}"
+    className="p-5"
+    placeholder="Search..."
+    disabled
+    onInput="handleInput"
+    labelText="Disabled Input"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon" 
+
+  />  
+  <search-bar
+  className="p-5"
+  value="{{value}}"
+  placeholder="Search..."
+  loading
+  onInput="handleInput"
+  labelText="Loading Input"
+  onTapCloseIcon="onTapCloseIcon"
+  onTapSearchIcon="onTapSearchIcon" 
+  />
+</view>

@@ -65,6 +65,10 @@ Page({
         name: 'steps',
         path: 'pages/steps/index',
       },
+      {
+        name: 'search bar',
+        path: 'pages/search-bar/index',
+      },
     ],
   },
   onNavigate(e) {
