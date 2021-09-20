@@ -2,7 +2,10 @@
   <view class="tu-tabs-tab-bar-wrap">
     <view 
       class="tu-tabs-bar {{(stickyBar)?'tu-tabs-bar-sticky':''}}"
-      style="background-color: {{tabBarBackgroundColor}};}}; top: {{stickyBar ? '0' : ''}}">
+      style="
+        background-color: {{tabBarBackgroundColor}}; 
+        top: {{stickyBar ? '0' : ''}};
+        border-bottom-width: {{tabBarUnderlineHeight ? tabBarUnderlineHeight : '1px' }}">
       <view class="tu-tabs-bar-content-wrap">
         <scroll-view 
           scroll-left="{{viewScrollLeft}}"
