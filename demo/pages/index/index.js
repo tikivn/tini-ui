@@ -29,6 +29,10 @@ Page({
         name: 'button',
         path: 'pages/button/index',
       },
+      {
+        name: 'chip',
+        path: 'pages/chip/index',
+      },
     ],
   },
   onNavigate(e) {

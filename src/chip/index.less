@@ -1,0 +1,54 @@
+.tu-chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: var(--space-inset-4x-small) var(--space-inset-2x-small);
+
+  border-radius: var(--space-inline-medium);
+
+  &-primary {
+    border: 1px solid var(--gray30);
+  }
+
+  &-secondary {
+    border: 1px solid var(--brand);
+    color: var(--brand);
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: var(--background-selection-overlay-hover);
+  }
+
+  &-disabled {
+    pointer-events: none;
+    border-color: var(--border-disabled);
+    color: var(--text-disabled);
+
+    .tu-chip-left,
+    .tu-chip-right {
+      opacity: 0.2;
+    }
+  }
+
+  &-left {
+    margin-right: var(--space-inset-4x-small);
+  }
+
+  &-right {
+    margin-left: var(--space-inset-4x-small);
+  }
+
+  &-left,
+  &-right {
+    display: flex;
+    cursor: pointer;
+    &-icon,
+    &-image {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+  }
+}
