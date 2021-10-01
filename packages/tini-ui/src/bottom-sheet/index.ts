@@ -11,6 +11,8 @@ type BottomSheetProps = {
   zIndex: number;
   title: string;
   buttonTitle: string;
+  buttonShape?: 'pill' | 'rounded' | 'circle' | 'square';
+  buttonCls?: string;
   onClose?: (event: any) => void;
   onClick?: (event: any) => void;
 };
@@ -28,6 +30,8 @@ Component({
     zIndex: 2,
     title: 'Bottom sheet',
     buttonTitle: 'ok',
+    buttonShape: 'rounded',
+    buttonCls: '',
     onClose: undefined,
     onClick: undefined,
   } as BottomSheetProps,

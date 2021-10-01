@@ -9,7 +9,7 @@
 
 <template name="defaultFooter">
   <view class="tu-bottom-sheet-footer">
-    <tu-button class="tu-bottom-sheet-footer-button" shape="pill" onTap="onClick">{{buttonTitle}}</tu-button>
+    <tu-button class="tu-bottom-sheet-footer-button {{buttonCls}}" shape="{{buttonShape}}" onTap="onClick">{{buttonTitle}}</tu-button>
   </view>
 </template>
 
@@ -42,7 +42,7 @@
       <slot name="footer" />
     </block>
     <block tiki:else>
-      <template is="defaultFooter" data="{{buttonTitle}}" />
+      <template is="defaultFooter" data="{{buttonTitle,buttonShape,buttonCls}}" />
     </block>
   </view>
 </popup>
