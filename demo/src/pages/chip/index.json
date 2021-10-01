@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "chip": "../../es/chip/index"
+  }
+}

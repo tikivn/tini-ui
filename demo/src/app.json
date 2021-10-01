@@ -20,7 +20,8 @@
     "pages/list/index",
     "pages/steps/index",
     "pages/bottom-sheet/index",
-    "pages/search-bar/index"
+    "pages/search-bar/index",
+    "pages/chip/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",
