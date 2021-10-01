@@ -69,6 +69,10 @@ Page({
         name: 'search bar',
         path: 'pages/search-bar/index',
       },
+      {
+        name: 'chip',
+        path: 'pages/chip/index',
+      },
     ],
   },
   onNavigate(e) {
