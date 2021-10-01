@@ -1,0 +1,35 @@
+<view
+  style="{{style}}"
+  class="tu-chip flex tu-chip-{{mode}} tu-chip-{{disabled ? 'disabled' : ''}} {{className}}"
+  onTap="_onClick">
+  <view 
+    class="tu-chip-left"
+    catchTap="_onLeftClick">
+    <icon 
+      tiki:if="{{prefixIcon}}" 
+      class="tu-chip-left-icon" 
+      type="{{prefixIcon}}"
+      color="{{iconLeftColor}}"/>
+    <image
+      tiki:elif="{{prefixImage}}"  
+      class="tu-chip-left-image" 
+      src="{{prefixImage}}"/>
+  </view>
+  <view class="tu-chip-content">
+    {{content}}
+    <slot />
+  </view>
+  <view 
+    class="tu-chip-right"
+    catchTap="_onRightClick">
+    <icon 
+      tiki:if="{{suffixIcon}}" 
+      class="tu-chip-right-icon" 
+      type="{{suffixIcon}}" 
+      color="{{iconRightColor}}"/>
+    <image
+      tiki:elif="{{suffixImage}}" 
+      class="tu-chip-right-image" 
+      src="{{suffixImage}}"/>
+  </view>
+</view>

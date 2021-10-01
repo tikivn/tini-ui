@@ -1,0 +1,33 @@
+<view>
+  <chip content="Content Only" style="margin:8px" />
+  <chip mode="secondary" content="Mode Secondary" style="margin:8px" />
+  <chip 
+    mode="secondary" 
+    content="Content with suffixIcon" 
+    suffixIcon="close"
+    style="margin:8px" />
+  <chip 
+    content="Disabled" 
+    suffixIcon="close"
+    disabled="{{true}}"
+    style="margin:8px" />
+  <chip 
+    content="Content with prefixIcon" 
+    prefixIcon="close"
+    style="margin:8px" />
+  <chip 
+    mode="secondary" 
+    content="Content with prefixImage" 
+    prefixImage="{{src}}"
+    style="margin:8px" />
+  <chip 
+    mode="secondary" 
+    content="Content with suffixImage" 
+    suffixImage="{{src}}"
+    style="margin:8px" />
+  <chip 
+    content="Both Suffix/Prefix" 
+    suffixIcon="close"
+    prefixImage="{{src}}"
+    style="margin:8px" />
+</view>
