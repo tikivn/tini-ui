@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "chip": "../../es/chip/index"
+    "chip": "@tiki.vn/tini-ui/es/chip/index"
   }
 }
