@@ -1,6 +1,6 @@
 <view
   style="{{style}}"
-  class="tu-chip flex tu-chip-{{mode}} tu-chip-{{disabled ? 'disabled' : ''}} {{className}}"
+  class="tu-chip flex tu-chip-{{active ? 'active': 'none'}} tu-chip-{{disabled ? 'disabled' : ''}} {{className}}"
   onTap="_onClick">
   <view 
     class="tu-chip-left"

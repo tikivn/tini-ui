@@ -4,7 +4,7 @@ export interface ChipComponentProps {
   className?: string;
   style?: string;
   content: string;
-  mode?: string;
+  active?: boolean;
   suffixIcon?: string;
   prefixIcon?: string;
   suffixImage?: string;
@@ -22,7 +22,7 @@ Component({
     className: '',
     style: '',
     content: '',
-    mode: 'primary',
+    active: false,
     suffixIcon: '',
     prefixIcon: '',
     iconRightColor: '#1A94FF',
