@@ -1,0 +1,59 @@
+.tu-date-field {
+  max-width: 328px;
+  position: relative;
+}
+
+.wrapper-tu-calendar {
+  z-index: 2;
+  background: white;
+  position: absolute;
+  top: 44px;
+  left: 0;
+}
+
+.date-from,
+.date-to {
+  border: none;
+  background: transparent;
+}
+
+.tu-date-range {
+  background: white;
+  padding-right: 8px;
+  &-blur {
+    border: 1px solid #dddde3;
+  }
+  &-focus {
+    border: 1px solid #808089;
+  }
+}
+
+.tu-date-range.rounded {
+  border-radius: 4px;
+}
+
+.tu-date-range.pill {
+  border-radius: 20px;
+}
+
+.tu-date-range.error {
+  border: 1px solid #ff424f;
+}
+
+.tu-date-range.disabled {
+  background: rgba(166, 166, 176, 0.1);
+  cursor: not-allowed;
+  pointer-events: none;
+  > input {
+    opacity: 0.6;
+  }
+}
+
+.tu-label-disabled {
+  opacity: 0.6;
+}
+
+.icon-field {
+  display: flex;
+  align-items: center;
+}

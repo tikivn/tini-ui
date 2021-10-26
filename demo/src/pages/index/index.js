@@ -73,6 +73,14 @@ Page({
         name: 'chip',
         path: 'pages/chip/index',
       },
+      {
+        name: 'calendar',
+        path: 'pages/calendar/index',
+      },
+      {
+        name: 'datefield',
+        path: 'pages/datefield/index',
+      },
     ],
   },
   onNavigate(e) {
