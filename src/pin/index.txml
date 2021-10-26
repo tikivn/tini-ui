@@ -1,0 +1,31 @@
+<label class="tu-pin {{className}}">
+  <view
+    tiki:if="{{label}}"
+    class="tu-pin-label {{disabled ? 'tu-pin-label-disabled' : ''}}"
+  >
+    {{label}}
+  </view>
+  <view class="tu-pin-blocks">
+    <input
+      tiki:for="{{length}}"
+      class="tu-pin-item tu-pin-item-{{shape}} {{secret ? 'tu-pin-item-secret': ''}} {{error ? 'tu-pin-item-error' : ''}}"
+      focus="{{index === currentIndex}}"
+      disabled="{{disabled}}"
+      password="{{secret}}"
+      placeholder-class="tu-pin-item-placeholder"
+      type="number"
+      password="{{false}}"
+      placeholder="-"
+      maxlength="{{1}}"
+      data-index="{{index}}"
+      onFocus="onItemFocus"
+      onInput="onItemChange"
+    />
+  </view>
+  <view
+    tiki:if="{{error}}"
+    class="tu-pin-error"
+  >
+    {{error}}
+  </view>
+</label>

@@ -8,7 +8,8 @@
     "pages/popup/index",
     "pages/stepper/index",
     "pages/button/index",
-    "pages/chip/index"
+    "pages/chip/index",
+    "pages/pin/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tiny UI"

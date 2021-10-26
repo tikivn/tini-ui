@@ -1,0 +1,39 @@
+<view style="padding: 16px;">
+  <pin length="{{4}}"/>
+  <pin
+    label="Label"
+    length="{{4}}"
+  />
+  <pin
+    label="6 blocks"
+    length="{{6}}"
+  />
+  <pin
+    label="Circle"
+    length="{{4}}"
+    shape="circle"
+  />
+  <pin
+    secret
+    label="Secret"
+    length="{{4}}"
+  />
+  <pin
+    disabled
+    label="Disabled"
+    length="{{4}}"
+  />
+  <pin
+    label="Error"
+    length="{{4}}"
+    error="Error message"
+  />
+  <pin
+    label="Events"
+    length="{{4}}"
+    onChange="onPinChange"
+    onComplete="onPinComplete"
+  />
+  <view>Pin changed: {{pin}} at position: {{position}}</view>
+  <view>Pin completed: {{completedPin}}</view>
+</view>
