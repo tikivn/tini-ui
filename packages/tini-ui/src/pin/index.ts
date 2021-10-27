@@ -1,3 +1,22 @@
+export interface IChipMethods {
+  onChange?: (pin?: string, position?: number) => void;
+  onComplete?: (pin?: string) => void;
+}
+
+export interface IChipPinProps extends IChipMethods {
+  className?: string;
+  style?: string;
+  label?: string;
+  length?: number;
+  shape: 'rounded' | 'circle';
+  disabled?: boolean;
+  focus?: boolean;
+  secret?: boolean;
+  hideCaret?: boolean;
+  hasError?: boolean;
+  errorMsg?: string;
+}
+
 Component({
   props: {
     className: '',
@@ -13,7 +32,7 @@ Component({
     errorMsg: '',
     onChange: () => {},
     onComplete: () => {},
-  },
+  } as IChipPinProps,
 
   data: {
     currentIndex: -1,
