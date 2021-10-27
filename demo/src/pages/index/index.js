@@ -73,6 +73,10 @@ Page({
         name: 'chip',
         path: 'pages/chip/index',
       },
+      {
+        name: 'pin',
+        path: 'pages/pin/index',
+      },
     ],
   },
   onNavigate(e) {
