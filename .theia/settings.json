@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "workbench.iconTheme": "material-icon-theme"
 }

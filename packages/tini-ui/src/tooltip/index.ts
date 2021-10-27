@@ -1,16 +1,15 @@
 import fmtEvent from '../_util/fmtEvent';
-
-export interface TooltipComponentProps {
+export interface TooltipMethods {
+  onClose?: (event) => void;
+}
+export interface TooltipComponentProps extends TooltipMethods {
   className?: string;
   style?: string;
   show?: boolean;
-  position?: string;
-  theme?: string;
-  iconSizeClose: number;
+  position?: 'top' | 'left' | 'right' | 'bottom';
+  theme?: 'dark' | 'light';
+  iconSizeClose?: number;
   showCloseIcon?: boolean;
-}
-export interface TooltipMethods {
-  onClose?: () => void;
 }
 
 Component({
@@ -24,7 +23,7 @@ Component({
     iconSizeClose: 16,
     showCloseIcon: false,
     onClose: () => {},
-  },
+  } as TooltipComponentProps,
 
   methods: {
     _onClose(e) {
