@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tooltip": "@tiki.vn/tini-ui/es/tooltip/index"
+  }
+}

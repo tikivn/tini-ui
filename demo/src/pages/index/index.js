@@ -73,6 +73,10 @@ Page({
         name: 'chip',
         path: 'pages/chip/index',
       },
+      {
+        name: 'tooltip',
+        path: 'pages/tooltip/index',
+      },
     ],
   },
   onNavigate(e) {

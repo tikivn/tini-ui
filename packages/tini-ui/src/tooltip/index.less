@@ -1,0 +1,72 @@
+.tu-tooltip {
+  position: relative;
+  width: 100%;
+
+  &-content {
+    position: absolute;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  &-content::before {
+    content: '';
+    position: absolute;
+  }
+
+  /* POSITION TOP */
+  &-content-top {
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 12px;
+  }
+
+  &-content-top::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  &-content-top-light::before {
+    border-top: 4px solid white;
+  }
+
+  &-content-top-dark::before {
+    border-top: 4px solid var(--gray100);
+  }
+
+  /* POSITION BOTTOM */
+  &-content-bottom {
+    top: 100%;
+    left: 50%;
+    margin-bottom: 0;
+    margin-top: 12px;
+  }
+  &-content-bottom:before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  &-content-bottom-light::before {
+    border-bottom: 4px solid white;
+  }
+
+  &-content-bottom-dark::before {
+    border-bottom: 4px solid var(--gray100);
+  }
+
+  &-content-top-dark,
+  &-content-bottom-dark {
+    background: var(--gray100);
+    color: white;
+  }
+  &-content-top-light,
+  &-content-bottom-light {
+    background: white;
+    color: var(--gray100);
+    filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.2));
+  }
+}
