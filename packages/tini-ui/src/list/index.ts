@@ -1,5 +1,5 @@
 import fmtUnit from '../_util/fmtUnit';
-import getI18n from '../_util/getI18n';
+import { getI18n } from '../_util/getI18n';
 
 const i18n = getI18n().list;
 

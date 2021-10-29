@@ -22,7 +22,6 @@
     "pages/bottom-sheet/index",
     "pages/search-bar/index",
     "pages/chip/index",
-    "pages/datefield/index",
     "pages/calendar/index"
   ],
   "window": {

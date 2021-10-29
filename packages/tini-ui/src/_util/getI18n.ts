@@ -2,7 +2,7 @@
 import I18n_viVN from '../_lang/vi-VN';
 import I18n_enUS from '../_lang/en-US';
 
-export default function getI18n() {
+export function getI18n() {
   try {
     const appMiniapTikiUI = getApp() || null;
     if (appMiniapTikiUI) {
@@ -17,4 +17,8 @@ export default function getI18n() {
   } catch (error) {
     return I18n_viVN;
   }
+}
+
+export function getI18nByLocale(locale = 'vi') {
+  return locale === 'vi' ? I18n_viVN : I18n_enUS;
 }

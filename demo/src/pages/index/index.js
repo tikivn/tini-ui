@@ -77,10 +77,6 @@ Page({
         name: 'calendar',
         path: 'pages/calendar/index',
       },
-      {
-        name: 'datefield',
-        path: 'pages/datefield/index',
-      },
     ],
   },
   onNavigate(e) {

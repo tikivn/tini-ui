@@ -1,4 +1,25 @@
-import { getMonthDetails, getMonthStr } from './helper.js';
+import { getMonthDetails } from './helper.js';
+import { getI18nByLocale } from '../_util/getI18n';
+
+export interface CalendarMethods {
+  onSelect?: (data) => void;
+}
+
+export interface TagDataProps {
+  date?: string;
+  tag?: string;
+  disabled: boolean;
+  tagColor: number;
+}
+export interface CalendarComponentProps extends CalendarMethods {
+  className?: string;
+  style?: string;
+  locale?: 'vi' | 'en';
+  tagData?: TagDataProps[];
+  mode?: 'single' | 'range' | 'timeOnly';
+  header?: 'year' | 'month';
+  selectedDate?: number[];
+}
 
 const date = new Date();
 const oneDay = 60 * 60 * 24 * 1000;
@@ -8,46 +29,30 @@ const todayTimestamp =
 const year = date.getFullYear();
 const month = date.getMonth();
 
+const colorMap = ['#808089', '#1A94FF'];
+
 Component({
   data: {
-    monthStr: getMonthStr(month),
+    days: [],
+    monthMap: [],
+    colorMap,
+    monthStr: '',
     year: year,
     month: month,
     todayTimestamp: todayTimestamp,
     selectedDate: [],
-    monthDetails: getMonthDetails(year, month),
+    monthDetails: [],
   },
   props: {
     style: '',
     className: '',
-    days: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    locale: 'vi',
+    tagData: [],
     mode: 'range', // single - range - timeOnly
     header: 'year', // year - month
     selectedDate: [],
     onSelect: () => {},
-  },
-
-  didMount() {
-    const { selectedDate } = this.props;
-    this.setData({
-      selectedDate,
-    });
-  },
-  deriveDataFromProps(nextProps) {
-    const { selectedDate } = nextProps;
-    if (selectedDate[0]) {
-      const date = new Date(selectedDate[0]);
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      this.setData({
-        selectedDate,
-        year,
-        month,
-        monthDetails: getMonthDetails(year, month),
-        monthStr: getMonthStr(month),
-      });
-    }
-  },
+  } as CalendarComponentProps,
 
   methods: {
     _onSelect(event) {
@@ -58,23 +63,25 @@ Component({
       }
       if (mode === 'single') {
         this.onSelectSingleDate(item);
-        const rs = [this.data.selectedDate[0]];
+        const rs = { dates: [this.data.selectedDate[0]] };
         this.props.onSelect(rs);
       }
       if (mode === 'range') {
         this.onSelectRangeDate(item);
         const { selectedDate } = this.data;
         if (selectedDate[0] && selectedDate[1]) {
-          const rs = [...selectedDate];
+          const rs = { dates: [...selectedDate] };
           this.props.onSelect(rs);
         }
       }
     },
+
     onSelectSingleDate(item) {
       this.setData({
         selectedDate: [item.timestamp],
       });
     },
+
     onSelectRangeDate(item) {
       const { selectedDate } = this.data;
       if (!selectedDate[0]) {
@@ -97,15 +104,21 @@ Component({
         selectedDate: [item.timestamp],
       });
     },
+
+    getMonthStr(month, monthMap) {
+      return monthMap[month] || 'Month';
+    },
+
     setYear(event) {
       const { offset } = event.target.dataset;
       const year = this.data.year + offset;
       const month = this.data.month;
       this.setData({
         year,
-        monthDetails: getMonthDetails(year, month),
+        monthDetails: getMonthDetails(year, month, this.props.tagData),
       });
     },
+
     setMonth(event) {
       const { offset } = event.target.dataset;
       let year = this.data.year;
@@ -120,9 +133,38 @@ Component({
       this.setData({
         year,
         month,
-        monthDetails: getMonthDetails(year, month),
-        monthStr: getMonthStr(month),
+        monthDetails: getMonthDetails(year, month, this.props.tagData),
+        monthStr: this.getMonthStr(month, this.data.monthMap),
       });
     },
+  },
+
+  didMount() {
+    const { selectedDate, locale, tagData } = this.props;
+    console.log({ tagData });
+    const i18N = getI18nByLocale(locale);
+    const monthStr = this.getMonthStr(month, i18N.months);
+    this.setData({
+      days: i18N.days,
+      monthMap: i18N.months,
+      monthDetails: getMonthDetails(year, month, tagData),
+      monthStr,
+      selectedDate,
+    });
+  },
+  deriveDataFromProps(nextProps) {
+    const { selectedDate, tagData } = nextProps;
+    if (selectedDate[0]) {
+      const date = new Date(selectedDate[0]);
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      this.setData({
+        selectedDate,
+        year,
+        month,
+        monthDetails: getMonthDetails(year, month, tagData),
+        monthStr: this.getMonthStr(month, this.data.monthMap),
+      });
+    }
   },
 });

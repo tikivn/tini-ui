@@ -29,13 +29,14 @@
       onTap="_onSelect"
       data-item="{{item}}"
       class="tu-c-date-container
-        {{item.timestamp === todayTimestamp && item.month === 0 ? 'today' : ''}}
-        {{item.month !== 0 ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
-        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.month === 0 ? 'inrange' : ''}}
+        {{item.timestamp === todayTimestamp && item.inMonth === 0 ? 'today' : ''}}
+        {{item.inMonth !== 0 || item.disabled ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
+        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}
       ">
       <view class="c-date">
         {{item.date}}
       </view>
+      <view class="c-date-tag" style="color: {{item.tagColor ? colorMap[item.tagColor] : colorMap[0]}}" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
     </view>
   </view>
 </view>

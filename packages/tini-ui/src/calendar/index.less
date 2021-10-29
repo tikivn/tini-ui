@@ -30,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   .tu-c-date-container {
+    position: relative;
     width: calc(14.285% - 32px);
     padding: 16px;
     border-radius: 8px;
@@ -39,6 +40,12 @@
     .c-date {
       font-size: 16px;
       text-align: center;
+      &-tag {
+        position: absolute;
+        bottom: 0;
+        font-size: 10px;
+        color: #808089;
+      }
     }
   }
 
@@ -67,5 +74,8 @@
     color: rgba(166, 166, 176, 0.6);
     cursor: not-allowed;
     pointer-events: none;
+    .c-date-tag {
+      opacity: 0.6;
+    }
   }
 }

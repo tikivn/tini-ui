@@ -1,13 +1,5 @@
 import fmtEvent from '../_util/fmtEvent';
 import { getDateFromDateString, getDateStringFromTimestamp } from '../calendar/helper';
-export interface ChipComponentProps {
-  className?: string;
-  style?: string;
-}
-export interface ChipMethods {
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
 
 Component({
   data: {
@@ -46,7 +38,6 @@ Component({
       const dateData = getDateFromDateString(value);
       if (dateData !== null) {
         this.setDate(dateData);
-        console.log({ dateData });
       }
     },
     onChangeEndDate(event) {
@@ -54,11 +45,10 @@ Component({
       const dateData = getDateFromDateString(value);
       if (dateData !== null) {
         this.setDate(dateData, false);
-        console.log({ dateData });
       }
     },
     _onSelect(data) {
-      const dateStrings = data.map((i) => getDateStringFromTimestamp(i));
+      const dateStrings = data.dates.map((i) => getDateStringFromTimestamp(i));
       this.setData({
         dateSelected: data,
         dateInput: dateStrings,
