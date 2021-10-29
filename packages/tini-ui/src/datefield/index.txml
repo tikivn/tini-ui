@@ -1,4 +1,4 @@
-<view class="tu-date-field {{className}}">
+<!-- <view class="tu-date-field {{className}}">
   <view>
     <view tiki:if="{{label}}" class="font-bold mb-4x-small tu-label-{{disabled ? 'disabled' : ''}}">{{label}}</view>
     <view 
@@ -31,4 +31,4 @@
   <view tiki:if="{{showCalendar}}" class="wrapper-tu-calendar">
     <calendar mode="{{type}}"onSelect="_onSelect" selectedDate="{{dateSelected}}" />  
   </view>
-</view>
+</view> -->

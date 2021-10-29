@@ -43,8 +43,13 @@ export const getDayDetails = (args, tagData = []) => {
     return date === _date && month === monthCurent && year === args.year;
   });
 
-  const data = indexTagData ? indexTagData : {};
-  
+  const defaultColor = {
+    tagColor: '#808089',
+    tagInactiveColor: 'rgba(166, 166, 176, 0.6)',
+  };
+
+  const data = indexTagData ? { ...defaultColor, ...indexTagData } : defaultColor;
+
   return {
     ...data,
     date: _date,

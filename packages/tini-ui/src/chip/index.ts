@@ -1,20 +1,20 @@
 import fmtEvent from '../_util/fmtEvent';
 
-export interface ChipComponentProps {
+export interface ChipMethods {
+  onClick?: () => void;
+  onLeftClick?: () => void;
+  onRightClick?: () => void;
+}
+export interface ChipComponentProps extends ChipMethods {
   className?: string;
   style?: string;
-  content: string;
+  content?: string;
   active?: boolean;
   suffixIcon?: string;
   prefixIcon?: string;
   suffixImage?: string;
   prefixImage?: string;
   disabled?: boolean;
-}
-export interface ChipMethods {
-  onClick?: () => void;
-  onLeftClick?: () => void;
-  onRightClick?: () => void;
 }
 
 Component({
@@ -33,7 +33,7 @@ Component({
     onClick: () => {},
     onRightClick: () => {},
     onLeftClick: () => {},
-  },
+  } as ChipComponentProps,
 
   methods: {
     _onClick(e) {

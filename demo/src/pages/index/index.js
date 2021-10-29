@@ -77,6 +77,10 @@ Page({
         name: 'calendar',
         path: 'pages/calendar/index',
       },
+      {
+        name: 'tooltip',
+        path: 'pages/tooltip/index',
+      },
     ],
   },
   onNavigate(e) {

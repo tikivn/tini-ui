@@ -36,7 +36,7 @@
       <view class="c-date">
         {{item.date}}
       </view>
-      <view class="c-date-tag" style="color: {{item.tagColor ? colorMap[item.tagColor] : colorMap[0]}}" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
+      <view class="c-date-tag" style="color: {{item.inMonth !== 0 ? item.tagInactiveColor : item.tagColor}};" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
     </view>
   </view>
 </view>

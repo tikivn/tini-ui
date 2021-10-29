@@ -8,8 +8,9 @@ export interface CalendarMethods {
 export interface TagDataProps {
   date?: string;
   tag?: string;
-  disabled: boolean;
-  tagColor: number;
+  disabled?: boolean;
+  tagColor?: string;
+  tagInactiveColor?: string;
 }
 export interface CalendarComponentProps extends CalendarMethods {
   className?: string;
@@ -141,7 +142,6 @@ Component({
 
   didMount() {
     const { selectedDate, locale, tagData } = this.props;
-    console.log({ tagData });
     const i18N = getI18nByLocale(locale);
     const monthStr = this.getMonthStr(month, i18N.months);
     this.setData({
