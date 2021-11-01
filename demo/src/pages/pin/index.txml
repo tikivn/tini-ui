@@ -1,0 +1,51 @@
+<view class="p-medium">
+  <pin className="mb-2x-small"/>
+  <pin
+    className="mb-2x-small"
+    label="Label"
+  />
+  <pin
+    className="mb-2x-small"
+    label="6 blocks"
+    length="{{6}}"
+  />
+  <pin
+    className="mb-2x-small"
+    label="Circle"
+    shape="circle"
+  />
+  <pin
+    secret
+    className="mb-2x-small"
+    label="Secret"
+  />
+  <pin
+    disabled
+    className="mb-2x-small"
+    label="Disabled"
+  />
+  <pin
+    hasError
+    className="mb-2x-small"
+    label="Error"
+    errorMsg="Error message"
+  />
+  <pin
+    hideCaret
+    className="mb-2x-small"
+    label="Hide caret"
+  />
+  <pin
+    focus
+    className="mb-2x-small"
+    label="Focus"
+  />
+  <pin
+    className="mb-2x-small"
+    label="Events"
+    onChange="onPinChange"
+    onComplete="onPinComplete"
+  />
+  <view>Pin was changed to {{pin}} at position {{position}}</view>
+  <view>Pin was completed: {{completedPin}}</view>
+</view>

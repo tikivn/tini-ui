@@ -78,6 +78,10 @@ Page({
         path: 'pages/calendar/index',
       },
       {
+        name: 'pin',
+        path: 'pages/pin/index',
+      },
+      {
         name: 'tooltip',
         path: 'pages/tooltip/index',
       },

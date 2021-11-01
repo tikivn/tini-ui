@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pin": "@tiki.vn/tini-ui/es/pin/index"
+  }
+}

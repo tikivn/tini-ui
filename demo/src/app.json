@@ -23,6 +23,7 @@
     "pages/search-bar/index",
     "pages/chip/index",
     "pages/calendar/index",
+    "pages/pin/index",
     "pages/tooltip/index"
   ],
   "window": {
