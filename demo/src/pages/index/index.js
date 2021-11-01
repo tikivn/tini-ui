@@ -74,6 +74,10 @@ Page({
         path: 'pages/chip/index',
       },
       {
+        name: 'calendar',
+        path: 'pages/calendar/index',
+      },
+      {
         name: 'pin',
         path: 'pages/pin/index',
       },

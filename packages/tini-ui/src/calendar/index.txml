@@ -1,0 +1,44 @@
+<view class="tu-c-container">
+  <view class="tu-c-head">
+    <view tiki:if="{{header === 'year'}}" data-offset="{{-1}}" onTap="setYear">
+      <!-- <icon type="arrow_left" color="#1A94FF" /> -->
+      <image class="block tu-icon-header" src="https://salt.tikicdn.com/ts/miniapp/b0/46/74/4a22a741b5b6e8a4f9f7f0bea5e302ff.png"/>
+    </view>
+    <view data-offset="{{-1}}" onTap="setMonth">
+      <icon type="arrow_left" color="#1A94FF" />
+    </view>
+    <view class="tu-c-head-text">{{monthStr}} - {{year}}</view>
+    <view data-offset="{{1}}" onTap="setMonth">
+      <icon type="arrow_right" color="#1A94FF" />
+    </view>
+    <view tiki:if="{{header === 'year'}}" data-offset="{{1}}" onTap="setYear">
+      <!-- <icon type="arrow_right" color="#1A94FF" /> -->
+      <image class="block tu-icon-header" src="https://salt.tikicdn.com/ts/miniapp/dc/7c/30/f6f6282d2c18001f1753661dfaeed2f2.png"/>
+    </view>
+  </view>
+
+  <view class="tu-c-head-days">
+    <view 
+      tiki:for="{{days}}"
+      class="tu-c-head-day">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="tu-c-body">
+    <view 
+      tiki:for="{{monthDetails}}"
+      onTap="_onSelect"
+      data-item="{{item}}"
+      class="tu-c-date-container
+        {{item.timestamp === todayTimestamp && item.inMonth === 0 ? 'today' : ''}}
+        {{item.inMonth !== 0 || item.disabled ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
+        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}
+      ">
+      <view class="c-date">
+        {{item.date}}
+      </view>
+      <view class="c-date-tag" style="color: {{item.inMonth !== 0 ? item.tagInactiveColor : item.tagColor}};" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
+    </view>
+  </view>
+</view>

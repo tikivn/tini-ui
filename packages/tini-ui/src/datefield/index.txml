@@ -1,0 +1,34 @@
+<!-- <view class="tu-date-field {{className}}">
+  <view>
+    <view tiki:if="{{label}}" class="font-bold mb-4x-small tu-label-{{disabled ? 'disabled' : ''}}">{{label}}</view>
+    <view 
+      class="flex justify-between items-center tu-date-range {{shape}} tu-date-range-{{border}} {{error ? 'error' : ''}} {{disabled ? 'disabled' : ''}}">
+      <input 
+        class="date-from" 
+        placeholder="dd/mm/yyyy"
+        value="{{dateInput[0]}}"
+        onInput="onChangeStartDate" 
+        onFocus="_onFocus"
+        onBlur="_onBlur" />
+      <block tiki:if="{{type === 'range'}}">
+        <view class="icon-field">
+          <icon size="16" type="arrow_right" />
+        </view>
+        <input 
+          class="date-to"
+          placeholder="dd/mm/yyyy" 
+          value="{{dateInput[1]}}"
+          onInput="onChangeEndDate" 
+          onFocus="_onFocus"
+          onBlur="_onBlur" />
+      </block>
+      <view class="icon-field">
+        <icon size="24" type="arrow_right" />
+      </view>
+    </view>
+    <view tiki:if="{{error}}" class="mt-4x-small text-small text-red">{{errorMsg}}</view>
+  </view>
+  <view tiki:if="{{showCalendar}}" class="wrapper-tu-calendar">
+    <calendar mode="{{type}}"onSelect="_onSelect" selectedDate="{{dateSelected}}" />  
+  </view>
+</view> -->
