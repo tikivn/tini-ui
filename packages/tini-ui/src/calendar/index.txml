@@ -1,17 +1,17 @@
-<view class="tu-c-container">
-  <view class="tu-c-head">
-    <view tiki:if="{{header === 'year'}}" data-offset="{{-1}}" onTap="setYear">
+<view class="tu-c-container {{className}}" style="{{style}}">
+  <view class="tu-c-head" style="{{mode === 'timeOnly' ? 'justify-content: center;' : '' }}">
+    <view tiki:if="{{header === 'year' && mode !== 'timeOnly'}}" data-offset="{{-1}}" onTap="setYear">
       <!-- <icon type="arrow_left" color="#1A94FF" /> -->
       <image class="block tu-icon-header" src="https://salt.tikicdn.com/ts/miniapp/b0/46/74/4a22a741b5b6e8a4f9f7f0bea5e302ff.png"/>
     </view>
-    <view data-offset="{{-1}}" onTap="setMonth">
+    <view tiki:if="{{mode !== 'timeOnly'}}" data-offset="{{-1}}" onTap="setMonth">
       <icon type="arrow_left" color="#1A94FF" />
     </view>
     <view class="tu-c-head-text">{{monthStr}} - {{year}}</view>
-    <view data-offset="{{1}}" onTap="setMonth">
+    <view tiki:if="{{mode !== 'timeOnly'}}" data-offset="{{1}}" onTap="setMonth">
       <icon type="arrow_right" color="#1A94FF" />
     </view>
-    <view tiki:if="{{header === 'year'}}" data-offset="{{1}}" onTap="setYear">
+    <view tiki:if="{{header === 'year' && mode !== 'timeOnly'}}" data-offset="{{1}}" onTap="setYear">
       <!-- <icon type="arrow_right" color="#1A94FF" /> -->
       <image class="block tu-icon-header" src="https://salt.tikicdn.com/ts/miniapp/dc/7c/30/f6f6282d2c18001f1753661dfaeed2f2.png"/>
     </view>
