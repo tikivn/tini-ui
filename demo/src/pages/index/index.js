@@ -74,6 +74,10 @@ Page({
         path: 'pages/chip/index',
       },
       {
+        name: 'pin',
+        path: 'pages/pin/index',
+      },
+      {
         name: 'tooltip',
         path: 'pages/tooltip/index',
       },
