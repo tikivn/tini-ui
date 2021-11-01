@@ -77,6 +77,10 @@ Page({
         name: 'pin',
         path: 'pages/pin/index',
       },
+      {
+        name: 'tooltip',
+        path: 'pages/tooltip/index',
+      },
     ],
   },
   onNavigate(e) {

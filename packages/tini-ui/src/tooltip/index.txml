@@ -1,0 +1,22 @@
+<view style="{{style}}" class="tu-tooltip {{className}}" 
+  tiki:if="{{show}}">
+  <view
+    class="tu-tooltip-content tu-tooltip-content-{{position}} tu-tooltip-content-{{position}}-{{theme}}">
+    <view class="flex items-center">
+      <slot name="content">
+        <view>{{content}}</view>
+      </slot>
+      <view
+        tiki:if="{{showCloseIcon}}"
+        class="flex ml-2x-small"
+        onTap="_onClose">
+        <icon type="close" 
+          color="{{theme === 'light' ? '#27272A' : '#ffffff'}}" 
+          size="{{iconSizeClose}}" />
+      </view>
+    </view>
+  </view>
+  <view class="flex items-center justify-center">
+    <slot name="operation"/>
+  </view>
+</view>

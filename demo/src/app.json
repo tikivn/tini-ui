@@ -22,7 +22,8 @@
     "pages/bottom-sheet/index",
     "pages/search-bar/index",
     "pages/chip/index",
-    "pages/pin/index"
+    "pages/pin/index",
+    "pages/tooltip/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",
