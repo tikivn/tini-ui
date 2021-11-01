@@ -4,7 +4,8 @@ Page({
       {
         date: '12-10-2021',
         tag: 'abc',
-        tagColor: 1,
+        tagColor: 'blue',
+        tagInactiveColor: 'red',
       },
       {
         date: '13-10-2021',
@@ -14,8 +15,15 @@ Page({
       {
         date: '28-09-2021',
         tag: 'abc',
+        tagColor: 'blue',
+        tagInactiveColor: 'red',
       },
     ],
-    src: 'https://salt.tikicdn.com/ts/miniapp/0f/7f/84/5af725e8a6a55815a24e8e6935ef99e3.png',
+  },
+  onSelect(data) {
+    console.log(data);
+  },
+  onChange(data) {
+    console.log(data);
   },
 });

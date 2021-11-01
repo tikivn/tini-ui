@@ -1,3 +1,22 @@
 <view>
-  <calendar tagData="{{tagData}}" />
+  <view>
+    <calendar 
+      mode="timeOnly"
+      onSelect="onSelect"
+      onChange="onChange" />
+  </view>
+  <view>
+    <calendar 
+      mode="single"
+      header="year"
+      onSelect="onSelect"
+      onChange="onChange" />
+  </view>
+  <view>
+    <calendar 
+      mode="range"
+      onSelect="onSelect"
+      onChange="onChange" />
+  </view>
 </view>
+

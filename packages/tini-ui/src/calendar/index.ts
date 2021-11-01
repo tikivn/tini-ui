@@ -3,6 +3,7 @@ import { getI18nByLocale } from '../_util/getI18n';
 
 export interface CalendarMethods {
   onSelect?: (data) => void;
+  onChange?: (data) => void;
 }
 
 export interface TagDataProps {
@@ -49,10 +50,11 @@ Component({
     className: '',
     locale: 'vi',
     tagData: [],
-    mode: 'range', // single - range - timeOnly
-    header: 'year', // year - month
+    mode: 'timeOnly', // single - range - timeOnly
+    header: 'month', // year - month
     selectedDate: [],
     onSelect: () => {},
+    onChange: () => {},
   } as CalendarComponentProps,
 
   methods: {
@@ -118,6 +120,9 @@ Component({
         year,
         monthDetails: getMonthDetails(year, month, this.props.tagData),
       });
+
+      const rs = { dates: [...this.data.selectedDate], year, month: month + 1 };
+      this.props.onChange(rs);
     },
 
     setMonth(event) {
@@ -137,6 +142,8 @@ Component({
         monthDetails: getMonthDetails(year, month, this.props.tagData),
         monthStr: this.getMonthStr(month, this.data.monthMap),
       });
+      const rs = { dates: [...this.data.selectedDate], year, month: month + 1 };
+      this.props.onChange(rs);
     },
   },
 
