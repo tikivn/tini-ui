@@ -7,6 +7,7 @@
   </view>
   <view>
     <calendar 
+      tagData="{{tagData}}"
       mode="single"
       header="year"
       onSelect="onSelect"

@@ -2,18 +2,18 @@ Page({
   data: {
     tagData: [
       {
-        date: '12-10-2021',
+        date: '12-11-2021',
         tag: 'abc',
         tagColor: 'blue',
         tagInactiveColor: 'red',
       },
       {
-        date: '13-10-2021',
+        date: '13-11-2021',
         tag: 'abc',
         disabled: true,
       },
       {
-        date: '28-09-2021',
+        date: '28-11-2021',
         tag: 'abc',
         tagColor: 'blue',
         tagInactiveColor: 'red',
