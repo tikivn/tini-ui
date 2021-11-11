@@ -1,3 +1,0 @@
-<view class="tu-recycle-item">
-  <slot></slot>
-</view>
