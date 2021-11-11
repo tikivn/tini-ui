@@ -1,0 +1,38 @@
+<!--components/recycle-view/recycle-view.wxml-->
+<view 
+  onTouchStart='_beginToScroll' 
+  style="height:{{height}}px;width:{{width}}px;transform:translateZ(0);-webkit-transform:translateZ(0);" 
+  id="content" 
+  class="wrap">
+  <scroll-view 
+    onScroll="_scrollViewDidScrollThrottle" 
+    class="content" 
+    style='height:100%;position: relative;' 
+    scroll-y="{{useInPage ? false : scrollY}}" 
+    scroll-x="{{false}}" 
+    upper-threshold="{{upperThreshold}}" 
+    lower-threshold="{{lowerThreshold}}" 
+    scroll-top="{{innerScrollTop}}" 
+    scroll-into-view="{{innerScrollIntoView}}" 
+    scroll-with-animation="{{scrollWithAnimation}}" 
+    onScrollToUpper="_scrollToUpper" 
+    onScrollToLower="_scrollToLower" 
+    scroll-anchoring 
+    enable-back-to-top="{{enable-back-to-top}}" 
+    throttle="{{throttle}}">
+    <view style="position: absolute;z-index:1;width:100%;left: 0;top: 0;opacity: 0;visibility: hidden;">
+      <slot name="itemsize"></slot>
+    </view>
+    <view style="height:{{beforeSlotHeight + 'px'}}" class="slot-before">
+      <slot name="before"></slot>
+    </view>
+    <view style='position:relative;width:100%;z-index:10;height:{{totalHeight+beforeSlotHeight+afterSlotHeight}}px;'>
+      <view style="position: absolute;left:0;width:100%;top:{{innerBeforeHeight}}px;">
+        <slot></slot>
+        <view style="display:block;position:relative;height:{{afterSlotHeight + 'px'}};">
+          <slot name="after"></slot>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,8 @@
+:host {
+  display: inline-block;
+}
+
+.tu-recycle-item {
+  height: 100%;
+  display: inline-flex;
+}
