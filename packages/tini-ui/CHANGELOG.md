@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.2.0...@tiki.vn/tini-ui@0.3.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* chip props ([#23](https://github.com/tikivn/tiny-ui/issues/23)) ([9246a00](https://github.com/tikivn/tiny-ui/commit/9246a00cb03260caef27d9ffa53d051c2e1774f7))
+* css calendar ([f69b9c7](https://github.com/tikivn/tiny-ui/commit/f69b9c7f393b59456b77819698988b091020f2aa))
+* css cell date calendar ([52c8c20](https://github.com/tikivn/tiny-ui/commit/52c8c207c25f97f0d08eeb7d7005c410bbb1f666))
+* css chip ([#22](https://github.com/tikivn/tiny-ui/issues/22)) ([ff83bb3](https://github.com/tikivn/tiny-ui/commit/ff83bb3a3a746312d0958f8d1bdad4a44562ca92))
+* css tooltip ([#28](https://github.com/tikivn/tiny-ui/issues/28)) ([b9af447](https://github.com/tikivn/tiny-ui/commit/b9af44797f80040161fd249dfead51fed5c612d4))
+
+
+### Features
+
+* **bottom-sheet:** add more props to button ([61444b2](https://github.com/tikivn/tiny-ui/commit/61444b2bcaf9c70aecf07b8dcc53bab8cbe06e75))
+
+
+
+
+
 # [0.2.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-ui@0.1.1...@tiki.vn/tini-ui@0.2.0) (2021-09-23)
 
 
