@@ -15,6 +15,7 @@ export interface IChipPinProps extends IChipMethods {
   hideCaret?: boolean;
   hasError?: boolean;
   errorMsg?: string;
+  value?: string;
 }
 
 Component({
@@ -30,6 +31,7 @@ Component({
     hideCaret: false,
     hasError: false,
     errorMsg: '',
+    value: '',
     onChange: () => {},
     onComplete: () => {},
   } as IChipPinProps,
@@ -64,13 +66,13 @@ Component({
   },
 
   didMount() {
-    const { length, focus } = this.props;
+    const { length, focus, value } = this.props;
 
-    this.values = Array(length).fill('');
+    this.values = value ? value.split('').slice(0, length) : Array(length).fill('');
 
     if (focus)
       this.setData({
-        currentIndex: 0,
+        currentIndex: Math.min(value.length, length) - 1 || 0,
       });
   },
 });
