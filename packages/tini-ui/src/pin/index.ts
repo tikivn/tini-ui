@@ -68,7 +68,10 @@ Component({
   didMount() {
     const { length, focus, value } = this.props;
 
-    this.values = value ? value.split('').slice(0, length) : Array(length).fill('');
+    this.values =
+      value && typeof value === 'string'
+        ? value.split('').slice(0, length)
+        : Array(length).fill('');
 
     if (focus)
       this.setData({
