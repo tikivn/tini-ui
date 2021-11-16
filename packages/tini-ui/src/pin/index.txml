@@ -20,6 +20,7 @@
       password="{{secret}}"
       maxlength="{{1}}"
       data-index="{{index}}"
+      value="{{value[index]}}"
       onFocus="onItemFocus"
       onInput="onItemChange"
     />
