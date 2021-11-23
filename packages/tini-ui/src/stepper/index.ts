@@ -16,6 +16,7 @@ Component({
     showNumber: true,
     vertical: false,
     controlled: true,
+    iconColor: '#1A94FF',
     onChange: (value: number, mode: string): void => {},
   },
   didMount() {

@@ -21,6 +21,7 @@ export interface CalendarComponentProps extends CalendarMethods {
   mode?: 'single' | 'range' | 'timeOnly';
   header?: 'year' | 'month';
   selectedDate?: number[];
+  iconColor: string;
 }
 
 const date = new Date();
@@ -53,6 +54,7 @@ Component({
     mode: 'timeOnly', // single - range - timeOnly
     header: 'month', // year - month
     selectedDate: [],
+    iconColor: '#1A94FF',
     onSelect: () => {},
     onChange: () => {},
   } as CalendarComponentProps,
