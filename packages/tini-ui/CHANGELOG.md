@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.4.0...@tiki.vn/tini-ui@0.5.0) (2021-11-23)
+
+
+### Bug Fixes
+
+* add initial value pin ([#29](https://github.com/tikivn/tiny-ui/issues/29)) ([7e073ac](https://github.com/tikivn/tiny-ui/commit/7e073ac0a60dfb639d06791f42275fbeabc6b549))
+
+
+
+
+
 # [0.4.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.3.0...@tiki.vn/tini-ui@0.4.0) (2021-11-11)
 
 **Note:** Version bump only for package @tiki.vn/tini-ui

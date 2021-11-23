@@ -1,6 +1,6 @@
 {
   "name": "@tiki.vn/tini-ui",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Tiki Design System for TiniApp",
   "homepage": "https://developers.tiki.vn",
   "license": "MIT",
@@ -60,6 +60,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.3",
-    "@tiki.vn/tini-style": "0.4.0"
+    "@tiki.vn/tini-style": "0.5.0"
   }
 }
