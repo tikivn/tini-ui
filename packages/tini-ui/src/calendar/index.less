@@ -35,15 +35,17 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  .tu-c-date-container {
+
+  .tu-c-date-wrapper {
     position: relative;
     width: 14.285%;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .tu-c-date-container {
+    padding-top: 16px;
+    padding-bottom: 16px;
     .c-date {
       font-size: 16px;
       text-align: center;
@@ -56,28 +58,45 @@
     }
   }
 
-  .tu-c-date-container:active,
-  .tu-c-date-container:hover {
+  .tu-c-date-wrapper:active,
+  .tu-c-date-wrapper:hover {
     background: rgba(178, 217, 250, 0.4);
     color: var(--brand);
   }
-  .tu-c-date-container.inrange {
-    background: rgba(178, 217, 250, 0.4);
-    border-radius: 0;
-  }
-  .tu-c-date-container.today {
+
+  .tu-c-date-wrapper.today {
     width: calc(14.285% - 2px);
     border: 1px solid var(--brand);
     border-radius: 8px;
     color: var(--brand);
     font-weight: bold;
   }
-  .tu-c-date-container.selected {
-    background: var(--brand);
+
+  .tu-c-date-wrapper.inrange {
+    background: rgba(178, 217, 250, 0.4);
+    border-radius: 0;
+    border: none;
+    color: var(--black);
+    font-weight: normal;
+  }
+
+  .tu-c-date-wrapper.selected {
+    background: rgba(178, 217, 250, 0.4);
     color: white;
     font-weight: bold;
+    border-radius: 0;
+    border: none;
+    &.range,
+    &.end {
+      .tu-c-date-container {
+        background: var(--brand);
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
   }
-  .tu-c-date-container.disabled {
+
+  .tu-c-date-wrapper.disabled {
     color: rgba(166, 166, 176, 0.6);
     cursor: not-allowed;
     pointer-events: none;

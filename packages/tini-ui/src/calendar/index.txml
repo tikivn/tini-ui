@@ -24,19 +24,24 @@
   </view>
 
   <view class="tu-c-body">
-    <view 
+    <view
       tiki:for="{{monthDetails}}"
-      onTap="_onSelect"
       data-item="{{item}}"
-      class="tu-c-date-container
+      class="tu-c-date-wrapper
         {{item.timestamp === todayTimestamp && item.inMonth === 0 ? 'today' : ''}}
         {{item.inMonth !== 0 || item.disabled ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
-        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}
-      ">
-      <view class="c-date">
-        {{item.date}}
+        {{item.timestamp === selectedDate[0] ? 'start' : ''}}
+        {{item.timestamp === selectedDate[1] ? 'end' : ''}}
+        {{mode === 'range' ? 'range' : ''}}
+        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}"
+      onTap="_onSelect">
+      <view 
+        class="tu-c-date-container">
+        <view class="c-date">
+          {{item.date}}
+        </view>
+        <view class="c-date-tag" style="color: {{item.inMonth !== 0 ? item.tagInactiveColor : item.tagColor}};" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
       </view>
-      <view class="c-date-tag" style="color: {{item.inMonth !== 0 ? item.tagInactiveColor : item.tagColor}};" tiki:if="{{item.tag && !item.disabled}}">{{item.tag}}</view>
     </view>
   </view>
 </view>
