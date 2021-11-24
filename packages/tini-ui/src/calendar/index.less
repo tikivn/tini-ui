@@ -37,7 +37,6 @@
   flex-wrap: wrap;
 
   .tu-c-date-wrapper {
-    position: relative;
     width: 14.285%;
     display: flex;
     align-items: center;
@@ -46,11 +45,14 @@
   .tu-c-date-container {
     padding-top: 16px;
     padding-bottom: 16px;
+    position: relative;
     .c-date {
       font-size: 16px;
       text-align: center;
       &-tag {
         position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         bottom: 0;
         font-size: 10px;
         color: var(--gray60);
@@ -62,6 +64,7 @@
   .tu-c-date-wrapper:hover {
     background: rgba(178, 217, 250, 0.4);
     color: var(--brand);
+    border-radius: 8px;
   }
 
   .tu-c-date-wrapper.today {
@@ -87,6 +90,7 @@
     border-radius: 0;
     border: none;
     &.range,
+    &.start,
     &.end {
       .tu-c-date-container {
         background: var(--brand);
