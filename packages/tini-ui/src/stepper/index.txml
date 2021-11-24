@@ -1,7 +1,7 @@
 <template name="operation">
   <view 
     class="tu-stepper-operation {{disabled ? 'tu-stepper-operation-disable' : ''}}" data-type="{{type}}"
-    style="border: 1px solid {{color}}"
+    style="{{disabled ? '' : `border: 1px solid ${color}`}}"
     onTap="changeFn">
     <icon type="{{icon}}" color="{{disabled ? 'var(--gray30)' : color}}" />
   </view>
