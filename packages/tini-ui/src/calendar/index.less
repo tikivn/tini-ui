@@ -60,13 +60,6 @@
     }
   }
 
-  .tu-c-date-wrapper:active,
-  .tu-c-date-wrapper:hover {
-    background: rgba(178, 217, 250, 0.4);
-    color: var(--brand);
-    border-radius: 8px;
-  }
-
   .tu-c-date-wrapper.today {
     width: calc(14.285% - 2px);
     border: 1px solid var(--brand);
@@ -84,11 +77,13 @@
   }
 
   .tu-c-date-wrapper.selected {
-    background: rgba(178, 217, 250, 0.4);
     color: white;
     font-weight: bold;
     border-radius: 0;
     border: none;
+    &.range {
+      background: rgba(178, 217, 250, 0.4);
+    }
     &.range,
     &.start,
     &.end {
@@ -104,5 +99,15 @@
     color: rgba(166, 166, 176, 0.6);
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  .tu-c-date-wrapper:active:not(.selected),
+  .tu-c-date-wrapper:hover:not(.selected) {
+    .tu-c-date-container {
+      background: rgba(178, 217, 250, 0.4);
+      color: var(--brand);
+      border-radius: 8px;
+      width: 100%;
+    }
   }
 }

@@ -4,11 +4,11 @@
       <icon type="arrow_double_left" color="{{iconColor}}" />
     </view>
     <view tiki:if="{{mode !== 'timeOnly'}}" data-offset="{{-1}}" onTap="setMonth">
-      <icon type="arrow_left" color="#1A94FF" />
+      <icon type="arrow_left" color="{{iconColor}}" />
     </view>
     <view class="tu-c-head-text">{{monthStr}} - {{year}}</view>
     <view tiki:if="{{mode !== 'timeOnly'}}" data-offset="{{1}}" onTap="setMonth">
-      <icon type="arrow_right" color="#1A94FF" />
+      <icon type="arrow_right" color="{{iconColor}}" />
     </view>
     <view tiki:if="{{header === 'year' && mode !== 'timeOnly'}}" data-offset="{{1}}" onTap="setYear">
       <icon type="arrow_double_right" color="{{iconColor}}" />
@@ -32,7 +32,7 @@
         {{item.inMonth !== 0 || item.disabled ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
         {{item.timestamp === selectedDate[0] ? 'start' : ''}}
         {{item.timestamp === selectedDate[1] ? 'end' : ''}}
-        {{mode === 'range' ? 'range' : ''}}
+        {{selectedDate[1] ? 'range' : ''}}
         {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}"
       onTap="_onSelect">
       <view 
