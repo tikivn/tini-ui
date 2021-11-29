@@ -7,6 +7,8 @@
   </view>
   <view>
     <calendar 
+      showOnlyInMonth="{{true}}"
+      disabledPastDays="{{true}}"
       tagData="{{tagData}}"
       mode="single"
       header="year"
