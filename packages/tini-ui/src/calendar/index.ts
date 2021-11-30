@@ -27,9 +27,7 @@ export interface CalendarComponentProps extends CalendarMethods {
 }
 
 const date = new Date();
-const oneDay = 60 * 60 * 24 * 1000;
-const todayTimestamp =
-  date.getTime() - (date.getTime() % oneDay) + date.getTimezoneOffset() * 1000 * 60;
+const todayTimestamp = date.getTime();
 
 const year = date.getFullYear();
 const month = date.getMonth();
@@ -153,31 +151,36 @@ Component({
     },
   },
 
-  didMount() {
-    const { selectedDate, locale, tagData } = this.props;
+  deriveDataFromProps(nextProps) {
+    const { selectedDate, tagData, locale } = nextProps;
     const i18N = getI18nByLocale(locale);
     const monthStr = this.getMonthStr(month, i18N.months);
-    this.setData({
+
+    const keys = {
       days: i18N.days,
       monthMap: i18N.months,
       monthDetails: getMonthDetails(year, month, tagData),
       monthStr,
-      selectedDate,
-    });
-  },
-  deriveDataFromProps(nextProps) {
-    const { selectedDate, tagData } = nextProps;
+    };
+    let extraKeys = {};
+
     if (selectedDate[0]) {
       const date = new Date(selectedDate[0]);
       const year = date.getFullYear();
       const month = date.getMonth();
-      this.setData({
+
+      const monthStr = this.getMonthStr(month, i18N.months);
+      extraKeys = {
         selectedDate,
         year,
         month,
         monthDetails: getMonthDetails(year, month, tagData),
-        monthStr: this.getMonthStr(month, this.data.monthMap),
-      });
+        monthStr,
+      };
     }
+    this.setData({
+      ...keys,
+      ...extraKeys,
+    });
   },
 });
