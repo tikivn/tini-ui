@@ -1,3 +1,5 @@
+<import-sjs from="./date.sjs" name="{ compareDate }" />
+
 <view class="tu-c-container {{className}}" style="{{style}}">
   <view class="tu-c-head" style="{{mode === 'timeOnly' ? 'justify-content: center;' : '' }}">
     <view tiki:if="{{header === 'year' && mode !== 'timeOnly'}}" data-offset="{{-1}}" onTap="setYear">
@@ -28,13 +30,13 @@
       tiki:for="{{monthDetails}}"
       data-item="{{item}}"
       class="tu-c-date-wrapper
-        {{item.timestamp === todayTimestamp && item.inMonth === 0 ? 'today' : ''}}
-        {{item.inMonth !== 0 || item.disabled ? 'disabled' : item.timestamp === selectedDate[0] || item.timestamp === selectedDate[1] ? 'selected' : ''}}
-        {{item.timestamp === selectedDate[0] ? 'start' : ''}}
-        {{item.timestamp === selectedDate[1] ? 'end' : ''}}
+        {{compareDate(item.timestamp, todayTimestamp) === 0 && item.inMonth === 0 ? 'today' : ''}}
+        {{item.inMonth !== 0 || item.disabled ? 'disabled' : compareDate(item.timestamp, selectedDate[0]) === 0 || compareDate(item.timestamp, selectedDate[1]) === 0 ? 'selected' : ''}}
+        {{compareDate(item.timestamp, selectedDate[0]) === 0 ? 'start' : ''}}
+        {{compareDate(item.timestamp, selectedDate[1]) === 0 ? 'end' : ''}}
         {{selectedDate[1] ? 'range' : ''}}
-        {{disabledPastDays ? item.timestamp < todayTimestamp ? 'disabled' : '' : ''}}
-        {{item.timestamp > selectedDate[0] && item.timestamp < selectedDate[1] && item.inMonth === 0 ? 'inrange' : ''}}"
+        {{disabledPastDays ? compareDate(item.timestamp, todayTimestamp) === -1 ? 'disabled' : '' : ''}}
+        {{compareDate(item.timestamp, selectedDate[0]) === 1 && compareDate(item.timestamp, selectedDate[1]) === -1 && item.inMonth === 0 ? 'inrange' : ''}}"
       onTap="_onSelect">
       <view 
         class="tu-c-date-container">
