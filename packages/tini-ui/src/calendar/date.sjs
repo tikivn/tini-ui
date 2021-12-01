@@ -1,4 +1,6 @@
+/* eslint-disable */
 export function compareDate(a, b) {
+  // eslint-disabled next-line
   const fDate = getDate(a);
   const sDate = getDate(b);
   fDate.setHours(0, 0, 0, 0);
