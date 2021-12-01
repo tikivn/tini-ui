@@ -43,6 +43,8 @@ type DropdownData = {
   bottomSheetScrollViewHeight: number;
 };
 
+const BottomSheetHeaderHeight = 40;
+
 Component({
   props: {
     placeholder: '',
@@ -116,11 +118,14 @@ Component({
     if (bottomSheetHeight) {
       data.bottomSheetContainerHeight = bottomSheetHeight;
       data.bottomSheetScrollViewHeight =
-        bottomSheetHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0);
+        bottomSheetHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0) - BottomSheetHeaderHeight;
     } else {
-      data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop - 40; // 40: header height
+      data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop;
       data.bottomSheetScrollViewHeight =
-        data.bottomSheetContainerHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0);
+        data.bottomSheetContainerHeight -
+        (showSearch ? 60 : 0) -
+        (multiple ? 100 : 0) -
+        BottomSheetHeaderHeight;
     }
 
     this.setData(data);
