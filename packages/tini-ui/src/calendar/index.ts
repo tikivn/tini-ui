@@ -151,8 +151,8 @@ Component({
     },
   },
 
-  deriveDataFromProps(nextProps) {
-    const { selectedDate, tagData, locale } = nextProps;
+  didMount() {
+    const { tagData, locale } = this.props;
     const i18N = getI18nByLocale(locale);
     const monthStr = this.getMonthStr(month, i18N.months);
 
@@ -162,7 +162,14 @@ Component({
       monthDetails: getMonthDetails(year, month, tagData),
       monthStr,
     };
-    let extraKeys = {};
+    this.setData({
+      ...keys,
+    });
+  },
+
+  deriveDataFromProps(nextProps) {
+    const { selectedDate, tagData, locale } = nextProps;
+    const i18N = getI18nByLocale(locale);
 
     if (selectedDate[0]) {
       const date = new Date(selectedDate[0]);
@@ -170,17 +177,13 @@ Component({
       const month = date.getMonth();
 
       const monthStr = this.getMonthStr(month, i18N.months);
-      extraKeys = {
+      this.setData({
         selectedDate,
         year,
         month,
         monthDetails: getMonthDetails(year, month, tagData),
         monthStr,
-      };
+      });
     }
-    this.setData({
-      ...keys,
-      ...extraKeys,
-    });
   },
 });
