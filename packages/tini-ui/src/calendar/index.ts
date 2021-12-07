@@ -131,6 +131,8 @@ Component({
 
     setMonth(event) {
       const { offset } = event.target.dataset;
+      const { locale } = this.props;
+      const i18N = getI18nByLocale(locale);
       let year = this.data.year;
       let month = this.data.month + offset;
       if (month === -1) {
@@ -140,11 +142,13 @@ Component({
         month = 0;
         year++;
       }
+      const monthStr = this.getMonthStr(month, i18N.months);
+
       this.setData({
         year,
         month,
         monthDetails: getMonthDetails(year, month, this.props.tagData),
-        monthStr: this.getMonthStr(month, this.data.monthMap),
+        monthStr,
       });
       const rs = { dates: [...this.data.selectedDate], year, month: month + 1 };
       this.props.onChange(rs);
@@ -153,9 +157,10 @@ Component({
 
   didMount() {
     const { tagData, locale } = this.props;
+    const { month, year } = this.data;
     const i18N = getI18nByLocale(locale);
-    const monthStr = this.getMonthStr(month, i18N.months);
 
+    const monthStr = this.getMonthStr(month, i18N.months);
     const keys = {
       days: i18N.days,
       monthMap: i18N.months,
@@ -175,8 +180,8 @@ Component({
       const date = new Date(selectedDate[0]);
       const year = date.getFullYear();
       const month = date.getMonth();
-
       const monthStr = this.getMonthStr(month, i18N.months);
+
       this.setData({
         selectedDate,
         year,
