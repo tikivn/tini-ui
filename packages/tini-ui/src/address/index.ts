@@ -151,7 +151,12 @@ Component({
           promiseAll.push(this.getWards(this.getId(district)));
         }
       }
+
+      my.showLoading({ content: 'Đang tải...' });
+
       await Promise.all(promiseAll);
+
+      my.hideLoading();
 
       const value = { ...this.data.value, street };
       if (city) {

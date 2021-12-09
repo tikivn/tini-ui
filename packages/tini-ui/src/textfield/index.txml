@@ -44,12 +44,12 @@
         style="right: {{iconRight ? paddingHorizontal * 2 + 4 : 8}}px"
         type="info" />
       <tu-icon class="tu-textfield-icon left" 
-        tiki:if="{{iconLeft}}" 
+        tiki:if="{{iconLeft && !loading}}" 
         onTap="onTapIconLeft"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
         type="{{loading ? 'no-icon':iconLeft}}" />
       <tu-icon class="tu-textfield-icon right" 
-        tiki:if="{{iconRight}}" 
+        tiki:if="{{iconRight && !loading}}" 
         onTap="onTapIconRight"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
         type="{{iconRight}}" />
