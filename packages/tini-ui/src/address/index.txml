@@ -24,7 +24,7 @@
   labelText="{{districtLabel}}"
   bottomSheetTitle="{{districtLabel}}"
   showSearch
-  className="mb-small" 
+  className="mb-small {{value.city ? '' : 'bg-disable'}}" 
   disabled="{{!value.city}}"
   items="{{districts}}"
   value="{{value.district}}"
@@ -37,7 +37,7 @@
   labelText="{{wardLabel}}"
   bottomSheetTitle="{{wardLabel}}"
   showSearch
-  className="mb-small" 
+  className="mb-small {{value.district ? '' : 'bg-disable'}}" 
   disabled="{{!value.district}}"
   items="{{wards}}"
   value="{{value.ward}}"
