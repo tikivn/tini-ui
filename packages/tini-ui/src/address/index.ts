@@ -107,8 +107,7 @@ Component({
     this.addressService = new AddressService({
       firstCities,
     });
-
-    this.initDataFromProps();
+    this.initDataFromProps(true);
   },
   deriveDataFromProps({
     street,
@@ -128,11 +127,13 @@ Component({
       (showName && full_name !== this.data.value.full_name) ||
       (showPhone && phone_number !== this.data.value.phone_number)
     ) {
-      this.initDataFromProps();
+      this.initDataFromProps(
+        city !== this.data.value.city.id && city.id !== this.data.value.city.id,
+      );
     }
   },
   methods: {
-    async initDataFromProps() {
+    async initDataFromProps(isShowLoading) {
       const {
         street = '',
         city,
@@ -152,7 +153,7 @@ Component({
         }
       }
 
-      my.showLoading({ content: 'Đang tải...' });
+      if (isShowLoading) my.showLoading({ content: 'Đang tải...' });
 
       await Promise.all(promiseAll);
 
