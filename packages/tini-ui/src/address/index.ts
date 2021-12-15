@@ -128,7 +128,10 @@ Component({
       (showPhone && phone_number !== this.data.value.phone_number)
     ) {
       this.initDataFromProps(
-        city !== this.data.value.city.id && city.id !== this.data.value.city.id,
+        city &&
+          this.data.value.city &&
+          city !== this.data.value.city.id &&
+          city.id !== this.data.value.city.id,
       );
     }
   },
