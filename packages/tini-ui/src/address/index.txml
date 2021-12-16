@@ -1,6 +1,7 @@
 <textfield 
   value="{{value.street}}"
   className="mb-small" 
+  maxlength="100"
   labelText="{{streetLabel}}"
   onInput="changeStreet"
   errorMsg="{{streetErrorMsg}}"
@@ -52,7 +53,7 @@
   labelText="{{nameLabel}}"
   tiki:key="ward"
   onInput="changeName"
-  maxlength="50"
+  maxlength="100"
   errorMsg="{{nameErrorMsg}}"
   hasError="{{!!nameErrorMsg}}"
   placeholder="{{namePlaceholder}}" />
