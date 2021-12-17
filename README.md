@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://tiniapp-media.tikicdn.com/tiniapps/files/images/tini.png" style="zoom: 0.2;" width="128" />
+  <img src="https://tiniapp.tikicdn.com/resources/framework/images/tini-design.png" style="zoom: 0.2;" width="128" />
 </p>
 
 # Tini UI
