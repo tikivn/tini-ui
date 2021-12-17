@@ -174,6 +174,7 @@ Component({
         {
           showBottomSheet: false,
           searchText: '',
+          searchItems: this.props.items,
         },
         callback,
       );
