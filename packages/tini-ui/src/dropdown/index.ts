@@ -31,6 +31,7 @@ type DropdownProps = {
   onTap?: (event: unknown) => void;
   onSelect?: (item: any) => void;
   onSearch?: (searchText: any) => void;
+  onHideDropdown?: () => void;
 };
 
 type DropdownData = {
@@ -161,13 +162,15 @@ Component({
       onTap && onTap(e);
     },
     onClose() {
-      if (this.props.multiple) {
+      const { multiple, onHideDropdown } = this.props;
+      if (multiple) {
         this.hideBottomSheet(() => {
           this.setData({ localValue: this.props.value || [] });
         });
       } else {
         this.hideBottomSheet();
       }
+      onHideDropdown && onHideDropdown();
     },
     hideBottomSheet(callback = () => {}) {
       this.setData(

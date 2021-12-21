@@ -16,6 +16,8 @@
   onSelect="selectCity"
   className="mb-small" 
   errorMsg="{{cityErrorMsg}}"
+  onTap="onTapDropdown"
+  onHideDropdown="onHideDropdown"
   hasError="{{!!cityErrorMsg}}"
   bottomSheetTitle="{{cityLabel}}"
   placeholder="{{cityPlaceholder}}" />
@@ -30,6 +32,8 @@
   items="{{districts}}"
   value="{{value.district}}"
   errorMsg="{{districtErrorMsg}}"
+  onTap="onTapDropdown"
+  onHideDropdown="onHideDropdown"
   hasError="{{!!districtErrorMsg}}"
   onSelect="selectDistrict"/>
 
@@ -43,13 +47,16 @@
   items="{{wards}}"
   value="{{value.ward}}"
   errorMsg="{{wardErrorMsg}}"
+  onTap="onTapDropdown"
+  onHideDropdown="onHideDropdown"
   hasError="{{!!wardErrorMsg}}"
   onSelect="selectWard"/>
 
 <textfield 
   tiki:if="{{showName}}"
   value="{{value.full_name}}"
-  className="mb-small" 
+  disabled="{{isShowDropdown}}"
+  className="mb-small {{isShowDropdown ? 'readonly' : ''}}" 
   labelText="{{nameLabel}}"
   tiki:key="ward"
   onInput="changeName"
@@ -61,7 +68,8 @@
 <textfield 
   tiki:if="{{showPhone}}"
   value="{{value.phone_number}}"
-  className="mb-small" 
+  disabled="{{isShowDropdown}}"
+  className="mb-small {{isShowDropdown ? 'readonly' : ''}}" 
   labelText="{{phoneLabel}}"
   onInput="changePhone"
   errorMsg="{{phoneErrorMsg}}"

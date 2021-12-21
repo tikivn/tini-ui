@@ -15,6 +15,7 @@ type AddressData = {
   cities: AddressItem[];
   districts: AddressItem[];
   wards: AddressItem[];
+  isShowDropdown: boolean;
 };
 
 type AddresProps = {
@@ -99,6 +100,7 @@ Component({
     cities: [],
     districts: [],
     wards: [],
+    isShowDropdown: false,
   } as AddressData,
   addressService: null,
   async didMount() {
@@ -186,6 +188,12 @@ Component({
       }
       return typeof item === 'number' || typeof item === 'string' ? +item : item && item['id'];
     },
+    onTapDropdown() {
+      this.setData({ isShowDropdown: true });
+    },
+    onHideDropdown() {
+      this.setData({ isShowDropdown: false });
+    },
     async getCities() {
       const cities = await this.addressService.getCities();
       this.setData({ cities });
@@ -226,6 +234,10 @@ Component({
           ].indexOf(false) < 0;
         isFull && onFullAddress(data);
       }
+
+      setTimeout(() => {
+        this.onHideDropdown();
+      }, 100);
     },
     changeStreet(e) {
       const street = e.detail.value;
