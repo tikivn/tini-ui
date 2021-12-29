@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "ToastBar",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "toast-bar": "@tiki.vn/tini-ui/es/toast-bar/index"
+  }
+}

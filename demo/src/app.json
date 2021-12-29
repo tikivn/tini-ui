@@ -24,7 +24,8 @@
     "pages/chip/index",
     "pages/calendar/index",
     "pages/pin/index",
-    "pages/tooltip/index"
+    "pages/tooltip/index",
+    "pages/toast-bar/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",

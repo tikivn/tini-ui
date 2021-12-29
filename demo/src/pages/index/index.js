@@ -85,6 +85,10 @@ Page({
         name: 'tooltip',
         path: 'pages/tooltip/index',
       },
+      {
+        name: 'toast-bar',
+        path: 'pages/toast-bar/index',
+      },
     ],
   },
   onNavigate(e) {

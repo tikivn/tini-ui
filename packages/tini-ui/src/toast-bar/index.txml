@@ -1,0 +1,34 @@
+<view 
+  class="tu-toast-bar tu-toast-bar-{{type}} {{className}} {{show ? 'show' : ''}} {{animation ? 'tu-toast-bar-animation': '' }}"
+  style="
+    background-color: {{toastBackground}};
+    z-index: {{zIndex}}; 
+    color: {{textColor}};
+    top: {{placement === 'top' ? top : undefined}};
+    bottom: {{placement === 'bottom' ? bottom : undefined}};
+    --tu-toast-bar-top: {{top}};
+    --tu-toast-bar-bottom: {{bottom}};
+    --tu-toast-bar-duration: {{duration / 1000}}s;
+    --tu-toast-bar-anim-duration: {{animationDuration / 1000}}s;
+    {{style}}" >
+  <image tiki:if="{{image}}" src="{{image}}" class="{{closeButtonClass}}"/>
+  <icon 
+    tiki:else 
+    size="{{20}}"
+    color="{{textColor}}"
+    class="{{closeButtonClass}}" 
+    type="{{iconLeft ? iconLeft : icons[type]}}" /> 
+  <text class="tu-toast-bar-content" >{{content}}</text>
+  <view class="tu-toast-bar-right">
+    <view 
+      onTap="onTapAction"
+      class="tu-toast-bar-action" 
+      tiki:if="{{actionText}}">
+      {{actionText}}
+    </view>
+    <view class="tu-toast-bar-devider" />
+    <view class="tu-toast-bar-close-wrapper" onTap="onTapClose">
+      <icon size="{{20}}" type="{{closeIcon}}" color="{{textColor}}" />
+    </view>
+  </view>
+</view>

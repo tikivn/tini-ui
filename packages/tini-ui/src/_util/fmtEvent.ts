@@ -4,7 +4,7 @@ interface Event {
   target: { dataset: any; targetDataset: any };
 }
 
-export default function fmtEvent(props: any, e: any): Event {
+export default function fmtEvent(props: any, e: any = {}): Event {
   const dataset = {};
   for (const key in props) {
     if (/data-/gi.test(key)) {
