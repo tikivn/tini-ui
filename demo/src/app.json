@@ -30,6 +30,7 @@
   "window": {
     "defaultTitle": "Tiki Tini UI",
     "pullRefresh": "NO",
+    "enableCache": "NO",
     "allowsBounceVertical": "NO"
   }
 }

@@ -1,5 +1,6 @@
 type BottomSheetProps = {
   className?: string;
+  popupClass?: string;
   style?: string;
   mask: boolean;
   maskClose: boolean;
@@ -25,6 +26,7 @@ Component({
     show: true,
     disableScroll: false,
     className: '',
+    popupClass: '',
     isContentScrollView: true,
     distanceFromTop: 50,
     zIndex: 2,

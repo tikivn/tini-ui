@@ -42,6 +42,7 @@ type DropdownData = {
   localValue: string | Array<string> | Array<any>;
   bottomSheetContainerHeight: number;
   bottomSheetScrollViewHeight: number;
+  isTextFieldFocusing: boolean;
 };
 
 const BottomSheetHeaderHeight = 40;
@@ -77,6 +78,7 @@ Component({
     label: '',
     showBottomSheet: false,
     localValue: null,
+    isTextFieldFocusing: false,
   } as DropdownData,
   didUpdate(prevProps) {
     const { onSearch, items } = this.props;
@@ -211,6 +213,12 @@ Component({
     onSelectMultiple() {
       this.props.onSelect(this.data.localValue);
       this.hideBottomSheet();
+    },
+    onTextFieldFocus() {
+      this.setData({ isTextFieldFocusing: true });
+    },
+    onTextFieldBlur() {
+      this.setData({ isTextFieldFocusing: false });
     },
   },
 });

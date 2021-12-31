@@ -24,10 +24,13 @@
     maskClose="{{maskClose}}"
     isContentScrollView="{{false}}"
     style="height: {{bottomSheetContainerHeight}}px"
+    popupClass="{{isTextFieldFocusing ? 'tu-dropdown-input-focus' : ''}}"
     onClose="onClose">
     <view class="flex flex-col">
       <textfield 
         tiki:if="{{showSearch}}"
+        onFocus="onTextFieldFocus"
+        onBlur="onTextFieldBlur"
         class="px-small py-x-small" 
         iconLeft="search"
         onInput="onChangeSearchText"

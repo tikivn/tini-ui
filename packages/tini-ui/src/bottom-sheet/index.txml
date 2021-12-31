@@ -13,7 +13,7 @@
   </view>
 </template>
 
-<popup mask="{{mask}}" class="tu-bottom-sheet" animation="{{animation}}" position="bottom" show="{{show}}"
+<popup mask="{{mask}}" class="tu-bottom-sheet {{popupClass}}" animation="{{animation}}" position="bottom" show="{{show}}"
   maskClose="{{maskClose}}"
   disableScroll="{{disableScroll}}" zIndex="{{zIndex}}" onClose="onClose">
   <view class="tu-bottom-sheet-wrapper {{className}}" 
