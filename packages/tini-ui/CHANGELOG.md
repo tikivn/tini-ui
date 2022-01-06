@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.6.0...@tiki.vn/tini-ui@0.7.0) (2022-01-06)
+
+
+### Bug Fixes
+
+* bottom sheet height ([572bf88](https://github.com/tikivn/tiny-ui/commit/572bf88576b1a3c50992cf66fc86799657c12c98))
+* cal show date ([#33](https://github.com/tikivn/tiny-ui/issues/33)) ([d6f52ac](https://github.com/tikivn/tiny-ui/commit/d6f52ac6e808d6c297ff40c7bea482542c72de00))
+* css border calender ([c127a1d](https://github.com/tikivn/tiny-ui/commit/c127a1d6c30cd5636bc7e50f2c0b021ece15728c))
+* css disable & deriveprops ([#35](https://github.com/tikivn/tiny-ui/issues/35)) ([96ab259](https://github.com/tikivn/tiny-ui/commit/96ab259c5b428c5bd81907d4f447faeb2af7a3f3))
+* cycle calender ([3c36548](https://github.com/tikivn/tiny-ui/commit/3c36548b5dec681375661379dfe868336bf17308))
+* date compare ([#32](https://github.com/tikivn/tiny-ui/issues/32)) ([560db39](https://github.com/tikivn/tiny-ui/commit/560db3996b9aa9121b85c5de445b602337b40a34))
+* loading of textfield and address components ([#34](https://github.com/tikivn/tiny-ui/issues/34)) ([b75114e](https://github.com/tikivn/tiny-ui/commit/b75114e855516718abf1ac1710cf5a3662f3792b))
+* popup scroll when focus input ([8dc4385](https://github.com/tikivn/tiny-ui/commit/8dc4385b5d01b2f86f9096c85dd619750329d6f4))
+* reset items when user searched ([#37](https://github.com/tikivn/tiny-ui/issues/37)) ([b090920](https://github.com/tikivn/tiny-ui/commit/b09092045ed1edcdaf7e9244863e5fae627a4f32))
+
+
+### Features
+
+* add toast-bar component ([37e8e05](https://github.com/tikivn/tiny-ui/commit/37e8e053163df73aa6fd73d741dbc724077bcc58))
+* **address:** update style on show dropdown ([994e6bf](https://github.com/tikivn/tiny-ui/commit/994e6bf07622deb00ec4323ecd41339321032d2c))
+
+
+
+
+
 # [0.6.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.5.0...@tiki.vn/tini-ui@0.6.0) (2021-11-23)
 
 **Note:** Version bump only for package @tiki.vn/tini-ui
