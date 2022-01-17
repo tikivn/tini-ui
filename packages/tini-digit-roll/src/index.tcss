@@ -1,0 +1,12 @@
+.DigitRoll {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow-y: hidden;
+  border: none;
+}
+
+.DigitRoll__Divider {
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+}

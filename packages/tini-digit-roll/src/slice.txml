@@ -1,0 +1,7 @@
+<import-sjs from="./utils.sjs" name="utils" />
+<view class="DigitRoll__Slice" style="margin-top:{{offset}}px; {{ isRolling ? `transition: margin ${delay}s ease` : '' }}">
+  <view tiki:for="{{utils.getArr(prevDigit, digit)}}" class="DigitRoll__Cell" style="height: {{height}}px; width: {{width}}px">
+    {{item}}
+  </view>
+</view>
+

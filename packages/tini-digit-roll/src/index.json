@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "slice": "./slice",
+    "divider": "./divider"
+  },
+  "componentLifeCycleV2": "YES"
+}

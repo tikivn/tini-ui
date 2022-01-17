@@ -1,0 +1,14 @@
+<import-sjs from="./utils.sjs" name="utils" />
+<view class="DigitRoll__Out" style="display: flex">
+  <view class="DigitRoll" style="height: {{height}}px">
+    <block tiki:for="{{utils.formatDigit(num, length, '')}}">
+      <divider tiki:if="{{index % 4 === 3}}" />
+      <slice 
+        digit="{{item}}" 
+        delay="{{delay}}" 
+        width="{{width}}" 
+        height="{{height}}"
+      />
+    </block>
+  </view>
+</view>

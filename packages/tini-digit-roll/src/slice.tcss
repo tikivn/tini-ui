@@ -1,0 +1,22 @@
+
+.DigitRoll__Slice {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.DigitRoll__Cell {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  margin: 0 5px;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
