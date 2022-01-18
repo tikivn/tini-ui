@@ -81,17 +81,20 @@ Component({
     isTextFieldFocusing: false,
   } as DropdownData,
   didUpdate(prevProps) {
+    // console.log('dropdown didUpdate :>> ', prevProps);
     const { onSearch, items } = this.props;
     const { searchText } = this.data;
 
     // TODO: Deep compare items
     if (onSearch && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
+      // console.log('setData');
       this.setData({ searchItems: items });
     } else if (prevProps.items.length !== items.length) {
       searchText ? this.onSearch(searchText) : this.setData({ searchItems: items });
     }
   },
   deriveDataFromProps({ value, labelKey, items, idKey, multiple }) {
+    // console.log('dropdown deriveDataFromProps');
     const { localValue, label: localLabel } = this.data;
     let label = localLabel;
     if (multiple) {
@@ -107,6 +110,7 @@ Component({
     }
 
     if (isHasValue(value) && JSON.stringify(value) !== JSON.stringify(localValue)) {
+      // console.log('setData 3');
       this.setData({ localValue: value });
     }
   },
@@ -185,6 +189,7 @@ Component({
       );
     },
     onSelect(event) {
+      console.log('event :>> ', event);
       const { multiple, value, idKey, closeAfterSelect, onSelect } = this.props;
       const { localValue } = this.data;
       const { item } = event.target.dataset;

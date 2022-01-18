@@ -41,8 +41,6 @@ type ToastBarData = {
 
 // TODO: Handle multiple toast
 Component({
-  timeout: null,
-  isShowing: false,
   props: {
     type: 'success', // success, error, info
     iconLeft: '',
@@ -107,6 +105,8 @@ Component({
     }
   },
   methods: {
+    timeout: null,
+    isShowing: false,
     onTapAction(event) {
       this.props.onTapAction(fmtEvent(this.props, event));
     },

@@ -1,9 +1,7 @@
-
-
 interface IInputEvent {
   detail: {
-    value: string
-  }
+    value: string;
+  };
 }
 
 interface IInputEventHandler {
@@ -41,21 +39,20 @@ export interface ISearchBarComponentProps extends ISearchBarComponentPropsEvents
   focus?: boolean;
   controlled?: boolean;
   loading?: boolean;
-  hasError?: boolean
+  hasError?: boolean;
 }
 
 function mapPropsEvent<T>(eventNames: string[]): Record<string, any> {
   return eventNames.reduce((obj, eventName) => {
-
     return <ThisType<{ props: T }>>{
       ...obj,
       [eventName]: function (e: any) {
-        if ((this.props)[eventName] instanceof Function) {
-          return (this.props)[eventName](e)
+        if (this.props[eventName] instanceof Function) {
+          return this.props[eventName](e);
         }
-      }
-    }
-  }, {})
+      },
+    };
+  }, {});
 }
 Component({
   props: {
@@ -67,39 +64,41 @@ Component({
     controlled: false,
     hasError: false,
     errorIconColor: '#ff424f',
-
   },
   data: { __value: '' },
   didMount() {
-    this.deriveDataFromProps(this.props); // for passing static values(props never change)
+    this.onChangeValue(this.props.value);
   },
-  deriveDataFromProps: function (this: { data: { __value: string }, setData: (data) => void }, nextProps) {
-    if (this.data.__value !== nextProps.value) {
-      this.setData({
-        __value: nextProps.value
-      });
-    }
+  deriveDataFromProps(nextProps) {
+    this.onChangeValue(nextProps.value);
   },
-
   methods: {
     ...mapPropsEvent<ISearchBarComponentPropsEvents>([
-      "onFocus",
-      "onBlur",
-      "onConfirm",
-      "onInput",
-      "onTapSearchIcon",
+      'onFocus',
+      'onBlur',
+      'onConfirm',
+      'onInput',
+      'onTapSearchIcon',
     ]),
-
+    onChangeValue(newValue) {
+      if (this.data.__value !== newValue) {
+        this.setData({
+          __value: newValue,
+        });
+      }
+    },
     onTapCloseIcon(e) {
       try {
         this.setData({
-          __value: ''
+          __value: '',
         });
-        const onTapCloseIcon = mapPropsEvent<ISearchBarComponentPropsEvents>(['onTapCloseIcon']).onTapCloseIcon.bind(this);
-        onTapCloseIcon(e)
+        const onTapCloseIcon = mapPropsEvent<ISearchBarComponentPropsEvents>([
+          'onTapCloseIcon',
+        ]).onTapCloseIcon.bind(this);
+        onTapCloseIcon(e);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    }
+    },
   },
 });
