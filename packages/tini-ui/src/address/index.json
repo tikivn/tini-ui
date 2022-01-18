@@ -1,5 +1,6 @@
 {
   "component": true,
+  "componentLifeCycleV2": "YES",
   "usingComponents": {
     "dropdown": "../dropdown/index",
     "bottom-sheet": "../bottom-sheet/index",

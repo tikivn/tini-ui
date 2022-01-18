@@ -61,6 +61,15 @@ type AddresProps = {
   onFullAddress?: (address: AddressValue) => void; // Call when address were filled full data
 };
 
+const diffValue = (value: any, newValue: any) => {
+  if (value === null || value === undefined) {
+    return false;
+  }
+  const oldV = value.id ? value.id : value;
+  const newV = newValue && newValue.id ? newValue.id : newValue;
+  return oldV !== newV;
+};
+
 Component({
   props: {
     street: '',
@@ -102,7 +111,6 @@ Component({
     wards: [],
     isShowDropdown: false,
   } as AddressData,
-  addressService: null,
   async didMount() {
     const { firstCities } = this.props;
 
@@ -111,24 +119,18 @@ Component({
     });
     this.initDataFromProps(true);
   },
-  deriveDataFromProps({
-    street,
-    city,
-    district,
-    ward,
-    full_name,
-    phone_number,
-    showPhone,
-    showName,
-  }) {
-    if (
-      street !== this.data.value.street ||
-      city !== this.data.value.city ||
-      district !== this.data.value.district ||
-      ward !== this.data.value.ward ||
-      (showName && full_name !== this.data.value.full_name) ||
-      (showPhone && phone_number !== this.data.value.phone_number)
-    ) {
+  deriveDataFromProps(props) {
+    if (this.isChangingData) {
+      return;
+    }
+    const { street, city, district, ward, full_name, phone_number, showPhone, showName } = props;
+    const diffStreet = street && diffValue(street, this.data.value.street);
+    const diffCity = city && diffValue(city, this.data.value.city);
+    const diffDistrict = district && diffValue(district, this.data.value.district);
+    const diffWard = ward && diffValue(ward, this.data.value.ward);
+    const diffName = showName && full_name !== this.data.value.full_name;
+    const diffPhone = showPhone && phone_number !== this.data.value.phone_number;
+    if (diffStreet || diffCity || diffDistrict || diffWard || diffName || diffPhone) {
       this.initDataFromProps(
         city &&
           this.data.value.city &&
@@ -138,7 +140,10 @@ Component({
     }
   },
   methods: {
+    addressService: null,
+    isChangingData: '',
     async initDataFromProps(isShowLoading) {
+      this.isChangingData = true;
       const {
         street = '',
         city,
@@ -181,6 +186,7 @@ Component({
         value.phone_number = phone_number ?? '';
       }
       this.setData({ value });
+      this.isChangingData = false;
     },
     getId(item: number | AddressItem) {
       if (!item) {
@@ -238,8 +244,10 @@ Component({
       setTimeout(() => {
         this.onHideDropdown();
       }, 100);
+      this.isChangingData = false;
     },
     changeStreet(e) {
+      this.isChangingData = true;
       const street = e.detail.value;
 
       this.setData({ value: { ...this.data.value, street } }, () => {
@@ -250,6 +258,7 @@ Component({
       });
     },
     changeName(e) {
+      this.isChangingData = true;
       const full_name = e.detail.value;
 
       this.setData({ value: { ...this.data.value, full_name } }, () => {
@@ -260,6 +269,7 @@ Component({
       });
     },
     changePhone(e) {
+      this.isChangingData = true;
       const phone_number = e.detail.value;
 
       this.setData({ value: { ...this.data.value, phone_number } }, () => {
@@ -270,6 +280,7 @@ Component({
       });
     },
     async selectCity(city) {
+      this.isChangingData = true;
       const value = {
         ...this.data.value,
         city,
@@ -285,6 +296,7 @@ Component({
       this.getDistricts(city.id);
     },
     async selectDistrict(district) {
+      this.isChangingData = true;
       const value = {
         ...this.data.value,
         district,
@@ -299,6 +311,7 @@ Component({
       this.getWards(district.id);
     },
     async selectWard(ward) {
+      this.isChangingData = true;
       const value = {
         ...this.data.value,
         ward,

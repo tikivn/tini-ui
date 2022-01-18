@@ -1,5 +1,6 @@
 {
   "component": true,
+  "componentLifeCycleV2": "YES",
   "usingComponents": {
     "popup": "../popup/index",
     "tu-button": "../tu-button/index"
