@@ -53,9 +53,9 @@ Component({
       }
     },
     onClose(): void {
-      this.setData({
-        show: false,
-      });
+      // this.setData({
+      //   show: false,
+      // });
       const { onClose } = this.props;
       if (onClose) {
         onClose({
