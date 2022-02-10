@@ -16,12 +16,16 @@
   width: @pagination-button-width;
   height: @pagination-button-height;
   color: var(--text-paging-inactive);
-  background: var(--background-paging-inactive);
+  background: transparent;
   border-radius: 8px;
   font-size: var(--font-size-base);
   font-style: var(--font-style-normal);
   cursor: pointer;
   text-overflow: unset;
+  border: solid 1px transparent;
+  &:hover {
+    background: transparent;
+  }
 }
 .tu-pagination:extend(.content-center) {
   //pagination type
@@ -51,6 +55,8 @@
     border: 1px solid var(--blue60);
     background-color: var(--white);
     border-radius: 4px;
+    min-width: @pagination-button-width;
+    box-sizing: border-box;
   }
   .tu-pagination-jump__disabled {
     cursor: not-allowed;
