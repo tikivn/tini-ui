@@ -1,23 +1,15 @@
-<view class="tu-avatar" style="{{style}}">
-    <image
-        class="tu-avatar-img tu-avatar-img-{{size}}"
-        style="{{
-        shape!=='circle' ? 'border-radius:4px':
-        size==='xs'?'border-radius:20px':
-        size==='sm'?'border-radius:24px':
-        size==='md'?'border-radius:28px':
-        'border-radius:36px'
-
-        }}
-        "
-        src="{{src}}" lazy-load="{{lazyLoad}}"
-        onError="_onError"/>
-  <view class="tu-avatar-content" tiki:if="{{name || desc}}">
-    <view class="tu-avatar-name tu-avatar-name-{{size}}" tiki:if="{{name}}">
-      {{name}}
-    </view>
-    <view class="tu-avatar-desc tu-avatar-desc-{{size}}" tiki:if="{{desc}}">
-      {{desc}}
-    </view>
+<view class="tu-avatar tu-avatar-{{shape}}" style="background-color: {{color}};{{style}}">
+  <image
+    tiki:if="{{!shortName}}"
+    class="tu-avatar-img"
+    src="{{src}}" lazy-load="{{lazyLoad}}"
+    onLoad="_onLoad"
+    onError="_onError"/>
+  <view 
+    class="tu-avatar-name" 
+    tiki:if="{{shortName}}">
+    <text style="font-size: {{size * 0.45}}px;">
+      {{shortName}}
+    </text>
   </view>
 </view>

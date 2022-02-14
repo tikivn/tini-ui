@@ -1,6 +1,5 @@
-import { getI18n } from '../_util/getI18n';
+import { getColorName, getShortname } from './utils';
 
-const i18n = getI18n().avatar;
 const imageSize = {
   xs: 40,
   sm: 48,
@@ -8,19 +7,32 @@ const imageSize = {
   lg: 72,
 };
 
+type AvatarProps = {
+  shape?: 'circle' | 'square';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  showNameText?: boolean;
+  src?: string;
+  name?: string;
+  lazyLoad?: boolean;
+  style?: string;
+  onError?: (e: string) => void;
+  onLoad?: (e: string) => void;
+};
+
 Component({
   data: {
     _borderRadius: '4px',
+    shortName: null,
+    color: null,
   },
   props: {
     shape: 'circle',
     size: 'md',
     src: 'https://salt.tikicdn.com/ts/miniapp/0f/7f/84/5af725e8a6a55815a24e8e6935ef99e3.png',
     name: '',
-    desc: '',
     lazyLoad: false,
     style: '',
-  },
+  } as AvatarProps,
   deriveDataFromProps(nextProps) {
     if (nextProps.shape === 'circle') {
       this.setData({
@@ -31,19 +43,26 @@ Component({
         _borderRadius: '4px',
       });
     }
-  },
-  didMount: function didMount() {
-    const { name, desc } = this.props;
-    if (!name && desc) {
-      console.error(i18n.error);
+    if (nextProps.name && !nextProps.src) {
+      this.setData({
+        shortName: getShortname(nextProps.name),
+        color: getColorName(nextProps.name),
+      });
     }
   },
   methods: {
     _onError(e) {
-      const { onError } = this.props;
+      const { onError, name } = this.props;
       if (onError) {
         onError(e);
       }
+      if (name) {
+        this.setData({
+          shortName: getShortname(name),
+          color: getColorName(name),
+        });
+      }
     },
+    _onLoad() {},
   },
 });
