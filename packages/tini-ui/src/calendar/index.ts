@@ -70,16 +70,9 @@ Component({
       }
       if (mode === 'single') {
         this.onSelectSingleDate(item);
-        const rs = { dates: [this.data.selectedDate[0]] };
-        this.props.onSelect(rs);
       }
       if (mode === 'range') {
         this.onSelectRangeDate(item);
-        const { selectedDate } = this.data;
-        if (selectedDate[0] && selectedDate[1]) {
-          const rs = { dates: [...selectedDate] };
-          this.props.onSelect(rs);
-        }
       }
     },
 
@@ -87,29 +80,24 @@ Component({
       this.setData({
         selectedDate: [item.timestamp],
       });
+      this.props.onSelect({ dates: [item.timestamp] });
     },
 
     onSelectRangeDate(item) {
       const { selectedDate } = this.data;
-      if (!selectedDate[0]) {
-        this.setData({
-          selectedDate: [item.timestamp],
-        });
-        return;
-      }
-      if (!selectedDate[1]) {
-        const key =
+      let dates = [];
+      if (!selectedDate[0] || selectedDate.length === 2) {
+        dates = [item.timestamp];
+      } else {
+        dates =
           item.timestamp <= this.data.selectedDate[0]
-            ? { selectedDate: [item.timestamp, this.data.selectedDate[0]] }
-            : { selectedDate: [this.data.selectedDate[0], item.timestamp] };
-        this.setData({
-          ...key,
-        });
-        return;
+            ? [item.timestamp, this.data.selectedDate[0]]
+            : [this.data.selectedDate[0], item.timestamp];
       }
       this.setData({
-        selectedDate: [item.timestamp],
+        selectedDate: dates,
       });
+      this.props.onSelect({ dates });
     },
 
     getMonthStr(month, monthMap) {
@@ -153,42 +141,47 @@ Component({
       const rs = { dates: [...this.data.selectedDate], year, month: month + 1 };
       this.props.onChange(rs);
     },
+
+    initDataCalender(data) {
+      const { selectedDate, tagData, locale } = data;
+      const i18N = getI18nByLocale(locale);
+      const monthStr = this.getMonthStr(month, i18N.months);
+
+      const keysNoSelected = {
+        days: i18N.days,
+        monthMap: i18N.months,
+        monthDetails: getMonthDetails(year, month, tagData),
+        monthStr,
+      };
+
+      let keysData = {};
+
+      if (selectedDate[0]) {
+        const date = new Date(selectedDate[0]);
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const monthStr = this.getMonthStr(month, i18N.months);
+
+        keysData = {
+          ...keysNoSelected,
+          selectedDate,
+          year,
+          month,
+          monthDetails: getMonthDetails(year, month, tagData),
+          monthStr,
+        };
+      }
+      this.setData(keysData);
+    },
   },
 
   didMount() {
-    const { tagData, locale } = this.props;
-    const { month, year } = this.data;
-    const i18N = getI18nByLocale(locale);
-
-    const monthStr = this.getMonthStr(month, i18N.months);
-    const keys = {
-      days: i18N.days,
-      monthMap: i18N.months,
-      monthDetails: getMonthDetails(year, month, tagData),
-      monthStr,
-    };
-    this.setData({
-      ...keys,
-    });
+    this.initDataCalender(this.props);
   },
 
   deriveDataFromProps(nextProps) {
-    const { selectedDate, tagData, locale } = nextProps;
-    const i18N = getI18nByLocale(locale);
+    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) return;
 
-    if (selectedDate[0]) {
-      const date = new Date(selectedDate[0]);
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const monthStr = this.getMonthStr(month, i18N.months);
-
-      this.setData({
-        selectedDate,
-        year,
-        month,
-        monthDetails: getMonthDetails(year, month, tagData),
-        monthStr,
-      });
-    }
+    this.initDataCalender(nextProps);
   },
 });
