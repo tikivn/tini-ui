@@ -154,7 +154,7 @@ Component({
         monthStr,
       };
 
-      let keysData = {};
+      let keysData = keysNoSelected as any;
 
       if (selectedDate[0]) {
         const date = new Date(selectedDate[0]);
