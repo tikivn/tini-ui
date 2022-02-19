@@ -1,4 +1,4 @@
-import { getMonthDetails } from './helper.js';
+import { getMonthDetails, checkPositionInRange } from './helper.js';
 import { getI18nByLocale } from '../_util/getI18n';
 
 export interface CalendarMethods {
@@ -33,6 +33,9 @@ const year = date.getFullYear();
 const month = date.getMonth();
 
 const colorMap = ['#808089', '#1A94FF'];
+
+const FROM = 0;
+const TO = 1;
 
 Component({
   data: {
@@ -86,14 +89,32 @@ Component({
     onSelectRangeDate(item) {
       const { selectedDate } = this.data;
       let dates = [];
-      if (!selectedDate[0] || selectedDate.length === 2) {
+      if (selectedDate.length === 0) {
         dates = [item.timestamp];
-      } else {
-        dates =
-          item.timestamp <= this.data.selectedDate[0]
-            ? [item.timestamp, this.data.selectedDate[0]]
-            : [this.data.selectedDate[0], item.timestamp];
       }
+      if (selectedDate.length === 1) {
+        dates = [
+          Math.min(item.timestamp, selectedDate[FROM]),
+          Math.max(item.timestamp, selectedDate[FROM]),
+        ];
+      }
+      if (selectedDate.length === 2) {
+        const positionItem = checkPositionInRange(item.timestamp, selectedDate);
+        switch (positionItem) {
+          case -1: // selected - from - to
+            dates = [item.timestamp, selectedDate[TO]];
+            break;
+          case 1: //  from - to - selected
+            dates = [selectedDate[TO], item.timestamp];
+            break;
+          case 0: // from - selected - to
+            dates = [selectedDate[FROM], item.timestamp]; // case này tuỳ vào BA
+            break;
+          default:
+            break;
+        }
+      }
+
       this.setData({
         selectedDate: dates,
       });
@@ -156,8 +177,8 @@ Component({
 
       let keysData = keysNoSelected as any;
 
-      if (selectedDate[0]) {
-        const date = new Date(selectedDate[0]);
+      if (selectedDate[FROM]) {
+        const date = new Date(selectedDate[FROM]);
         const year = date.getFullYear();
         const month = date.getMonth();
         const monthStr = this.getMonthStr(month, i18N.months);

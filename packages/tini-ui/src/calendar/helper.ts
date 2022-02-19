@@ -10,6 +10,14 @@ export const daysMap = [
   'Saturday',
 ];
 
+export const checkPositionInRange = (item = 0, range = [1, 3]) => {
+  const from = range[0];
+  const to = range[1];
+  if (item <= from) return -1;
+  if (item > to) return 1;
+  return 0;
+};
+
 export const getDayDetails = (args, tagData = []) => {
   const date = args.index - args.firstDay;
   const day = args.index % 7;
