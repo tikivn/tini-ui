@@ -1,12 +1,16 @@
-<avatar src="test.js" name="Test Name" />
-<avatar src="test.js" name="Square Test" shape="square" />
-<avatar src="test.js" name="Circle Test" shape="circle" />
-<avatar name="No Name" />
-<avatar src="" showBorder="{{false}}" name="No Border" />
-<avatar size="72" src="test.js" name="Size 72" />
+<view style="background: #000; min-height: 100vh">
+  <avatar src="test.js" size="24" name="2 4" />
+  <avatar src="test.js" name="Test Name" />
+  <avatar src="test.js" name="Square Test" shape="square" />
+  <avatar src="test.js" name="Circle Test" shape="circle" />
+  <avatar name="No Name" />
+  <avatar src="" showBorder="{{false}}" name="No Border" />
+  <avatar size="72" src="test.js" name="Size 72" />
 
-<avatar src="{{defaultUrl}}" />
-<avatar size="" src="{{defaultUrl}}" shape="square" />
-<avatar size="120" src="{{defaultUrl}}" />
-<avatar name="Test" src="https://tiniapp.tikicdn.com/resources/framework/images/app_icon_default.png" />
-<avatar name="Test" shape="square" src="https://tiniapp.tikicdn.com/resources/framework/images/app_icon_default.png" />
+  <avatar src="{{defaultUrl}}" />
+  <avatar size="" src="{{defaultUrl}}" shape="square" />
+  <avatar size="120" src="{{defaultUrl}}" />
+  <avatar name="Test" src="https://tiniapp.tikicdn.com/resources/framework/images/app_icon_default.png" />
+  <avatar name="Test" shape="square"
+    src="https://tiniapp.tikicdn.com/resources/framework/images/app_icon_default.png" />
+</view>

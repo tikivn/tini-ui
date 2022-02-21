@@ -1,10 +1,10 @@
 <view
-  class="tu-avatar tu-avatar-{{shape}} {{color ? 'tu-avatar-color-' + color : ''}} {{showBorder ? 'tu-avatar-border' : ''}} {{className}}"
+  class="tu-avatar tu-avatar-{{shape}} {{color ? 'tu-avatar-color-' + color : ''}} {{showBorder ? `tu-avatar-border ${+size <= 24 ? 'small' : 'large'}` : ''}} {{className}}"
   style="width: {{size || defaultSize}}px; height: {{size || defaultSize}}px;{{size || defaultSize}}">
   <image tiki:if="{{!shortName}}" style="width: {{size || defaultSize}}px; height: {{size || defaultSize}}px;"
     class="tu-avatar-img" src="{{src || defaultSrc}}" lazy-load="{{lazyLoad}}" onLoad="_onLoad" onError="_onError" />
   <view class="tu-avatar-name" tiki:esle>
-    <text style="font-size: {{fontSize}}px;">
+    <text class="tu-avatar-name-text" style="font-size: {{fontSize}}px;">
       {{shortName}}
     </text>
   </view>
