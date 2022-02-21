@@ -1,4 +1,4 @@
-const colors = ['#FFB800', '#DD6C41', '#F64683', '#B962FF', '#3F50E3', '#2DC275'];
+const colors = ['blue30', 'green30', 'orange30', 'red30', 'yellow30'];
 
 export const getShortname = (name: string): string => {
   try {
@@ -30,4 +30,15 @@ export const getColorName = (name: string): string => {
   } catch {
     return colors[0];
   }
+};
+
+export const getFontSize = (size: number): number => {
+  if (size > 24 && size <= 40) {
+    return 14;
+  } else if (size > 40 && size <= 56) {
+    return 18;
+  } else if (size > 56) {
+    return 24;
+  }
+  return 10;
 };
