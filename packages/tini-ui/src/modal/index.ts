@@ -1,6 +1,7 @@
 type ModalProps = {
   className: string;
   topImageSize: 'lg' | 'md' | 'sm';
+  show: boolean;
   showClose: boolean;
   closeType: string;
   mask: boolean;
@@ -23,6 +24,7 @@ Component({
     className: '',
     topImageSize: 'md',
     showClose: false,
+    show: false,
     closeType: '0',
     mask: true,
     buttonsLayout: 'horizontal',
@@ -46,7 +48,31 @@ Component({
       });
     }
   },
+  deriveDataFromProps(nextProps) {
+    this._handleOverlay(nextProps);
+  },
   methods: {
+    key: null,
+    _handleOverlay(props) {
+      const { mask, maskClick, show } = props;
+      if (!mask) {
+        return;
+      }
+      if (show) {
+        this.key = Date.now();
+        my.showOverlay({
+          touchable: !!maskClick,
+          success: () => {
+            if (maskClick) {
+              this.onClose();
+            }
+          },
+        });
+      } else if (this.key) {
+        this.key = null;
+        my.hideOverlay({});
+      }
+    },
     _onModalClick() {
       const { onModalClick } = this.props;
       if (onModalClick) {
@@ -60,7 +86,11 @@ Component({
       }
     },
     _onModalClose() {
-      const { onModalClose } = this.props;
+      const { onModalClose, mask } = this.props;
+      if (mask && this.key) {
+        this.key = null;
+        my.hideOverlay({});
+      }
       if (onModalClose) {
         onModalClose();
       }

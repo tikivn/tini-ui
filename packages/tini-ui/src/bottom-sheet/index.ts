@@ -43,7 +43,28 @@ Component({
   didUpdate(): void {
     this._updateDataSet();
   },
+  deriveDataFromProps(nextProps) {
+    this._handleOverlay(nextProps);
+  },
   methods: {
+    _handleOverlay(props) {
+      const { mask, maskClose, show } = props;
+      if (!mask) {
+        return;
+      }
+      if (show) {
+        my.showOverlay({
+          touchable: !!maskClose,
+          success: () => {
+            if (maskClose) {
+              this.onClose();
+            }
+          },
+        });
+      } else {
+        my.hideOverlay({});
+      }
+    },
     _updateDataSet(): void {
       this.dataset = {};
       for (const key in this.props) {
@@ -56,7 +77,10 @@ Component({
       // this.setData({
       //   show: false,
       // });
-      const { onClose } = this.props;
+      const { mask, onClose } = this.props;
+      if (mask) {
+        my.hideOverlay({});
+      }
       if (onClose) {
         onClose({
           target: {

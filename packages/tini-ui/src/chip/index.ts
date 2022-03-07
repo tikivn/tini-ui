@@ -9,6 +9,7 @@ export interface ChipComponentProps extends ChipMethods {
   className?: string;
   style?: string;
   content?: string;
+  iconSize?: number;
   active?: boolean;
   suffixIcon?: string;
   prefixIcon?: string;
@@ -22,6 +23,7 @@ Component({
     className: '',
     style: '',
     content: '',
+    iconSize: 20,
     active: false,
     suffixIcon: '',
     prefixIcon: '',

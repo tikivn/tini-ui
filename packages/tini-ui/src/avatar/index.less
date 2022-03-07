@@ -1,82 +1,44 @@
 .tu-avatar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-}
+  justify-content: center;
 
-.tu-avatar-img {
-  width: 56px;
-  height: 56px;
-  border-radius: 28px;
-}
-
-.tu-avatar-img-xs {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-}
-
-.tu-avatar-img-sm {
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
-}
-
-.tu-avatar-img-md {
-  width: 56px;
-  height: 56px;
-  border-radius: 28px;
-}
-
-.tu-avatar-img-lg {
-  width: 72px;
-  height: 72px;
-  border-radius: 36px;
-}
-
-.tu-avatar-content {
-  text-align: center;
-}
-
-.tu-avatar-name {
-  font-size: 17px;
-  color: #333;
-  margin-top: 8px;
-}
-
-.tu-avatar-name-lg {
-  font-size: 18px;
-}
-
-.tu-avatar-name-md {
-  font-size: 16px;
-}
-
-.tu-avatar-name-sm {
-  font-size: 14px;
-}
-
-.tu-avatar-name-xs {
-  font-size: 12px;
-}
-
-.tu-avatar-desc {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #999;
-}
-
-.tu-avatar-desc-lg {
-  font-size: 16px;
-}
-
-.tu-avatar-desc-md {
-  font-size: 15px;
-}
-
-.tu-avatar-desc-sm {
-  font-size: 14px;
-}
-
-.tu-avatar-desc-xs {
-  font-size: 12px;
+  &-circle {
+    border-radius: 50%;
+    image {
+      border-radius: 50%;
+    }
+  }
+  &-square {
+    border-radius: 8px;
+    image {
+      border-radius: 8px;
+    }
+  }
+  &-name {
+    text-align: center;
+  }
+  &-color {
+    &-blue30 {
+      background: var(--color-global-blue30);
+    }
+    &-green30 {
+      background: var(--color-global-green30);
+    }
+    &-orange30 {
+      background: var(--color-global-orange30);
+    }
+    &-red30 {
+      background: var(--color-global-red30);
+    }
+    &-yellow30 {
+      background: var(--color-global-yellow30);
+    }
+  }
+  &-border {
+    border: solid 2px var(--white);
+    &.small {
+      border-width: 1px;
+    }
+  }
 }

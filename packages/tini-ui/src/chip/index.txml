@@ -1,11 +1,12 @@
 <view
   style="{{style}}"
-  class="tu-chip flex tu-chip-{{active ? 'active': 'none'}} tu-chip-{{disabled ? 'disabled' : ''}} {{className}}"
+  class="tu-chip flex tu-chip-{{active ? 'active': 'none'}} tu-chip-{{disabled ? 'disabled' : ''}} {{className}} tu-chip-{{prefixIcon || suffixIcon ? 'icon' : 'image'}}"
   onTap="_onClick">
   <view 
     class="tu-chip-left"
     catchTap="_onLeftClick">
     <icon 
+      size="{{iconSize}}"
       tiki:if="{{prefixIcon}}" 
       class="tu-chip-left-icon" 
       type="{{prefixIcon}}"
@@ -23,6 +24,7 @@
     class="tu-chip-right"
     catchTap="_onRightClick">
     <icon 
+      size="{{iconSize}}"
       tiki:if="{{suffixIcon}}" 
       class="tu-chip-right-icon" 
       type="{{suffixIcon}}" 
