@@ -58,4 +58,7 @@ Page({
       },
     ],
   },
+  onInput(e) {
+    console.log({ e });
+  },
 });

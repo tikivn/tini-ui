@@ -1,6 +1,6 @@
 .page-block {
-  padding: var(--space-inset-2x-small) var(--space-inset-medium);
-  margin-bottom: var(--space-stack-2x-small);
+  padding: var(--space-inset-8x) var(--space-inset-16x);
+  margin-bottom: var(--space-stack-8x);
   background-color: var(--white);
 }
 
@@ -9,13 +9,13 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-large);
   color: var(--gray100);
-  margin: var(--space-stack-2x-small) 0;
+  margin: var(--space-stack-8x) 0;
 }
 
 .page-variant-content {
   display: flex;
   flex-direction: column;
-  padding-top: var(--space-stack-2x-small);
+  padding-top: var(--space-stack-8x);
 }
 
 .page-variant-content-line {
@@ -23,7 +23,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: var(--space-stack-2x-small);
+  padding-top: var(--space-stack-8x);
 }
 
 .flex-grow {
@@ -38,7 +38,7 @@
 }
 
 .page-variant-content-line button {
-  margin-right: var(--space-inline-2x-small);
+  margin-right: var(--space-inline-8x);
 }
 
 .page-variant-content-line button:last-child {

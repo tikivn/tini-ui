@@ -58,7 +58,7 @@
             <view class="dropdown-item-content flex items-center justify-between">
               <view 
                  class="flex items-center"
-                 style="width: calc(100% - var(--space-inline-2x-small) - {{isSelected(localValue, item, idKey) ? 24 : 0}}px)">
+                 style="width: calc(100% - var(--space-inline-8x) - {{isSelected(localValue, item, idKey) ? 24 : 0}}px)">
                 <!-- NOTE: Need fix on framework -->
                 <checkbox 
                   tiki:if="{{multiple && isSelected(localValue, item, idKey)}}"

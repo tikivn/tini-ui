@@ -20,11 +20,10 @@ Component({
     direction: 'horizontal',
     items: [],
     inactiveColor: 'rgba(0, 0, 0, 0.1)',
-    activeColor: 'var(--brand, #1a94ff)',
+    activeColor: 'var(--color-alias-brand, #1a94ff)',
     dotErrorColor: '#ff424f',
-    dotSize: 'var(--space-inline-medium, 16px)',
-    reverseVertical: false
+    dotSize: 'var(--space-inline-16x, 16px)',
+    reverseVertical: false,
   },
-  data: {
-  },
+  data: {},
 });

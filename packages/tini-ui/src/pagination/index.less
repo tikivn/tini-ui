@@ -15,7 +15,7 @@
 .tu-pagination-button {
   width: @pagination-button-width;
   height: @pagination-button-height;
-  color: var(--text-paging-inactive);
+  color: var(--color-pagination-full-text-default);
   background: transparent;
   border-radius: 8px;
   font-size: var(--font-size-base);
@@ -30,12 +30,12 @@
 .tu-pagination:extend(.content-center) {
   //pagination type
   .tu-pagination-page:extend(.content-center) {
-    background-color: var(--background-paging-inactive);
+    background-color: var(--color-pagination-full-background-default);
     border-radius: 8px;
     margin: 0 8px;
     .tu-pagination-button__active {
-      background-color: var(--background-paging-active);
-      color: var(--text-paging-active);
+      background-color: var(--color-pagination-full-background-current);
+      color: var(--color-pagination-full-text-current);
     }
   }
   .tu-pagination-number:extend(.content-center) {
@@ -46,7 +46,7 @@
     font-style: var(--font-style-normal);
     .tu-pagination-button__active {
       font-weight: var(--font-weight-bold);
-      color: var(--background-paging-active);
+      color: var(--color-pagination-full-background-current);
     }
   }
 

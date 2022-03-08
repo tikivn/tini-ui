@@ -1,5 +1,5 @@
 <view>
-  <view>
+  <!-- <view>
     <calendar 
       mode="timeOnly"
       onSelect="onSelect"
@@ -14,10 +14,12 @@
       header="year"
       onSelect="onSelect"
       onChange="onChange" />
-  </view>
+  </view> -->
+  <view>show</view>
   <view>
     <calendar 
       mode="range"
+      selectedDate="{{selectedDate}}"
       onSelect="onSelect"
       onChange="onChange" />
   </view>

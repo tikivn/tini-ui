@@ -1,6 +1,6 @@
 .page {
   background-color: var(--white);
-  padding: var(--space-inset-medium);
+  padding: var(--space-inset-16x);
 }
 
 .list-item {
@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-inset-medium) 0;
+  padding: var(--space-inset-16x) 0;
   border-bottom: 1px solid var(--gray20);
 }
 
@@ -19,5 +19,5 @@
 }
 
 .stepper-custom-class .tu-stepper-input {
-  margin: 0px var(--space-inline-2x-small);
+  margin: 0px var(--space-inline-8x);
 }
