@@ -1,4 +1,5 @@
 @import '../variables.less';
+@import '../mixins.less';
 
 each(@spacingSizes, {
   @normalizeValue: replace(~"@{value}", ' ', '-');
@@ -63,3 +64,67 @@ each(@spacingSizes, {
     margin-bottom: calc(-1 * var(~"--space-stack-@{normalizeValue}"));
   }
 });
+
+.classify(@subject, @step) {
+  .m-@{step}x {
+    margin: var(~'--space-stack-@{step}x') var(~'--space-inline-@{step}x');
+  }
+
+  .mt-@{step}x {
+    margin-top: var(~'--space-stack-@{step}x');
+  }
+
+  .ml-@{step}x {
+    margin-left: var(~'--space-inline-@{step}x');
+  }
+
+  .mb-@{step}x {
+    margin-bottom: var(~'--space-stack-@{step}x');
+  }
+
+  .mr-@{step}x {
+    margin-right: var(~'--space-inline-@{step}x');
+  }
+
+  .mx-@{step}x {
+    margin-left: var(~'--space-inline-@{step}x');
+    margin-right: var(~'--space-inline-@{step}x');
+  }
+
+  .my-@{step}x {
+    margin-top: var(~'--space-stack-@{step}x');
+    margin-bottom: var(~'--space-stack-@{step}x');
+  }
+
+  .-m-@{step}x {
+    margin: calc(-1 * var(~'--space-stack-@{step}x')) calc(-1 * var(~'--space-inline-@{step}x'));
+  }
+
+  .-mt-@{step}x {
+    margin-top: calc(-1 * var(~'--space-stack-@{step}x'));
+  }
+
+  .-ml-@{step}x {
+    margin-left: calc(-1 * var(~'--space-inline-@{step}x'));
+  }
+
+  .-mb-@{step}x {
+    margin-bottom: calc(-1 * var(~'--space-inline-@{step}x'));
+  }
+
+  .-mr-@{step}x {
+    margin-right: calc(-1 * var(~'--space-stack-@{step}x'));
+  }
+
+  .-mx-@{step}x {
+    margin-left: calc(-1 * var(~'--space-inline-@{step}x'));
+    margin-right: calc(-1 * var(~'--space-inline-@{step}x'));
+  }
+
+  .-my-@{step}x {
+    margin-top: calc(-1 * var(~'--space-stack-@{step}x'));
+    margin-bottom: calc(-1 * var(~'--space-stack-@{step}x'));
+  }
+}
+
+.loop(@steps: @spacingSteps);

@@ -1,4 +1,5 @@
 @import '../variables.less';
+@import '../mixins.less';
 
 each(@spacingSizes, {
   @normalizeValue: replace(~"@{value}", ' ', '-');
@@ -63,3 +64,67 @@ each(@spacingSizes, {
     padding-bottom: calc(-1 * var(~"--space-inset-@{normalizeValue}"));
   }
 });
+
+.classify(@subject, @step) {
+  .p-@{step}x {
+    padding: var(~'--space-inset-@{step}x') var(~'--space-inset-@{step}x');
+  }
+
+  .pt-@{step}x {
+    padding-top: var(~'--space-inset-@{step}x');
+  }
+
+  .pl-@{step}x {
+    padding-left: var(~'--space-inset-@{step}x');
+  }
+
+  .pb-@{step}x {
+    padding-bottom: var(~'--space-inset-@{step}x');
+  }
+
+  .pr-@{step}x {
+    padding-right: var(~'--space-inset-@{step}x');
+  }
+
+  .px-@{step}x {
+    padding-left: var(~'--space-inset-@{step}x');
+    padding-right: var(~'--space-inset-@{step}x');
+  }
+
+  .py-@{step}x {
+    padding-top: var(~'--space-inset-@{step}x');
+    padding-bottom: var(~'--space-inset-@{step}x');
+  }
+
+  .-p-@{step}x {
+    padding: calc(-1 * var(~'--space-inset-@{step}x')) calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-pt-@{step}x {
+    padding-top: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-pl-@{step}x {
+    padding-left: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-pb-@{step}x {
+    padding-bottom: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-pr-@{step}x {
+    padding-right: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-px-@{step}x {
+    padding-left: calc(-1 * var(~'--space-inset-@{step}x'));
+    padding-right: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+
+  .-py-@{step}x {
+    padding-top: calc(-1 * var(~'--space-inset-@{step}x'));
+    padding-bottom: calc(-1 * var(~'--space-inset-@{step}x'));
+  }
+}
+
+.loop(@steps: @spacingSteps);

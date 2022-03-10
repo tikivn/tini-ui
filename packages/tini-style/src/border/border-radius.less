@@ -2,7 +2,8 @@
 
 each(@radiusSizes, {
   @normalizeName: replace(~"@{value}", ' ', '-');
-	@normalizeValue: extract(@radiusValues, @index);
+  @normalizeToken: extract(@radiusValues, @index);
+	@normalizeValue: var(~"--radius-@{normalizeToken}");
 
   .radius-@{normalizeName} {
 		border-radius: @normalizeValue;

@@ -1,0 +1,16 @@
+@import './variables.less';
+
+// Override this mixin before using .loop
+.classify(@subject: ~'', @step: ~'') {
+}
+
+.loop(@subjects: ~'', @steps: ~'', @i: 1) when (@i <= length(@subjects)) {
+  .sub-loop(@j: 1) when (@j <= length(@steps)) {
+    @subject: extract(@subjects, @i);
+    @step: extract(@steps, @j);
+    .classify(@subject, @step);
+    .sub-loop(@j + 1);
+  }
+  .sub-loop();
+  .loop(@subjects, @steps, @i + 1);
+}

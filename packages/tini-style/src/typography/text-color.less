@@ -1,4 +1,5 @@
 @import '../variables.less';
+@import '../mixins.less';
 
 .text-transparent {
   color: transparent;
@@ -11,3 +12,23 @@ each(@colors, {
 		color: var(~"--@{normalizeValue}");
   }
 });
+
+.bg-white {
+  color: var(--color-global-white);
+}
+
+.bg-black {
+  color: var(--color-global-black);
+}
+
+.bg-brand {
+  color: var(--color-alias-brand);
+}
+
+.classify(@subject, @step) {
+  .text-@{subject}@{step} {
+    color: var(~'--color-global-@{subject}@{step}');
+  }
+}
+
+.loop(@subjects: @newColors, @steps: @colorSteps);

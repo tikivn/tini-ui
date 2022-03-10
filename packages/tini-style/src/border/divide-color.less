@@ -1,9 +1,30 @@
 @import '../variables';
+@import '../mixins.less';
 
 each(@colors, {
   @normalizeValue: replace(~"@{value}", ' ', '-');
 
-  .devide-@{normalizeValue} > * + * {
+  .divide-@{normalizeValue} > * + * {
 		border-color: var(~"--@{normalizeValue}");
   }
 });
+
+.divide-white > * + * {
+  border-color: var(--color-global-white);
+}
+
+.divide-black > * + * {
+  border-color: var(--color-global-black);
+}
+
+.divide-brand > * + * {
+  border-color: var(--color-alias-brand);
+}
+
+.classify(@subject, @step) {
+  .divide-@{subject}@{step} > * + * {
+    border-color: var(~'--color-global-@{subject}@{step}');
+  }
+}
+
+.loop(@subjects: @newColors, @steps: @colorSteps);
