@@ -37,10 +37,12 @@
   flex-wrap: wrap;
 
   .tu-c-date-wrapper {
-    width: 14.285%;
+    width: calc(14.285% - 2px);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border: 1px solid transparent;
   }
   .tu-c-date-container {
     padding-top: 16px;
@@ -71,7 +73,7 @@
   .tu-c-date-wrapper.inrange {
     background: rgba(178, 217, 250, 0.4);
     border-radius: 0;
-    border: none;
+    border: 1px solid transparent;
     color: var(--black);
     font-weight: normal;
   }
@@ -80,7 +82,7 @@
     color: white;
     font-weight: bold;
     border-radius: 0;
-    border: none;
+    border: 1px solid transparent;
     &.range {
       background: rgba(178, 217, 250, 0.4);
     }
