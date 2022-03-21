@@ -3,7 +3,7 @@
     class="tu-pagination-jump  {{currentPage===1 && 'tu-pagination-jump__disabled'}}"
     onTap="jumpPrev">
     <icon type="arrow_left"
-      color="{{currentPage===1?'var(--gray20)':'var(--blue60)'}}" />
+      color="{{currentPage===1?'var(--color-alias-outline-variant)':'var(--blue60)'}}" />
   </view>
   <view tiki:if="{{type==='page'}}" class="tu-pagination-page">
     <button tiki:for="{{pages}}" data-page="{{item.page}}" onTap="jumpToPage"
@@ -19,6 +19,6 @@
     class="tu-pagination-jump {{currentPage===max && 'tu-pagination-jump__disabled'}}"
     onTap="jumpNext">
     <icon type="arrow_right"
-      color="{{currentPage===max?'var(--gray20)':'var(--blue60)'}}" />
+      color="{{currentPage===max?'var(--color-alias-outline-variant)':'var(--blue60)'}}" />
   </view>
 </view>

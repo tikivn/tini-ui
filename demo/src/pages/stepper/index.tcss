@@ -1,5 +1,5 @@
 .page {
-  background-color: var(--white);
+  background-color: var(--color-alias-primary-on-reverse-theme);
   padding: var(--space-inset-16x);
 }
 
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-inset-16x) 0;
-  border-bottom: 1px solid var(--gray20);
+  border-bottom: 1px solid var(--color-alias-outline-variant);
 }
 
 .list-item-title {

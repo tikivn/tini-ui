@@ -2,7 +2,7 @@
   <view class="tu-bottom-sheet-header">
     <view class="tu-bottom-sheet-header-title">{{title}}</view>
     <view class="tu-bottom-sheet-header-close-button" onTap="onClose">
-      <icon type="close" color="var(--gray100)" />
+      <icon type="close" color="var(--color-alias-reverse-theme)" />
     </view>
   </view>
 </template>

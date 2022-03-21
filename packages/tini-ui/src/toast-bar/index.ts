@@ -87,10 +87,10 @@ Component({
       this.setData({
         toastBackground:
           {
-            success: 'var(--success)',
-            error: 'var(--error)',
-            info: 'var(--gray100)',
-          }[type] || 'var(--success)',
+            success: 'var(--color-alias-positive)',
+            error: 'var(--color-alias-negative)',
+            info: 'var(--color-alias-reverse-theme)',
+          }[type] || 'var(--color-alias-positive)',
       });
     }
 

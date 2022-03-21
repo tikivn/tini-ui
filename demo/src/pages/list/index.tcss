@@ -1,5 +1,5 @@
 .page-list-header {
-  background-color: var(--white);
+  background-color: var(--color-alias-primary-on-reverse-theme);
   padding: var(--space-stack-12x);
   margin-bottom: var(--space-stack-8x);
 }
@@ -29,7 +29,7 @@
 }
 
 .page-list-content-block {
-  background-color: var(--white);
+  background-color: var(--color-alias-primary-on-reverse-theme);
   padding: var(--space-stack-16x);
   padding-bottom: var(--space-stack-24x);
   border-radius: var(--radius-rounded-8px, 8px);
@@ -51,7 +51,7 @@
   font-style: var(--font-style-normal);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
-  color: var(--color-list-primary-text-default, var(--gray100));
+  color: var(--color-list-primary-text-default, var(--color-alias-reverse-theme));
 }
 
 .text-bold {

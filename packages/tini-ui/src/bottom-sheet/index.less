@@ -7,11 +7,11 @@
 .tu-bottom-sheet-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--color-alias-primary-on-reverse-theme);
 }
 
 .tu-bottom-sheet-header {
-  border-bottom: 1px solid var(--background-divider, var(--gray20));
+  border-bottom: 1px solid var(--background-divider, var(--color-alias-outline-variant));
 }
 
 .tu-bottom-sheet-header-title {
@@ -40,8 +40,8 @@
   padding: var(--space-inset-8x) var(--space-inset-16x);
   /* hack to avoid bug with iOS with fallback value */
   padding-bottom: calc(var(--space-inset-8x) + var(--safe-area-inset-bottom, 0));
-  border-top: 1px solid var(--background-divider, var(--gray20));
-  background-color: var(--white);
+  border-top: 1px solid var(--background-divider, var(--color-alias-outline-variant));
+  background-color: var(--color-alias-primary-on-reverse-theme);
 }
 
 .tu-bottom-sheet-footer-button {
