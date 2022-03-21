@@ -15,8 +15,8 @@
   placeholder="{{placeholder}}"
   iconRight="arrow_down" />
 
-<block tiki:if="{{showBottomSheet}}">
   <bottom-sheet 
+    show="{{showBottomSheet}}"
     title="{{bottomSheetTitle}}" 
     buttonTitle="{{bottomSheetButton}}" 
     distanceFromTop="{{bottomSheetDistanceFromTop}}" 
@@ -88,5 +88,3 @@
       </view>
     </view>
   </bottom-sheet>
-</block>
-
