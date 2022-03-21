@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.10.0...@tiki.vn/tini-ui@0.11.0) (2022-03-21)
+
+
+### Bug Fixes
+
+* bugs calendar initData v2 component ([a0836e2](https://github.com/tikivn/tiny-ui/commit/a0836e2c089b9a86e4802c38aface983a001e4ae))
+* dropdown use param show of bottom-sheet ([#44](https://github.com/tikivn/tiny-ui/issues/44)) ([b9acce2](https://github.com/tikivn/tiny-ui/commit/b9acce2d29bc964eb9131100361e4dab412d5f8b))
+* fix some ui issues ([#40](https://github.com/tikivn/tiny-ui/issues/40)) ([caa799d](https://github.com/tikivn/tiny-ui/commit/caa799d025169f75e618cc1cadb3d206e81d94db))
+* **bottom-sheet:** fix show props ([010d176](https://github.com/tikivn/tiny-ui/commit/010d17672e0aa66fcf134f21b8fd1f56d7a7a54f))
+
+
+
+
+
 # [0.10.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.9.0...@tiki.vn/tini-ui@0.10.0) (2022-01-27)
 
 **Note:** Version bump only for package @tiki.vn/tini-ui
