@@ -29,7 +29,7 @@
 
     <textfield placeholder="Square" shape="square" />
 
-    <textfield placeholder="Circle" shape="circle" />
+    <textfield onInput="onInput" placeholder="Circle" shape="circle" />
 
     <textfield disabled labelText="Hello"/>
 

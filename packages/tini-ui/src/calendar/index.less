@@ -26,7 +26,7 @@
   .tu-c-head-day {
     width: 14.258%;
     font-size: 16px;
-    color: var(--gray60);
+    color: var(--color-alias-secondary-on-theme);
     text-align: center;
   }
 }
@@ -57,16 +57,16 @@
         transform: translateX(-50%);
         bottom: 0;
         font-size: 10px;
-        color: var(--gray60);
+        color: var(--color-alias-secondary-on-theme);
       }
     }
   }
 
   .tu-c-date-wrapper.today {
     width: calc(14.285% - 2px);
-    border: 1px solid var(--brand);
+    border: 1px solid var(--color-alias-brand);
     border-radius: 8px;
-    color: var(--brand);
+    color: var(--color-alias-brand);
     font-weight: bold;
   }
 
@@ -74,12 +74,12 @@
     background: rgba(178, 217, 250, 0.4);
     border-radius: 0;
     border: 1px solid transparent;
-    color: var(--black);
+    color: var(--color-global-black);
     font-weight: normal;
   }
 
   .tu-c-date-wrapper.selected {
-    color: white;
+    color: var(--color-alias-theme);
     font-weight: bold;
     border-radius: 0;
     border: 1px solid transparent;
@@ -98,7 +98,7 @@
     &.start,
     &.end {
       .tu-c-date-container {
-        background: var(--brand);
+        background: var(--color-alias-brand);
         width: 100%;
         border-radius: 8px;
       }
@@ -115,7 +115,7 @@
   .tu-c-date-wrapper:hover:not(.selected) {
     .tu-c-date-container {
       background: rgba(178, 217, 250, 0.4);
-      color: var(--brand);
+      color: var(--color-alias-brand);
       border-radius: 8px;
       width: 100%;
     }

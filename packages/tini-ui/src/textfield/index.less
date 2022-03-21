@@ -1,7 +1,7 @@
 .tu-textfield {
   @size: 40px;
   .t-input-content {
-    caret-color: var(--brand, #1a94ff);
+    caret-color: var(--color-alias-brand, #1a94ff);
   }
   .tu-textfield-inline {
     display: inline;
@@ -19,31 +19,31 @@
   }
   &.error {
     .tu-textfield-input {
-      border-color: var(--error);
+      border-color: var(--color-alias-negative);
     }
   }
 
   .tu-textfield-error-message {
-    color: var(--error);
+    color: var(--color-alias-negative);
     font-size: var(--font-size-small);
-    margin-top: var(--space-stack-4x-small);
+    margin-top: var(--space-stack-4x);
   }
 
   .tu-textfield-error-icon {
     position: absolute;
     // NOTE: Info icon has small size than the others
-    top: calc(var(--space-inset-2x-small) + 2px);
+    top: calc(var(--space-inset-8x) + 2px);
     padding: 0 2px;
   }
 
   .tu-textfield-icon {
     position: absolute;
-    top: var(--space-inset-2x-small);
+    top: var(--space-inset-8x);
     &.right {
-      right: var(--space-inline-2x-small);
+      right: var(--space-inline-8x);
     }
     &.left {
-      left: var(--space-inline-2x-small);
+      left: var(--space-inline-8x);
     }
   }
 
@@ -72,10 +72,10 @@
       height: 100%;
       display: flex;
       align-items: center;
-      padding: 0 var(--space-inline-medium);
+      padding: 0 var(--space-inline-16x);
 
       &-input {
-        background: var(--background-skeleton);
+        background: var(--color-alias-skeleton);
         border-radius: var(--border-radius-pill);
         width: 128px;
         max-width: 100%;
@@ -87,15 +87,15 @@
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        margin-right: var(--space-inline-2x-small);
-        background: var(--background-skeleton);
+        margin-right: var(--space-inline-8x);
+        background: var(--color-alias-skeleton);
 
         &.left {
-          margin-left: calc(var(--space-inline-2x-small) * -1);
+          margin-left: calc(var(--space-inline-8x) * -1);
         }
         &.right {
           margin-left: auto;
-          margin-right: calc(var(--space-inline-2x-small) * -1);
+          margin-right: calc(var(--space-inline-8x) * -1);
         }
       }
     }

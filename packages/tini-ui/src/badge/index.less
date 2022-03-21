@@ -13,11 +13,11 @@
     top: 0;
     min-width: 10px;
     min-height: 12px;
-    padding: var(--space-inline-5x-small) var(--space-stack-4x-small);
+    padding: var(--space-inline-2x) var(--space-stack-4x);
     text-align: center;
-    background-color: var(--background-badge);
+    background-color: var(--color-badge-background-default);
     border-radius: var(--border-radius-rounded-8px);
-    color: var(--text-badge);
+    color: var(--color-badge-text-default);
     z-index: 1;
 
     &-left {
@@ -41,7 +41,7 @@
       font-size: var(--font-size-x-small);
       position: relative;
       z-index: 2;
-      color: var(--text-badge);
+      color: var(--color-badge-text-default);
       white-space: nowrap;
     }
     &-inner-absolute {
@@ -88,10 +88,10 @@
     transform: rotate(45deg);
     z-index: 1;
     border-radius: 50vh 0 0;
-    background-color: var(--background-badge);
+    background-color: var(--color-badge-background-default);
     &.tu-badge-stroke {
       border: 0 none;
-      filter: drop-shadow(1px 1px 0 var(--white));
+      filter: drop-shadow(1px 1px 0 var(--color-alias-primary-on-reverse-theme));
     }
   }
   &-text-arrow-right {
@@ -101,6 +101,6 @@
     border-radius: 8px 8px 8px 0;
   }
   &-stroke {
-    border: 1px solid var(--white);
+    border: 1px solid var(--color-alias-primary-on-reverse-theme);
   }
 }

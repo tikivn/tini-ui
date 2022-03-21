@@ -1,11 +1,11 @@
 .page-bottom-sheet {
   display: flex;
   flex-direction: column;
-  padding: var(--space-inset-medium);
+  padding: var(--space-inset-16x);
 }
 
 .page-bottom-sheet > * {
-  margin-bottom: var(--space-stack-medium);
+  margin-bottom: var(--space-stack-16x);
 }
 
 .list-item-prefix {

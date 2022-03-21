@@ -19,9 +19,13 @@ Page({
         tagInactiveColor: 'red',
       },
     ],
+    selectedDate: [],
   },
   onSelect(data) {
-    console.log(data);
+    console.log('data', data);
+    this.setData({
+      selectedDate: data,
+    });
   },
   onChange(data) {
     console.log(data);
