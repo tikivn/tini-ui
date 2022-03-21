@@ -50,10 +50,8 @@
   <tu-button data-template="list" onTap="onShowBottomSheet">Bottom sheet with list</tu-button>
   <tu-button data-template="text" onTap="onShowBottomSheet">Bottom sheet with text</tu-button>
   <tu-button data-template="picker" onTap="onShowBottomSheet">Bottom sheet with picker</tu-button>
-  <block tiki:if="{{show}}">
-    <bottom-sheet title="Bottom sheet with {{template}}" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose"
-      onClick="onClick">
-      <template is="bottom-sheet-{{template}}" />
-    </bottom-sheet>
-  </block>
+  <bottom-sheet show="{{show}}" title="Bottom sheet with {{template}}" buttonTitle="OK" distanceFromTop="{{100}}" onClose="onClose"
+    onClick="onClick">
+    <template is="bottom-sheet-{{template}}" />
+  </bottom-sheet>
 </view>
