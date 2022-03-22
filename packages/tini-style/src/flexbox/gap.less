@@ -1,4 +1,5 @@
-@import "../variables.less";
+@import '../variables.less';
+@import '../mixins.less';
 
 each(@spacingSizes, {
 	@normalizeValue: replace(~"@{value}", ' ', '-');
@@ -14,4 +15,28 @@ each(@spacingSizes, {
 	.gapy-@{normalizeValue} {
 		column-gap: var(~"--space-stack-@{normalizeValue}");
 	}
-})
+});
+
+.classify(@subject, @step) {
+  .gap-@{step} {
+    gap: var(~'--space-stack-@{step}x');
+  }
+}
+
+.loop(@steps: @spacingSteps);
+
+.classify(@subject, @step) {
+  .gapx-@{step} {
+    row-gap: var(~'--space-inline-@{step}x');
+  }
+}
+
+.loop(@steps: @spacingSteps);
+
+.classify(@subject, @step) {
+  .gapy-@{step} {
+    column-gap: var(~'--space-stack-@{step}x');
+  }
+}
+
+.loop(@steps: @spacingSteps);

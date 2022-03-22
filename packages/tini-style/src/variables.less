@@ -1,8 +1,4 @@
-@colors: white, gray10, gray20, gray30, gray40, gray50, gray60, gray70, gray80, gray90, gray100,
-  black, blue, green, yellow, orange, red, brand, success, error;
-
-@radiusSizes: sharp, 4px, 8px, pill;
-@radiusValues: 0, 4px, 8px, 9999px;
+@colors: blue, green, yellow, orange, red, success, error;
 
 @divideSizes: thin, thick;
 
@@ -17,11 +13,14 @@
   --space-stack-0: 0;
   --space-inline-0: 0;
   --space-inset-0: 0;
-
-  // Remove those tokens after have new tokens
-  --color-global-blue30: #C2E1FF;
-  --color-global-green30: #B7EFC3;
-  --color-global-orange30: #FFD1A4;
-  --color-global-red30: #FFB8BC;
-  --color-global-yellow30: #FFE880;
 }
+
+@colorSteps: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+@spacingSteps: ~'', 2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64;
+
+@newColors: gray, blue, green, red, yellow, orange;
+
+@radiusSizes: sharp, 4px, 8px, pill, circle;
+
+@radiusValues: sharp, rounded-4px, rounded-8px, pill, circle;

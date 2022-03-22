@@ -1,4 +1,5 @@
 @import '../variables.less';
+@import '../mixins.less';
 
 each(@colors, {
   @normalizeValue: replace(~"@{value}", ' ', '-');
@@ -7,3 +8,23 @@ each(@colors, {
 		border-color: var(~"--@{normalizeValue}");
   }
 });
+
+.border-white {
+  border-color: var(--color-global-white);
+}
+
+.border-black {
+  border-color: var(--color-global-black);
+}
+
+.border-brand {
+  border-color: var(--color-alias-brand);
+}
+
+.classify(@subject, @step) {
+  .border-@{subject}@{step} {
+    border-color: var(~'--color-global-@{subject}@{step}');
+  }
+}
+
+.loop(@subjects: @newColors, @steps: @colorSteps);
