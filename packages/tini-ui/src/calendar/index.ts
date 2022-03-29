@@ -21,6 +21,7 @@ export interface CalendarComponentProps extends CalendarMethods {
   mode?: 'single' | 'range' | 'timeOnly';
   header?: 'year' | 'month';
   selectedDate?: number[];
+  validDates?: number[];
   iconColor: string;
   disabledPastDays: boolean;
   showOnlyInMonth: boolean;
@@ -59,6 +60,7 @@ Component({
     selectedDate: [],
     iconColor: '#1A94FF',
     disabledPastDays: false,
+    validDates: [],
     showOnlyInMonth: false,
     onSelect: () => {},
     onChange: () => {},

@@ -36,6 +36,7 @@
         {{compareDate(item.timestamp, selectedDate[1]) === 0 ? 'end' : ''}}
         {{selectedDate[1] ? 'range' : ''}}
         {{disabledPastDays ? compareDate(item.timestamp, todayTimestamp) === -1 ? 'disabled' : '' : ''}}
+        {{validDates.length > 1 ? (compareDate(item.timestamp, validDates[0]) >= 0 && compareDate(item.timestamp, validDates[1]) <= 0) ? '' : 'disabled' : ''}}
         {{compareDate(item.timestamp, selectedDate[0]) === 1 && compareDate(item.timestamp, selectedDate[1]) === -1 && item.inMonth === 0 ? 'inrange' : ''}}"
       onTap="_onSelect">
       <view 
