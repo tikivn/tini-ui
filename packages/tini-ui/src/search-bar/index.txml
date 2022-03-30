@@ -1,7 +1,7 @@
 
-  <textfield 
-  style="{{style}}"
+<textfield 
   className="tu-search-bar {{className}}"
+  style="{{style}}"
   shape="{{shape}}"
   errorIconColor="{{errorIconColor}}"
   
@@ -13,11 +13,9 @@
   placeholderClass="{{placeholderClass}}" 
   placeholderStyle="{{placeholderStyle}}" 
 
-
   labelText="{{labelText}}"
   labelCls="{{labelCls}}"
 
-  
   iconLeft="{{!loading?'search':'no-icon'}}"
   iconRight="{{ value.length > 0  && !loading ? 'close' : '' }}"
 
@@ -33,4 +31,4 @@
   onTapIconLeft="onTapSearchIcon"
   onConfirm="onTapSearchIcon"
   onInput="onInput"  
-  />
+/>

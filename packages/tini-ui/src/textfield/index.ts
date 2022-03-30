@@ -46,7 +46,7 @@ export type ITextfieldComponentProps = LabelInputProps & InputProps;
 Component({
   data: {
     paddingHorizontal: 16,
-    iconDisabledColor: 'rgba(166, 166, 176, 0.6)',
+    iconDisabledColor: 'var(--color-input-icon-disabled)',
     wrapClass: '',
   },
   props: {
@@ -61,7 +61,7 @@ Component({
     // Extra props
     iconRight: '',
     iconLeft: '',
-    iconColor: '#808089',
+    iconColor: 'var(--color-input-icon-default)',
     shape: 'rounded',
     loading: false,
     inputCls: '',

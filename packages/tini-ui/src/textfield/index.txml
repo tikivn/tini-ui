@@ -20,7 +20,7 @@
       <input
         class="tu-textfield-input {{inputCls}}"
         style="
-          padding-left: {{paddingHorizontal + (iconLeft ? 20 : 0)}}px;
+          padding-left: {{paddingHorizontal + (iconLeft ? 28 : 0)}}px;
           padding-right: {{paddingHorizontal + (hasError ? 20 : 0) + (iconRight ? 20 : 0) + (hasError && iconRight ? 8 : 0)}}px;"
         value="{{loading ? '':value}}" 
         name="{{name}}" 
