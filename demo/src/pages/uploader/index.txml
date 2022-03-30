@@ -3,7 +3,7 @@
   <uploader/>
 
   <view class="mt-medium mb-2x-small">Custom icon:</view>
-  <uploader icon="calendar"/>
+  <uploader icon="plus"/>
 
   <view class="mt-medium mb-2x-small">Custom size:</view>
   <uploader style="width: 80px; height: 80px;" iconSize="40"/>
@@ -11,7 +11,7 @@
   <view class="mt-medium mb-2x-small">Custom content:</view>
   <uploader>
     <view class="flex items-center px-2x-small">
-      <icon type="info" class="mr-4x-small"/>
+      <icon type="info" class="mr-2x-small"/>
       <text>Select image</text>
     </view>
   </uploader>

@@ -5,15 +5,9 @@
 >
   <slot>
     <icon
-      tiki:if="{{icon}}"
       type="{{icon}}"
       size="{{iconSize}}"
       color="{{disabled ? 'var(--color-uploader-icon-disabled)' : 'var(--color-uploader-icon-default)'}}"
-    />
-    <view
-      tiki:else
-      style="--default-icon-width: {{iconSize}}px; --default-icon-height: {{iconSize}}px;"
-      class="tu-uploader-default-icon"
     />
   </slot>
 

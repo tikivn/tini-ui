@@ -20,7 +20,7 @@ Component({
   props: {
     className: '',
     style: '',
-    icon: '',
+    icon: 'placeholder',
     iconSize: 40,
     showPreview: true,
     disabled: false,
