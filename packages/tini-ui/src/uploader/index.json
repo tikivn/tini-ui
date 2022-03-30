@@ -1,0 +1,7 @@
+{
+  "componentLifeCycleV2": "YES",
+  "component": true,
+  "usingComponents": {
+    "preview": "preview/index"
+  }
+}
