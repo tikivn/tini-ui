@@ -25,6 +25,7 @@
     "pages/calendar/index",
     "pages/pin/index",
     "pages/tooltip/index",
+    "pages/alphabet/index",
     "pages/toast-bar/index"
   ],
   "window": {

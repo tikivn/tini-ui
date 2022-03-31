@@ -10,9 +10,8 @@
 
 .tu-alphabet-letter {
   text-align: center;
-  font-size: 11px;
-  font-size: var(--tu-alphabet-letter-font-size, 11px);
-  color: var(--tu-alphabet-letter-color, #999);
+  font-size: var(--font-size-x-small, 10px);
+  color: var(--color-alphabet-bar-text-default);
   height: var(--tu-alphabet-letter-size, 16px);
   width: var(--tu-alphabet-letter-size, 16px);
   border-radius: var(--tu-alphabet-letter-border-radius, 50vh);
@@ -60,12 +59,12 @@
 
 .tu-alphabet-content {
   padding: var(--tu-alphabet-content-paddingTB, 12px) 0;
-  width: var(--tu-alphabet-content-width, 48px);
+  width: var(--tu-alphabet-content-width, 16px);
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /** text-overflow: ellipsis; */
-  /** white-space: nowrap; */
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
   text-align: center;
 }

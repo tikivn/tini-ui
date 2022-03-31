@@ -7,8 +7,8 @@ export interface IStepsComponentProps {
   items: any[];
   inactiveColor?: string;
   activeColor?: string;
-  dotErrorColor?: string;
-  dotSize?: string;
+  milestoneErrorColor?: string;
+  milestoneSize?: string;
   reverseVertical?: boolean;
 }
 Component({
@@ -21,8 +21,8 @@ Component({
     items: [],
     inactiveColor: 'rgba(0, 0, 0, 0.1)',
     activeColor: 'var(--color-alias-brand, #1a94ff)',
-    dotErrorColor: '#ff424f',
-    dotSize: 'var(--space-inline-16x, 16px)',
+    milestoneErrorColor: '#ff424f',
+    milestoneSize: 'var(--space-inline-16x, 16px)',
     reverseVertical: false,
   },
   data: {},

@@ -1,26 +1,29 @@
 // ======== variables ========
-@dot-space: var(--space-stack-4x, 4px);
+@milestone-space: var(--space-stack-4x, 4px);
 @connect-line-width: var(--space-stack-4x, 4px);
-@background-progress-inactive: var(--inactive-color, rgba(0, 0, 0, 0.1));
-@background-progress-active: var(--active-color, var(--color-alias-brand, #1a94ff));
-@background-progress-error: var(--dot-error-color, #ff424f);
-@dot-width: var(--dot-size, var(--space-inline-16x, 16px));
+@background-progress-inactive: var(--inactive-color, var(--color-steps-progress-background-inactive));
+@background-progress-active: var(--active-color, var(--color-steps-progress-background-active));
 
-@step-description-color: rgba(128, 128, 137);
+@background-milestone-inactive: var(--inactive-color, var(--color-steps-milestone-background-inactive));
+@background-milestone-active: var(--active-color, var(--color-steps-milestone-background-active));
+@background-milestone-error: var(--milestone-error-color, var(--color-steps-milestone-background-error));
+@milestone-width: var(--milestone-size, var(--space-inline-16x, 16px));
+
+@step-sub-color: var(--color-steps-sub-text-default);
 @step-transition: all 0.2s linear;
 
-@font-size-title: var(--font-size-large);
+@font-size-label: var(--font-size-large);
 
 // ======== mixins ========
-.tu-steps-description-text() {
+.tu-steps-sub-text() {
   font-style: var(--font-style-normal, normal);
   font-weight: var(--font-weight-normal, normal);
   font-size: var(--font-size-base, 14px);
   line-height: 21px;
-  color: @step-description-color;
+  color: @step-sub-color;
 }
 
-.tu-steps-title-text() {
+.tu-steps-label-text() {
   font-style: var(--font-style-normal, normal);
   font-weight: var(--font-weight-normal, normal);
   font-size: var(--font-size-medium, 16px);
@@ -35,18 +38,18 @@
     text-align: center;
     position: relative;
 
-    .tu-steps-title {
-      .tu-steps-title-text();
+    .tu-steps-label {
+      .tu-steps-label-text();
     }
-    .tu-steps-description {
-      .tu-steps-description-text();
+    .tu-steps-sub {
+      .tu-steps-sub-text();
     }
-    .tu-steps-dot {
-      width: @dot-width;
-      height: @dot-width;
+    .tu-steps-milestone {
+      width: @milestone-width;
+      height: @milestone-width;
       margin-bottom: 8px;
       border-radius: 50%;
-      border-width: @dot-space;
+      border-width: @milestone-space;
       border-color: transparent;
       border-style: solid;
       display: inline-block;
@@ -57,8 +60,8 @@
         content: '';
         display: flex;
         align-self: center;
-        width: @dot-width;
-        height: @dot-width;
+        width: @milestone-width;
+        height: @milestone-width;
         border-radius: 50%;
         background-color: @background-progress-inactive;
         transition: @step-transition;
@@ -74,31 +77,31 @@
       &::before {
         transition: @step-transition;
         position: absolute;
-        top: calc((@dot-width + @connect-line-width) / 2);
+        top: calc((@milestone-width + @connect-line-width) / 2);
         content: '';
         background-color: @background-progress-inactive;
-        width: calc(100% - @dot-width - (@dot-space * 2));
+        width: calc(100% - @milestone-width - (@milestone-space * 2));
         height: @connect-line-width;
-        right: calc(50% + (@dot-width / 2) + @dot-space);
+        right: calc(50% + (@milestone-width / 2) + @milestone-space);
       }
 
       // ======== active style ========
       &.tu-steps-active {
-        .tu-steps-dot:before,
+        .tu-steps-milestone:before,
         &::before {
           background-color: @background-progress-active;
         }
       }
       // ======== error style ========
       &.tu-steps-error {
-        .tu-steps-dot:before {
-          background-color: @background-progress-error;
+        .tu-steps-milestone:before {
+          background-color: @background-milestone-error;
         }
       }
 
       // ======== current step style ========
       &.tu-steps-current {
-        .tu-steps-title {
+        .tu-steps-label {
           font-weight: bold;
         }
       }
@@ -119,24 +122,24 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      padding-left: calc(@dot-width + 16px);
-      max-width: calc(100% - calc(@dot-width + 16px));
+      padding-left: calc(@milestone-width + 16px);
+      max-width: calc(100% - calc(@milestone-width + 16px));
       text-align: left;
 
-      .tu-steps-description {
+      .tu-steps-sub {
         display: block;
-        .tu-steps-description-text();
+        .tu-steps-sub-text();
       }
-      .tu-steps-dot {
+      .tu-steps-milestone {
         position: absolute;
         left: 0;
-        width: @dot-width;
-        height: @dot-width;
+        width: @milestone-width;
+        height: @milestone-width;
         margin-bottom: 8px;
         margin-left: 4px;
         margin-right: 4px;
         border-radius: 50%;
-        border-width: @dot-space;
+        border-width: @milestone-space;
         border-color: transparent;
         border-style: solid;
         display: inline-block;
@@ -147,8 +150,8 @@
           content: '';
           display: flex;
           align-self: center;
-          width: @dot-width;
-          height: @dot-width;
+          width: @milestone-width;
+          height: @milestone-width;
           border-radius: 50%;
           background-color: @background-progress-inactive;
         }
@@ -156,17 +159,17 @@
       &::after {
         transition: @step-transition;
         position: absolute;
-        top: calc(@dot-width + (@dot-space * 2));
+        top: calc(@milestone-width + (@milestone-space * 2));
         content: '';
         background-color: @background-progress-inactive;
-        height: calc(100% - @dot-width - (@dot-space * 2));
+        height: calc(100% - @milestone-width - (@milestone-space * 2));
         width: @connect-line-width;
-        left: calc(@dot-width / 2 + @dot-space / 2 + @connect-line-width);
+        left: calc(@milestone-width / 2 + @milestone-space / 2 + @connect-line-width);
       }
 
       // ======== active style ========
       &.tu-steps-active {
-        .tu-steps-dot:before {
+        .tu-steps-milestone:before {
           background-color: @background-progress-active;
         }
       }
@@ -178,14 +181,14 @@
 
       // ======== error style ========
       &.tu-steps-error {
-        .tu-steps-dot:before {
-          background-color: @background-progress-error;
+        .tu-steps-milestone:before {
+          background-color: @background-milestone-error;
         }
       }
 
       // ======== current step style ========
       &.tu-steps-current {
-        .tu-steps-title {
+        .tu-steps-label {
           font-weight: bold;
         }
       }

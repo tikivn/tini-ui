@@ -14,6 +14,10 @@ Page({
         path: 'pages/address/index',
       },
       {
+        name: 'alphabet',
+        path: 'pages/alphabet/index',
+      },
+      {
         name: 'avatar',
         path: 'pages/avatar/index',
       },
