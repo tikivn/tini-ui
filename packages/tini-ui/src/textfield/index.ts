@@ -1,5 +1,6 @@
 import fmtClass from '../_util/fmtClass';
 import fmtEvent from '../_util/fmtEvent';
+import { debounce } from '../_util/debounce';
 
 type LabelInputProps = {
   labelCls?: string;
@@ -30,6 +31,7 @@ type InputProps = {
   placeholderClass?: string;
   placeholderStyle?: string;
   disabled?: boolean;
+  debounce?: number;
   maxlength?: number;
   focus?: boolean;
   controlled?: boolean;
@@ -82,6 +84,7 @@ Component({
     placeholderStyle: '',
     disabled: false,
     maxlength: 140,
+    debounce: 0,
     focus: false,
     controlled: false,
     onTap: undefined,
@@ -93,6 +96,8 @@ Component({
     onBlur: undefined,
   } as ITextfieldComponentProps,
   onInit() {
+    this.onInput = debounce(this.onInput.bind(this), this.props.debounce);
+
     this.setData({
       wrapClass: this.getWrapClass(this.props),
     });
