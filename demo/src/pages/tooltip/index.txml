@@ -1,63 +1,86 @@
-<view class="mt-48">
- <view style="width: 50px;">
-   <tooltip position="right" show theme="light">
+<view class="wrapper">
+   <tooltip class="mt-48" position="top" show theme="reverse">
     <view slot="content">
-        Bottom Light
-      </view>
-    <view slot="operation">asdasdasfasfasf</view>
-  </tooltip>
- </view>
-  <!-- <tooltip class="mt-48" show theme="light" content="Text Light">
-    <view slot="operation"></view>
-  </tooltip>
-
-  <tooltip class="mt-48" show theme="light" onClose="onClose" showCloseIcon>
-    <view slot="content">
-      Text Light With Close
+        Top
     </view>
-    <view slot="operation"></view>
+    <view slot="operation">Text</view>
   </tooltip>
 
-  <tooltip class="mt-48" show theme="light">
+  <tooltip class="mt-48" position="top-left" show theme="reverse">
     <view slot="content">
-        Top Light
-      </view>
-    <view slot="operation"></view>
-  </tooltip>
-
-  <tooltip position="bottom" show theme="light">
-    <view slot="content">
-        Bottom Light
-      </view>
-    <view slot="operation"></view>
-  </tooltip>
-
-
-   <tooltip position="right" show theme="light">
-    <view slot="content">
-        Bottom Light
-      </view>
-    <view slot="operation">bbbb</view>
-  </tooltip>
-
-  <tooltip class="mt-48" show position="bottom" theme="dark">
-    <view slot="content">
-      Text Dark
+        Top Left
     </view>
-    <view slot="operation">aaa</view>
+    <view slot="operation">Text</view>
   </tooltip>
 
-  <tooltip class="mt-48" show position="bottom" theme="dark" onClose="onClose" showCloseIcon>
+  <tooltip class="mt-48" position="top-right" show theme="reverse">
     <view slot="content">
-      Text Dark With Close
+        Top Left
     </view>
-    <view slot="operation"></view>
+    <view slot="operation">Text</view>
   </tooltip>
 
-  <tooltip class="mt-48" show position="bottom" position="bottom" theme="dark">
+  <tooltip class="mt-48" position="left" show theme="reverse">
     <view slot="content">
-        Bottom Dark
-      </view>
-    <view slot="operation"></view>
-  </tooltip> -->
+        Left
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="left-top" show theme="reverse">
+    <view slot="content">
+        Left Top
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="left-bottom" show theme="reverse">
+    <view slot="content">
+        Left Bottom
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="right" show theme="reverse">
+    <view slot="content">
+        Right
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="right-top" show theme="reverse">
+    <view slot="content">
+        Right Top
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="right-bottom" show theme="reverse">
+    <view slot="content">
+        Right Top
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="bottom" show theme="reverse">
+    <view slot="content">
+        Bottom
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="bottom-left" show theme="reverse">
+    <view slot="content">
+        Bottom Left
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+
+  <tooltip class="mt-48" position="bottom-right" show theme="reverse">
+    <view slot="content">
+        Bottom Left
+    </view>
+    <view slot="operation">Text</view>
+  </tooltip>
+  
 </view>
