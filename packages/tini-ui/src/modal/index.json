@@ -2,6 +2,7 @@
   "componentLifeCycleV2": "YES",
   "component": true,
   "usingComponents": {
-    "tu-icon": "../tu-icon/index"
+    "tu-icon": "../tu-icon/index",
+    "button": "../tu-button/index"
   }
 }
