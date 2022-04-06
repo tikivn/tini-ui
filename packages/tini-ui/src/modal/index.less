@@ -73,8 +73,8 @@
   &-image-lg &-image-element {
     width: @modal-width;
     height: @modal-lg-image-v-size;
-    margin-left: -@modal-spacing;
-    margin-right: -@modal-spacing;
+    margin-left: calc(@modal-spacing * -1);
+    margin-right: calc(@modal-spacing * -1);
     border-top-left-radius: @border-radius;
     border-top-right-radius: @border-radius;
     overflow: hidden;
@@ -118,7 +118,7 @@
     font-size: @font-size-title;
     color: @color-text-primary;
     padding: @modal-spacing;
-    margin: -var(--space-inset-4x);
+    margin: calc(var(--space-inset-4x) * -1);
     &--vertical {
       flex-direction: column;
     }
