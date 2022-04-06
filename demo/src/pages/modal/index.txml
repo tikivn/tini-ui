@@ -15,69 +15,67 @@
 <modal
   show="{{modalOpened21}}"
   onMaskClick="onMaskClick21"
-  onModalClick="onModalClick21"
+  onButtonClick="onModalClick21"
   onModalClose="onModalClose21"
   topImage="https://picsum.photos/id/866/400/400.jpg"
+  buttons="{{buttons}}"
 >
   <view slot="header">Image default is "md"</view>
   Modal content
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened22}}"
-  onModalClick="onModalClick22"
+  onButtonClick="onModalClick22"
   onModalClose="onModalClose22"
   topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="sm"
+  buttons="{{buttons}}"
 >
   <view slot="header">Image size "sm"</view>
   Modal content
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened222}}"
-  onModalClick="onModalClick222"
+  onButtonClick="onModalClick222"
   onModalClose="onModalClose222"
   topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="md"
+  buttons="{{buttons}}"
 >
   <view slot="header">Image "md"</view>
   Modal content
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened2}}"
-  onModalClick="onModalClick2"
+  onButtonClick="onModalClick2"
   onModalClose="onModalClose2"
   topImage="https://picsum.photos/id/866/400/400.jpg"
   topImageSize="lg"
   closeType="1"
+  buttons="{{buttons}}"
 >
   <view slot="header">Image "lg"</view>
   Modal content
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened23}}"
-  onModalClick="onModalClick23"
+  onButtonClick="onModalClick23"
   onModalClose="onModalClose23"
   showClose="{{true}}"
   topImage="https://picsum.photos/id/866/400/400.jpg"
+  buttons="{{buttons}}"
 >
   <view slot="header">Icon</view>
   Modal icon
   <tu-icon type="success" color="red" />
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened}}"
-  onModalClick="onModalClick"
   onModalClose="onModalClose"
 >
   <view style="margin: 20px 0 10px 0;">This is a image</view>
   <image mode="widthFix" style="width: 100%;" src="https://picsum.photos/id/866/400/400.jpg" />
   Content
-  <view slot="footer">Footer</view>
 </modal>
 <modal
   show="{{modalOpened3}}"

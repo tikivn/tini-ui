@@ -7,7 +7,7 @@
   color: #ccc;
 }
 
-.buttonBold, .modalButtonBold .am-modal-footer {
+.am-modal-footer {
   font-weight: bold;
 }
 

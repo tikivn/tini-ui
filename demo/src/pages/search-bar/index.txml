@@ -41,7 +41,6 @@
     placeholder="Search..."
     shape="pill"
     onInput="handleInput"
-
     labelText="Pill Input"
     onTapCloseIcon="onTapCloseIcon"
     onTapSearchIcon="onTapSearchIcon"
@@ -56,9 +55,9 @@
     labelText="Empty, Hover, Active, Filled Input"
     onTapCloseIcon="onTapCloseIcon"
     onTapSearchIcon="onTapSearchIcon"
-    /> 
+  /> 
 
-    <search-bar
+  <search-bar
     value="Error value"
     className="p-5"
     hasError
@@ -66,7 +65,7 @@
     placeholder="Search..." 
     labelText="Error Input"
     controlled
-    /> 
+  /> 
 
   <search-bar
     value="{{value}}"
@@ -77,16 +76,40 @@
     labelText="Disabled Input"
     onTapCloseIcon="onTapCloseIcon"
     onTapSearchIcon="onTapSearchIcon" 
+  />
 
-  />  
   <search-bar
-  className="p-5"
-  value="{{value}}"
-  placeholder="Search..."
-  loading
-  onInput="handleInput"
-  labelText="Loading Input"
-  onTapCloseIcon="onTapCloseIcon"
-  onTapSearchIcon="onTapSearchIcon" 
+    value="{{value}}"
+    className="p-5"
+    shape="pill"
+    placeholder="Search..."
+    disabled
+    onInput="handleInput"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon" 
+  /> 
+
+  <search-bar
+    className="p-5"
+    value="{{value}}"
+    placeholder="Search..."
+    loading
+    onInput="handleInput"
+    labelText="Loading Input"
+    labelText="Loading"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon" 
+  />
+
+  <search-bar
+    className="p-5"
+    value="{{value}}"
+    shape="pill"
+    placeholder="Search..."
+    loading
+    onInput="handleInput"
+    labelText="Loading"
+    onTapCloseIcon="onTapCloseIcon"
+    onTapSearchIcon="onTapSearchIcon" 
   />
 </view>
