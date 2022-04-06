@@ -25,7 +25,8 @@
     "pages/calendar/index",
     "pages/pin/index",
     "pages/tooltip/index",
-    "pages/toast-bar/index"
+    "pages/toast-bar/index",
+    "pages/uploader/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",

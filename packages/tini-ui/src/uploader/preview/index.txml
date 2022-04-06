@@ -1,0 +1,17 @@
+<view
+  class="tu-preview {{className}}"
+  style="{{style}}"
+>
+  <image
+    class="tu-preview-image"
+    src="{{image.path}}"
+    mode="{{mode}}"
+    catchTap="handleTapImage"
+  />
+  <image
+    tiki:if="{{isShowRemoveIcon}}"
+    class="tu-preview-remove-icon"
+    src="https://salt.tikicdn.com/ts/miniapp/bc/ab/82/61c0961eba88a9f054bfaff0fb37ce1e.png"
+    catchTap="handleRemoveImage"
+  />
+</view>

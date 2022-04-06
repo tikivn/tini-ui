@@ -1,0 +1,21 @@
+<view
+  class="tu-uploader {{className}} {{disabled ? 'tu-uploader-disabled' : ''}} {{images.length ? 'tu-uploader-hide-border' : ''}}"
+  style="{{style}}"
+  onTap="handleSelectImage"
+>
+  <slot>
+    <icon
+      type="{{icon}}"
+      size="{{iconSize}}"
+      color="{{disabled ? 'var(--color-uploader-icon-disabled)' : 'var(--color-uploader-icon-default)'}}"
+    />
+  </slot>
+
+  <preview
+    tiki:for="{{images}}"
+    showPreview="{{showPreview}}"
+    className="tu-uploader-result"
+    image="{{item}}"
+    onRemoveImage="handleRemoveImage"
+  />
+</view>

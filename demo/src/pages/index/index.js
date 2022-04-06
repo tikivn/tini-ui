@@ -89,6 +89,10 @@ Page({
         name: 'toast-bar',
         path: 'pages/toast-bar/index',
       },
+      {
+        name: 'uploader',
+        path: 'pages/uploader/index',
+      },
     ],
   },
   onNavigate(e) {
