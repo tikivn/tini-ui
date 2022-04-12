@@ -12,7 +12,7 @@ export interface IPreviewMethods {
 export interface IUploaderProps extends IPreviewMethods {
   className?: string;
   style?: string;
-  mode?: string;
+  mode?: 'scaleToFill' | 'aspectFit' | 'aspectFill' | 'widthFix';
   showPreview?: boolean;
   image: IPreviewImage;
 }

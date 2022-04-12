@@ -7,6 +7,7 @@ type ModalButtonProps = {
 type ModalProps = {
   className: string;
   topImageSize: 'lg' | 'md' | 'sm';
+  topImageMode: 'scaleToFill' | 'aspectFit' | 'aspectFill' | 'widthFix';
   show: boolean;
   showClose: boolean;
   closeType: string;
@@ -29,6 +30,7 @@ Component({
   props: {
     className: '',
     topImageSize: 'md',
+    topImageMode: 'widthFix',
     showClose: false,
     show: false,
     closeType: '0',
@@ -42,20 +44,8 @@ Component({
     onModalClose: () => {},
     onMaskClick: () => {},
   } as ModalProps,
-  didMount() {
-    const { buttons, buttonsLayout } = this.props;
-    if (buttons && buttons.length > 2) {
-      this.setData({
-        _buttonsLayout: 'vertical',
-      });
-    } else {
-      this.setData({
-        _buttonsLayout: buttonsLayout,
-      });
-    }
-  },
   deriveDataFromProps(nextProps) {
-    this._handleOverlay(nextProps);
+    if (nextProps.show !== this.props.show) this._handleOverlay(nextProps);
   },
   methods: {
     key: null,
