@@ -5,24 +5,23 @@ Page({
     size: 0,
     items: [
       {
-        title: 'step 1',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley. It was popularised in the 1960s with the release of Letraset PgeMaker including versions of Lorem Ipsum.",
+        label: 'step 1',
+        sub: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley. It was popularised in the 1960s with the release of Letraset PgeMaker including versions of Lorem Ipsum.",
       },
       {
-        description: 'description',
+        sub: 'sub',
       },
       {
-        title: 'step 3',
-        description: 'description',
+        label: 'step 3',
+        sub: 'sub',
       },
       {
-        title: 'step 4',
+        label: 'step 4',
       },
 
       {
-        title: 'step 5',
-        description: 'description',
+        label: 'step 5',
+        sub: 'sub',
       },
     ],
 

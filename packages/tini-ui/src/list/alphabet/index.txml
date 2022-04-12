@@ -20,7 +20,7 @@
 				class="tu-alphabet-letter">
 				<view>{{ item }}</view>
 				<view class="tu-alphabet-bubble" 
-					a:if="{{current === index}}">
+					tiki:if="{{current === index}}">
 					<view>{{item}}</view>
 				</view>
 			</view>

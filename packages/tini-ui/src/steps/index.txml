@@ -3,31 +3,31 @@
   style="
   --inactive-color: {{inactiveColor}}; 
   --active-color: {{activeColor}}; 
-  --dot-error-color: {{dotErrorColor}};
-  --dot-size: {{dotSize}};
+  --milestone-error-color: {{milestoneErrorColor}};
+  --milestone-size: {{milestoneSize}};
   --vertical-reverse-direction: {{reverseVertical?'column-reverse':'column'}};
   --vertical-reverse-after-color: {{reverseVertical?'column-reverse':'column'}};
   {{style}}"
   >
-  <block tiki:for="{{items}}" tiki:key="title">
+  <block tiki:for="{{items}}" tiki:key="label">
     <view class="tu-steps-step
     {{index <= activeIndex && index + 1 <= activeIndex && direction === 'tu-steps-vertical' ? 'tu-steps-active-line' : ''}}
     {{index <= activeIndex ? 'tu-steps-active' : ''}} 
     {{index === activeIndex ? 'tu-steps-current' : ''}} 
     {{index === failIndex ? 'tu-steps-error' : ''}}" > 
-      <view class="tu-steps-dot"></view>
+      <view class="tu-steps-milestone"></view>
 
-      <block tiki:if="{{item.title}}">
-        <text class="tu-steps-title tu-steps-title_{{index}}">{{item.title}}</text> 
+      <block tiki:if="{{item.label}}">
+        <text class="tu-steps-label tu-steps-label_{{index}}">{{item.label}}</text> 
       </block>
       <block tiki:else>
-        <slot name="title_{{index + 1}}" />
+        <slot name="label_{{index + 1}}" />
       </block>
-      <block tiki:if="{{item.description}}">
-        <text class="tu-steps-description">{{item.description}}</text> 
+      <block tiki:if="{{item.sub}}">
+        <text class="tu-steps-sub">{{item.sub}}</text> 
       </block>
       <block tiki:else>
-        <slot name="desc_{{index + 1}}" />
+        <slot name="sub_{{index + 1}}" />
       </block>
     </view>
   </block> 

@@ -9,11 +9,11 @@
   failIndex="{{failIndex}}"
   items="{{items}}"
   activeColor="green"
-  dotSize="30px"
-  dotErrorColor="yellow"
+  milestoneSize="30px"
+  milestoneErrorColor="yellow"
   >
-  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
-  <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>
+  <view slot="label_2" style="color: green; font-weight: bold;">label custom with slot</view>
+  <view slot="sub_4">custom <text style="color: green;"> sub </text> with slot component here; custom <text style="color: green;"> sub </text> with slot component here; </view>
 
   </steps>
 
@@ -26,11 +26,11 @@
   failIndex="{{failIndex}}"
   items="{{items}}"
   activeColor="green"
-  dotSize="30px"
-  dotErrorColor="yellow"
+  milestoneSize="30px"
+  milestoneErrorColor="yellow"
   >
-  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
-  <view slot="desc_4">custom <text style="color: green;"> description </text> with slot component here; custom <text style="color: green;"> description </text> with slot component here; </view>
+  <view slot="label_2" style="color: green; font-weight: bold;">label custom with slot</view>
+  <view slot="sub_4">custom <text style="color: green;"> sub </text> with slot component here; custom <text style="color: green;"> sub </text> with slot component here; </view>
 
   </steps>
   <steps
@@ -40,8 +40,8 @@
   failIndex="{{failIndex}}"
   items="{{items}}"
   >
-  <view slot="title_2" style="color: green; font-weight: bold;">title custom with slot</view>
-  <view slot="desc_4">当前 item 没有 <text style="color: green;">description</text> 时，使用 slot 内容。</view>
+  <view slot="label_2" style="color: green; font-weight: bold;">label custom with slot</view>
+  <view slot="sub_4">item <text style="color: green;">sub</text> slot</view>
   </steps>
 </view>
  
