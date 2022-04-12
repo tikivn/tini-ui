@@ -7,6 +7,7 @@ export interface IUploaderMethods {
 export interface IUploaderProps extends IUploaderMethods {
   className?: string;
   style?: string;
+  value?: string;
   icon?: string;
   iconSize?: number;
   showPreview?: boolean;
@@ -20,6 +21,7 @@ Component({
   props: {
     className: '',
     style: '',
+    value: '',
     icon: 'placeholder',
     iconSize: 40,
     showPreview: true,
@@ -60,5 +62,14 @@ Component({
 
       onChange([]);
     },
+  },
+
+  didMount() {
+    const { value } = this.props;
+    if (value) {
+      this.setData({
+        images: [{ path: value }],
+      });
+    }
   },
 });
