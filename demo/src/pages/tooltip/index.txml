@@ -15,7 +15,7 @@
 
   <tooltip class="mt-48" position="top-right" show theme="reverse">
     <view slot="content">
-        Top Left
+        Top Right
     </view>
     <view slot="operation">Text</view>
   </tooltip>
@@ -78,7 +78,7 @@
 
   <tooltip class="mt-48" position="bottom-right" show theme="reverse">
     <view slot="content">
-        Bottom Left
+        Bottom Right
     </view>
     <view slot="operation">Text</view>
   </tooltip>

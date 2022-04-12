@@ -6,8 +6,20 @@ export interface TooltipComponentProps extends TooltipMethods {
   className?: string;
   style?: string;
   show?: boolean;
-  position?: 'top' | 'left' | 'right' | 'bottom';
-  theme?: 'dark' | 'light';
+  position?:
+    | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'left-top'
+    | 'left-bottom'
+    | 'right-top'
+    | 'right-bottom';
+  theme?: 'default' | 'reverse';
   iconSizeClose?: number;
   showCloseIcon?: boolean;
 }
@@ -17,7 +29,7 @@ Component({
     className: '',
     style: '',
     show: false,
-    theme: 'light',
+    theme: 'default',
     content: '',
     position: 'top',
     iconSizeClose: 16,
