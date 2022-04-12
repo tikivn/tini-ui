@@ -11,15 +11,16 @@ Page({
     modalOpened4: false,
     modalOpened5: false,
     modalOpened6: false,
-    buttons5: [{ text: 'Left' }, { text: 'Right', extClass: 'buttonBold' }],
-    buttons6: [{ text: 'Top', extClass: 'buttonBold' }, { text: 'Bottom' }],
+    buttons: [{ text: 'OK' }],
+    buttons5: [{ text: 'Left', type: 'outline' }, { text: 'Right' }],
+    buttons6: [{ text: 'Top', type: 'outline' }, { text: 'Bottom' }],
     buttons7: [
-      { text: 'Cancel', extClass: 'cancelBtn' },
+      { text: 'Cancel', type: 'outline', extClass: 'cancelBtn' },
       { text: 'Delete', extClass: 'deleteBtn' },
     ],
     buttons8: [
-      { text: 'Button 1', extClass: 'buttonBold' },
-      { text: 'Button 2' },
+      { text: 'Button 1', type: 'ghost' },
+      { text: 'Button 2', type: 'outline' },
       { text: 'Button 3' },
     ],
   },
@@ -34,6 +35,11 @@ Page({
     });
   },
   onModalClose() {
+    this.setData({
+      modalOpened: false,
+    });
+  },
+  onButtonClick() {
     this.setData({
       modalOpened: false,
     });

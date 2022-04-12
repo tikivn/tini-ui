@@ -1,3 +1,9 @@
+type ModalButtonProps = {
+  text: string;
+  type?: 'solid' | 'outline' | 'ghost';
+  extClass?: string;
+};
+
 type ModalProps = {
   className: string;
   topImageSize: 'lg' | 'md' | 'sm';
@@ -8,7 +14,7 @@ type ModalProps = {
   buttonsLayout: 'horizontal' | 'vertical';
   disableScroll: boolean;
   maskClick: boolean;
-  buttons: string[] | null;
+  buttons: ModalButtonProps[] | null;
   onModalClick?: () => void;
   onButtonClick?: (event: unknown) => void;
   onModalClose?: () => void;

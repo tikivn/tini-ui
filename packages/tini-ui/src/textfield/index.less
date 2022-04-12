@@ -1,7 +1,7 @@
 .tu-textfield {
   @size: 40px;
   .t-input-content {
-    caret-color: var(--color-alias-brand, #1a94ff);
+    caret-color: var(--color-input-cursor, #1a94ff);
   }
   .tu-textfield-inline {
     display: inline;
@@ -31,8 +31,11 @@
 
   .tu-textfield-error-icon {
     position: absolute;
+    width: 24px;
+    height: 24px;
     // NOTE: Info icon has small size than the others
-    top: calc(var(--space-inset-8x) + 2px);
+    top: 50%;
+    transform: translateY(-50%);
     padding: 0 2px;
   }
 
@@ -43,7 +46,7 @@
       right: var(--space-inline-8x);
     }
     &.left {
-      left: var(--space-inline-8x);
+      left: var(--space-inline-16x);
     }
   }
 
@@ -52,8 +55,11 @@
     display: flex;
     align-items: center;
 
-    & .tu-textfield-input {
+    .tu-textfield-input {
       flex: 1;
+    }
+
+    .tu-textfield-input:not(.t-input-disabled) {
       background: transparent;
     }
   }

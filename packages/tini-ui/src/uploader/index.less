@@ -1,0 +1,34 @@
+.tu-uploader {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 104px;
+  height: 104px;
+
+  background-color: var(--color-uploader-background-default);
+  border: 1px dashed var(--color-uploader-border-default);
+  border-radius: 8px;
+
+  &-result {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+  }
+
+  &-hide-border {
+    border-color: transparent;
+  }
+}
+
+.tu-uploader-disabled {
+  pointer-events: none;
+
+  background-color: var(--color-uploader-background-disabled);
+  border-color: var(--color-uploader-border-disabled);
+}

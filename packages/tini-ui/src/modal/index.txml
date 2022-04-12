@@ -24,6 +24,9 @@
         <view class="tu-modal-header" tiki:if="{{$slots.header}}">
           <slot name="header" />
         </view>
+        <view class="tu-modal-description" tiki:if="{{$slots.description}}">
+          <slot name="description" />
+        </view>
         <view class="tu-modal-body">
           <slot />
         </view>
@@ -42,9 +45,13 @@
         tiki:if="{{buttons}}">
         <view 
           class="tu-modal-button 
-          {{button.extClass}} 
           {{_buttonsLayout === 'vertical' ? 'tu-modal-button--vertical' : 'tu-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tu-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
-          {{button.text}}
+          <button
+            class="{{button.extClass}}"
+            type="{{button.type || 'solid'}}"
+          >
+            {{button.text}}
+          </button>
         </view>
       </view>
     </view>

@@ -22,11 +22,11 @@
 @modal-market-mask-backgroundColor: rgba(0, 0, 0, 0.7);
 @font-size-title: var(--font-size-large);
 @color-text-primary: var(--color-alias-brand);
-@border-radius: 8px;
-@modal-spacing: 16px;
+@border-radius: var(--radius-rounded-8px);
+@modal-spacing: var(--space-stack-16x);
 
 .tu-modal {
-  background-color: var(--color-alias-primary-on-reverse-theme);
+  background-color: var(--color-dialog-background-default);
   border-radius: @border-radius;
   width: @modal-width;
   position: relative;
@@ -73,8 +73,8 @@
   &-image-lg &-image-element {
     width: @modal-width;
     height: @modal-lg-image-v-size;
-    margin-left: -@modal-spacing;
-    margin-right: -@modal-spacing;
+    margin-left: calc(@modal-spacing * -1);
+    margin-right: calc(@modal-spacing * -1);
     border-top-left-radius: @border-radius;
     border-top-right-radius: @border-radius;
     overflow: hidden;
@@ -88,11 +88,16 @@
     height: @modal-sm-image-size;
   }
   &-header {
-    font-size: var(--font-size-large);
+    font-size: @font-size-title;
+    font-weight: var(--font-weight-bold);
     text-align: center;
-    color: var(--text-color);
-    font-weight: bold;
+    color: var(--color-dialog-title-text-default);
     margin-bottom: @modal-spacing;
+  }
+  &-description {
+    text-align: center;
+    margin-bottom: @modal-spacing;
+    color: var(--color-dialog-description-text-default);
   }
   &-body {
     overflow: hidden;
@@ -101,23 +106,19 @@
     color: var(--text-color);
     font-size: var(--font-size-base);
   }
-
   &-footer {
     height: @modal-footer-height;
     line-height: @modal-footer-height;
-    position: relative;
     font-size: @font-size-title;
     color: @color-text-primary;
     text-align: center;
-    .hairline('top', @modal-footer-border-color);
   }
   &-buttons {
-    position: relative;
     display: flex;
     font-size: @font-size-title;
     color: @color-text-primary;
-    text-align: center;
-    .hairline('top', @modal-footer-border-color);
+    padding: @modal-spacing;
+    margin: calc(var(--space-inset-4x) * -1);
     &--vertical {
       flex-direction: column;
     }
@@ -126,23 +127,25 @@
     }
   }
   &-button {
-    padding: 12px;
-    flex: 1;
-    position: relative;
-    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
+    padding: var(--space-inset-4x);
     &--vertical {
-      .hairline('bottom', @modal-footer-border-color);
       &:last-child::after {
         display: none;
       }
     }
     &--horizontal {
-      .hairline('right', @modal-footer-border-color);
       &:last-child::after {
         display: none;
       }
+    }
+
+    button {
+      width: 100%;
+      margin: 0;
     }
   }
   &-close {
