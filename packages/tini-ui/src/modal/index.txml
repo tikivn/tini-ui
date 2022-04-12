@@ -19,7 +19,7 @@
       <!-- modal content -->
       <view class="tu-modal-content {{topImageSize === 'lg' ? 'tu-modal-content--fill' : ''}}">
         <view tiki:if="{{topImage}}" class="tu-modal-image tu-modal-image-{{topImageSize}}">
-          <image class="tu-modal-image-element" src="{{topImage}}" />
+          <image mode="{{topImageMode}}" class="tu-modal-image-element" src="{{topImage}}" />
         </view>
         <view class="tu-modal-header" tiki:if="{{$slots.header}}">
           <slot name="header" />
@@ -41,11 +41,11 @@
       <!-- modal button -->
       <view 
         class="tu-modal-buttons 
-        {{_buttonsLayout === 'vertical' ? 'tu-modal-buttons--vertical' : 'tu-modal-buttons--horizontal'}}"
+        {{buttonsLayout === 'vertical' ? 'tu-modal-buttons--vertical' : 'tu-modal-buttons--horizontal'}}"
         tiki:if="{{buttons}}">
         <view 
           class="tu-modal-button 
-          {{_buttonsLayout === 'vertical' ? 'tu-modal-button--vertical' : 'tu-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tu-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
+          {{buttonsLayout === 'vertical' ? 'tu-modal-button--vertical' : 'tu-modal-button--horizontal'}}" tiki:for="{{buttons}}" hover-class="tu-modal-button-active" tiki:for-item="button" onTap="_onButtonClick" data-index="{{index}}" data-item="{{button}}">
           <button
             class="{{button.extClass}}"
             type="{{button.type || 'solid'}}"
