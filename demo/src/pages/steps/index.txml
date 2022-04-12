@@ -41,7 +41,7 @@
   items="{{items}}"
   >
   <view slot="label_2" style="color: green; font-weight: bold;">label custom with slot</view>
-  <view slot="sub_4">当前 item 没有 <text style="color: green;">sub</text> 时，使用 slot 内容。</view>
+  <view slot="sub_4">item <text style="color: green;">sub</text> slot</view>
   </steps>
 </view>
  
