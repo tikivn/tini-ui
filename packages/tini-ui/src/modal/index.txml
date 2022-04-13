@@ -27,7 +27,7 @@
         <view class="tu-modal-description" tiki:if="{{$slots.description}}">
           <slot name="description" />
         </view>
-        <view class="tu-modal-body">
+        <view class="tu-modal-body {{$slots.description ? 'tu-modal-body--mt-16x' : ''}}">
           <slot />
         </view>
       </view>
