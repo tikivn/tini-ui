@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "inform": "@tiki.vn/tini-ui/es/inform/index"
+  }
+}

@@ -27,7 +27,9 @@
     "pages/tooltip/index",
     "pages/alphabet/index",
     "pages/toast-bar/index",
-    "pages/uploader/index"
+    "pages/uploader/index",
+    "pages/inform/index",
+    "pages/checkout/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",

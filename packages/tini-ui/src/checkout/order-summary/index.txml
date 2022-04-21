@@ -1,0 +1,42 @@
+<import-sjs from="../helper.sjs" name="{ moneyFormatter }" />
+
+<template name="full">
+  <view tiki:for="{{data}}" class="order-product-item {{index !== data.length - 1 ? 'border-bottom' : ''}}">
+    <view class="order-product-item-info">
+      <image class="order-product-item-image" src="{{item.image}}" />
+      <view>
+        <view tiki:if="{{item.name}}" class="order-product-item-name">{{item.name}}</view>
+        <view tiki:if="{{item.desc}}" class="order-product-item-desc">{{item.desc}}</view>
+        <view tiki:if="{{item.note}}" class="order-product-item-note">{{item.note}}</view>
+        <view tiki:if="{{item.quantity}}" class="order-product-item-quantity">{{item.quantity}}x</view>
+      </view>
+    </view>
+    <view class="order-product-item-price order-product-item-price-full">
+      <view class="mr-4x font-bold">{{moneyFormatter(item.price.value)}}</view>
+      <view tiki:if="{{item.price.discount}}" class="mr-8x text-x-small badge radius-8px">-{{item.price.discount}}%
+      </view>
+      <icon tiki:if="{{item.price.icon}}" type="{{item.price.icon}}" size="16" color="#808089" />
+    </view>
+  </view>
+</template>
+
+<template name="compact">
+  <view tiki:for="{{data}}" class="order-product-item {{index !== data.length - 1 ? 'border-bottom' : ''}}">
+    <view class="order-product-item-info">
+      <view tiki:if="{{item.quantity}}"
+        class="order-product-item-quantity order-product-item-quantity-compact">{{item.quantity}}x</view>
+      <view>
+        <view tiki:if="{{item.name}}" class="order-product-item-name">{{item.name}}</view>
+        <view tiki:if="{{item.desc}}" class="order-product-item-desc">{{item.desc}}</view>
+        <view tiki:if="{{item.note}}" class="order-product-item-note">{{item.note}}</view>
+      </view>
+    </view>
+    <view class="order-product-item-price order-product-item-price-compact">
+      <view class="mr-4x font-bold">{{moneyFormatter(item.price.value)}}</view>
+    </view>
+  </view>
+</template>
+
+<view class="{{ className }}">
+  <template is="{{data.type}}" data="{{data: data.products}}" />
+</view>

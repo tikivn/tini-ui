@@ -1,0 +1,7 @@
+<view>
+  <checkout 
+    configs="{{configs}}" 
+    onSubmitPayment="onSubmitPayment" 
+    onApplyCoupon="onApplyCoupon"
+    onApplyCouponInput="onApplyCouponInput" />
+</view>

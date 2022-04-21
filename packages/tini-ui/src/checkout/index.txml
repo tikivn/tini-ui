@@ -1,0 +1,85 @@
+<view>
+  <form onSubmit="onSubmit">
+    <block tiki:if="{{configs.top_inform}}">
+      <section>
+        <slot name="top_inform">
+          <inform type="{{configs.top_inform.type}}" message="{{configs.top_inform.message}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.shipping_detail}}">
+      <section title="{{configs.shipping_detail.title}}">
+        <slot name="shipping_detail">
+          <shipping-detail data="{{configs.shipping_detail}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.order_summary}}">
+      <section title="{{configs.order_summary.title}}">
+        <slot name="order_summary">
+          <order-summary data="{{configs.order_summary}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.shipping_method}}">
+      <section title="{{configs.shipping_method.title}}">
+        <slot name="shipping_method">
+          <shipping-method data="{{configs.shipping_method}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.payment_method}}">
+      <section title="{{configs.payment_method.title}}">
+        <slot name="payment_method">
+          <payment-method data="{{configs.payment_method}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.contact_info}}">
+      <section title="{{configs.contact_info.title}}">
+        <slot name="contact_info">
+          <contact-info data="{{configs.contact_info}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.note_info}}">
+      <section title="{{configs.note_info.title}}">
+        <slot name="note_info">
+          <note-info data="{{configs.note_info}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.price_breakdown}}">
+      <section title="{{configs.price_breakdown.title}}">
+        <slot name="price_breakdown">
+          <price-breakdown data="{{configs.price_breakdown}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.price_breakdown}}">
+      <section title="{{configs.price_breakdown.title}}">
+        <slot name="price_breakdown">
+          <price-breakdown data="{{configs.price_breakdown}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.footer}}">
+      <slot name="footer">
+        <footer data="{{configs.footer}}" onClick="onShowCoupon" />
+      </slot>
+    </block>
+
+
+  </form>
+
+  <coupon show="{{show}}" coupons="{{coupons}}" onClose="onCloseCoupon" />
+</view>

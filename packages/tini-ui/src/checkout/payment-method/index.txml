@@ -1,0 +1,13 @@
+<view class="{{ className }} payment-method">
+  <radio-group name="payment_method" onChange="onChangeMethods">
+    <view tiki:for="{{data.methods}}"
+      class="payment-method-item {{index !== data.methods.length - 1 ? 'border-bottom' : ''}}">
+      <radio value="{{item.value}}" checked="{{index === 0}}" />
+      <image class="size-40 payment-method-item-image" mode="aspectFit" src="{{item.image}}" />
+      <view class="payment-method-item-info">
+        <view class="payment-method-item-name">{{item.name}}</view>
+        <view class="payment-method-item-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </radio-group>
+</view>

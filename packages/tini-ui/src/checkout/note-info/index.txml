@@ -1,0 +1,8 @@
+<view class="{{ className }} note-info">
+  <textarea
+    class="block"
+    name="note_info"
+    show-count
+    maxlength="{{data.maxlength}}" 
+    placeholder="{{data.placeholder}}" />
+</view>

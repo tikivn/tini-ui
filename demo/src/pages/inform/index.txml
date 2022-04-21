@@ -1,0 +1,4 @@
+<view>
+  <inform message="Content Only" style="margin:8px" />
+  <inform title="ABC" message="Content Only" action="ABC" style="margin:8px" />
+</view>

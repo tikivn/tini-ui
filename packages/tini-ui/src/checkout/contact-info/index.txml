@@ -1,0 +1,16 @@
+<view class="{{ className }} contact-info">
+  <view class="contact-info-item border-bottom">
+    <view class="contact-info-item-label">Họ và tên</view>
+    <view class="contact-info-item-value">{{data.fullname}}</view>
+  </view>
+
+  <view class="contact-info-item border-bottom">
+    <view class="contact-info-item-label">Số điện thoại</view>
+    <view class="contact-info-item-value">{{data.phone_number}}</view>
+  </view>
+
+  <view class="contact-info-item">
+    <view class="contact-info-item-label">Email</view>
+    <view class="contact-info-item-value">{{data.email}}</view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<view class="{{ className }} shipping-method">
+  <radio-group name="shipping_method" onChange="onChangeMethods">
+    <view tiki:for="{{data.methods}}"
+      class="shipping-method-item {{index !== data.methods.length - 1 ? 'border-bottom' : ''}}">
+      <radio value="{{item.value}}" checked="{{index === 0}}" />
+      <view class="shipping-method-item-info">
+        <view class="shipping-method-item-name">{{item.name}}</view>
+        <view class="shipping-method-item-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </radio-group>
+</view>

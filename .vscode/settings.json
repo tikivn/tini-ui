@@ -2,7 +2,7 @@
   "editor.formatOnSave": true,
   "prettier.singleQuote": true,
   "files.associations": {
-    "*.txml": "xml",
+    "*.txml": "html",
     "*.tcss": "css"
   }
 }

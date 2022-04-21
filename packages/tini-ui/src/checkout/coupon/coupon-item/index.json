@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "componentLifeCycleV2": "YES",
+  "usingComponents": {
+    "tu-button": "../../tu-button/index",
+    "bottom-sheet": "../../bottom-sheet/index"
+  }
+}

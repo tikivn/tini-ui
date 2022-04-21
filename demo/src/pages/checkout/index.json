@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "checkout": "@tiki.vn/tini-ui/es/checkout/index"
+  }
+}

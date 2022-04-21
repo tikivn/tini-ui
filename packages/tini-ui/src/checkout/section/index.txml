@@ -1,0 +1,4 @@
+<view class="{{ className }} section">
+  <view class="section-title">{{title}}</view>
+  <slot />
+</view>
