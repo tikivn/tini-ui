@@ -2,7 +2,4 @@
   "editor.formatOnSave": true,
   "prettier.singleQuote": true,
   "workbench.iconTheme": "material-icon-theme",
-  "files.associations": {
-    "*.sjs": "javascript"
-  }
 }
