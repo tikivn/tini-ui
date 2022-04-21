@@ -9,7 +9,7 @@
       <view class="coupon-item-desc">{{data.desc}}</view>
       <view class="coupon-item-footer">
         <view class="coupon-item-time">HSD: {{getDateStringFromTimestamp(data.expired_time)}}</view>
-        <view catchTap="onApply">
+        <view catchTap="onApplyCoupon">
           <tu-button size="medium">
             Áp dụng
           </tu-button>

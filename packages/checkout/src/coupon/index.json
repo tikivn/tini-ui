@@ -2,8 +2,8 @@
   "componentLifeCycleV2": "YES",
   "component": true,
   "usingComponents": {
-    "bottom-sheet": "../bottom-sheet/index",
-    "textfield": "../textfield/index",
+    "bottom-sheet": "@tiki.vn/tini-ui/es/bottom-sheet/index",
+    "textfield": "@tiki.vn/tini-ui/es/textfield/index",
     "coupon-item": "./coupon-item/index"
   }
 }

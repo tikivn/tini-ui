@@ -18,10 +18,10 @@ Component({
         value,
       });
     },
-    onApplyInput() {
+    onApplyCouponInput() {
       this.props.onApplyCouponInput(this.data.value);
     },
-    onApply(item) {
+    onApplyCoupon(item) {
       this.props.onApplyCoupon(item);
     },
     onCloseCoupon() {

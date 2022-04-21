@@ -43,3 +43,17 @@ export const getDateStringFromTimestamp = (timestamp, char = '/', shortDay = fal
 
   return pad(date) + char + pad(month) + char + dateObject.getFullYear();
 };
+
+export const getTimeStringFromTimestamp = (timestamp, char = '/') => {
+  if (!timestamp) {
+    return 'dd/mm/yyyy';
+  }
+  const dateObject = getDate(timestamp);
+  const month = dateObject.getMonth() + 1;
+  const date = dateObject.getDate();
+
+  const hour = dateObject.getHours();
+  const minutes = dateObject.getMinutes();
+
+  return pad(date) + char + pad(month) + char + dateObject.getFullYear() + ', ' + pad(hour) + ':' + pad(minutes) ;
+};

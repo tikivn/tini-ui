@@ -6,15 +6,26 @@ import { IShippingMethods } from './shipping-method/index';
 import { IPaymentMethods } from './payment-method/index';
 import { IOrderSummary } from './order-summary/index';
 import { IShippingDetail } from './shipping-detail/index';
-import { InformComponentProps } from './../inform/index';
 export interface CheckoutMethods {
   onSubmitPayment?: () => void;
+  onChangeAddressShipping?: () => void;
+  onChangeAddressPickup?: () => void;
+  onChangeTimePickup?: () => void;
   onApplyCoupon?: () => void;
   onApplyCouponInput?: () => void;
 }
 
+export interface IInform {
+  type: string;
+  title?: string;
+  message?: string;
+  action?: string;
+  icon?: string;
+  iconColor?: string;
+}
+
 export interface ConfigsCheckout {
-  top_inform?: InformComponentProps;
+  top_inform?: IInform;
   shipping_detail?: IShippingDetail;
   order_summary?: IOrderSummary;
   payment_method: IPaymentMethods;
@@ -39,9 +50,36 @@ Component({
     onSubmitPayment: () => {},
     onApplyCoupon: () => {},
     onApplyCouponInput: () => {},
+    onChangeAddressShipping: () => {},
+    onChangeAddressPickup: () => {},
+    onChangeTimePickup: () => {},
   } as CheckoutComponentProps,
 
   methods: {
+    onSubmitPayment(value) {
+      const { onSubmitPayment } = this.props;
+      onSubmitPayment(value);
+    },
+    onChangeAddressShipping(value) {
+      const { onChangeAddressShipping } = this.props;
+      onChangeAddressShipping(value);
+    },
+    onChangeAddressPickup(value) {
+      const { onChangeAddressPickup } = this.props;
+      onChangeAddressPickup(value);
+    },
+    onChangeTimePickup(value) {
+      const { onChangeTimePickup } = this.props;
+      onChangeTimePickup(value);
+    },
+    onApplyCoupon(value) {
+      const { onApplyCoupon } = this.props;
+      onApplyCoupon(value);
+    },
+    onApplyCouponInput(value) {
+      const { onApplyCouponInput } = this.props;
+      onApplyCouponInput(value);
+    },
     onShowCoupon() {
       this.setData({
         show: true,

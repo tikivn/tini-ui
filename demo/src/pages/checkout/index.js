@@ -26,6 +26,7 @@ Page({
         message: 'Informative message',
       },
       shipping_detail: {
+        type: 'edit',
         title: 'Thông tin giao hàng',
         desc: 'Địa chỉ nhận hàng',
         street: '781 ABC',
@@ -43,6 +44,24 @@ Page({
         },
         full_name: 'Nguen Van A',
         phone_number: '090 123 4567',
+      },
+      pickup_detail: {
+        type: 'edit',
+        title: 'Thông tin nhận hàng',
+        street: '781 ABC',
+        city: {
+          id: '',
+          name: 'HCM',
+        },
+        district: {
+          id: '',
+          name: 'Quận Tân Bình',
+        },
+        ward: {
+          id: '',
+          name: 'Phường 10',
+        },
+        time: new Date(),
       },
       order_summary: {
         title: 'Thông tin giao hàng',
@@ -131,7 +150,7 @@ Page({
         email: 'anh.huynh5@tiki.vn',
       },
       price_breakdown: {
-        title: 'Thông tin liên hệ',
+        title: 'Chi tiết giá',
         subtotal: 10000,
         fees: 10000,
         promotions: 10000,
@@ -152,6 +171,15 @@ Page({
         },
       },
     },
+  },
+  onChangeAddressShipping(value) {
+    console.log('onChangeAddressShipping', value);
+  },
+  onChangeAddressPickup(value) {
+    console.log('onChangeAddressPickup', value);
+  },
+  onChangeTimePickup(value) {
+    console.log('onChangeTimePickup', value);
   },
   onClose() {
     console.log('onClose');

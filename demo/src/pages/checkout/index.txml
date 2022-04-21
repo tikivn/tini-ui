@@ -1,6 +1,10 @@
 <view>
   <checkout 
+    coupons="{{coupons}}"
     configs="{{configs}}" 
+    onChangeAddressShipping="onChangeAddressShipping"
+    onChangeAddressPickup="onChangeAddressPickup"
+    onChangeTimePickup="onChangeTimePickup"
     onSubmitPayment="onSubmitPayment" 
     onApplyCoupon="onApplyCoupon"
     onApplyCouponInput="onApplyCouponInput" />

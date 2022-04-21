@@ -2,6 +2,6 @@
   "component": true,
   "componentLifeCycleV2": "YES",
   "usingComponents": {
-    "tu-button": "../tu-button/index"
+    "textfield": "@tiki.vn/tini-ui/es/textfield/index"
   }
 }

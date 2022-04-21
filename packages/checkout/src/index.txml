@@ -1,5 +1,5 @@
 <view>
-  <form onSubmit="onSubmit">
+  <form onSubmit="onSubmitPayment">
     <block tiki:if="{{configs.top_inform}}">
       <section>
         <slot name="top_inform">
@@ -11,7 +11,18 @@
     <block tiki:if="{{configs.shipping_detail}}">
       <section title="{{configs.shipping_detail.title}}">
         <slot name="shipping_detail">
-          <shipping-detail data="{{configs.shipping_detail}}" />
+          <shipping-detail onChangeAddressShipping="onChangeAddressShipping" data="{{configs.shipping_detail}}" />
+        </slot>
+      </section>
+    </block>
+
+    <block tiki:if="{{configs.pickup_detail}}">
+      <section title="{{configs.pickup_detail.title}}">
+        <slot name="pickup_detail">
+          <pickup-detail 
+            onChangeAddressPickup="onChangeAddressPickup"
+            onChangeTimePickup="onChangeTimePickup"
+            data="{{configs.pickup_detail}}" />
         </slot>
       </section>
     </block>
@@ -64,22 +75,21 @@
       </section>
     </block>
 
-    <block tiki:if="{{configs.price_breakdown}}">
-      <section title="{{configs.price_breakdown.title}}">
-        <slot name="price_breakdown">
-          <price-breakdown data="{{configs.price_breakdown}}" />
-        </slot>
-      </section>
-    </block>
-
     <block tiki:if="{{configs.footer}}">
       <slot name="footer">
-        <footer data="{{configs.footer}}" onClick="onShowCoupon" />
+        <footer 
+          data="{{configs.footer}}" 
+          onClick="onShowCoupon" />
       </slot>
     </block>
 
 
   </form>
 
-  <coupon show="{{show}}" coupons="{{coupons}}" onClose="onCloseCoupon" />
+  <coupon 
+    onApplyCoupon="onApplyCoupon"
+    onApplyCouponInput="onApplyCouponInput"
+    show="{{show}}" 
+    coupons="{{coupons}}" 
+    onClose="onCloseCoupon" />
 </view>

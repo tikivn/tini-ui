@@ -1,0 +1,35 @@
+<import-sjs from="../helper.sjs" name="{ locationFormatter, getTimeStringFromTimestamp }" />
+
+<view class="{{ className }} pickup-detail">
+  <view onTap="onChangeAddress" class="pickup-detail-item">
+    <view class="pickup-detail-left flex border-bottom">
+      <image class="block size-24" mode="aspectFit"
+        src="https://salt.tikicdn.com/ts/tiniapp/f5/ee/11/e3e95f01da7f7ae8233a342c01eb1165.png" />
+      <view class="pickup-detail-info">
+        <view class="pickup-detail-info-desc">Nhận hàng tại</view>
+        <view tiki:if="{{data.street}}" class="pickup-detail-info-address">{{locationFormatter(data)}}
+        </view>
+        <view tiki:else class="pickup-detail-info-placeholder">Thêm địa chỉ nhận hàng</view>
+      </view>
+    </view>
+    <view tiki:if="{{data.type === 'edit'}}">
+      <icon type="arrow_right" color="#808089" />
+    </view>
+  </view>
+
+  <view onTap="onChangeTime" class="pickup-detail-item">
+    <view class="pickup-detail-left flex">
+      <image class="block size-24" mode="aspectFit"
+        src="https://salt.tikicdn.com/ts/tiniapp/7f/03/4c/096922d7937fdcb7a020c614a522ab7f.png" />
+      <view class="pickup-detail-info">
+        <view class="pickup-detail-info-desc">Thời gian nhận hàng</view>
+        <view tiki:if="{{data.street}}" class="pickup-detail-info-address">{{getTimeStringFromTimestamp(data.time)}}
+        </view>
+        <view tiki:else class="pickup-detail-info-placeholder">dd/mm/yyyy, hh:ss</view>
+      </view>
+    </view>
+    <view tiki:if="{{data.type === 'edit'}}">
+      <icon type="arrow_right" color="#808089" />
+    </view>
+  </view>
+</view>

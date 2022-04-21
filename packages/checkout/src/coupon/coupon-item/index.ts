@@ -25,11 +25,8 @@ Component({
     onApplyCoupon: () => {},
   },
   methods: {
-    onApply() {
+    onApplyCoupon() {
       const { data, onApplyCoupon } = this.props;
-      this.setData({
-        show: false,
-      });
       this.props.onShowCoupon();
       onApplyCoupon(data);
     },

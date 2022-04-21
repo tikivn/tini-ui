@@ -11,6 +11,7 @@ export interface IAddressFull {
 }
 export interface IShippingDetail extends IAddressFull {
   title: string;
+  type: string;
   desc: string;
   full_name: string;
   phone_number: string;
@@ -26,6 +27,7 @@ Component({
   props: {
     className: '',
     data: {
+      type: '',
       title: '',
       desc: '',
       street: '',
@@ -47,7 +49,7 @@ Component({
     onChangeAddressShipping: () => {},
   } as ShippingDetailProps,
   methods: {
-    onChange(value) {
+    onChangeAddressShipping(value) {
       const { onChangeAddressShipping } = this.props;
       onChangeAddressShipping(value);
     },
