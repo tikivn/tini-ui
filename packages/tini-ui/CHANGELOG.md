@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.11.0...@tiki.vn/tini-ui@0.12.0) (2022-05-13)
+
+
+### Bug Fixes
+
+* change modal css ([#53](https://github.com/tikivn/tiny-ui/issues/53)) ([6203b45](https://github.com/tikivn/tiny-ui/commit/6203b458c76c0f61e804068453f5ad271f5a77e5))
+* **bottom-sheet:** fix border radius ([b6520e3](https://github.com/tikivn/tiny-ui/commit/b6520e3060a2df3a247a31f6e3f408f79e6920cc))
+* avatar center ([dbf3b8b](https://github.com/tikivn/tiny-ui/commit/dbf3b8b3aba646092a53253143865429b9288663))
+* avatar center ([3cd9488](https://github.com/tikivn/tiny-ui/commit/3cd94883a69ca0649e4d55a046ce3bab9bacacd6))
+* negative css variables ([#50](https://github.com/tikivn/tiny-ui/issues/50)) ([8fb9cb5](https://github.com/tikivn/tiny-ui/commit/8fb9cb57646e514d78eca9b36cc7e534d87d67c1))
+
+
+### Features
+
+* mode for modal image ([#52](https://github.com/tikivn/tiny-ui/issues/52)) ([5fc8ce7](https://github.com/tikivn/tiny-ui/commit/5fc8ce75de37e069f0d4e69572c03ce5e3967dbf))
+* update init value uploader ([#51](https://github.com/tikivn/tiny-ui/issues/51)) ([5c565cb](https://github.com/tikivn/tiny-ui/commit/5c565cbf190d33970e3e3bb07fee479135598161))
+* update modal + texfield + search-bar ([#47](https://github.com/tikivn/tiny-ui/issues/47)) ([ae3f889](https://github.com/tikivn/tiny-ui/commit/ae3f889ad2c424ab8e692fccc183c96a0c86d9f3))
+* uploader component ([#46](https://github.com/tikivn/tiny-ui/issues/46)) ([be21727](https://github.com/tikivn/tiny-ui/commit/be21727192e5940709643d3d48b465f16a8877bd))
+
+
+
+
+
 # [0.11.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.10.0...@tiki.vn/tini-ui@0.11.0) (2022-03-21)
 
 

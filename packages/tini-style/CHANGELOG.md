@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-style@0.11.0...@tiki.vn/tini-style@0.12.0) (2022-05-13)
+
+
+### Bug Fixes
+
+* text colors ([#45](https://github.com/tikivn/tiny-ui/issues/45)) ([bf0729e](https://github.com/tikivn/tiny-ui/commit/bf0729e00747e0d9575768750e42b591c25cb943))
+* wrong css unit ([#49](https://github.com/tikivn/tiny-ui/issues/49)) ([7a5da07](https://github.com/tikivn/tiny-ui/commit/7a5da07830c0bab900efc35a7ac27a64e038d8c0))
+
+
+### Features
+
+* update tini-style following new design tokens ([#42](https://github.com/tikivn/tiny-ui/issues/42)) ([a556b78](https://github.com/tikivn/tiny-ui/commit/a556b78c7d1c04efdc442125e3ff8496f5757297))
+
+
+
+
+
 # [0.11.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-style@0.10.0...@tiki.vn/tini-style@0.11.0) (2022-03-21)
 
 
