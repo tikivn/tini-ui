@@ -1,12 +1,21 @@
 // ======== variables ========
 @milestone-space: var(--space-stack-4x, 4px);
 @connect-line-width: var(--space-stack-4x, 4px);
-@background-progress-inactive: var(--inactive-color, var(--color-steps-progress-background-inactive));
+@background-progress-inactive: var(
+  --inactive-color,
+  var(--color-steps-progress-background-inactive)
+);
 @background-progress-active: var(--active-color, var(--color-steps-progress-background-active));
 
-@background-milestone-inactive: var(--inactive-color, var(--color-steps-milestone-background-inactive));
+@background-milestone-inactive: var(
+  --inactive-color,
+  var(--color-steps-milestone-background-inactive)
+);
 @background-milestone-active: var(--active-color, var(--color-steps-milestone-background-active));
-@background-milestone-error: var(--milestone-error-color, var(--color-steps-milestone-background-error));
+@background-milestone-error: var(
+  --milestone-error-color,
+  var(--color-steps-milestone-background-error)
+);
 @milestone-width: var(--milestone-size, var(--space-inline-16x, 16px));
 
 @step-sub-color: var(--color-steps-sub-text-default);
@@ -126,7 +135,13 @@
       max-width: calc(100% - calc(@milestone-width + 16px));
       text-align: left;
 
+      .tu-steps-label {
+        font-size: var(--font-size-base, 14px);
+      }
+
       .tu-steps-sub {
+        margin-top: var(--space-stack-4x, 4px);
+        margin-bottom: var(--space-stack-8x, 8px);
         display: block;
         .tu-steps-sub-text();
       }
