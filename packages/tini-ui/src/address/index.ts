@@ -158,22 +158,22 @@ Component({
         listCities,
       } = this.props;
 
-      const promiseAll = [this.getCities];
-      if (this.getId(city)) {
-        promiseAll.push(this.getDistricts(this.getId(city)));
-        if (this.getId(district)) {
-          promiseAll.push(this.getWards(this.getId(district)));
-        }
-      }
-
       if (isShowLoading) my.showLoading({ content: 'Đang tải...' });
 
       if (listCities) {
         this.setData({
           cities: listCities,
         });
-        console.log('aaaa');
-      } else await Promise.all(promiseAll);
+      } else {
+        const promiseAll = [this.getCities()];
+        if (this.getId(city)) {
+          promiseAll.push(this.getDistricts(this.getId(city)));
+          if (this.getId(district)) {
+            promiseAll.push(this.getWards(this.getId(district)));
+          }
+        }
+        await Promise.all(promiseAll);
+      }
 
       my.hideLoading();
 
