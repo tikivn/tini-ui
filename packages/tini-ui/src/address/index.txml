@@ -11,7 +11,7 @@
 <dropdown 
   labelText="{{cityLabel}}"
   items="{{cities}}"
-  showSearch
+  showSearch="{{!listCities}}"
   value="{{value.city}}"
   onSelect="selectCity"
   className="mb-small" 

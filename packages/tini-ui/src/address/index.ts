@@ -20,6 +20,7 @@ type AddressData = {
 
 type AddresProps = {
   firstCities: string[];
+  listCities: AddressItem[];
   // Value
   street: string;
   city: number | AddressItem;
@@ -76,6 +77,7 @@ Component({
     city: null,
     district: null,
     ward: null,
+    listCities: null,
     streetLabel: 'Địa chỉ',
     streetPlaceholder: 'Địa chỉ',
     cityLabel: 'Tỉnh / Thành phố',
@@ -153,9 +155,10 @@ Component({
         phone_number,
         showName,
         showPhone,
+        listCities,
       } = this.props;
 
-      const promiseAll = [this.getCities()];
+      const promiseAll = [this.getCities];
       if (this.getId(city)) {
         promiseAll.push(this.getDistricts(this.getId(city)));
         if (this.getId(district)) {
@@ -165,7 +168,12 @@ Component({
 
       if (isShowLoading) my.showLoading({ content: 'Đang tải...' });
 
-      await Promise.all(promiseAll);
+      if (listCities) {
+        this.setData({
+          cities: listCities,
+        });
+        console.log('aaaa');
+      } else await Promise.all(promiseAll);
 
       my.hideLoading();
 
