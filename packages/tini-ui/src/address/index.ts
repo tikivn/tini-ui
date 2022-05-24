@@ -160,20 +160,23 @@ Component({
 
       if (isShowLoading) my.showLoading({ content: 'Đang tải...' });
 
+      const promiseAll = [];
+
       if (listCities) {
         this.setData({
           cities: listCities,
         });
       } else {
-        const promiseAll = [this.getCities()];
-        if (this.getId(city)) {
-          promiseAll.push(this.getDistricts(this.getId(city)));
-          if (this.getId(district)) {
-            promiseAll.push(this.getWards(this.getId(district)));
-          }
-        }
-        await Promise.all(promiseAll);
+        promiseAll.push(this.getCities());
       }
+
+      if (this.getId(city)) {
+        promiseAll.push(this.getDistricts(this.getId(city)));
+        if (this.getId(district)) {
+          promiseAll.push(this.getWards(this.getId(district)));
+        }
+      }
+      await Promise.all(promiseAll);
 
       my.hideLoading();
 
