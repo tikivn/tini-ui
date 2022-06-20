@@ -16,6 +16,7 @@
   onSelect="selectCity"
   className="mb-small" 
   errorMsg="{{cityErrorMsg}}"
+  showNotFound
   onTap="onTapDropdown"
   onHideDropdown="onHideDropdown"
   hasError="{{!!cityErrorMsg}}"
@@ -32,6 +33,7 @@
   items="{{districts}}"
   value="{{value.district}}"
   errorMsg="{{districtErrorMsg}}"
+  showNotFound
   onTap="onTapDropdown"
   onHideDropdown="onHideDropdown"
   hasError="{{!!districtErrorMsg}}"
@@ -47,6 +49,7 @@
   items="{{wards}}"
   value="{{value.ward}}"
   errorMsg="{{wardErrorMsg}}"
+  showNotFound
   onTap="onTapDropdown"
   onHideDropdown="onHideDropdown"
   hasError="{{!!wardErrorMsg}}"

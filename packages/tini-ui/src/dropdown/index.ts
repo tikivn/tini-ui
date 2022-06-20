@@ -28,6 +28,8 @@ type DropdownProps = {
   hasError?: boolean;
   showCheck?: boolean;
   multiple?: boolean; // If true, value must be array
+  showNotFound?: boolean;
+  notFoundImage?: string;
   onTap?: (event: unknown) => void;
   onSelect?: (item: any) => void;
   onSearch?: (searchText: any) => void;
@@ -70,6 +72,9 @@ Component({
     bottomSheetDistanceFromTop: 100,
     maskClose: true,
     multiple: false,
+    showNotFound: false,
+    notFoundImage:
+      'https://salt.tikicdn.com/ts/tiniapp/58/79/5e/b6dd5791d8bcb9a96b23a694747eb1d4.png',
     onSelect: () => {},
   } as DropdownProps,
   data: {

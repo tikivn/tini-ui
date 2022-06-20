@@ -38,6 +38,7 @@
         placeholder="{{searchPlaceholder}}" />
       <scroll-view 
         scroll-y 
+        tiki:if="{{searchItems.length > 0}}"
         style="height: {{bottomSheetScrollViewHeight}}px">
         <!-- TODO: Implement slot -->
         <block tiki:if="{{$slots.dropdownItem}}">
@@ -79,6 +80,13 @@
           </view>
         </block>
       </scroll-view>
+      <view tiki:if="{{showSearch && searchText.length && !searchItems.length && showNotFound}}" class="tu-dropdown-notfound">
+        <image 
+          src="{{notFoundImage}}" 
+          class="tu-dropdown-notfound-image" />
+        <text class="tu-dropdown-notfound-title">Không có kết quả!</text>
+        <text>Vui lòng thử lại với từ khóa khác</text>
+      </view>
     </view>
     <view slot="footer">
       <view tiki:if="{{multiple}}" class="px-small py-2x-small">
