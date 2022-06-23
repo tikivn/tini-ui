@@ -29,7 +29,7 @@ Component({
   },
   props: {
     className: '',
-    topImageSize: 'lg',
+    topImageSize: 'md',
     topImageMode: 'widthFix',
     showClose: false,
     show: false,
