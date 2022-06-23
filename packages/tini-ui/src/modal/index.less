@@ -1,8 +1,6 @@
 @import '../style/mixins/hairline.less';
 @import (reference) '../style/themes/default.less';
 
-@modal-sm-image-size: 80px;
-@modal-md-image-size: 140px;
 @modal-lg-image-v-size: 156px;
 @modal-v-spacing: 20px;
 @h-spacing-large: 12px;
@@ -80,12 +78,12 @@
     border-top-right-radius: @border-radius;
     overflow: hidden;
   }
-  &-image-md &-image-element {
-    width: @modal-md-image-size;
+  &-image-md {
+    padding-top: var(--space-stack-8x);
+    padding-left: var(--space-stack-32x);
+    padding-right: var(--space-stack-32x);
   }
-  &-image-sm &-image-element {
-    width: @modal-sm-image-size;
-  }
+
   &-header {
     font-size: @font-size-title;
     font-weight: var(--font-weight-bold);

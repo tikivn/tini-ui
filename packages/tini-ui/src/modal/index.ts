@@ -6,7 +6,7 @@ type ModalButtonProps = {
 
 type ModalProps = {
   className: string;
-  topImageSize: 'lg' | 'md' | 'sm';
+  topImageSize: 'lg' | 'md';
   topImageMode: 'scaleToFill' | 'aspectFit' | 'aspectFill' | 'widthFix';
   show: boolean;
   showClose: boolean;
@@ -29,7 +29,7 @@ Component({
   },
   props: {
     className: '',
-    topImageSize: 'md',
+    topImageSize: 'lg',
     topImageMode: 'widthFix',
     showClose: false,
     show: false,
