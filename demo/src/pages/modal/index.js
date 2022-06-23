@@ -79,11 +79,6 @@ Page({
       modalOpened21: false,
     });
   },
-  openModal22() {
-    this.setData({
-      modalOpened22: true,
-    });
-  },
   onModalClick22() {
     this.setData({
       modalOpened22: false,

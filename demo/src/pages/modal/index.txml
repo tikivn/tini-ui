@@ -1,5 +1,4 @@
 <button onTap="openModal21">Image</button>
-<button onTap="openModal22">Image sm</button>
 <button onTap="openModal222">Image md</button>
 <button onTap="openModal2">Image lg</button>
 <button onTap="openModal23">Icon</button>
@@ -20,7 +19,7 @@
   topImage="https://picsum.photos/id/866/400/400.jpg"
   buttons="{{buttons}}"
 >
-  <view slot="header">Image default is "md"</view>
+  <view slot="header">Image default is "lg"</view>
   Modal content
 </modal>
 <modal
