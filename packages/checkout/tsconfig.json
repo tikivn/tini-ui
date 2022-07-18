@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "typeRoots": ["types/index.d.ts", "../../node_modules/@tiki.vn/tini-types/types/index.d.ts"]
+  },
+  "include": ["types/**/*", "src/**/*", "../../node_modules/@tiki.vn/tini-types/types"]
+}

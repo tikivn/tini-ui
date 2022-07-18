@@ -1,0 +1,21 @@
+<import-sjs from="../helper.sjs" name="{ locationFormatter, capitalizeFirstLetter }" />
+
+<view onTap="onChangeAddressShipping" class="{{ className }} shipping-detail">
+  <view class="flex">
+    <image class="block size-24" mode="aspectFit"
+      src="https://salt.tikicdn.com/ts/tiniapp/99/4b/04/68c14652284a6e68fe9f5dd804e2d8a6.png" />
+    <view class="shipping-detail-info">
+      <view class="shipping-detail-info-desc">{{data.desc}}</view>
+      <view tiki:if="{{data.street}}" class="shipping-detail-info-address">{{locationFormatter(data)}}
+      </view>
+      <view tiki:else class="shipping-detail-info-placeholder">{{capitalizeFirstLetter(`Thêm ${data.desc}`)}}</view>
+      <view>{{data.full_name}} • {{data.phone_number}}</view>
+    </view>
+  </view>
+  <view tiki:if="{{data.type === 'edit' && data.street}}">
+    <icon type="arrow_right" color="#808089" />
+  </view>
+  <view tiki:if="{{data.type === 'edit' && !data.street}}" class="shipping-detail-add" catchTap="onAddAddress">
+    Thêm
+  </view>
+</view>

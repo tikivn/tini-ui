@@ -1,0 +1,23 @@
+<import-sjs from="./helper.sjs" name="{ typeInform }" />
+
+<view style="{{style}}" class="{{className}} inform inform-{{type}} flex justify-between p-8x radius-4px">
+  <view class="flex">
+    <icon class="mr-8x" type="{{typeInform[type].icon}}" color="{{typeInform[type].color}}" />
+    <view class="inform-content">
+      <slot name="content">
+        <view class="font-bold">
+          {{title}}
+        </view>
+        <view class="flex items-center {{title ? '' : 'h-full'}}">
+          {{message}}
+        </view>
+      </slot>
+    </view>
+  </view>
+  <view class="inform-right flex items-center" onTap="_onClick">
+    <slot name="action">
+      <view tiki:if="{{action}}" class="text-brand">{{action}}</view>
+      <icon tiki:if="{{icon}}" type="{{icon}}" color="{{iconColor}}" />
+    </slot>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+{
+  "componentLifeCycleV2": "YES",
+  "component": true,
+  "usingComponents": {
+    "section": "./section/index",
+    "shipping-detail": "./shipping-detail/index",
+    "pickup-detail": "./pickup-detail/index",
+    "order-summary": "./order-summary/index",
+    "payment-method": "./payment-method/index",
+    "shipping-method": "./shipping-method/index",
+    "note-info": "./note-info/index",
+    "contact-info": "./contact-info/index",
+    "price-breakdown": "./price-breakdown/index",
+    "footer": "./footer/index",
+    "coupon": "./coupon/index",
+    "inform": "@tiki.vn/tini-ui/es/inform/index"
+  }
+}

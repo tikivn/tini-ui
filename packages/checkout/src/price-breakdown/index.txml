@@ -1,0 +1,26 @@
+<import-sjs from="../helper.sjs" name="{ moneyFormatter }" />
+<view class="{{ className }} price-breakdown">
+  <view class="price-breakdown-item border-bottom">
+    <view class="price-breakdown-item-label">Tạm tính</view>
+    <view class="price-breakdown-item-value">{{moneyFormatter(data.subtotal)}}</view>
+  </view>
+
+  <view class="price-breakdown-item border-bottom">
+    <view class="price-breakdown-item-label">Phí</view>
+    <view class="price-breakdown-item-value">{{moneyFormatter(data.fees)}}</view>
+  </view>
+
+  <view class="price-breakdown-item border-bottom">
+    <view class="price-breakdown-item-label">Giảm giá</view>
+    <view class="price-breakdown-item-value price-breakdown-item-promotions">{{moneyFormatter(data.promotions)}}</view>
+  </view>
+
+  <view class="price-breakdown-item">
+    <view class="price-breakdown-item-label price-breakdown-item-label-total">Tổng cộng</view>
+    <view>
+      <view class="price-breakdown-item-value price-breakdown-item-total">{{moneyFormatter(data.total)}}</view>
+      <view tiki:if="{{data.total_note}}" class="price-breakdown-item-value price-breakdown-item-total-note">
+        {{data.total_note}}</view>
+    </view>
+  </view>
+</view>

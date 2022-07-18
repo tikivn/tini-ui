@@ -1,0 +1,36 @@
+<import-sjs from="../helper.sjs" name="{ moneyFormatter }" />
+
+<view class="{{className}} checkout-footer">
+  <view onTap="onClick" class="checkout-footer-coupon border-bottom">
+    <view class="checkout-footer-coupon-left">
+      <image class="checkout-footer-coupon-left-image size-24" mode="aspectFit"
+        src="https://salt.tikicdn.com/ts/tiniapp/1e/72/2a/2363c59fad4f3b8a4627e999b199866b.png" />
+      <view class="checkout-footer-coupon-left-label">Mã giảm giá</view>
+    </view>
+    <view class="checkout-footer-coupon-right">
+      <view tiki:if="{{!data.coupon.amount}}">Thêm</view>
+      <view class="checkout-footer-coupon-right-amount" tiki:else>-{{moneyFormatter(data.coupon.amount)}}</view>
+      <icon type="arrow_right" color="#808089" />
+    </view>
+  </view>
+  <view tiki:if="{{data.term_condition}}" class="checkout-footer-term border-bottom">
+    <checkbox name="term" />
+    <view class="checkout-footer-term-info">
+      <text>Tôi đã đọc, hiểu và đồng ý với {{' '}}</text>
+      <text onTap="onClickLinkTerm" class="checkout-footer-term-info-link underline">Điều khoản và Điều kiện</text>
+    </view>
+  </view>
+
+  <view class="checkout-footer-cta">
+    <view class="checkout-footer-cta-wrap">
+      <view class="checkout-footer-cta-wrap-label">Tổng cộng</view>
+      <view class="checkout-footer-cta-wrap-amount">
+        <view>{{moneyFormatter(data.total)}}</view>
+        <icon type="info" size="16" color="#808089" />
+      </view>
+    </view>
+    <tu-button form-type="submit" class="w-full">
+      Thanh toán
+    </tu-button>
+  </view>
+</view>

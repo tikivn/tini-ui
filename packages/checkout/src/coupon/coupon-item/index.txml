@@ -1,0 +1,52 @@
+<import-sjs from="../../helper.sjs" name="{ getDateStringFromTimestamp }" />
+
+<view onTap="showDetail" class="{{className}} coupon-item">
+  <view class="coupon-item-wrap">
+    <image class="coupon-item-image"
+      src="https://salt.tikicdn.com/ts/tiniapp/76/c2/c6/cc23d97758a42a5fe33a77f80dd3a83b.png" />
+    <view class="coupon-item-info">
+      <view class="coupon-item-name">{{data.name}}</view>
+      <view class="coupon-item-desc">{{data.desc}}</view>
+      <view class="coupon-item-footer">
+        <view class="coupon-item-time">HSD: {{getDateStringFromTimestamp(data.expired_time)}}</view>
+        <view catchTap="onApplyCoupon">
+          <tu-button size="medium">
+            Áp dụng
+          </tu-button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<block tiki:if="{{show}}">
+  <bottom-sheet
+    onClose="onClose"
+    onClick="onApply"
+    buttonTitle="Áp dụng"
+    title="{{data.name}}"
+    distanceFromTop="{{100}}">
+    <view class="coupon-detail">
+      <view class="coupon-detail-row border-bottom">
+        <view>Mã giảm giá</view>
+        <view>{{data.name}}</view>
+      </view>
+
+      <view class="coupon-detail-row border-bottom">
+        <view>Hết hạn</view>
+        <view>{{getDateStringFromTimestamp(data.expired_time)}}</view>
+      </view>
+
+      <view class="coupon-detail-col border-bottom">
+        <view>Ưu đãi</view>
+        <view class="coupon-detail-desc">{{data.desc}}</view>
+      </view>
+
+      <view class="coupon-detail-col">
+        <view>Điều kiện áp dụng</view>
+        <view class="coupon-detail-condition">{{data.condition}}</view>
+      </view>
+    </view>
+  </bottom-sheet>
+</block>
