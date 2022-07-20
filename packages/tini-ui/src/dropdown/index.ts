@@ -97,7 +97,7 @@ Component({
     }
   },
   deriveDataFromProps({ value, labelKey, items, idKey, multiple }) {
-    const { localValue, label: localLabel } = this.data;
+    const { label: localLabel } = this.data;
     let label = localLabel;
     if (multiple) {
       label = (value || []).map((v: any) => (typeof v === 'object' ? v[labelKey] : v)).join(', ');
@@ -111,7 +111,7 @@ Component({
       this.setData({ label });
     }
 
-    if (isHasValue(value) && JSON.stringify(value) !== JSON.stringify(localValue)) {
+    if (isHasValue(value) && JSON.stringify(value) !== JSON.stringify(this.props.value)) {
       this.setData({ localValue: value });
     }
   },
