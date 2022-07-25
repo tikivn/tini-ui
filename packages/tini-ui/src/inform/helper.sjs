@@ -5,7 +5,7 @@ export const typeInform = {
     color: '#808089',
   },
   negative: {
-    icon: 'warning_glyph',
+    icon: 'warning',
     color: '#FF424F',
   },
   positive: {

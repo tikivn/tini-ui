@@ -20,6 +20,7 @@
     <calendar 
       mode="range"
       selectedDate="{{selectedDate}}"
+      tagData="{{tagData}}"
       onSelect="onSelect"
       onChange="onChange" />
   </view>

@@ -91,30 +91,13 @@ Component({
     onSelectRangeDate(item) {
       const { selectedDate } = this.data;
       let dates = [];
-      if (selectedDate.length === 0) {
+      if (!selectedDate[FROM] || selectedDate.length === 2) {
         dates = [item.timestamp];
-      }
-      if (selectedDate.length === 1) {
-        dates = [
-          Math.min(item.timestamp, selectedDate[FROM]),
-          Math.max(item.timestamp, selectedDate[FROM]),
-        ];
-      }
-      if (selectedDate.length === 2) {
-        const positionItem = checkPositionInRange(item.timestamp, selectedDate);
-        switch (positionItem) {
-          case -1: // selected - from - to
-            dates = [item.timestamp, selectedDate[TO]];
-            break;
-          case 1: //  from - to - selected
-            dates = [selectedDate[TO], item.timestamp];
-            break;
-          case 0: // from - selected - to
-            dates = [selectedDate[FROM], item.timestamp]; // case này tuỳ vào BA
-            break;
-          default:
-            break;
-        }
+      } else {
+        dates =
+          item.timestamp <= this.data.selectedDate[FROM]
+            ? [item.timestamp, this.data.selectedDate[FROM]]
+            : [this.data.selectedDate[FROM], item.timestamp];
       }
 
       this.setData({
