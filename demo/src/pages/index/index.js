@@ -97,6 +97,10 @@ Page({
         name: 'uploader',
         path: 'pages/uploader/index',
       },
+      {
+        name: 'inform',
+        path: 'pages/inform/index',
+      },
     ],
   },
   onNavigate(e) {
