@@ -1,0 +1,24 @@
+<bottom-sheet 
+  title="Quyền sử dụng thông tin"
+  buttonTitle="Tiếp tục"
+  onClick="onOk"
+  onClose="onClose"
+  show="{{show}}">
+  <view>
+    <icon type="info" color="#808089" />
+    <text>Vui lòng chọn những thông tin sẽ được sử dụng dựa trên tài khoản Tiki của bạn</text>
+  </view>
+  <view tiki:for="{{options}}" class="permission-option">
+    <view class="flex">
+      <image class="permission-icon" src="{{item.icon}}" />
+      <text>{{item.title}}</text>
+    </view>
+    <view>
+      <view>
+        <text>{{item.description}}</text>
+        <text class="permission-text">{{item.text}}</text>
+      </view>
+      <checkbox disabled />
+    </view>
+  </view>
+</bottom-sheet>

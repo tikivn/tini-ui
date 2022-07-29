@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "Leadgen",
+  "titleBarColor": "#1B6BFF",
+  "titleColor": "#fff",
+  "transparentTitle": "none",
+  "usingComponents": {
+    "leadgen": "@tiki.vn/tini-leadgen/es/leadgen/index"
+  }
+}

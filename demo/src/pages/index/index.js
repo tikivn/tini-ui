@@ -2,6 +2,11 @@ Page({
   data: {
     components: [
       {
+        name: 'leadgen',
+        path: 'pages/leadgen/index',
+      },
+
+      {
         name: 'button',
         path: 'pages/button/index',
       },

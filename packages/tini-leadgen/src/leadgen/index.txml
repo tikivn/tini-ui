@@ -1,0 +1,66 @@
+<import-sjs 
+  from="../_util/sjs.sjs" 
+  name="{isKindView, isKindInput, isKindDropdown, isKindRadio}"></import-sjs>
+
+<template name="skeleton">
+  <view />
+</template>
+
+<template name="field-view">
+  <view class="flex">
+    <text>{{field.question}}</text>
+    <text>{{field.value}}</text>
+  </view>
+</template>
+
+<template name="field-input">
+  <view class="leadgen-field" tiki:if="{{show}}">
+    <input 
+      data-field="{{field}}"
+      labelText="{{field.question}}" 
+      onInput="onChange" />
+  </view>
+</template>
+
+<template name="field-dropdown">
+  <view class="leadgen-field" tiki:if="{{show}}">
+    <dropdown
+      showSearch="{{false}}"
+      bottomSheetTitle="{{field.question}}"
+      labelKey="title"
+      idKey="value"
+      items="{{field.options}}"
+    />
+  </view>
+</template>
+
+<template name="field-radio">
+  <view class="leadgen-field" tiki:if="{{show}}">
+    <radio-group class="radio-group" onChange="onChange">
+      <view class="radio" tiki:for="{{field.options}}" key="radio-{{item.title}}">
+        <radio value="{{item.title}}" checked="{{item.selected}}" />
+        <text class="text">{{item.title}}</text>
+      </view>
+    </radio-group>
+  </view>
+</template>
+
+<block tiki:if="{{sections.length > 0}}">
+  <view tiki:for="{{sections}}">
+    <text>{{item.name}}</text>
+    <block tiki:for="{{item.fields}}" tiki:for-item="field">
+      <template data={{ show: isKindView(field), field: field }} is="field-view" />
+
+      <template data={{ show: isKindInput(field), field: field }} is="field-input" />
+
+      <template data={{ show: isKindDropdown(field), field: field }} is="field-dropdown" />
+
+      <template data={{ show: isKindRadio(field), field: field }} is="field-radio" />
+    </block>
+  </view>
+</block>
+
+<permission 
+  tiki:if="{{showPermission}}" 
+  fields="{{form.fields}}"
+  onPermissionResponse="onPermissionResponse" />
