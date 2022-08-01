@@ -101,6 +101,10 @@ Page({
         name: 'inform',
         path: 'pages/inform/index',
       },
+      {
+        name: 'progress',
+        path: 'pages/progress/index',
+      },
     ],
   },
   onNavigate(e) {

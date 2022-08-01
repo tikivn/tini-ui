@@ -1,0 +1,6 @@
+{
+  "backgroundColor": "#fff",
+  "usingComponents": {
+    "tu-progress": "@tiki.vn/tini-ui/es/tu-progress/index"
+  }
+}
