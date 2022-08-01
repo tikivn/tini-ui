@@ -1,0 +1,31 @@
+.tu-progress {
+  display: flex;
+  align-items: center;
+
+  .tu-progress-bar {
+    flex-grow: 1;
+  }
+
+  &.tu-progress-sharp .tu-progress-bar .t-progress-container {
+    border-radius: 0;
+  }
+
+  &.tu-progress-rounded .tu-progress-bar .t-progress-container {
+    border-radius: var(--radius-rounded-4px);
+  }
+
+  .t-progress-info {
+    width: 40px;
+    text-align: right;
+  }
+
+  .tu-progress-icon {
+    margin-left: var(--space-inline-12x);
+  }
+
+  .tu-progress-percent {
+    color: var(--color-progress-label-text-default);
+    font-weight: var(--font-weight-bold);
+    margin-left: var(--space-inline-12x);
+  }
+}

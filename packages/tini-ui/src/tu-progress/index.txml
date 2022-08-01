@@ -1,0 +1,20 @@
+<import-sjs from="./helper.sjs" name="{getProperties}"></import-sjs>
+
+<view style="{{style}}" class="tu-progress tu-progress-{{shape}} {{className}}">
+  <progress
+    class="tu-progress-bar"
+    strokeWidth="{{strokeWidth}}"
+    active="{{active}}"
+    show-info="{{!status && showInfo}}"
+    percent="{{percent}}"
+    background-color="{{backgroundColor}}"
+    active-color="{{getProperties(status, 'barActiveBackground', activeColor)}}"
+  />
+  <icon
+    tiki:if="{{!showPercent && (icon || getProperties(status, 'iconType'))}}"
+    class="tu-progress-icon"
+    size="{{iconSize}}"
+    type="{{icon || getProperties(status, 'iconType')}}"
+    color="{{getProperties(status, 'iconColor', iconColor)}}"
+  />
+</view>

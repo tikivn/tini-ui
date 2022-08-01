@@ -1,0 +1,16 @@
+<view class="p-medium">
+  <tu-progress class="mb-medium" shape="rounded" percent="10" show-info/>
+  <tu-progress class="mb-medium" shape="rounded" percent="20" icon="edit"/>
+  <tu-progress class="mb-medium" shape="rounded" percent="30"/>
+
+  <tu-progress class="mb-medium" shape="rounded" percent="40" status="in-progress" icon="edit"/>
+  <tu-progress class="mb-medium" shape="rounded" percent="50" status="error"/>
+  <tu-progress class="mb-medium" shape="rounded" percent="60" status="success"/>
+
+  <tu-progress class="mb-medium" shape="rounded" percent="70" show-info/>
+  <tu-progress class="mb-medium" percent="80" show-info/>
+
+  <tu-progress class="mb-medium" shape="rounded" percent="40" stroke-width="20" icon="edit" iconSize="{{30}}" iconColor="pink" active-color="pink"/>
+  <tu-progress class="mb-medium" percent="60" active-color="red"/>
+  <tu-progress class="mb-medium" percent="80" background-color="green"/>
+</view>

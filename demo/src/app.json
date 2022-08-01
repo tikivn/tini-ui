@@ -28,7 +28,8 @@
     "pages/alphabet/index",
     "pages/toast-bar/index",
     "pages/uploader/index",
-    "pages/inform/index"
+    "pages/inform/index",
+    "pages/progress/index"
   ],
   "window": {
     "defaultTitle": "Tiki Tini UI",
