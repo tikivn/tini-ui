@@ -1,9 +1,12 @@
 <button onTap="onShowToast">Show Toast</button>
+
 <toast-bar
   onClose="onCloseToast"
+  placement="bottom"
+  top="{{0}}"
   show="{{showToast}}"
   duration="{{3000}}"
-  content="Error Toast Bar"
+  content="Error Toast"
   animation="{{true}}"
-  bottom="200px"
-  type="error" />
+  type="neutral"
+/>
