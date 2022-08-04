@@ -1,4 +1,7 @@
 .tu-textfield {
+  .tu-button:hover {
+    background: none;
+  }
   @size: 40px;
   .t-input-content {
     caret-color: var(--color-input-cursor, #1a94ff);
@@ -29,6 +32,28 @@
     margin-top: var(--space-stack-4x);
   }
 
+  &.success {
+    .tu-textfield-input {
+      border-color: var(--color-alias-positive);
+    }
+  }
+
+  .tu-textfield-success-message {
+    color: var(--color-alias-positive);
+    font-size: var(--font-size-small);
+    margin-top: var(--space-stack-4x);
+  }
+
+  .tu-textfield-success-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    // NOTE: Info icon has small size than the others
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 2px;
+  }
+
   .tu-textfield-error-icon {
     position: absolute;
     width: 24px;
@@ -37,6 +62,37 @@
     top: 50%;
     transform: translateY(-50%);
     padding: 0 2px;
+  }
+
+  .tu-textfield-w-prefix {
+    position: absolute;
+    width: fit-content;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--gray20);
+    border-left: none;
+    &.text {
+      left: var(--space-inline-16x);
+      padding-right: var(--space-inline-16x);
+    }
+  }
+
+  .tu-textfield-w-suffix {
+    position: absolute;
+    width: fit-content;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    border-right: none;
+    border-left: 1px solid var(--gray20);
+    &.button {
+      right: 0;
+    }
+    &.text {
+      padding-left: var(--space-inline-16x);
+      right: var(--space-inline-16x);
+    }
   }
 
   .tu-textfield-icon {

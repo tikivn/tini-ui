@@ -23,6 +23,8 @@
 
     <textfield placeholder="Error" hasError errorMsg="This is error message" />
 
+    <textfield placeholder="Success" hasSuccess successMsg="This is success message" />
+
     <textfield placeholder="Icon" iconRight="calendar" hasError errorMsg="This is error message" />
 
     <textfield shape="pill" placeholder="Icon" iconRight="calendar" hasError errorMsg="This is error message" />
@@ -30,6 +32,8 @@
     <textfield placeholder="Square" shape="square" />
 
     <textfield onInput="onInput" placeholder="Circle" shape="circle" />
+
+    <textfield prefix="button" onInput="onInput" placeholder="Prefix Button" shape="circle" />
 
     <textfield disabled labelText="Hello"/>
 
