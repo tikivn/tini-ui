@@ -6,9 +6,24 @@
   loading="{{loading}}"
   formType="{{formType}}"
   disabled="{{disabled}}"
-  class="tu-button {{className || '' }} {{type}} {{shape}} {{size}} {{skeleton ? 'skeleton' : ''}} {{!skeleton && loading && 'loading' || ''}}"> 
+  class="tu-button {{className || '' }} {{type}} {{shape}} {{size}} {{skeleton ? 'skeleton' : ''}} {{!skeleton && loading && 'loading' || ''}}">
   <icon tiki:if="{{iconName && !loading}}" 
-    type="{{iconName}}" 
-    class="tu-button-icon tu-button-icon-{{size}}"/>
-   <slot tiki:if="{{shape !== 'circle' && shape !== 'square'}}" />
+      type="{{iconName}}" 
+      class="tu-button-icon tu-button-icon-{{size}}"/> 
+  <view tiki:elif="{{!skeleton}}" class="tu-button-content">
+    <icon
+      tiki:if="{{leadingIcon}}"
+      type="{{leadingIcon}}" 
+      color="{{leadingIconColor}}"
+      style="margin-right: var(--space-inline-8x);"
+      class="tu-button-icon tu-button-icon-{{size}}"/>
+    <slot tiki:if="{{shape !== 'circle' && shape !== 'square'}}" />
+
+    <icon
+      tiki:if="{{trailingIcon}}"
+      type="{{trailingIcon}}" 
+      color="{{trailingIconColor}}"
+      style="margin-left: var(--space-inline-8x);"
+      class="tu-button-icon tu-button-icon-{{size}}"/>
+  </view>
 </button>

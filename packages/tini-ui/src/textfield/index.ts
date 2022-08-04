@@ -1,6 +1,7 @@
 import fmtClass from '../_util/fmtClass';
 import fmtEvent from '../_util/fmtEvent';
 import { debounce } from '../_util/debounce';
+import { selectAsync } from '../_util/query';
 
 type LabelInputProps = {
   labelCls?: string;
@@ -15,11 +16,15 @@ type InputProps = {
   iconLeft?: string;
   iconColor?: string;
   shape?: 'pill' | 'rounded';
+  prefix?: 'text' | 'button' | '';
+  suffix?: 'text' | 'button' | '';
   loading?: boolean;
   inputCls?: string;
   className?: string;
   errorMsg?: string;
   hasError?: boolean;
+  successMsg?: string;
+  hasSuccess?: boolean;
   readOnly?: boolean;
   // showErrorIcon?: boolean;
 
@@ -50,6 +55,8 @@ Component({
     paddingHorizontal: 16,
     iconDisabledColor: 'var(--color-input-icon-disabled)',
     wrapClass: '',
+    prefixWidth: 24,
+    suffixWidth: 24,
   },
   props: {
     // Label props
@@ -69,10 +76,15 @@ Component({
     inputCls: '',
     className: '',
     errorMsg: '',
+    successMsg: '',
     readonly: false,
     // showErrorIcon: true,
     hasError: false,
+    hasSuccess: false,
     errorIconColor: '#ff424f',
+    successIconColor: '#00AB56',
+    prefix: '',
+    suffix: '',
 
     // Input props
     type: 'text',
@@ -95,8 +107,21 @@ Component({
     onFocus: undefined,
     onBlur: undefined,
   } as ITextfieldComponentProps,
-  onInit() {
+  async onInit() {
+    const { prefix, suffix } = this.props;
     this.onInput = debounce(this.onInput.bind(this), this.props.debounce);
+    if (prefix)
+      selectAsync(`#tu-textfield-prefix`).then((prefix) => {
+        this.setData({
+          prefixWidth: prefix.width,
+        });
+      });
+    if (suffix)
+      selectAsync(`#tu-textfield-suffix`).then((suffix) => {
+        this.setData({
+          suffixWidth: suffix.width,
+        });
+      });
 
     this.setData({
       wrapClass: this.getWrapClass(this.props),
@@ -111,16 +136,21 @@ Component({
   },
   methods: {
     getWrapClass(props) {
-      const { shape, hasError } = props;
+      const { shape, hasError, hasSuccess } = props;
       const ret = fmtClass({
         ['error']: hasError,
+        ['success']: hasSuccess,
         ['rounded']: shape === 'rounded',
         ['pill']: shape === 'pill',
       });
       return ret;
     },
     isClassChange(prevProps, nextProps) {
-      return prevProps.shape !== nextProps.shape || prevProps.hasError !== nextProps.hasError;
+      return (
+        prevProps.shape !== nextProps.shape ||
+        prevProps.hasError !== nextProps.hasError ||
+        prevProps.hasSuccess !== nextProps.hasSuccess
+      );
     },
     onEvent(eventName, event) {
       const eventFunc = this.props[eventName];

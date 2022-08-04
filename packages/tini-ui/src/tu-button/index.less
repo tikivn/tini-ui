@@ -10,6 +10,11 @@
   width: var(--component-size-small);
   height: var(--component-size-small);
 }
+.tu-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .tu-button-icon-large {
   * {
     width: var(--icon-size-large);
@@ -34,7 +39,14 @@
 }
 
 .tu-button {
+  display: flex;
   border-radius: var(--border-radius-rounded-4px);
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &-icon {
     * {
@@ -49,13 +61,16 @@
     border-radius: var(--border-radius-rounded-4px);
 
     &.large {
-      &:extend(.size-large, .no-padding-horizontal);
+      &:extend(.size-large,
+      .no-padding-horizontal);
     }
     &.medium {
-      &:extend(.size-medium, .no-padding-horizontal);
+      &:extend(.size-medium,
+      .no-padding-horizontal);
     }
     &.small {
-      &:extend(.size-small, .no-padding-horizontal);
+      &:extend(.size-small,
+      .no-padding-horizontal);
     }
   }
   &.pill {
@@ -65,18 +80,21 @@
     border-radius: 50%;
 
     &.large {
-      &:extend(.size-large, .no-padding-horizontal);
+      &:extend(.size-large,
+      .no-padding-horizontal);
     }
     &.medium {
-      &:extend(.size-medium, .no-padding-horizontal);
+      &:extend(.size-medium,
+      .no-padding-horizontal);
     }
     &.small {
-      &:extend(.size-small, .no-padding-horizontal);
+      &:extend(.size-small,
+      .no-padding-horizontal);
     }
   }
 
   &.skeleton {
-    background-color: var(--background-button-solid-disable);
+    background-color: var(--color-alias-skeleton);
     pointer-events: none;
     color: var(--color-global-black);
     border: none;

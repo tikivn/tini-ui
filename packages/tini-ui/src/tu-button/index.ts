@@ -4,7 +4,11 @@ type ButtonProps = {
   className?: string;
   style?: string;
   iconName?: string;
-  shape?: 'pill' | 'rounded' | 'circle' | 'square';
+  leadingIcon?: string;
+  trailingIcon?: string;
+  leadingIconColor?: string;
+  trailingIconColor?: string;
+  shape?: 'pill' | 'rounded' | 'circle';
   size?: 'medium' | 'small' | 'large';
   formType?: 'submit' | 'reset';
   skeleton?: boolean;
@@ -19,6 +23,10 @@ Component({
     type: 'solid',
     shape: 'rounded',
     size: 'large',
+    leadingIcon: '',
+    trailingIcon: '',
+    leadingIconColor: '#fff',
+    trailingIconColor: '#fff',
     skeleton: false,
     loading: false,
     disabled: false,
