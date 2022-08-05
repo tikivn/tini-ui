@@ -12,12 +12,14 @@ type LabelInputProps = {
   labelText?: string;
 };
 type InputProps = {
-  iconRight?: string;
-  iconLeft?: string;
+  trailingIcon?: string;
+  leadingIcon?: string;
   iconColor?: string;
   shape?: 'pill' | 'rounded';
   prefix?: 'text' | 'button' | '';
   suffix?: 'text' | 'button' | '';
+  prefixContent: string;
+  suffixContent: string;
   loading?: boolean;
   inputCls?: string;
   className?: string;
@@ -68,8 +70,8 @@ Component({
     labelText: '',
 
     // Extra props
-    iconRight: '',
-    iconLeft: '',
+    trailingIcon: '',
+    leadingIcon: '',
     iconColor: 'var(--color-input-icon-default)',
     shape: 'rounded',
     loading: false,
@@ -85,6 +87,8 @@ Component({
     successIconColor: '#00AB56',
     prefix: '',
     suffix: '',
+    prefixContent: '',
+    suffixContent: '',
 
     // Input props
     type: 'text',
@@ -162,11 +166,11 @@ Component({
     onTap(e) {
       this.onEvent('onTap', e);
     },
-    onTapIconLeft(e) {
-      this.onEvent('onTapIconLeft', e);
+    onTapLeadingIcon(e) {
+      this.onEvent('onTapLeadingIcon', e);
     },
-    onTapIconRight(e) {
-      this.onEvent('onTapIconRight', e);
+    onTapTrailingIcon(e) {
+      this.onEvent('onTapTrailingIcon', e);
     },
     onBlur(e) {
       this.onEvent('onBlur', e);

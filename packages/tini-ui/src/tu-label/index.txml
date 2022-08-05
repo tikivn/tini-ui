@@ -1,6 +1,7 @@
 <label className="{{className}}" class="tu-label">
   <block tiki:if="{{loading}}">
     <view class="tu-label-loading" />
+    <view tiki:if="{{helperText}}" class="tu-label-helper-loading" />
   </block>
   <block tiki:else>
     <view tiki:if="{{`${text}`.length > 0 || showBadge || icon}}" 

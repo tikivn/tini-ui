@@ -1,14 +1,14 @@
 <template name="prefix">
   <view id="tu-textfield-prefix" class="tu-textfield-w-prefix {{type}}">
-    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">Button</button>
-    <text tiki:else onTap="onTap">Label</text>
+    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">{{prefixContent}}</button>
+    <text tiki:else onTap="onTap">{{prefixContent}}</text>
   </view>
 </template>
 
 <template name="suffix">
   <view id="tu-textfield-suffix" class="tu-textfield-w-suffix {{type}}">
-    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">Button</button>
-    <text tiki:else onTap="onTap">Label</text>
+    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">{{suffixContent}}</button>
+    <text tiki:else onTap="onTap">{{suffixContent}}</text>
   </view>
 </template>
 <view class="tu-textfield {{wrapClass}} {{className}}" onTap="onTap">
@@ -25,19 +25,19 @@
     <view class="tu-textfield-inline">
       <view class="tu-textfield-loading" tiki:if="{{loading && !disabled}}">
         <view class="tu-textfield-loading-inline">
-          <view class="tu-textfield-loading-inline-icon left" tiki:if="{{iconLeft}}" />
+          <view class="tu-textfield-loading-inline-icon left" tiki:if="{{leadingIcon}}" />
           <view class="tu-textfield-loading-inline-input" />
-          <view class="tu-textfield-loading-inline-icon right" tiki:if="{{iconRight}}" />
+          <view class="tu-textfield-loading-inline-icon right" tiki:if="{{trailingIcon}}" />
         </view>
       </view>
       <block tiki:if="{{prefix}}">
-        <template is="prefix" data="{{type: prefix}}"/>
+        <template is="prefix" data="{{type: prefix, prefixContent }}"/>
       </block>
       <input
         class="tu-textfield-input {{inputCls}}"
         style="
-          padding-left: {{paddingHorizontal + (prefix === 'text' ? 8 : 0) + (prefix ? prefixWidth : (iconLeft ? 28 : 0))}}px;
-          padding-right: {{paddingHorizontal + (suffix === 'text' ? 8 : 0) + (suffix ? suffixWidth : ((hasError || hasSuccess ? 20 : 0) + (iconRight ? 20 : 0) + ((hasError || hasSuccess) && iconRight ? 8 : 0)))}}px;"
+          padding-left: {{paddingHorizontal + (prefix === 'text' ? 8 : 0) + (prefix ? prefixWidth : (leadingIcon ? 28 : 0))}}px;
+          padding-right: {{paddingHorizontal + (suffix === 'text' ? 8 : 0) + (suffix ? suffixWidth : ((hasError || hasSuccess ? 20 : 0) + (trailingIcon ? 20 : 0) + ((hasError || hasSuccess) && trailingIcon ? 8 : 0)))}}px;"
         value="{{loading ? '':value}}" 
         name="{{name}}" 
         type="{{type}}" 
@@ -55,31 +55,31 @@
         onBlur="onBlur"
         controlled="{{controlled}}" />
       <block tiki:if="{{suffix}}">
-        <template is="suffix" data="{{type: suffix}}"/>
+        <template is="suffix" data="{{type: suffix, suffixContent}}"/>
       </block>
       <tu-icon class="tu-textfield-error-icon" 
         tiki:if="{{hasError}}" 
         color="{{errorIconColor}}" 
-        style="right: {{iconRight ? paddingHorizontal * 2 + 4 : 8}}px"
+        style="right: {{trailingIcon ? paddingHorizontal * 2 + 4 : 8}}px"
         type="info" />
       <view
         class="tu-textfield-success-icon"
-        style="right: {{iconRight ? paddingHorizontal * 2 + 4 : 8}}px;">
+        style="right: {{trailingIcon ? paddingHorizontal * 2 + 4 : 8}}px;">
         <image 
           style="width: 24px; height: 24px;"
           tiki:if="{{hasSuccess}}"  
           src="https://salt.tikicdn.com/ts/tiniapp/37/b7/fc/4c96567a1010fb43da32b555d0a389c7.png" />
       </view>
       <tu-icon class="tu-textfield-icon left" 
-        tiki:if="{{iconLeft && !loading}}" 
-        onTap="onTapIconLeft"
+        tiki:if="{{leadingIcon && !loading}}" 
+        onTap="onTapLeadingIcon"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
-        type="{{loading ? 'no-icon':iconLeft}}" />
+        type="{{loading ? 'no-icon':leadingIcon}}" />
       <tu-icon class="tu-textfield-icon right" 
-        tiki:if="{{iconRight && !loading}}" 
-        onTap="onTapIconRight"
+        tiki:if="{{trailingIcon && !loading}}" 
+        onTap="onTapTrailingIcon"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
-        type="{{iconRight}}" />
+        type="{{trailingIcon}}" />
     </view>
     <text class="tu-textfield-error-message" tiki:if="{{hasError && errorMsg}}">{{errorMsg}}</text>
     <text class="tu-textfield-success-message" tiki:if="{{hasSuccess && successMsg}}">{{successMsg}}</text>

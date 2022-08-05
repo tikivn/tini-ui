@@ -33,7 +33,7 @@
 
     <textfield onInput="onInput" placeholder="Circle" shape="circle" />
 
-    <textfield prefix="button" onInput="onInput" placeholder="Prefix Button" shape="circle" />
+    <textfield prefixContent="Button" prefix="button" onInput="onInput" placeholder="Prefix Button" shape="circle" />
 
     <textfield disabled labelText="Hello"/>
 
