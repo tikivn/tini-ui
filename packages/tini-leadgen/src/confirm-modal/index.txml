@@ -1,0 +1,21 @@
+<modal
+  zIndex="{{3}}"
+  show="{{show}}"
+  showClose="{{false}}"
+  mask
+  onModalClose="onCancel">
+  
+  <view class="leadgen-modal-header">
+    <text class="leadgen-modal-title">{{title}}</text>
+    <text class="leadgen-modal-description">{{description}}</text>
+  </view>
+
+  <view class="leadgen-modal-content" slot="footer">
+    <tu-button type="outline" shape="pill" onTap="onCancel">
+      {{cancelText}}
+    </tu-button>
+    <tu-button shape="pill" onTap="onOk">
+      {{okText}}
+    </tu-button>
+  </view>
+</modal>

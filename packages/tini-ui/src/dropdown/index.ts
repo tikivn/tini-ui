@@ -2,6 +2,7 @@ import { isHasValue } from '../_util/validate';
 import { debounce } from '../_util/debounce';
 import compareNormalize from '../_util/search';
 import { getSystemInfoAsync } from '../_util/system';
+import fmtEvent from '../_util/fmtEvent';
 
 type DropdownProps = {
   placeholder?: string;
@@ -193,6 +194,11 @@ Component({
       const { multiple, value, idKey, closeAfterSelect, onSelect } = this.props;
       const { localValue } = this.data;
       const { item } = event.target.dataset;
+      let target = null,
+        currentTarget = null;
+      const formatEvent = fmtEvent(this.props, event) || ({} as any);
+      target = formatEvent.target;
+      currentTarget = formatEvent.currentTarget;
 
       if (multiple) {
         const existedIndex = (localValue as any[]).findIndex((v) =>
@@ -210,7 +216,7 @@ Component({
         (typeof item === 'object' && item[idKey] !== value[idKey])
       ) {
         this.setData({ localValue: item }, () => {
-          onSelect(item);
+          onSelect({ ...item, target, currentTarget });
           closeAfterSelect && this.hideBottomSheet();
         });
       }

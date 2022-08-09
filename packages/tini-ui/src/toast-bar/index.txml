@@ -26,9 +26,11 @@
       tiki:if="{{actionText}}">
       {{actionText}}
     </view>
-    <view class="tu-toast-bar-devider" />
-    <view class="tu-toast-bar-close-wrapper" onTap="onTapClose">
-      <icon size="{{20}}" type="{{closeIcon}}" color="{{textColor}}" />
-    </view>
+    <block tiki:if="{{showCloseIcon}}">
+      <view class="tu-toast-bar-devider" />
+      <view class="tu-toast-bar-close-wrapper" onTap="onTapClose">
+        <icon size="{{20}}" type="{{closeIcon}}" color="{{textColor}}" />
+      </view>
+    </block>
   </view>
 </view>

@@ -14,10 +14,11 @@
     "tiniapp",
     "tiki-miniapp",
     "tini",
-    "tini-ui"
+    "tini-ui",
+    "tini-leadgen"
   ],
   "scripts": {
-    "clean": "rm -rf es ../../demo/node_module/@tiki.vn/tini-ui",
+    "clean": "rm -rf es ../../demo/node_module/@tiki.vn/tini-leadgen",
     "dev": "yarn clean && node scripts/compiler.js",
     "build": "yarn clean && NODE_ENV=production node scripts/compiler.js",
     "pub": "npm run build && node scripts/pub.js"

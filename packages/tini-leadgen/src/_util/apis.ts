@@ -37,6 +37,11 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
         rule
         rule_time
         created_at
+        sections {
+          id
+          name
+          index
+        }
         fields {
           ... on ParagraphField {
             question
@@ -48,6 +53,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
               source
               field
             }
+            section_id
             pValue: value
           }
           ... on NumberField {
@@ -63,6 +69,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
             nMin: min
             nMax: max
             nValue: value
+            section_id
           }
           ... on DatetimeField {
             question
@@ -77,6 +84,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
             dtMin: min
             dtMax: max
             dtValue: value
+            section_id
           }
            ... on FileField {
             question
@@ -90,6 +98,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
               field
             }
             fValue: value
+            section_id
           }
           ... on MultipleChoiceField {
             question
@@ -106,6 +115,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
               selected
             }
             mValue: value
+            section_id
           }
           ... on DropdownField {
             question
@@ -122,6 +132,7 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
               selected
             }
             dValue: value
+            section_id
           }
            ... on CheckboxField {
             question
@@ -138,12 +149,17 @@ export const getForm = async ({ id }: { id: string }): Promise<leadgen.Form> => 
               selected
             }
             cValue: value
+            section_id
           }
         }
       }
     }`;
     const rs = await graphql(query, { id });
-    return rs.form_get;
+    const form = rs.form_get;
+    return {
+      ...form,
+      fields: form.fields.map((field: leadgen.Field, _index: number) => ({ ...field, _index })),
+    };
   } catch (error) {
     console.error('Get Form Error', error);
     return null;

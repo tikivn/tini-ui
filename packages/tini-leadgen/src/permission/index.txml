@@ -4,21 +4,27 @@
   onClick="onOk"
   onClose="onClose"
   show="{{show}}">
-  <view>
-    <icon type="info" color="#808089" />
-    <text>Vui lòng chọn những thông tin sẽ được sử dụng dựa trên tài khoản Tiki của bạn</text>
-  </view>
-  <view tiki:for="{{options}}" class="permission-option">
-    <view class="flex">
-      <image class="permission-icon" src="{{item.icon}}" />
-      <text>{{item.title}}</text>
-    </view>
-    <view>
-      <view>
-        <text>{{item.description}}</text>
-        <text class="permission-text">{{item.text}}</text>
+  <view class="permission-container">
+    <inform 
+      className="permission-inform"
+      message="Vui lòng chọn những thông tin sẽ được sử dụng dựa trên tài khoản Tiki của bạn" />
+    <view tiki:for="{{options}}" class="permission-option">
+      <view class="flex">
+        <image class="permission-icon" src="{{item.icon}}" />
+        <view class="permission-content">
+          <text class="permission-title">{{item.title}}</text>
+          <text class="permission-description">{{item.description}}</text>
+          <text class="permission-text">{{item.text}}</text>
+          <inform 
+            tiki:if="{{showEkycFail && index === 0}}"
+            type="negative"
+            className="permission-error"
+            message="Bạn chưa hoàn thành xác thực tài khoản. Xin vui lòng xác thực tài khoản trước khi tiếp tục" />
+        </view>
       </view>
-      <checkbox disabled />
+      <view class="permission-checkbox">
+        <checkbox disabled checked />
+      </view>
     </view>
   </view>
 </bottom-sheet>

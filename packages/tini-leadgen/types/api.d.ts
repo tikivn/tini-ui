@@ -33,14 +33,23 @@ declare namespace my {
     ward_code: string;
   };
 
-  type GetKYCDataOptions = {
-    form_id: string;
+  type APIReturn = {
     success?: (res?: eKYCData) => void;
     fail?(res: { error: any }): void;
     complete?(): void;
   };
 
+  type GetKYCDataParams = APIReturn & {
+    form_id: string;
+  };
+
+  type SubmitFormParams = APIReturn & {
+    form_urn: string;
+    inputs: string;
+  };
+
   const leadgen: {
-    getKYCData: (options: GetKYCDataOptions) => void;
+    getKYCData: (params: GetKYCDataParams) => void;
+    submitForm: (params: SubmitFormParams) => void;
   };
 }

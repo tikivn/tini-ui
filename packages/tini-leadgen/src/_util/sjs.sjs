@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 export const isKindView = (field) => {
-  return field.source.field === 'ekyc' || (field.source.field !== 'ekyc' && field.value);
+  // return field.source.source === 'ekyc' || (field.source.source !== 'ekyc' && field.value);
+  return field.source.source === 'ekyc';
 };
 
 export const isKindInput = (field) => {
@@ -14,4 +15,12 @@ export const isKindDropdown = (field) => {
 
 export const isKindRadio = (field) => {
   return ['multiple_choice'].includes(field.kind);
+};
+
+export const isKindCheckbox = (field) => {
+  return ['checkbox'].includes(field.kind);
+};
+
+export const isKindAddress = (field) => {
+  return field.kind === 'paragraph' && field.custom_kind === 'address';
 };

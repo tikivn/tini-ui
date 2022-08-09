@@ -111,4 +111,10 @@ Page({
   onNavigate(e) {
     my.navigateTo({ url: e.target.dataset.item.path });
   },
+  onLoad() {
+    
+  },
+  onPageScroll() {
+    console.log('scroll')
+  },
 });

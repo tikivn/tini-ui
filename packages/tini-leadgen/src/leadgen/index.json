@@ -3,6 +3,10 @@
   "usingComponents": {
     "textfield": "@tiki.vn/tini-ui/es/textfield/index",
     "dropdown": "@tiki.vn/tini-ui/es/dropdown/index",
-    "permission": "../permission/index"
+    "address": "@tiki.vn/tini-ui/es/address/index",
+    "tu-button": "@tiki.vn/tini-ui/es/tu-button/index",
+    "toast-bar": "@tiki.vn/tini-ui/es/toast-bar/index",
+    "permission": "../permission/index",
+    "confirm-modal": "../confirm-modal/index"
   }
 }

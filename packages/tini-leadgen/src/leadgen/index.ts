@@ -5,19 +5,44 @@ type LeadgenProps = {
   onRejectPermission?: () => void;
 };
 
+type Address = { city: number; district: number; ward: number; street: string };
+
 type LeadgenData = {
   form: null | leadgen.Form;
   showPermission: boolean;
   sections: leadgen.Section[];
+  addresses: Address | [];
+  showSkeleton: boolean;
+  showUpdatePhone: boolean;
+  showEkycFail: boolean;
+  showLoginFail: boolean;
+  showSubmitModal: boolean;
+  showToastSubmitFail: boolean;
 };
 
 type LeadgenMethods = {
+  eKYCData: my.eKYCData;
   checkLogIn: () => void;
   getForm: () => void;
   getEKYCData: () => void;
   onPermissionResponse: (response: boolean) => void;
+  onChangeField: (event: any) => void;
+  onChangeAddress: (event: any) => void;
+  onChangeDropdown: (event: any) => void;
+  onChangeFieldValue: (field: leadgen.Field, value: any) => void;
   login: () => void;
+  onNext: () => void;
+  onSubmit: () => void;
+  onCancelSubmit: () => void;
   buildForm: (ekYCData?: my.eKYCData) => void;
+  validateEkyc: (ekYCData?: my.eKYCData) => boolean;
+  validateForm: () => boolean;
+  onGetAddressBook: (event: any) => void;
+  onOkUpdatePhone: () => void;
+  onCancelUpdatePhone: () => void;
+  onCloseLogin: () => void;
+  onRetryLogin: () => void;
+  onCloseToastSubmitFail: () => void;
 };
 
 Component<LeadgenData, LeadgenProps, LeadgenMethods>({
@@ -28,6 +53,13 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     showPermission: false,
     form: null,
     sections: [],
+    addresses: [],
+    showSkeleton: true,
+    showUpdatePhone: false,
+    showEkycFail: false,
+    showLoginFail: false,
+    showSubmitModal: false,
+    showToastSubmitFail: false,
   },
   didMount() {
     if (this.props.id) {
@@ -37,6 +69,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     }
   },
   methods: {
+    eKYCData: null,
     async getForm() {
       try {
         const form = await getForm({ id: this.props.id });
@@ -61,7 +94,6 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
       });
     },
     onPermissionResponse(response: boolean) {
-      this.setData({ showPermission: false });
       if (response) {
         this.checkLogIn();
       } else {
@@ -70,160 +102,231 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
       }
     },
     login() {
-      my.login({
-        success: (res) => {
-          this.setData({ showPermission: true });
-        },
-        fail: (res) => {},
-      });
+      if (my.canIUse('login')) {
+        my.login({
+          success: (res: any) => {
+            if (res && res.isLoggedIn) {
+              this.getEKYCData();
+            } else {
+              this.setData({ showLoginFail: true });
+            }
+          },
+          fail: (err: any) => {
+            console.error(err);
+            this.setData({ showLoginFail: true });
+          },
+        });
+      } else {
+        // TODO: Handle fallback
+      }
     },
     getEKYCData() {
+      // TODO: Handle error
+      if (!my.leadgen) {
+        return;
+      }
       my.leadgen.getKYCData({
         form_id: this.data.form.id,
-        success: (rs) => {
-          console.log('rs :>> ', rs);
-          if (rs.verified_level < 1) {
+        success: (ekyc) => {
+          console.log('ekyc :>> ', ekyc);
+          this.setData({ showEkycFail: true });
+          if (ekyc.verified_level < 1) {
             // TODO: Navigate to ekyc
-          } else {
-            this.buildForm(rs);
+            this.setData({ showEkycFail: true });
+          } else if (this.validateEkyc(ekyc)) {
+            this.buildForm(ekyc);
+            // this.setData({ showPermission: false, showSkeleton: false });
           }
         },
         fail: (err: any) => {
-          console.log('err :>> ', err);
-          this.buildForm();
+          console.error(err);
+          this.setData({ showEkycFail: true });
         },
       });
+    },
+    validateEkyc(ekYCData?: my.eKYCData) {
+      if (!ekYCData) {
+        return false;
+      }
+
+      const { phone } = ekYCData;
+
+      if (!phone) {
+        this.setData({ showUpdatePhone: true });
+        return false;
+      }
+
+      return true;
     },
     buildForm(ekYCData?: my.eKYCData) {
-      const sections: leadgen.AppSection[] = [
-        {
-          id: '1',
-          name: 'Thông tin cá nhân',
-          index: 0,
-          fields: this.data.form.fields.map((f) => ({
-            ...f,
-            value: ekYCData && ekYCData[f.source.field] ? ekYCData[f.source.field] : '',
+      const { form } = this.data;
+      this.eKYCData = ekYCData;
+      const sections: leadgen.AppSection[] = form.sections.map((section) => ({
+        ...section,
+        fields: form.fields
+          .filter((field) => field.section_id === section.id)
+          .map((field) => ({
+            ...field,
+            value: ekYCData && ekYCData[field.source.field] ? ekYCData[field.source.field] : '',
           })),
+      }));
+      console.log('sections :>> ', sections);
+      this.setData({ sections, showSkeleton: false, showPermission: false, showLoginFail: false });
+    },
+    onOkUpdatePhone() {
+      this.setData({ showUpdatePhone: false });
+      my.openDeeplink({
+        url: 'tikivn://account',
+        success: (res) => {
+          console.log(res);
         },
-      ];
-      console.log('sections :>> ', JSON.stringify(sections));
-      // this.setData({ sections });
-      this.setData({
-        sections: [
-          {
-            id: '1',
-            name: 'Thông tin cá nhân',
-            index: 0,
-            fields: [
-              {
-                question: 'Họ và tên',
-                kind: 'paragraph',
-                required: true,
-                custom_kind: null,
-                source: { source: 'ekyc', field: 'full_name' },
-                pValue: null,
-                value: 'NGUYỄN VŨ HƯNG',
-              },
-              {
-                question: 'Tuổi của bạn?',
-                kind: 'number',
-                required: false,
-                custom_kind: null,
-                source: { source: 'input', field: '' },
-                nMin: 1,
-                nMax: 100,
-                nValue: null,
-                value: '',
-              },
-              {
-                question: 'Pi?',
-                kind: 'number',
-                required: false,
-                custom_kind: null,
-                source: { source: 'input', field: '' },
-                nMin: 3,
-                nMax: 4,
-                nValue: null,
-                value: '',
-              },
-              {
-                question: 'Hình đại diện?',
-                kind: 'file',
-                required: false,
-                sub_kind: '',
-                custom_kind: '',
-                source: { source: 'input', field: '' },
-                fValue: null,
-                value: '',
-              },
-              {
-                question: 'Ngày sinh',
-                kind: 'datetime',
-                required: true,
-                custom_kind: null,
-                source: { source: 'ekyc', field: 'dob' },
-                dtMin: null,
-                dtMax: null,
-                dtValue: null,
-                value: '17/11/1992',
-              },
-              {
-                question: 'Giới tính',
-                kind: 'multiple_choice',
-                required: true,
-                custom_kind: null,
-                source: { source: 'input', field: '' },
-                options: [
-                  { value: 'male', title: 'Name', selected: false },
-                  { value: 'female', title: 'Nữ', selected: false },
-                  { value: 'other', title: 'Khác', selected: false },
-                ],
-                mValue: null,
-                value: '',
-              },
-              {
-                question: 'Số xe mà bạn có?',
-                kind: 'dropdown',
-                required: true,
-                custom_kind: null,
-                source: { source: 'input', field: '' },
-                options: [
-                  { value: '1', title: '1', selected: false },
-                  { value: '2', title: '2', selected: false },
-                  { value: '3', title: '3', selected: false },
-                ],
-                dValue: null,
-                value: '',
-              },
-              {
-                question: 'Sở thích lúc rãnh rỗi?',
-                kind: 'checkbox',
-                required: true,
-                custom_kind: null,
-                source: { source: 'input', field: '' },
-                options: [
-                  { value: 'Đọc sách', title: 'Đọc sách', selected: false },
-                  { value: 'Đá banh', title: 'Đá banh', selected: false },
-                ],
-                cValue: null,
-                value: '',
-              },
-              {
-                question: 'Địa chỉ của bạn?',
-                kind: 'paragraph',
-                required: true,
-                custom_kind: 'address',
-                source: { source: 'input', field: '' },
-                pValue: null,
-                value: '',
-              },
-            ],
-          },
-        ] as any,
+        fail: (e) => {
+          console.log(e);
+        },
       });
     },
+    onCancelUpdatePhone() {
+      this.setData({ showUpdatePhone: false });
+    },
+    onGetAddressBook(event) {
+      // TODO: Confirm permission
+      my.getAddress({
+        success: (result: any) => {
+          const address = {
+            city: result.city_id,
+            ward: result.ward_id,
+            district: result.district_id,
+            street: result.street,
+          };
+          const { street, ward, district, city } = result;
+          const value = [street, ward.name, district.name, city.name].join(', ');
+          const field = event.target.dataset.field;
+
+          this.onChangeFieldValue(field, value);
+          this.setData({ [`addresses.${field._index}`]: address });
+        },
+        fail: (error: any) => {
+          console.error(error);
+        },
+      });
+    },
+    onCloseLogin() {
+      this.setData({ showLoginFail: false });
+    },
+    onRetryLogin() {
+      this.login();
+    },
+    onChangeFieldValue(_field: leadgen.Field, value: any) {
+      const { form } = this.data;
+      const field = form.fields[_field && _field._index];
+      if (field) {
+        this.setData(
+          {
+            [`form.fields.${_field._index}`]: { ...field, a: 1, value },
+          },
+          () => {
+            const newValue = this.data.form.fields[_field._index];
+            console.log('newValue :>> ', newValue);
+          },
+        );
+      }
+    },
     onChangeField(event) {
-      console.log('data :>> ', event);
+      this.onChangeFieldValue(event.target.dataset.field, event.detail.value);
+    },
+    onChangeDropdown(event) {
+      this.onChangeFieldValue(event.target.dataset.field, event.title);
+    },
+    onChangeAddress(event) {
+      const { form } = this.data;
+      const field = form.fields.find((f) => f.kind === 'paragraph' && f.custom_kind === 'address');
+      const { street, ward, district, city } = event;
+      const value = [street, ward.name, district.name, city.name].join(', ');
+      this.onChangeFieldValue(field, value);
+    },
+    onNext() {
+      this.setData({ showSubmitModal: true });
+    },
+    onCancelSubmit() {
+      this.setData({ showSubmitModal: false });
+    },
+    onCloseToastSubmitFail() {
+      this.setData({ showToastSubmitFail: false });
+    },
+    // validateForm() {
+
+    // },
+    onSubmit() {
+      try {
+        const { form } = this.data;
+
+        const inputs = form.fields.map((field) => {
+          let value: leadgen.Value = '';
+          if (field.source.source === 'ekyc' && this.eKYCData[field.source.field]) {
+            value = this.eKYCData[field.source.field];
+          } else {
+            switch (field.kind) {
+              case 'number':
+              case 'integer':
+              case 'decimal':
+                value = +field.value;
+                break;
+              case 'checkbox':
+                value = field.options.reduce((rs: number[], opt: leadgen.Options) => {
+                  const index = (field.value as string[]).indexOf(opt.title);
+                  if (index > -1) {
+                    rs.push(index);
+                  }
+                  return rs;
+                }, []);
+                break;
+              case 'dropdown':
+              case 'multiple_choice':
+                value = field.options.reduce((rs: number, opt: leadgen.Options, index: number) => {
+                  if (opt.title === field.value) {
+                    rs = index;
+                  }
+                  return rs;
+                }, null);
+                break;
+              default:
+                value = field.value;
+                break;
+            }
+          }
+          if (value !== null && value !== undefined && `${value}`.length > 0) {
+            return { value };
+          }
+          return {};
+        });
+        console.log('inputs :>> ', inputs);
+        const formValue = {
+          form_urn: form.id,
+          inputs: JSON.stringify({ inputs }),
+        };
+        console.log('json :>> ', JSON.stringify(formValue));
+
+        my.leadgen.submitForm({
+          ...formValue,
+          success: () => {
+            // TODO: Confirm with PO about toast
+            my.showToast({
+              type: 'success',
+              content: 'Hồ sơ mua được tạo thành công',
+              duration: 3000,
+            });
+            this.setData({ showSubmitModal: false });
+          },
+
+          fail: (err: any) => {
+            this.setData({ showSubmitModal: false, showToastSubmitFail: true });
+            console.error(err);
+          },
+        });
+      } catch (error) {
+        console.error(error);
+        this.setData({ showSubmitModal: false, showToastSubmitFail: true });
+      }
     },
   },
 });

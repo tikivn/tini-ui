@@ -1,6 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "bottom-sheet": "@tiki.vn/tini-ui/es/bottom-sheet/index"
+    "bottom-sheet": "@tiki.vn/tini-ui/es/bottom-sheet/index",
+    "list-item": "@tiki.vn/tini-ui/es/list/list-item/index",
+    "inform": "@tiki.vn/tini-ui/es/inform/index"
   }
 }

@@ -7,6 +7,7 @@ declare namespace leadgen {
     | 'datetime'
     | 'multiple_choice'
     | 'dropdown'
+    | 'number'
     | 'checkbox';
 
   type SubKind = '' | 'file_extension' | 'date' | 'time' | 'datetime';
@@ -31,18 +32,21 @@ declare namespace leadgen {
     min?: string;
     max?: string;
     options?: Options[];
+    section_id: string;
+    _index?: number; // FE mapping
   };
 
   type Form = {
     app_identifier: string;
     created_at: string;
     description: string;
-    fields: Field[];
+    fields: AppField[];
     id: string;
     rule: string;
     rule_time: number;
     status: string;
     title: string;
+    sections: AppSection[];
   };
 
   type Section = {
@@ -51,8 +55,10 @@ declare namespace leadgen {
     name: string;
   };
 
+  type Value = string | number | string[] | number[];
+
   type AppField = Field & {
-    value: string | number;
+    value: Value;
   };
 
   type AppSection = Section & {

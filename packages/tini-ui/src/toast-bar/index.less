@@ -40,28 +40,53 @@
 .tu-toast-bar.show {
   visibility: visible;
   &.tu-toast-bar-animation {
-    -webkit-animation: fadein var(--tu-toast-bar-anim-duration), fadeout var(--tu-toast-bar-anim-duration) var(--tu-toast-bar-duration);
-    animation: fadein var(--tu-toast-bar-anim-duration), fadeout var(--tu-toast-bar-anim-duration) var(--tu-toast-bar-duration);
-
+    -webkit-animation: fadein var(--tu-toast-bar-anim-duration),
+      fadeout var(--tu-toast-bar-anim-duration) var(--tu-toast-bar-duration);
+    animation: fadein var(--tu-toast-bar-anim-duration),
+      fadeout var(--tu-toast-bar-anim-duration) var(--tu-toast-bar-duration);
   }
 }
 
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: var(--tu-toast-bar-bottom); opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: var(--tu-toast-bar-bottom);
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: var(--tu-toast-bar-bottom); opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: var(--tu-toast-bar-bottom);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: var(--tu-toast-bar-bottom); opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: var(--tu-toast-bar-bottom);
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-  from {bottom: var(--tu-toast-bar-bottom)x; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: var(--tu-toast-bar-bottom) x;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

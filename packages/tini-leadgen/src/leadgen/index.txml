@@ -1,34 +1,54 @@
 <import-sjs 
   from="../_util/sjs.sjs" 
-  name="{isKindView, isKindInput, isKindDropdown, isKindRadio}"></import-sjs>
+  name="{isKindView, isKindInput, isKindDropdown, isKindRadio, isKindCheckbox, isKindAddress}"></import-sjs>
+
+<template name="skeleton-item">
+  <view 
+    class="leadgen-skeleton-item"
+    style="width: {{width || 124}}px; height: {{height || 16}}px" />
+</template>
 
 <template name="skeleton">
-  <view />
+  <view class="leadgen-skeleton-wrapper">
+    <template is="skeleton-item" data="{{ width: 200 }}" />
+    <view tiki:for="{{4}}" class="leadgen-skeleton-field">
+      <template is="skeleton-item" />
+      <template is="skeleton-item" data="{{ width: 80 }}" />
+    </view>
+  </view>
+</template>
+
+<template name="field-question">
+  <text class="field-label" tiki:if="{{question}}">{{question}}</text>
 </template>
 
 <template name="field-view">
-  <view class="flex">
+  <view class="leadgen-field field-view-content" tiki:if="{{show}}">
     <text>{{field.question}}</text>
-    <text>{{field.value}}</text>
+    <text class="font-bold">{{field.value}}</text>
   </view>
 </template>
 
 <template name="field-input">
   <view class="leadgen-field" tiki:if="{{show}}">
-    <input 
+    <textfield 
       data-field="{{field}}"
       labelText="{{field.question}}" 
-      onInput="onChange" />
+      onInput="onChangeField" />
   </view>
 </template>
 
 <template name="field-dropdown">
   <view class="leadgen-field" tiki:if="{{show}}">
+    <template is="field-question" data="{{ question: field.question }}" />
     <dropdown
+      value="{{field.value}}"
+      onSelect="onChangeDropdown"
+      data-field="{{field}}"
       showSearch="{{false}}"
       bottomSheetTitle="{{field.question}}"
       labelKey="title"
-      idKey="value"
+      idKey="title"
       items="{{field.options}}"
     />
   </view>
@@ -36,31 +56,135 @@
 
 <template name="field-radio">
   <view class="leadgen-field" tiki:if="{{show}}">
-    <radio-group class="radio-group" onChange="onChange">
-      <view class="radio" tiki:for="{{field.options}}" key="radio-{{item.title}}">
+    <template is="field-question" data="{{ question: field.question }}" />
+    <radio-group class="radio-group" data-field="{{field}}" onChange="onChangeField">
+      <label 
+        tiki:for="{{field.options}}" 
+        key="radio-{{item.title}}" 
+        class="leadgen-field-select">
         <radio value="{{item.title}}" checked="{{item.selected}}" />
-        <text class="text">{{item.title}}</text>
-      </view>
+        <text class="leadgen-text">{{item.title}}</text>
+      </label>
     </radio-group>
   </view>
 </template>
 
-<block tiki:if="{{sections.length > 0}}">
-  <view tiki:for="{{sections}}">
-    <text>{{item.name}}</text>
+<template name="field-checkbox">
+  <view class="leadgen-field" tiki:if="{{show}}">
+    <template is="field-question" data="{{ question: field.question }}" />
+    <checkbox-group data-field="{{field}}" onChange="onChangeField">
+      <label 
+        tiki:for="{{field.options}}" 
+        key="checkbox-{{item.title}}"
+        class="leadgen-field-select">
+        <checkbox value="{{item.title}}" checked="{{item.selected}}" />
+        <text class="leadgen-text">{{item.title}}</text>
+      </label>
+    </checkbox-group>
+  </view>
+</template>
+
+<template name="field-address">
+  <view class="leadgen-field" tiki:if="{{show}}">
+    <template is="field-question" data="{{ question: field.question }}" />
+    <tu-button 
+      data-field="{{field}}"
+      onTap="onGetAddressBook"
+      class="flex address-button" 
+      type="outline">
+      <image 
+        src="https://salt.tikicdn.com/ts/tiniapp/bc/13/71/f67b5add70047fb9149302a67221b643.png" 
+        class="address-icon" />
+      Sử dụng sổ địa chỉ Tiki
+    </tu-button>
+    <address 
+      street="{{address.street}}" 
+      city="{{address.city}}"
+      district="{{address.district}}"
+      ward="{{address.ward}}"
+      onFullAddress="onChangeAddress"
+      data-field="{{field}}"
+      streetLabel=""
+      cityLabel=""
+      districtLabel=""
+      wardLabel=""
+      nameLabel=""
+      showName="{{false}}"
+      showPhone="{{false}}"
+      />
+  </view>
+</template>
+
+<view tiki:if="{{sections.length > 0}}" class="leadgen-container">
+  <view tiki:for="{{sections}}" class="leadgen-section">
+    <text class="leadgen-section-title">{{item.name}}</text>
     <block tiki:for="{{item.fields}}" tiki:for-item="field">
       <template data={{ show: isKindView(field), field: field }} is="field-view" />
 
       <template data={{ show: isKindInput(field), field: field }} is="field-input" />
 
-      <template data={{ show: isKindDropdown(field), field: field }} is="field-dropdown" />
+      <!-- TODO: Check pass field: field to data template, UI not rerender when field change -->
+      <template data={{ show: isKindDropdown(field), field: form.fields[field._index] }} is="field-dropdown" />
 
       <template data={{ show: isKindRadio(field), field: field }} is="field-radio" />
+
+      <template data={{ show: isKindCheckbox(field), field: field }} is="field-checkbox" />
+
+      <template data={{ show: isKindAddress(field), field: field, address: addresses[field._index] }} is="field-address" />
     </block>
   </view>
-</block>
+
+  <view class="leadgen-submit-container">
+    <tu-button onTap="onNext">
+      Tiếp tục
+    </tu-button>
+  </view>
+</view>
+
+<view class="leadgen-container">
+  <template is="skeleton" tiki:if="{{showSkeleton}}"  />
+</view>
+
+<confirm-modal
+  show="{{showUpdatePhone}}"
+  onOk="onOkUpdatePhone"
+  onCancel="onCancelUpdatePhone"
+  okText="Cập nhật"
+  cancelText="Huỷ"
+  title="Cập nhật số điện thoại"
+  description="Tài khoản Tiki của bạn chưa có số điện thoại. Xin vui lòng cập nhật" />
+
+<confirm-modal
+  show="{{showSubmitModal}}"
+  onOk="onSubmit"
+  onCancel="onCancelSubmit"
+  okText="Cập nhật"
+  cancelText="Kiểm tra lại"
+  title="Xác nhận"
+  description="Bạn có xác nhận độ chính xác của thông tin này?" />
+
+<toast-bar
+  onClose="onCloseLogin"
+  onTapAction="onRetryLogin"
+  show="{{showLoginFail}}"
+  duration="{{5000}}"
+  actionText="Thử lại"
+  content="Đăng nhập thất bại. Xin vui lòng thử lại"
+  animation="{{true}}"
+  bottom="72px"
+  showCloseIcon="{{false}}"
+  type="error" />
+
+<toast-bar
+  onClose="onCloseToastSubmitFail"
+  show="{{showToastSubmitFail}}"
+  content="Đã có lỗi xảy ra. Xin vui lòng thử lại."
+  animation="{{true}}"
+  bottom="72px"
+  type="error" />
 
 <permission 
   tiki:if="{{showPermission}}" 
   fields="{{form.fields}}"
+  showEkycFail="{{showEkycFail}}"
   onPermissionResponse="onPermissionResponse" />

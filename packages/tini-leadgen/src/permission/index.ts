@@ -4,6 +4,7 @@ import { EKYCOptions, AccountOptions } from '../_util/config';
 type PermissionProps = {
   onPermissionResponse?: (res: boolean) => void;
   fields: leadgen.Field[];
+  showEkycFail: boolean;
 };
 
 type PermissionData = {
@@ -21,6 +22,7 @@ Component<PermissionData, PermissionProps, PermissionMethods>({
   props: {
     onPermissionResponse: () => false,
     fields: [],
+    showEkycFail: false,
   },
   data: {
     show: false,
