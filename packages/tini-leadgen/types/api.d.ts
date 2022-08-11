@@ -44,7 +44,7 @@ declare namespace my {
   };
 
   type SubmitFormParams = APIReturn & {
-    form_urn: string;
+    form_id: string;
     inputs: string;
   };
 

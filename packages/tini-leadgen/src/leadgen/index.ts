@@ -24,7 +24,7 @@ type LeadgenMethods = {
   eKYCData: my.eKYCData;
   checkLogIn: () => void;
   getForm: () => void;
-  getEKYCData: () => void;
+  getEKYCData: () => Promise<null | my.eKYCData>;
   onPermissionResponse: (response: boolean) => void;
   onChangeField: (event: any) => void;
   onChangeAddress: (event: any) => void;
@@ -35,7 +35,7 @@ type LeadgenMethods = {
   onSubmit: () => void;
   onCancelSubmit: () => void;
   buildForm: (ekYCData?: my.eKYCData) => void;
-  validateEkyc: (ekYCData?: my.eKYCData) => boolean;
+  validateEkyc: () => Promise<boolean>;
   validateForm: () => boolean;
   onGetAddressBook: (event: any) => void;
   onOkUpdatePhone: () => void;
@@ -81,11 +81,12 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     },
     checkLogIn() {
       my.isLoggedIn({
-        success: (res: boolean) => {
+        success: async (res: boolean) => {
+          res ? this.login() : this.validateEkyc();
           if (!res) {
             this.login();
           } else {
-            this.getEKYCData();
+            this.validateEkyc();
           }
         },
         fail: () => {
@@ -106,7 +107,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         my.login({
           success: (res: any) => {
             if (res && res.isLoggedIn) {
-              this.getEKYCData();
+              this.validateEkyc();
             } else {
               this.setData({ showLoginFail: true });
             }
@@ -123,28 +124,25 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     getEKYCData() {
       // TODO: Handle error
       if (!my.leadgen) {
-        return;
+        return Promise.resolve(null);
       }
-      my.leadgen.getKYCData({
-        form_id: this.data.form.id,
-        success: (ekyc) => {
-          console.log('ekyc :>> ', ekyc);
-          this.setData({ showEkycFail: true });
-          if (ekyc.verified_level < 1) {
-            // TODO: Navigate to ekyc
-            this.setData({ showEkycFail: true });
-          } else if (this.validateEkyc(ekyc)) {
+      return new Promise((resolve, reject) => {
+        my.leadgen.getKYCData({
+          form_id: this.data.form.id,
+          success: (ekyc) => {
+            this.validateEkyc(ekyc);
             this.buildForm(ekyc);
             // this.setData({ showPermission: false, showSkeleton: false });
-          }
-        },
-        fail: (err: any) => {
-          console.error(err);
-          this.setData({ showEkycFail: true });
-        },
+          },
+          fail: (err: any) => {
+            console.error(err);
+            this.setData({ showEkycFail: true });
+          },
+        });
       });
     },
-    validateEkyc(ekYCData?: my.eKYCData) {
+    async validateEkyc() {
+      const ekYCData = await this.getEKYCData();
       if (!ekYCData) {
         return false;
       }
@@ -199,7 +197,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
             street: result.street,
           };
           const { street, ward, district, city } = result;
-          const value = [street, ward.name, district.name, city.name].join(', ');
+          const value = [street, ward, district, city].join(', ');
           const field = event.target.dataset.field;
 
           this.onChangeFieldValue(field, value);
@@ -245,6 +243,18 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
       this.onChangeFieldValue(field, value);
     },
     onNext() {
+      this.setData({ showEkycFail: true });
+      // TODO: Navigate to ekyc
+      my.ekyc({
+        requestFlow: 'ID_AND_FACE',
+        success: () => {
+          this.getEKYCData();
+        },
+        fail: () => {
+          this.setData({ showEkycFail: true });
+        },
+      });
+
       this.setData({ showSubmitModal: true });
     },
     onCancelSubmit() {
@@ -301,7 +311,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         });
         console.log('inputs :>> ', inputs);
         const formValue = {
-          form_urn: form.id,
+          form_id: form.id,
           inputs: JSON.stringify({ inputs }),
         };
         console.log('json :>> ', JSON.stringify(formValue));
