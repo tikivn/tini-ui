@@ -23,7 +23,7 @@
       type="{{iconLeft || getProperties(type, 'iconType')}}"
     />
   </view>
-  <text class="tu-toast-bar-content" >{{content}}</text>
+  <text class="tu-toast-bar-content">{{content}}</text>
   <view class="tu-toast-bar-right">
     <view
       onTap="onTapAction"

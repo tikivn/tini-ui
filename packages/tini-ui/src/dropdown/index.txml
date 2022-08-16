@@ -13,7 +13,7 @@
   className="tu-dropdown {{className}}"
   disabled="{{disabled}}"
   placeholder="{{placeholder}}"
-  iconRight="arrow_down" />
+  trailingIcon="arrow_down" />
 
   <bottom-sheet 
     show="{{showBottomSheet}}"
@@ -32,7 +32,7 @@
         onFocus="onTextFieldFocus"
         onBlur="onTextFieldBlur"
         class="px-small py-x-small" 
-        iconLeft="search"
+        leadingIcon="search"
         onInput="onChangeSearchText"
         value="{{searchText}}" 
         placeholder="{{searchPlaceholder}}" />
