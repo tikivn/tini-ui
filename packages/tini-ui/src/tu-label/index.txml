@@ -11,6 +11,6 @@
       <tu-icon className="tu-label-icon" tiki:if="{{icon}}" type="{{icon}}" color="{{iconColor}}" />
     </view>
   </block>
-  <view class="tu-label-helper" tiki:if="{{helperText}}">{{helperText}}</view>
+  <view class="tu-label-helper" tiki:if="{{helperText && !loading}}">{{helperText}}</view>
   <slot />
 </label>
