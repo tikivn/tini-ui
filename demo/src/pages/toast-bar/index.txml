@@ -8,5 +8,6 @@
   duration="{{3000}}"
   content="Error Toast"
   animation="{{true}}"
+  actionText="Action"
   type="neutral"
 />

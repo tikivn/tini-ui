@@ -3,7 +3,6 @@
   className="tu-search-bar {{className}}"
   style="{{style}}"
   shape="{{shape}}"
-  errorIconColor="{{errorIconColor}}"
   
   value="{{!loading?__value:''}}"
   maxlength="{{maxlength}}" 
@@ -16,14 +15,13 @@
   labelText="{{labelText}}"
   labelCls="{{labelCls}}"
 
-  iconLeft="{{!loading?'search':'no-icon'}}"
-  iconRight="{{ value.length > 0  && !loading ? 'close' : '' }}"
+  leadingIcon="{{!loading?'search':'no-icon'}}"
+  trailingIcon="{{ value.length > 0  && !loading ? 'close' : '' }}"
 
   disabled="{{disabled}}"
   focus="{{!loading?focus:''}}"
   controlled="{{controlled}}"
   loading="{{loading}}"
-  hasError="{{hasError}}"
   
   onFocus="onFocus" 
   onBlur="onBlur"

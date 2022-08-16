@@ -39,7 +39,6 @@ export interface ISearchBarComponentProps extends ISearchBarComponentPropsEvents
   focus?: boolean;
   controlled?: boolean;
   loading?: boolean;
-  hasError?: boolean;
 }
 
 function mapPropsEvent<T>(eventNames: string[]): Record<string, any> {
@@ -62,8 +61,6 @@ Component({
     placeholder: '',
     value: '',
     controlled: false,
-    hasError: false,
-    errorIconColor: '#ff424f',
   },
   data: { __value: '' },
   didMount() {
