@@ -3,6 +3,7 @@ import { getForm } from '../_util/apis';
 type LeadgenProps = {
   id: string;
   onRejectPermission?: () => void;
+  onSubmitSuccess?: () => void;
 };
 
 type Address = { city: number; district: number; ward: number; street: string };
@@ -35,20 +36,23 @@ type LeadgenMethods = {
   onSubmit: () => void;
   onCancelSubmit: () => void;
   buildForm: (ekYCData?: my.eKYCData) => void;
-  validateEkyc: () => Promise<boolean>;
+  validateEkyc: (ekYCData?: my.eKYCData) => Promise<boolean>;
   validateForm: () => boolean;
   onGetAddressBook: (event: any) => void;
   onOkUpdatePhone: () => void;
   onCancelUpdatePhone: () => void;
   onCloseLogin: () => void;
   onRetryLogin: () => void;
+  onEkyc: () => void;
   onCloseToastSubmitFail: () => void;
 };
 
+/**
+1. onSubmitResponse: check login -> login xong get
+*/
+
 Component<LeadgenData, LeadgenProps, LeadgenMethods>({
-  props: {
-    onRejectPermission: () => {},
-  } as LeadgenProps,
+  props: {} as LeadgenProps,
   data: {
     showPermission: false,
     form: null,
@@ -82,11 +86,10 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     checkLogIn() {
       my.isLoggedIn({
         success: async (res: boolean) => {
-          res ? this.login() : this.validateEkyc();
-          if (!res) {
-            this.login();
+          if (res) {
+            this.onEkyc();
           } else {
-            this.validateEkyc();
+            this.login();
           }
         },
         fail: () => {
@@ -105,9 +108,9 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
     login() {
       if (my.canIUse('login')) {
         my.login({
-          success: (res: any) => {
+          success: async (res: any) => {
             if (res && res.isLoggedIn) {
-              this.validateEkyc();
+              this.onEkyc();
             } else {
               this.setData({ showLoginFail: true });
             }
@@ -119,6 +122,15 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         });
       } else {
         // TODO: Handle fallback
+        this.setData({ showLoginFail: true });
+      }
+    },
+    async onEkyc() {
+      const ekYCData = await this.getEKYCData();
+      if (this.validateEkyc(ekYCData)) {
+        this.buildForm(ekYCData);
+      } else {
+        this.setData({ showEkycFail: true });
       }
     },
     getEKYCData() {
@@ -130,19 +142,21 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         my.leadgen.getKYCData({
           form_id: this.data.form.id,
           success: (ekyc) => {
-            this.validateEkyc(ekyc);
-            this.buildForm(ekyc);
+            console.log('ekyc :>> ', ekyc);
+            this.eKYCData = ekyc;
+            resolve(ekyc);
             // this.setData({ showPermission: false, showSkeleton: false });
           },
           fail: (err: any) => {
+            this.eKYCData = null;
             console.error(err);
-            this.setData({ showEkycFail: true });
+            // this.setData({ showEkycFail: true });
+            reject(err);
           },
         });
       });
     },
-    async validateEkyc() {
-      const ekYCData = await this.getEKYCData();
+    async validateEkyc(ekYCData: my.eKYCData) {
       if (!ekYCData) {
         return false;
       }
@@ -242,19 +256,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
       const value = [street, ward.name, district.name, city.name].join(', ');
       this.onChangeFieldValue(field, value);
     },
-    onNext() {
-      this.setData({ showEkycFail: true });
-      // TODO: Navigate to ekyc
-      my.ekyc({
-        requestFlow: 'ID_AND_FACE',
-        success: () => {
-          this.getEKYCData();
-        },
-        fail: () => {
-          this.setData({ showEkycFail: true });
-        },
-      });
-
+    async onNext() {
       this.setData({ showSubmitModal: true });
     },
     onCancelSubmit() {
@@ -319,13 +321,9 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         my.leadgen.submitForm({
           ...formValue,
           success: () => {
-            // TODO: Confirm with PO about toast
-            my.showToast({
-              type: 'success',
-              content: 'Hồ sơ mua được tạo thành công',
-              duration: 3000,
+            this.setData({ showSubmitModal: false }, () => {
+              this.props.onSubmitSuccess && this.props.onSubmitSuccess();
             });
-            this.setData({ showSubmitModal: false });
           },
 
           fail: (err: any) => {
