@@ -43,13 +43,9 @@ type LeadgenMethods = {
   onCancelUpdatePhone: () => void;
   onCloseLogin: () => void;
   onRetryLogin: () => void;
-  onEkyc: () => void;
+  onEkyc: (noRetry?: boolean) => void;
   onCloseToastSubmitFail: () => void;
 };
-
-/**
-1. onSubmitResponse: check login -> login xong get
-*/
 
 Component<LeadgenData, LeadgenProps, LeadgenMethods>({
   props: {} as LeadgenProps,
@@ -80,7 +76,7 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         this.setData({ form, showPermission: true });
       } catch (error) {
         // TODO: Handle error
-        console.log('error :>> ', error);
+        console.error(error);
       }
     },
     checkLogIn() {
@@ -125,9 +121,19 @@ Component<LeadgenData, LeadgenProps, LeadgenMethods>({
         this.setData({ showLoginFail: true });
       }
     },
-    async onEkyc() {
+    async onEkyc(noRetry = false) {
       const ekYCData = await this.getEKYCData();
-      if (this.validateEkyc(ekYCData)) {
+      if (ekYCData.verified_level < 2 && !noRetry) {
+        my.ekyc({
+          requestFlow: 'ID_AND_FACE',
+          success: () => {
+            this.onEkyc(true);
+          },
+          fail: () => {
+            this.setData({ showEkycFail: true });
+          },
+        });
+      } else if (this.validateEkyc(ekYCData)) {
         this.buildForm(ekYCData);
       } else {
         this.setData({ showEkycFail: true });
