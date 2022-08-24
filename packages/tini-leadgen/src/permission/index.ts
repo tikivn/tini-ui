@@ -37,7 +37,7 @@ Component<PermissionData, PermissionProps, PermissionMethods>({
       if (!fields || !fields.length) {
         return;
       }
-      const options: Option[] = [EKYCOptions, AccountOptions];
+      const options: Option[] = [{ ...EKYCOptions }, { ...AccountOptions }];
 
       fields.forEach((field) => {
         if (field.source.source === 'ekyc') {
