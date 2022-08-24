@@ -167,9 +167,11 @@ Component({
       this.onEvent('onTap', e);
     },
     onTapLeadingIcon(e) {
+      this.onEvent('onTapIconLeft', e);
       this.onEvent('onTapLeadingIcon', e);
     },
     onTapTrailingIcon(e) {
+      this.onEvent('onTapIconRight', e);
       this.onEvent('onTapTrailingIcon', e);
     },
     onBlur(e) {

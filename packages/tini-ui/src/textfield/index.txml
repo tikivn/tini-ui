@@ -25,9 +25,9 @@
     <view class="tu-textfield-inline">
       <view class="tu-textfield-loading" tiki:if="{{loading && !disabled}}">
         <view class="tu-textfield-loading-inline">
-          <view class="tu-textfield-loading-inline-icon left" tiki:if="{{leadingIcon}}" />
+          <view class="tu-textfield-loading-inline-icon left" tiki:if="{{leadingIcon || iconLeft}}" />
           <view class="tu-textfield-loading-inline-input" />
-          <view class="tu-textfield-loading-inline-icon right" tiki:if="{{trailingIcon}}" />
+          <view class="tu-textfield-loading-inline-icon right" tiki:if="{{trailingIcon || iconRight}}" />
         </view>
       </view>
       <block tiki:if="{{prefix}}">
@@ -36,8 +36,8 @@
       <input
         class="tu-textfield-input {{inputCls}}"
         style="
-          padding-left: {{paddingHorizontal + (prefix === 'text' ? 8 : 0) + (prefix ? prefixWidth : (leadingIcon ? 28 : 0))}}px;
-          padding-right: {{paddingHorizontal + (suffix === 'text' ? 8 : 0) + (suffix ? suffixWidth : ((hasError || hasSuccess ? 20 : 0) + (trailingIcon ? 20 : 0) + ((hasError || hasSuccess) && trailingIcon ? 8 : 0)))}}px;"
+          padding-left: {{paddingHorizontal + (prefix === 'text' ? 8 : 0) + (prefix ? prefixWidth : ((leadingIcon || iconLeft) ? 28 : 0))}}px;
+          padding-right: {{paddingHorizontal + (suffix === 'text' ? 8 : 0) + (suffix ? suffixWidth : ((hasError || hasSuccess ? 20 : 0) + ((trailingIcon || iconRight) ? 20 : 0) + ((hasError || hasSuccess) && (trailingIcon || iconRight) ? 8 : 0)))}}px;"
         value="{{loading ? '':value}}" 
         name="{{name}}" 
         type="{{type}}" 
@@ -60,26 +60,26 @@
       <tu-icon class="tu-textfield-error-icon" 
         tiki:if="{{hasError}}" 
         color="{{errorIconColor}}" 
-        style="right: {{trailingIcon ? paddingHorizontal * 2 + 4 : 8}}px"
+        style="right: {{(trailingIcon || iconRight) ? paddingHorizontal * 2 + 4 : 8}}px"
         type="info" />
       <view
         class="tu-textfield-success-icon"
-        style="right: {{trailingIcon ? paddingHorizontal * 2 + 4 : 8}}px;">
+        style="right: {{(trailingIcon || iconRight) ? paddingHorizontal * 2 + 4 : 8}}px;">
         <image 
           style="width: 24px; height: 24px;"
           tiki:if="{{hasSuccess}}"  
           src="https://salt.tikicdn.com/ts/tiniapp/37/b7/fc/4c96567a1010fb43da32b555d0a389c7.png" />
       </view>
       <tu-icon class="tu-textfield-icon left" 
-        tiki:if="{{leadingIcon && !loading}}" 
+        tiki:if="{{(leadingIcon || iconLeft) && !loading}}" 
         onTap="onTapLeadingIcon"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
-        type="{{loading ? 'no-icon':leadingIcon}}" />
+        type="{{loading ? 'no-icon': (leadingIcon ? leadingIcon : iconLeft )}}" />
       <tu-icon class="tu-textfield-icon right" 
-        tiki:if="{{trailingIcon && !loading}}" 
+        tiki:if="{{(trailingIcon || iconRight) && !loading}}" 
         onTap="onTapTrailingIcon"
         color="{{disabled ? iconDisabledColor: iconColor }}" 
-        type="{{trailingIcon}}" />
+        type="{{trailingIcon ? trailingIcon : iconRight}}" />
     </view>
     <text class="tu-textfield-error-message" tiki:if="{{hasError && errorMsg}}">{{errorMsg}}</text>
     <text class="tu-textfield-success-message" tiki:if="{{hasSuccess && successMsg}}">{{successMsg}}</text>
