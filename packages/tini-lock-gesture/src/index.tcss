@@ -19,23 +19,23 @@
   color: #000;
 }
 
-.lock_wp{
-	margin: 15px auto;
+.lock_wp {
+  margin: 15px auto;
 }
 
-.canvasLock{
+.canvasLock {
   display: block;
   margin: 0 auto;
 }
 
-.lock_title{
-	text-align: center;
-	color: #888;
+.lock_title {
+  text-align: center;
+  color: #888;
 }
 
-.lock_reset{
+.lock_reset {
   margin: 0 auto;
-  width: 150px;	
+  width: 150px;
   font-size: 12px;
   color: #888;
 }
