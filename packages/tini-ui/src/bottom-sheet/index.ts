@@ -37,16 +37,37 @@ Component({
     onClose: undefined,
     onClick: undefined,
   } as BottomSheetProps,
+  onInit() {
+    if (my.canIUse('onHardwareBackPress')) {
+      my.onHardwareBackPress(this.onHardwareBackPress.bind(this));
+    }
+  },
   didMount(): void {
     this._updateDataSet();
   },
+  didUnmount(): void {
+    if (my.canIUse('offHardwareBackPress')) {
+      my.offHardwareBackPress(this.onHardwareBackPress);
+    }
+  },
   didUpdate(): void {
+    if (my.canIUse('disableHardwareBackPress')) {
+      if (this.props.show) {
+        my.disableHardwareBackPress();
+      } else {
+        my.offHardwareBackPress(this.onHardwareBackPress);
+        my.enableHardwareBackPress();
+      }
+    }
     this._updateDataSet();
   },
   deriveDataFromProps(nextProps) {
     this._handleOverlay(nextProps);
   },
   methods: {
+    onHardwareBackPress() {
+      this.onClose();
+    },
     _handleOverlay(props) {
       const { mask, maskClose, show } = props;
       if (!mask) {
@@ -74,13 +95,11 @@ Component({
       }
     },
     onClose(): void {
-      // this.setData({
-      //   show: false,
-      // });
       const { mask, onClose } = this.props;
       if (mask) {
         my.hideOverlay({});
       }
+
       if (onClose) {
         onClose({
           target: {
