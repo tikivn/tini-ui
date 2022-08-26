@@ -1,14 +1,14 @@
 <template name="prefix">
   <view id="tu-textfield-prefix" class="tu-textfield-w-prefix {{type}}">
-    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">{{prefixContent}}</button>
-    <text tiki:else onTap="onTap">{{prefixContent}}</text>
+    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTapPrefix">{{prefixContent}}</button>
+    <text tiki:else onTap="onTapPrefix">{{prefixContent}}</text>
   </view>
 </template>
 
 <template name="suffix">
   <view id="tu-textfield-suffix" class="tu-textfield-w-suffix {{type}}">
-    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTap">{{suffixContent}}</button>
-    <text tiki:else onTap="onTap">{{suffixContent}}</text>
+    <button tiki:if="{{type === 'button'}}" style="font-size: 14px;" size="medium" type="ghost" onTap="onTapSuffix">{{suffixContent}}</button>
+    <text tiki:else onTap="onTapSuffix">{{suffixContent}}</text>
   </view>
 </template>
 <view class="tu-textfield {{wrapClass}} {{className}}" onTap="onTap">

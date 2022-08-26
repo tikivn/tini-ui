@@ -42,9 +42,10 @@ type InputProps = {
   maxlength?: number;
   focus?: boolean;
   controlled?: boolean;
-  onTap?: (event: unknown) => void;
-  onTapRightIcon?: (event: unknown) => void;
-  onTapLeftIcon?: (event: unknown) => void;
+  onTapSuffix?: (event: unknown) => void;
+  onTapPrefix?: (event: unknown) => void;
+  onTapTrailingIcon?: (event: unknown) => void;
+  onTapLeadingIcon?: (event: unknown) => void;
   onInput?: (event: unknown) => void;
   onConfirm?: (event: unknown) => void;
   onFocus?: (event: unknown) => void;
@@ -163,8 +164,11 @@ Component({
         eventFunc(e);
       }
     },
-    onTap(e) {
-      this.onEvent('onTap', e);
+    onTapSuffix(e) {
+      this.onEvent('onTapSuffix', e);
+    },
+    onTapPrefix(e) {
+      this.onEvent('onTapPrefix', e);
     },
     onTapLeadingIcon(e) {
       this.onEvent('onTapIconLeft', e);
