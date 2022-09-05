@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-ui@0.14.0...@tiki.vn/tini-ui@0.15.0) (2022-09-05)
+
+
+### Bug Fixes
+
+* **tini-ui:** handle back hardware on android for bottom sheet ([#62](https://github.com/tikivn/tini-ui/issues/62)) ([4d3f606](https://github.com/tikivn/tini-ui/commit/4d3f606c04dab73a12e00747c62150171d4b4918))
+* component dropdown cannot trigger onselect ([b51d0bd](https://github.com/tikivn/tini-ui/commit/b51d0bdc069c348611888e96f8bc3dba03494152))
+* css token border of text-field ([82e4f98](https://github.com/tikivn/tini-ui/commit/82e4f987dbfe1da312ccd108acd05616175d7da5))
+* css token of text-field & label ([34477c9](https://github.com/tikivn/tini-ui/commit/34477c94f2ab036415ed460f0047c88f0ca19725))
+* feedbacks of calendar ([0fe0d5c](https://github.com/tikivn/tini-ui/commit/0fe0d5cd469faa677b33626ba3fdff4205b5d0a4))
+* search-bar + toast ([#61](https://github.com/tikivn/tini-ui/issues/61)) ([31fa473](https://github.com/tikivn/tini-ui/commit/31fa4733e4680f0f7817c4292da911da7368d6cf))
+
+
+### Features
+
+* new toast-bar ([#59](https://github.com/tikivn/tini-ui/issues/59)) ([59f88a2](https://github.com/tikivn/tini-ui/commit/59f88a273842789cc732aaab92481ba60ca13bf2))
+* tu-progress ([#58](https://github.com/tikivn/tini-ui/issues/58)) ([b31d9cd](https://github.com/tikivn/tini-ui/commit/b31d9cdc3e9e21ef9c861b9397977bd6d6c496ca))
+
+
+
+
+
 # [0.14.0](https://github.com/tikivn/tiny-ui/compare/@tiki.vn/tini-ui@0.13.0...@tiki.vn/tini-ui@0.14.0) (2022-07-19)
 
 **Note:** Version bump only for package @tiki.vn/tini-ui
