@@ -158,7 +158,7 @@
   show="{{showSubmitModal}}"
   onOk="onSubmit"
   onCancel="onCancelSubmit"
-  okText="Cập nhật"
+  okText="Xác nhận"
   cancelText="Kiểm tra lại"
   title="Xác nhận"
   description="Bạn có xác nhận độ chính xác của thông tin này?" />
