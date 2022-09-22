@@ -4,7 +4,7 @@
     "target": "es6",
     "noImplicitThis": true,
     "noImplicitUseStrict": true,
-    "typeRoots": ["types/index.d.ts"]
+    "types": ["@tiki.vn/tini-types"]
   },
-  "include": ["types/**/*", "src/**/*"]
+  "include": ["src/**/*"]
 }

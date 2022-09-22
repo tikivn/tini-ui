@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.3",
-    "@tiki.vn/tini-style": "0.16.0"
+    "@tiki.vn/tini-style": "0.16.0",
+    "@tiki.vn/tini-types": "^0.3.0"
   }
 }
