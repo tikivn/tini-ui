@@ -1,0 +1,61 @@
+.tu-coupon-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+
+  margin-bottom: 16px;
+
+  &-wrap {
+    display: flex;
+    width: 100%;
+  }
+  &-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-name {
+    font-weight: bold;
+  }
+  &-desc {
+    font-size: 12px;
+  }
+  &-time {
+    font-size: 12px;
+    color: var(--color-alias-secondary-on-theme);
+  }
+  &-image {
+    margin-right: 8px;
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.tu-coupon-detail {
+  padding: 0 16px;
+  &-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+
+  &-col {
+    padding: 8px 0;
+  }
+
+  &-desc,
+  &-condition {
+    font-size: 12px;
+    color: var(--color-alias-secondary-on-theme);
+  }
+}
