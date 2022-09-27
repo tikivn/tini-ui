@@ -1,0 +1,42 @@
+<bottom-sheet 
+  style="{{show ? '' : 'height: 0;'}}"
+  onClose="onClose" 
+  title="Áp dụng mã giảm giá" 
+  distanceFromTop="{{100}}">
+  <view class="tu-coupon">
+    <!-- <view class="tu-coupon-input-element"> -->
+    <!--   <textfield --> 
+    <!--     class="tu-coupon-input-element" --> 
+    <!--     value="{{value}}" --> 
+    <!--     type="text" --> 
+    <!--     controlled --> 
+    <!--     placeholder="Nhập mã giảm giá" -->
+    <!--     onInput="onInput" /> -->
+    <!--   <view class="tu-coupon-input-element-postfix"> -->
+    <!--     <view onTap="onApplyCouponInput" class="tu-coupon-input-element-text"> -->
+    <!--       Áp dụng -->
+    <!--     </view> -->
+    <!--   </view> -->
+    <!-- </view> -->
+
+    <!-- <view class="tu-coupon-sub-content"> -->
+    <!--   <view class="tu-coupon-divider" /> -->
+    <!--   <view>Hoặc chọn trong danh sách</view> -->
+    <!--   <view class="coupon-divider" /> -->
+    <!-- </view> -->
+
+    <view class="tu-coupon-empty" tiki:if="{{coupons.length === 0}}">
+      <image class="tu-coupon-empty-image" mode="aspectFit"
+        src="https://salt.tikicdn.com/ts/tiniapp/f5/9f/6d/26cabd3e622399717270a0fba0a5012a.png" />
+      <view>Bạn chưa có mã giảm giá nào</view>
+    </view>
+    <block tiki:else tiki:for="{{coupons}}">
+      <coupon-item data="{{item}}" 
+        onSelect="onSelect" 
+        onShowCoupon="onShowCoupon" 
+        onCloseCoupon="onCloseCoupon" />
+    </block>
+
+  </view>
+  <view slot="footer" />
+</bottom-sheet>

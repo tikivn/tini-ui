@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tu-button": "../../tu-button/index",
+    "bottom-sheet": "../../bottom-sheet/index"
+  }
+}

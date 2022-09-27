@@ -1,0 +1,9 @@
+{
+  "componentLifeCycleV2": "YES",
+  "component": true,
+  "usingComponents": {
+    "coupon-item": "./coupon-item/index",
+    "bottom-sheet": "../bottom-sheet/index",
+    "textfield": "../textfield/index"
+  }
+}
