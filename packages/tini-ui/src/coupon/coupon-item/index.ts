@@ -1,47 +1,52 @@
-export interface ICoupon {
-  id: string;
-  name: string;
-  desc: string;
-  code: string;
-  expired_time: Date;
-  amount: number;
-  condition: string;
-}
+import type { Coupon } from '../types';
 
-type CouponItemProps  ={
-  data: ICoupon;
+type CouponItemData = {
+  show: boolean;
+  isSaved: boolean;
+};
+
+type CouponItemProps = {
+  data: Coupon;
   className?: string;
-  onShowCoupon: (data: ICoupon) => void;
+  onShowCoupon: (params: { coupon: Coupon }) => void;
   onCloseCoupon: () => void;
-  onApplyCoupon: (data: ICoupon) => void;
-}
+  onSelect: (params: { coupon: Coupon }) => void;
+};
 
-Component<CouponItemsData, CouponItemProps >({
+type CouponItemMethods = {
+  isShowDetail: boolean;
+  onSelect: () => void;
+  showDetail: () => void;
+  onClose: () => void;
+};
+
+Component<CouponItemData, CouponItemProps, CouponItemMethods>({
   data: {
     show: false,
+    isSaved: false,
   },
   props: {
     className: '',
-    data: {},
+    data: null,
     onShowCoupon: () => {},
     onCloseCoupon: () => {},
-    onApplyCoupon: () => {},
+    onSelect: () => {},
   },
   methods: {
-    onApplyCoupon() {
-      const { data, onApplyCoupon } = this.props;
-      this.props.onShowCoupon();
-      onApplyCoupon(data);
+    onSelect() {
+      const { data, onSelect } = this.props;
+      onSelect({ coupon: data });
+      this.setData({ isSaved: true });
     },
     showDetail() {
       this.props.onCloseCoupon();
       my.hideOverlay({});
-      this.setData({ show: true });
+      this.setData({ isShowDetail: true });
     },
     onClose() {
       this.setData({ show: false });
       my.hideOverlay({});
-      this.props.onShowCoupon();
+      this.props.onShowCoupon(null);
     },
   },
 });

@@ -2,6 +2,10 @@ Page({
   data: {
     components: [
       {
+        name: 'coupon',
+        path: 'pages/coupon/index',
+      },
+      {
         name: 'button',
         path: 'pages/button/index',
       },

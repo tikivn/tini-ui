@@ -2,6 +2,8 @@
   "componentLifeCycleV2": "YES",
   "component": true,
   "usingComponents": {
-    "bottom-sheet": "../bottom-sheet/index"
+    "coupon-item": "./coupon-item/index",
+    "bottom-sheet": "../bottom-sheet/index",
+    "textfield": "../textfield/index"
   }
 }

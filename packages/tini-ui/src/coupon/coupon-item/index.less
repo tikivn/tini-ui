@@ -1,28 +1,28 @@
 .tu-coupon-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-
+  position: relative;
   margin-bottom: 16px;
 
   &-wrap {
     display: flex;
     width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   &-info {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding: 12px;
+    width: calc(100% - 104px);
   }
   &-footer {
-    margin-top: 10px;
+    margin-top: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    &-button {
+      margin-left: auto;
+    }
   }
   &-name {
     font-weight: bold;
@@ -38,6 +38,44 @@
     margin-right: 8px;
     width: 72px;
     height: 72px;
+  }
+}
+
+.tu-coupon-image-wrapper {
+  min-width: 104px;
+  width: 104px;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+
+  .tu-coupon-image-relative {
+    position: relative;
+    width: 88px;
+    height: 88px;
+  }
+
+  .tu-coupon-image-content {
+    width: 100%;
+    padding-bottom: calc(100%);
+    position: relative;
+  }
+
+  .tu-coupon-image {
+    object-fit: contain;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // width: 88px;
+    // height: 88px;
+    opacity: 1;
+    transition: opacity 0.3s ease-out 0s;
+    max-width: 100%;
   }
 }
 
@@ -58,4 +96,41 @@
     font-size: 12px;
     color: var(--color-alias-secondary-on-theme);
   }
+}
+
+.tu-coupon-item-background {
+  width: 100%;
+  height: 104px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.15) 0px 1px 3px);
+}
+
+.tu-coupon-tags {
+  display: flex;
+  margin-bottom: 2px;
+  // overflow: hidden;
+  max-width: calc((100% - 20px) - 8px);
+}
+
+.tu-coupon-tag {
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(240, 248, 255);
+  color: rgb(1, 127, 255);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.tu-coupon-saved {
+  position: absolute;
+  width: 72px;
+  height: 56px;
+  bottom: 4px;
+  right: 4px;
 }
