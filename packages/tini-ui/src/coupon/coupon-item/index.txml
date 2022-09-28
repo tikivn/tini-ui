@@ -25,7 +25,7 @@
           tiki:if="{{isSaved === false}}"
           catchTap="onSelect" 
           class="tu-coupon-item-footer-button">
-          <tu-button size="small">
+          <tu-button size="small" class="tu-coupon-action">
             Lưu
           </tu-button>
         </view>

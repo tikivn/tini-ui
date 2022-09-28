@@ -1,5 +1,6 @@
 <bottom-sheet 
   style="{{show ? '' : 'height: 0;'}}"
+  show="{{show}}"
   onClose="onClose" 
   title="Áp dụng mã giảm giá" 
   distanceFromTop="{{100}}">
