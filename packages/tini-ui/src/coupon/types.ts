@@ -1,4 +1,4 @@
-export type Coupon = {
+export type NormalCoupon = {
   app_url: string;
   coupon_code: string;
   coupon_id: number;
@@ -25,3 +25,41 @@ export type Coupon = {
   url: string;
   web_url: string;
 };
+
+export interface CartCoupon {
+  total: number;
+  maxCouponDiscountUsage: number;
+  maxCouponUsage: number;
+  msgCouponShipping: string;
+  maxCouponFreeshipUsage: number;
+  msgCouponDiscount: string;
+  msgCartHint: string;
+  items: CartCouponItem[];
+  msgCart: string;
+  milo_request_id: string;
+}
+
+export interface CartCouponItem {
+  tags: string[];
+  title: string;
+  discountValue: number;
+  isFollowerCouponAvailable: boolean;
+  isEligible: boolean;
+  isDisabled: boolean;
+  discountType: string;
+  couponCode: string;
+  groupType: string;
+  iconName: string;
+  ruleName: string;
+  serverTime: number;
+  period: string;
+  description: string;
+  expiredAt: number;
+  isSelected: boolean;
+  conditions: string[];
+  disabledMessage: string;
+  ruleId: string;
+  discountMax: number;
+  toDate: string;
+  iconUrl: string;
+}

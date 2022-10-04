@@ -1,5 +1,9 @@
+<import-sjs from="../coupon.sjs" name="{ getActionText }" />
+
 <view onTap="showDetail" class="{{className}} tu-coupon-item">
-  <image src="https://salt.tikicdn.com/ts/miniapp/a4/24/0f/a1cdf5d34b761c4b071e6120745931c2.png" class="tu-coupon-item-background" />
+  <image 
+    src="https://salt.tikicdn.com/ts/miniapp/e6/7a/29/a15fdc155284403bbb5eae225cb7bff4.png" 
+    class="tu-coupon-item-background" />
 
   <view class="tu-coupon-item-wrap">
     <view class="tu-coupon-image-wrapper">
@@ -26,7 +30,7 @@
           catchTap="onSelect" 
           class="tu-coupon-item-footer-button">
           <tu-button size="small" class="tu-coupon-action">
-            Lưu
+            {{getActionText(status)}}
           </tu-button>
         </view>
         <view tiki:else>
