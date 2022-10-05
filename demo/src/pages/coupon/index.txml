@@ -1,1 +1,7 @@
-<coupon type="cart" data="{{coupons}}" show onSelect="onSelect" />
+<coupon 
+  type="cart" 
+  data="{{coupons}}" 
+  show 
+  onClickAction="onClickAction"
+  showSearch
+  onSelect="onSelect" />

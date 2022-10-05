@@ -7,4 +7,8 @@ Page({
   onSelect(data) {
     console.log(data);
   },
+  onClickAction(data) {
+
+    console.log(data);
+  }
 });

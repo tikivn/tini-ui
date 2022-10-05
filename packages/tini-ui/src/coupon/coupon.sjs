@@ -40,12 +40,12 @@ export const getCouponCarts = (data) => {
   groups[0].maxUsage = data.maxCouponDiscountUsage >= 0 ? data.maxCouponDiscountUsage : 1;
   groups[1].maxUsage = data.maxCouponFreeshipUsage >= 0 ? data.maxCouponFreeshipUsage : 1;
 
-  data.items.forEach((item) => {
+  data.items.forEach((item, index) => {
     if (item.groupType === 'DISCOUNT') {
-      groups[0].items.push(item);
+      groups[0].items.push({ ...item, index });
     }
     if (item.groupType === 'SHIPPING') {
-      groups[1].items.push(item);
+      groups[1].items.push({...item, index});
     }
   });
 

@@ -4,6 +4,7 @@
   "usingComponents": {
     "coupon-item": "./coupon-item/index",
     "bottom-sheet": "../bottom-sheet/index",
+    "tu-button": "../tu-button/index",
     "textfield": "../textfield/index"
   }
 }
