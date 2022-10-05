@@ -25,14 +25,16 @@
     }
   }
   &-name {
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 500;
   }
   &-desc {
-    font-size: 12px;
+    color: var(--color-alias-secondary-on-theme);
+    font-size: 10px;
   }
   &-time {
-    font-size: 12px;
-    color: var(--color-alias-secondary-on-theme);
+    font-size: 10px;
+    color: var(--gray50);
   }
   &-image {
     margin-right: 8px;
@@ -101,13 +103,12 @@
 .tu-coupon-item-background {
   width: 100%;
   height: 104px;
-  filter: drop-shadow(rgba(0, 0, 0, 0.15) 0px 1px 3px);
+  filter: drop-shadow(rgba(0, 0, 0, 0.15) 0 1px 3px);
 }
 
 .tu-coupon-tags {
   display: flex;
   margin-bottom: 2px;
-  // overflow: hidden;
   max-width: calc((100% - 20px) - 8px);
 }
 

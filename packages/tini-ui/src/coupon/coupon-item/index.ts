@@ -1,16 +1,25 @@
-import type { Coupon } from '../types';
-
 type CouponItemData = {
   show: boolean;
   isSaved: boolean;
 };
 
+type CouponItem = {
+  coupon_code: string;
+  icon_name: string;
+  icon_url: string;
+  period: string;
+  short_description: string;
+  short_title: string;
+  tags: string[];
+};
+
 type CouponItemProps = {
-  data: Coupon;
+  data: CouponItem;
+  status?: string;
   className?: string;
-  onShowCoupon: (params: { coupon: Coupon }) => void;
+  onShowCoupon: (params: { coupon: CouponItem }) => void;
   onCloseCoupon: () => void;
-  onSelect: (params: { coupon: Coupon }) => void;
+  onSelect: (params: { coupon: CouponItem }) => void;
 };
 
 type CouponItemMethods = {

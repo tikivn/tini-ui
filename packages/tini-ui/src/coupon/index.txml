@@ -1,41 +1,72 @@
+<import-sjs from="./coupon.sjs" name="{ getCouponCarts }" />
+
 <bottom-sheet 
   style="{{show ? '' : 'height: 0;'}}"
   show="{{show}}"
   onClose="onClose" 
-  title="Áp dụng mã giảm giá" 
+  title="{{title}}" 
   distanceFromTop="{{100}}">
   <view class="tu-coupon">
-    <!-- <view class="tu-coupon-input-element"> -->
-    <!--   <textfield --> 
-    <!--     class="tu-coupon-input-element" --> 
-    <!--     value="{{value}}" --> 
-    <!--     type="text" --> 
-    <!--     controlled --> 
-    <!--     placeholder="Nhập mã giảm giá" -->
-    <!--     onInput="onInput" /> -->
-    <!--   <view class="tu-coupon-input-element-postfix"> -->
-    <!--     <view onTap="onApplyCouponInput" class="tu-coupon-input-element-text"> -->
-    <!--       Áp dụng -->
-    <!--     </view> -->
-    <!--   </view> -->
-    <!-- </view> -->
-
-    <!-- <view class="tu-coupon-sub-content"> -->
-    <!--   <view class="tu-coupon-divider" /> -->
-    <!--   <view>Hoặc chọn trong danh sách</view> -->
-    <!--   <view class="coupon-divider" /> -->
-    <!-- </view> -->
+    <view class="tu-coupon-input-element" tiki:if="{{showSearch}}">
+      <textfield 
+        type="text" 
+        placeholder="Nhập mã khuyến mãi"
+        onInput="onInput" />
+      <tu-button 
+        disabled="{{searchText.trim().length === 0}}"
+        onTap="onClickAction">
+        Áp dụng
+      </tu-button>
+    </view>
 
     <view class="tu-coupon-empty" tiki:if="{{coupons.length === 0}}">
       <image class="tu-coupon-empty-image" mode="aspectFit"
         src="https://salt.tikicdn.com/ts/tiniapp/f5/9f/6d/26cabd3e622399717270a0fba0a5012a.png" />
       <view>Bạn chưa có mã giảm giá nào</view>
     </view>
-    <block tiki:else tiki:for="{{coupons}}">
-      <coupon-item data="{{item}}" 
-        onSelect="onSelect" 
-        onShowCoupon="onShowCoupon" 
-        onCloseCoupon="onCloseCoupon" />
+
+    <block tiki:else>
+      <block tiki:if="{{type === 'normal'}}">
+        <coupon-item 
+          tiki:for="{{data}}"
+          data="{{item}}" 
+          onSelect="onSelect" 
+          onShowCoupon="onShowCoupon" 
+          onCloseCoupon="onCloseCoupon" />
+      </block>
+
+      <block tiki:if="{{type === 'cart'}}">
+        <block tiki:for="{{getCouponCarts(data)}}">
+          <view class="tu-coupon-group-header">
+            <view class="tu-coupon-group-header__title">{{item.title}}</view>
+            <view class="tu-coupon-group-header__condition">Áp dụng tối đa: {{item.maxUsage}}</view>
+          </view>
+
+          <coupon-item 
+            tiki:for="{{item.items}}"
+            tiki:for-item="coupon"
+            data="{{
+              index: coupon.index,
+              coupon_code: coupon.couponCode,
+              icon_name: coupon.iconName,
+              icon_url: coupon.iconUrl,
+              period: coupon.period,
+              short_description: coupon.description,
+              short_title: coupon.title,
+              tags: coupon.tags || []
+            }}"
+            status="{{
+              coupon.isSelected
+                ? 'applied'
+                : coupon.isEligible
+                  ? 'eligible'
+                  : 'not_eligible'
+            }}"
+            onSelect="onSelect" 
+            onShowCoupon="onShowCoupon" 
+            onCloseCoupon="onCloseCoupon" />
+        </block>
+      </block>
     </block>
 
   </view>
