@@ -6,11 +6,18 @@
     margin-bottom: 28px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
-  .tu-coupon-input-element input {
+  .tu-coupon-input-element .tu-textfield {
     margin-right: 8px;
+    width: 100%;
   }
+
+  .tu-coupon-input-element .tu-button {
+    min-width: 88px;
+  }
+
   .tu-coupon-input-element-text {
     padding: 0 16px;
     color: var(--color-alias-brand);
@@ -42,6 +49,19 @@
 
     &__condition {
       font-size: 12px;
+    }
+  }
+
+  &-view-more {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: var(--brand);
+    text {
+      margin-right: 8px;
     }
   }
 }

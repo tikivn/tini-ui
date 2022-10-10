@@ -49,6 +49,8 @@ Component({
     if (my.canIUse('offHardwareBackPress')) {
       my.offHardwareBackPress(this.onHardwareBackPress);
     }
+            my.hideOverlay({});
+
   },
   didUpdate(): void {
     if (my.canIUse('disableHardwareBackPress')) {

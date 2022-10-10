@@ -3,6 +3,7 @@ import { getCouponCarts } from './utils';
 
 type CouponData = {
   saved: string[];
+  expand: number[];
   searchText: string;
   couponCart: any;
 };
@@ -22,6 +23,7 @@ type CouponMethods = {
   onClose: () => void;
   onInput: (event: any) => void;
   onSelect: ({ coupon: Coupon }) => void;
+  onExpand: (event: any) => void;
   onClickAction: () => void;
   normalizeCoupon: () => void;
 };
@@ -29,6 +31,7 @@ type CouponMethods = {
 Component<CouponData, CouponProps, CouponMethods>({
   data: {
     saved: [],
+    expand: [],
     searchText: '',
     couponCart: null,
   },
@@ -60,6 +63,16 @@ Component<CouponData, CouponProps, CouponMethods>({
     },
     onClickAction() {
       this.props.onClickAction({ content: this.data.searchText });
+    },
+    onExpand(event) {
+      const { expand } = this.data;
+      const index = event.target.dataset.index;
+
+      if (expand.includes(index)) {
+        this.setData({ expand: expand.filter((i) => i !== index) });
+      } else {
+        this.setData({ expand: expand.concat([index]) });
+      }
     },
     normalizeCoupon() {
       const { data, type } = this.props;

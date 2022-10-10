@@ -36,7 +36,8 @@ export const getActionText = (status) => {
 };
 
 export const getCouponCarts = (data) => {
-  const groups = [...CartCouponGroups];
+  const groups = CartCouponGroups.map((g) => ({ ...g, items: [] }));
+
   groups[0].maxUsage = data.maxCouponDiscountUsage >= 0 ? data.maxCouponDiscountUsage : 1;
   groups[1].maxUsage = data.maxCouponFreeshipUsage >= 0 ? data.maxCouponFreeshipUsage : 1;
 
@@ -45,31 +46,25 @@ export const getCouponCarts = (data) => {
       groups[0].items.push({ ...item, index });
     }
     if (item.groupType === 'SHIPPING') {
-      groups[1].items.push({...item, index});
+      groups[1].items.push({ ...item, index });
     }
   });
 
   return groups;
 };
 
-// import claimStamp from '@/assets/coupon/claimed-stamp.svg';
-// import expiredStamp from '@/assets/coupon/expired-stamp.svg';
-// import notEligibleStamp from '@/assets/coupon/not_eligible-stamp.svg';
-// import savedStamp from '@/assets/coupon/saved-stamp.svg';
-// import outOfStockStamp from '@/assets/coupon/out_of_stock-stamp.svg';
-
 export const getCouponStampBg = (status) => {
   switch (status) {
     case CouponStatus.SAVED:
-      return '';
+      return 'https://tiniapp.tikicdn.com/resources/framework/images/coupon/saved-stamp.svg';
     case CouponStatus.CLAIMED:
-      return '';
+      return 'https://tiniapp.tikicdn.com/resources/framework/images/coupon/claimed-stamp.svg';
     case CouponStatus.EXPIRED:
-      return '';
+      return 'https://tiniapp.tikicdn.com/resources/framework/images/coupon/expired-stamp.svg';
     case CouponStatus.NOT_ELIGIBLE:
-      return '';
+      return 'https://tiniapp.tikicdn.com/resources/framework/images/coupon/not_eligible-stamp.svg';
     case CouponStatus.OUT_OF_STOCK:
-      return '';
+      return 'https://tiniapp.tikicdn.com/resources/framework/images/coupon/out_of_stock-stamp.svg';
     default:
       return '';
   }

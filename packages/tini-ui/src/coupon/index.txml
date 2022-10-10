@@ -5,6 +5,8 @@
   show="{{show}}"
   onClose="onClose" 
   title="{{title}}" 
+  buttonTitle="Xong"
+  onClick="onClose"
   distanceFromTop="{{100}}">
   <view class="tu-coupon">
     <view class="tu-coupon-input-element" tiki:if="{{showSearch}}">
@@ -45,6 +47,8 @@
           <coupon-item 
             tiki:for="{{item.items}}"
             tiki:for-item="coupon"
+            tiki:for-index="couponIndex"
+            tiki:if="{{expand.includes(index) || couponIndex < 2}}"
             data="{{
               index: coupon.index,
               coupon_code: coupon.couponCode,
@@ -65,10 +69,18 @@
             onSelect="onSelect" 
             onShowCoupon="onShowCoupon" 
             onCloseCoupon="onCloseCoupon" />
+
+          <view 
+            data-index="{{index}}"
+            class="tu-coupon-view-more" 
+            tiki:if="{{item.items.length > 2}}"
+            onTap="onExpand">
+            <text>{{!expand.includes(index) ? `Xem thêm (${item.items.length - 2})`  : 'Thu gọn'}}</text>
+            <icon type="{{expand.includes(index) ? 'arrow_up' : 'arrow_down'}}" color="var(--brand)" size="{{20}}" />
+          </view>
         </block>
       </block>
     </block>
 
   </view>
-  <view slot="footer" />
 </bottom-sheet>
