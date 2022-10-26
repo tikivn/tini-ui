@@ -6,11 +6,13 @@
   onInput="changeStreet"
   errorMsg="{{streetErrorMsg}}"
   hasError="{{!!streetErrorMsg}}"
-  placeholder="{{streetPlaceholder}}" />
-
+  placeholder="{{streetPlaceholder}}"
+  debounce="{{500}}" /> 
+<!-- fix android input bug -->
 <dropdown 
   labelText="{{cityLabel}}"
   items="{{cities}}"
+  classBottomSheet="bottomCity"
   showSearch="{{!listCities}}"
   value="{{value.city}}"
   onSelect="selectCity"
@@ -66,7 +68,8 @@
   maxlength="100"
   errorMsg="{{nameErrorMsg}}"
   hasError="{{!!nameErrorMsg}}"
-  placeholder="{{namePlaceholder}}" />
+  placeholder="{{namePlaceholder}}" 
+  debounce="{{500}}" />
 
 <textfield 
   tiki:if="{{showPhone}}"
@@ -79,4 +82,5 @@
   type="tel"
   maxlength="11"
   hasError="{{!!phoneErrorMsg}}"
-  placeholder="{{phonePlaceholder}}" />
+  placeholder="{{phonePlaceholder}}" 
+  debounce="{{500}}" />
