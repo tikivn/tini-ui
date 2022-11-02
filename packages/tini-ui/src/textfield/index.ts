@@ -190,5 +190,8 @@ Component({
     onInput(e) {
       this.onEvent('onInput', e);
     },
+    onTap(e) {
+      this.onEvent('onTap', e);
+    },
   },
 });

@@ -14,7 +14,8 @@
   disabled="{{disabled}}"
   placeholder="{{placeholder}}"
   trailingIcon="arrow_down" />
-
+  
+<view class="{{classBottomSheet}}">
   <bottom-sheet 
     show="{{showBottomSheet}}"
     title="{{bottomSheetTitle}}" 
@@ -96,3 +97,4 @@
       </view>
     </view>
   </bottom-sheet>
+</view>
