@@ -34,6 +34,7 @@ type DropdownProps = {
   onSelect?: (item: any) => void;
   onSearch?: (searchText: any) => void;
   onHideDropdown?: () => void;
+  classBottomSheet?: string;
 };
 
 type DropdownData = {
@@ -75,7 +76,8 @@ Component({
     showNotFound: false,
     notFoundImage:
       'https://salt.tikicdn.com/ts/tiniapp/58/79/5e/b6dd5791d8bcb9a96b23a694747eb1d4.png',
-    onSelect: () => {},
+    onSelect: () => { },
+    classBottomSheet: '',
   } as DropdownProps,
   data: {
     searchItems: [],
@@ -85,6 +87,9 @@ Component({
     localValue: null,
     isTextFieldFocusing: false,
   } as DropdownData,
+  onInit() {
+    this.onSelect = debounce(this.onSelect.bind(this), 25);
+  },
   didUpdate(prevProps) {
     const { onSearch, items } = this.props;
     const { searchText } = this.data;
@@ -179,7 +184,7 @@ Component({
       }
       onHideDropdown && onHideDropdown();
     },
-    hideBottomSheet(callback = () => {}) {
+    hideBottomSheet(callback = () => { }) {
       this.setData(
         {
           showBottomSheet: false,
