@@ -34,7 +34,8 @@
           data="{{item}}" 
           onSelect="onSelect" 
           onShowCoupon="onShowCoupon" 
-          onCloseCoupon="onCloseCoupon" />
+          onCloseCoupon="onCloseCoupon"
+          showButton="{{showActionButton}}"  />
       </block>
 
       <block tiki:if="{{type === 'cart'}}">
@@ -68,7 +69,8 @@
             }}"
             onSelect="onSelect" 
             onShowCoupon="onShowCoupon" 
-            onCloseCoupon="onCloseCoupon" />
+            onCloseCoupon="onCloseCoupon"
+            showButton="{{showActionButton}}" />
 
           <view 
             data-index="{{index}}"
