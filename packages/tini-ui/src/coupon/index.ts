@@ -14,6 +14,7 @@ type CouponProps = {
   data: NormalCoupon[] | CartCoupon;
   title?: string;
   showSearch?: boolean;
+  showActionButton?: boolean;
   onClose: () => void;
   onClickAction: ({ content: string }) => void;
   onSelect: ({ coupon: Coupon }) => void;
@@ -41,9 +42,10 @@ Component<CouponData, CouponProps, CouponMethods>({
     data: null,
     type: 'normal',
     showSearch: false,
-    onClickAction: () => {},
-    onClose: () => {},
-    onSelect: () => {},
+    showActionButton: true,
+    onClickAction: () => { },
+    onClose: () => { },
+    onSelect: () => { },
   },
   methods: {
     onClose() {

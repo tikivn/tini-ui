@@ -30,7 +30,7 @@
       <view class="tu-coupon-item-footer">
         <view class="tu-coupon-item-time">{{data.period}}</view>
         <view 
-          tiki:if="{{!getCouponStampBg(status)}}"
+          tiki:if="{{!getCouponStampBg(status) && showButton}}"
           catchTap="onSelect" 
           class="tu-coupon-item-footer-button">
           <tu-button size="small" class="tu-coupon-action">
