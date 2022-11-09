@@ -1,9 +1,13 @@
 <import-sjs from="../coupon.sjs" name="{ getActionText, getCouponStampBg }" />
 
 <view onTap="showDetail" class="{{className}} tu-coupon-item">
-  <image 
-    src="https://salt.tikicdn.com/ts/miniapp/e6/7a/29/a15fdc155284403bbb5eae225cb7bff4.png" 
-    class="tu-coupon-item-background" />
+  <plugin name="coupon" status="{{status}}" />
+
+  <!-- <plugin --> 
+  <!--   index="{{data.index}}" -->
+  <!--   name="coupon" --> 
+  <!--   status="{{status}}" -->
+  <!--   pluginUrl="https://tiniapp.tikicdn.com/resources/plugins/8591011fa898f4c24a2a382c683e1c37/couponbg.js" /> -->
 
   <view class="tu-coupon-item-wrap">
     <view class="tu-coupon-image-wrapper">
