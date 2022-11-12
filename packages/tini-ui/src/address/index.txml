@@ -7,7 +7,6 @@
 					 hasError="{{!!streetErrorMsg}}"
 					 placeholder="{{streetPlaceholder}}"
 					 debounce="{{400}}" />
-
 <textfield value="{{value.street}}"
 					 className="mb-small"
 					 maxlength="100"
@@ -17,7 +16,6 @@
 					 hasError="{{!!streetErrorMsg}}"
 					 placeholder="{{streetPlaceholder}}"
 					 debounce="{{400}}" />
-
 <textfield readonly
 					 onTap="onTapCityDropdown"
 					 data-item="city"
@@ -28,7 +26,6 @@
 					 placeholder="{{cityPlaceholder}}"
 					 className="tu-dropdown mb-small"
 					 trailingIcon="arrow_down" />
-
 <textfield readonly
 					 onTap="onTapDistrictDropdown"
 					 data-item="district"
@@ -40,7 +37,6 @@
 					 className="tu-dropdown mb-small {{value.city ? '' : 'bg-disable disabled-tap'}}"
 					 disabled="{{!value.city}}"
 					 trailingIcon="arrow_down" />
-
 <textfield readonly
 					 onTap="onTapWardDropdown"
 					 data-item="ward"
@@ -52,7 +48,6 @@
 					 className="tu-dropdown mb-small {{value.district ? '' : 'bg-disable disabled-tap'}}"
 					 disabled="{{!value.district}}"
 					 trailingIcon="arrow_down" />
-
 <a-dropdown showBottomSheet="{{showCityDropdown}}"
 						items="{{cities}}"
 						classBottomSheet="bottomCity"
@@ -64,7 +59,6 @@
 						showButtonBack="{{showButtonBack}}"
 						onHideDropdown="onHideDropdown"
 						bottomSheetTitle="{{cityLabel}}" />
-
 <a-dropdown showBottomSheet="{{showDistrictDropdown}}"
 						items="{{districts}}"
 						className="mb-small"
@@ -76,7 +70,6 @@
 						onGoBack="goBackCity"
 						onHideDropdown="onHideDropdown"
 						bottomSheetTitle="{{districtLabel}}" />
-
 <a-dropdown showBottomSheet="{{showWardDropdown}}"
 						items="{{wards}}"
 						className="mb-small"
@@ -88,8 +81,6 @@
 						onGoBack="goBackDistrict"
 						onHideDropdown="onHideDropdown"
 						bottomSheetTitle="{{wardLabel}}" />
-
-
 <textfield tiki:if="{{showName}}"
 					 value="{{value.full_name}}"
 					 className="mb-small"
@@ -101,7 +92,6 @@
 					 hasError="{{!!nameErrorMsg}}"
 					 placeholder="{{namePlaceholder}}"
 					 debounce="{{400}}" />
-
 <textfield tiki:if="{{showPhone}}"
 					 value="{{value.phone_number}}"
 					 className="mb-small"
