@@ -2,9 +2,8 @@
   "component": true,
   "componentLifeCycleV2": "YES",
   "usingComponents": {
-    "dropdown": "../dropdown/index",
-    "bottom-sheet": "../bottom-sheet/index",
-    "tu-label": "../tu-label/index",
-    "textfield": "../textfield/index"
+    "tu-label": "../tu-label",
+    "textfield": "../textfield",
+    "a-dropdown": "./address-dropdown"
   }
 }

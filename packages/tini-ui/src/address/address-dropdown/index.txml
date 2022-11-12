@@ -1,0 +1,68 @@
+<import-sjs from="./dropdown.sjs"
+            name="{ isSelected }" />
+
+<view class="{{classBottomSheet}}">
+  <bottom-sheet show="{{showBottomSheet}}"
+                showButtonBack="{{showButtonBack}}"
+                title="{{bottomSheetTitle}}"
+                buttonTitle="{{bottomSheetButton}}"
+                distanceFromTop="{{bottomSheetDistanceFromTop}}"
+                disableScroll
+                maskClose="{{maskClose}}"
+                isContentScrollView="{{false}}"
+                style="height: {{bottomSheetContainerHeight}}px"
+                popupClass="{{isTextFieldFocusing ? 'tu-dropdown-input-focus' : ''}}"
+                onGoBack="onGoBack"
+                onClose="onClose">
+    <view class="flex flex-col">
+      <textfield tiki:if="{{showSearch}}"
+                 onFocus="onTextFieldFocus"
+                 onBlur="onTextFieldBlur"
+                 class="px-small py-x-small"
+                 leadingIcon="search"
+                 onInput="onChangeSearchText"
+                 value="{{searchText}}"
+                 placeholder="{{searchPlaceholder}}" />
+      <scroll-view scroll-y
+                   tiki:if="{{searchItems.length > 0}}"
+                   style="height: {{bottomSheetScrollViewHeight}}px">
+        <!-- TODO: Implement slot -->
+        <block tiki:if="{{$slots.dropdownItem}}">
+          <view onTap="onSelect"
+                data-item="{{item}}"
+                tiki:for="{{searchItems}}">
+            <slot name="dropdownItem"
+                  item="{{item}}" />
+          </view>
+        </block>
+        <block tiki:else>
+          <view class="dropdown-item {{isSelected(localValue, item, idKey) ? 'dropdown-item-selected' : ''}}"
+                onTap="onSelect"
+                data-item="{{item}}"
+                tiki:key="{{idKey}}"
+                tiki:for="{{searchItems}}">
+            <view class="dropdown-item-content flex items-center justify-between">
+              <view class="flex items-center"
+                    style="width: calc(100% - var(--space-inline-8x) - {{isSelected(localValue, item, idKey) ? 24 : 0}}px)">
+                <view class="truncate">
+                  {{typeof item === 'object' ? item[labelKey] : item}}
+                </view>
+              </view>
+              <icon tiki:if="{{showCheck && isSelected(localValue, item, idKey)}}"
+                    color="#2EC275"
+                    type="success_glyph" />
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <view tiki:if="{{showSearch && searchText.length && !searchItems.length && showNotFound}}"
+            class="tu-dropdown-notfound">
+        <image src="{{notFoundImage}}"
+               class="tu-dropdown-notfound-image" />
+        <text class="tu-dropdown-notfound-title">Không có kết quả!</text>
+        <text>Vui lòng thử lại với từ khóa khác</text>
+      </view>
+    </view>
+    <view slot="footer" />
+  </bottom-sheet>
+</view>

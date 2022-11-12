@@ -26,12 +26,17 @@
   color: var(--color-sheet-title-text-default);
 }
 
-.tu-bottom-sheet-header-close-button {
+.tu-bottom-sheet-header-button {
   position: absolute;
   top: var(--space-inset-8x);
-  right: var(--space-inline-16x);
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  &.back {
+    left: var(--space-inline-16x);
+  }
+  &.close {
+    right: var(--space-inline-16x);
+  }
 }
 
 .tu-bottom-sheet-footer {

@@ -15,7 +15,9 @@ type AddressData = {
   cities: AddressItem[];
   districts: AddressItem[];
   wards: AddressItem[];
-  isShowDropdown: boolean;
+  showCityDropdown: boolean;
+  showDistrictDropdown: boolean;
+  showWardDropdown: boolean;
 };
 
 type AddresProps = {
@@ -108,10 +110,12 @@ Component({
       full_name: '',
       phone_number: '',
     },
+    showCityDropdown: false,
+    showDistrictDropdown: false,
+    showWardDropdown: false,
     cities: [],
     districts: [],
     wards: [],
-    isShowDropdown: false,
   } as AddressData,
   async didMount() {
     const { firstCities } = this.props;
@@ -205,12 +209,6 @@ Component({
       }
       return typeof item === 'number' || typeof item === 'string' ? +item : item && item['id'];
     },
-    onTapDropdown() {
-      this.setData({ isShowDropdown: true });
-    },
-    onHideDropdown() {
-      this.setData({ isShowDropdown: false });
-    },
     async getCities() {
       const cities = await this.addressService.getCities();
       this.setData({ cities });
@@ -223,7 +221,6 @@ Component({
       const wards = await this.addressService.getWards(districtId);
       this.setData({ wards });
     },
-
     onChangeAddress() {
       const { onChangeAddress, onFullAddress, showName, showPhone } = this.props;
       const { value } = this.data;
@@ -252,9 +249,6 @@ Component({
         isFull && onFullAddress(data);
       }
 
-      setTimeout(() => {
-        this.onHideDropdown();
-      }, 100);
       this.isChangingData = false;
     },
     changeStreet(e) {
@@ -290,6 +284,22 @@ Component({
         this.onChangeAddress();
       });
     },
+    onTapCityDropdown() {
+      this.setData({ showCityDropdown: true });
+    },
+    onTapDistrictDropdown() {
+      this.setData({ showDistrictDropdown: true });
+    },
+    onTapWardDropdown() {
+      this.setData({ showWardDropdown: true });
+    },
+    onHideDropdown() {
+      this.setData({
+        showCityDropdown: false,
+        showDistrictDropdown: false,
+        showWardDropdown: false,
+      });
+    },
     async selectCity(city) {
       this.isChangingData = true;
       const value = {
@@ -305,6 +315,7 @@ Component({
         this.onChangeAddress();
       });
       this.getDistricts(city.id);
+      this.setData({ showCityDropdown: false, showDistrictDropdown: true });
     },
     async selectDistrict(district) {
       this.isChangingData = true;
@@ -320,6 +331,7 @@ Component({
         this.onChangeAddress();
       });
       this.getWards(district.id);
+      this.setData({ showDistrictDropdown: false, showWardDropdown: true });
     },
     async selectWard(ward) {
       this.isChangingData = true;
@@ -333,6 +345,13 @@ Component({
         }
         this.onChangeAddress();
       });
+      this.setData({ showWardDropdown: false });
+    },
+    goBackCity() {
+      this.setData({ showCityDropdown: true, showDistrictDropdown: false });
+    },
+    goBackDistrict() {
+      this.setData({ showDistrictDropdown: true, showWardDropdown: false });
     },
   },
 });
