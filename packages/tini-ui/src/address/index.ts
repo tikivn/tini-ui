@@ -339,14 +339,14 @@ Component({
         ...this.data.value,
         ward,
       };
-      this.setData({ value }, () => {
+      this.setData({ value, showWardDropdown: false }, () => {
         if (this.props.onChangeWard) {
           this.props.onChangeWard(ward);
         }
         this.onChangeAddress();
       });
-      this.setData({ showWardDropdown: false });
     },
+
     goBackCity() {
       this.setData({ showCityDropdown: true, showDistrictDropdown: false });
     },

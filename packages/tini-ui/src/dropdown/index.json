@@ -5,6 +5,7 @@
     "textfield": "../textfield/index",
     "bottom-sheet": "../bottom-sheet/index",
     "tu-label": "../tu-label/index",
+    "dropdown-content": "../dropdown-content/index",
     "tu-button": "../tu-button/index"
   }
 }

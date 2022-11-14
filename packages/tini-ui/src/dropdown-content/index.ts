@@ -1,34 +1,31 @@
-import { isHasValue } from '../../_util/validate';
-import { debounce } from '../../_util/debounce';
-import compareNormalize from '../../_util/search';
-import { getSystemInfoAsync } from '../../_util/system';
+import { isHasValue } from '../_util/validate';
+import { debounce } from '../_util/debounce';
+import compareNormalize from '../_util/search';
+import { getSystemInfoAsync } from '../_util/system';
 
-type DropdownProps = {
-  placeholder?: string;
-  disabled?: boolean;
-  shape?: 'pill' | 'rounded';
-  loading?: boolean;
-  inputCls?: string;
-  className?: string;
+type DropdownContentProps = {
+  labelText?: string;
+  useBottomSheet?: boolean;
+  bottomSheetButton?: string;
+  errorMsg?: string;
+  hasError?: boolean;
+  multiple?: boolean;
+  onTap?: (event: unknown) => void;
   items?: Array<string> | Array<any>;
   labelKey?: string;
   idKey?: string;
   showSearch?: boolean;
   closeAfterSelect?: boolean;
   searchPlaceholder?: string;
-  labelText?: string;
   bottomSheetHeight?: number;
   bottomSheetTitle?: string;
   bottomSheetDistanceFromTop?: number;
   maskClose?: boolean;
   value?: any;
-  errorMsg?: string;
-  hasError?: boolean;
   showCheck?: boolean;
   showButtonBack?: boolean;
   showNotFound?: boolean;
   notFoundImage?: string;
-  onTap?: (event: unknown) => void;
   onSelect?: (item: any) => void;
   onSearch?: (searchText: any) => void;
   onHideDropdown?: () => void;
@@ -36,7 +33,7 @@ type DropdownProps = {
   showBottomSheet?: boolean;
 };
 
-type DropdownData = {
+type DropdownContentData = {
   searchItems: Array<string> | Array<any>;
   searchText: string;
   label: string;
@@ -51,6 +48,7 @@ const BottomSheetHeaderHeight = 40;
 
 Component({
   props: {
+    placeholder: '',
     disabled: false,
     shape: 'rounded',
     loading: false,
@@ -62,25 +60,29 @@ Component({
     showSearch: false,
     searchPlaceholder: 'Tìm kiếm',
     labelText: '',
+    closeAfterSelect: true,
+    useBottomSheet: true,
     showCheck: true,
-    showButtonBack: false,
     bottomSheetHeight: null,
     bottomSheetTitle: 'Dropdown',
+    bottomSheetButton: 'Chọn',
     bottomSheetDistanceFromTop: 100,
+    maskClose: true,
+    multiple: false,
     showNotFound: false,
-    isShowDropdown: false,
     notFoundImage:
       'https://salt.tikicdn.com/ts/tiniapp/58/79/5e/b6dd5791d8bcb9a96b23a694747eb1d4.png',
     onSelect: () => {},
     classBottomSheet: '',
-  } as DropdownProps,
+    showButtonBack: false,
+  } as DropdownContentProps,
   data: {
     searchItems: [],
     searchText: '',
     label: '',
     localValue: null,
     isTextFieldFocusing: false,
-  } as DropdownData,
+  } as DropdownContentData,
   onInit() {
     this.onSelect = debounce(this.onSelect.bind(this), 25);
   },
@@ -95,15 +97,17 @@ Component({
       searchText ? this.onSearch(searchText) : this.setData({ searchItems: items });
     }
   },
-  deriveDataFromProps({ value, labelKey, items, idKey }) {
+  deriveDataFromProps({ value, labelKey, items, idKey, multiple }) {
     const { label: localLabel } = this.data;
     let label = localLabel;
-
-    label =
-      value && typeof value === 'object'
-        ? value[labelKey] ?? items.find((i) => i[idKey] === value[idKey])?.[labelKey]
-        : value;
-
+    if (multiple) {
+      label = (value || []).map((v: any) => (typeof v === 'object' ? v[labelKey] : v)).join(', ');
+    } else {
+      label =
+        value && typeof value === 'object'
+          ? value[labelKey] ?? items.find((i) => i[idKey] === value[idKey])?.[labelKey]
+          : value;
+    }
     if (label !== localLabel) {
       this.setData({ label });
     }
@@ -115,18 +119,25 @@ Component({
   async didMount() {
     this.onSearch = debounce(this.onSearch.bind(this));
 
-    const { items, value, bottomSheetHeight, bottomSheetDistanceFromTop, showSearch } = this.props;
-    const data = { searchItems: items, localValue: value } as DropdownData;
+    const { items, value, multiple, bottomSheetHeight, bottomSheetDistanceFromTop, showSearch } =
+      this.props;
+    const data = {
+      searchItems: items,
+      localValue: value || (multiple ? [] : ''),
+    } as DropdownContentData;
     const sysInfo = await getSystemInfoAsync();
 
     if (bottomSheetHeight) {
       data.bottomSheetContainerHeight = bottomSheetHeight;
       data.bottomSheetScrollViewHeight =
-        bottomSheetHeight - (showSearch ? 60 : 0) - BottomSheetHeaderHeight;
+        bottomSheetHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0) - BottomSheetHeaderHeight;
     } else {
       data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop;
       data.bottomSheetScrollViewHeight =
-        data.bottomSheetContainerHeight - (showSearch ? 60 : 0) - BottomSheetHeaderHeight;
+        data.bottomSheetContainerHeight -
+        (showSearch ? 60 : 0) -
+        (multiple ? 100 : 0) -
+        BottomSheetHeaderHeight;
     }
 
     this.setData(data);
@@ -154,9 +165,14 @@ Component({
     },
 
     onClose() {
-      const { onHideDropdown } = this.props;
-      this.hideBottomSheet();
-
+      const { multiple, onHideDropdown } = this.props;
+      if (multiple) {
+        this.hideBottomSheet(() => {
+          this.setData({ localValue: this.props.value || [] });
+        });
+      } else {
+        this.hideBottomSheet();
+      }
       onHideDropdown && onHideDropdown();
     },
     onGoBack() {
@@ -166,7 +182,6 @@ Component({
     hideBottomSheet(callback = () => {}) {
       this.setData(
         {
-          isShowDropdown: false,
           searchText: '',
           searchItems: this.props.items,
         },
@@ -174,20 +189,35 @@ Component({
       );
     },
     onSelect(event) {
-      const { value, idKey, onSelect } = this.props;
+      const { multiple, value, idKey, closeAfterSelect, onSelect } = this.props;
+      const { localValue } = this.data;
       const { item } = event.target.dataset;
 
-      if (!value || item !== value || (typeof item === 'object' && item[idKey] !== value[idKey])) {
+      if (multiple) {
+        const existedIndex = (localValue as any[]).findIndex((v) =>
+          typeof item === 'object' ? v[idKey] === item[idKey] : v === item,
+        );
+        this.setData({
+          localValue:
+            existedIndex > -1
+              ? (localValue as any[]).filter((_v: any, i: number) => i !== existedIndex)
+              : [...localValue, item],
+        });
+      } else if (
+        !value ||
+        item !== value ||
+        (typeof item === 'object' && item[idKey] !== value[idKey])
+      ) {
         this.setData({ localValue: item }, () => {
           onSelect(item);
-          this.setData({
-            searchText: '',
-            searchItems: this.props.items,
-          });
+          closeAfterSelect && this.hideBottomSheet();
         });
       }
     },
-
+    onSelectMultiple() {
+      this.props.onSelect(this.data.localValue);
+      this.hideBottomSheet();
+    },
     onTextFieldFocus() {
       my.hideOverlay();
       this.setData({ isTextFieldFocusing: true });

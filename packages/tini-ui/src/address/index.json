@@ -4,6 +4,7 @@
   "usingComponents": {
     "tu-label": "../tu-label",
     "textfield": "../textfield",
-    "a-dropdown": "./address-dropdown"
+    "dropdown": "../dropdown",
+    "dropdown-content": "../dropdown-content"
   }
 }

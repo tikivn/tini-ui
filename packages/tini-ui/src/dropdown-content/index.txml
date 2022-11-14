@@ -44,11 +44,17 @@
             <view class="dropdown-item-content flex items-center justify-between">
               <view class="flex items-center"
                     style="width: calc(100% - var(--space-inline-8x) - {{isSelected(localValue, item, idKey) ? 24 : 0}}px)">
+                <!-- NOTE: Need fix on framework -->
+                <checkbox tiki:if="{{multiple && isSelected(localValue, item, idKey)}}"
+                          class="mr-2x-small"
+                          checked />
+                <checkbox tiki:if="{{multiple && !isSelected(localValue, item, idKey)}}"
+                          class="mr-2x-small" />
                 <view class="truncate">
                   {{typeof item === 'object' ? item[labelKey] : item}}
                 </view>
               </view>
-              <icon tiki:if="{{showCheck && isSelected(localValue, item, idKey)}}"
+              <icon tiki:if="{{showCheck && !multiple && isSelected(localValue, item, idKey)}}"
                     color="#2EC275"
                     type="success_glyph" />
             </view>
@@ -63,6 +69,15 @@
         <text>Vui lòng thử lại với từ khóa khác</text>
       </view>
     </view>
-    <view slot="footer" />
+    <view slot="footer">
+      <view tiki:if="{{multiple}}"
+            class="px-small py-2x-small">
+        <tu-button class="w-full"
+                   shape="pill"
+                   onTap="onSelectMultiple">
+          {{bottomSheetButton}}
+        </tu-button>
+      </view>
+    </view>
   </bottom-sheet>
 </view>

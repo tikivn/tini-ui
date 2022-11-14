@@ -1,7 +1,4 @@
 import { isHasValue } from '../_util/validate';
-import { debounce } from '../_util/debounce';
-import compareNormalize from '../_util/search';
-import { getSystemInfoAsync } from '../_util/system';
 
 type DropdownProps = {
   placeholder?: string;
@@ -27,28 +24,20 @@ type DropdownProps = {
   errorMsg?: string;
   hasError?: boolean;
   showCheck?: boolean;
+  showButtonBack?: boolean;
   multiple?: boolean; // If true, value must be array
   showNotFound?: boolean;
   notFoundImage?: string;
   onTap?: (event: unknown) => void;
-  onSelect?: (item: any) => void;
-  onSearch?: (searchText: any) => void;
+  onSelect?: (event: any) => void;
   onHideDropdown?: () => void;
   classBottomSheet?: string;
 };
 
 type DropdownData = {
-  searchItems: Array<string> | Array<any>;
-  searchText: string;
   label: string;
   showBottomSheet: boolean;
-  localValue: string | Array<string> | Array<any>;
-  bottomSheetContainerHeight: number;
-  bottomSheetScrollViewHeight: number;
-  isTextFieldFocusing: boolean;
 };
-
-const BottomSheetHeaderHeight = 40;
 
 Component({
   props: {
@@ -67,6 +56,7 @@ Component({
     closeAfterSelect: true,
     useBottomSheet: true,
     showCheck: true,
+    showButtonBack: false,
     bottomSheetHeight: null,
     bottomSheetTitle: 'Dropdown',
     bottomSheetButton: 'Chọn',
@@ -76,42 +66,24 @@ Component({
     showNotFound: false,
     notFoundImage:
       'https://salt.tikicdn.com/ts/tiniapp/58/79/5e/b6dd5791d8bcb9a96b23a694747eb1d4.png',
-    onSelect: () => { },
+    onSelect: () => {},
     classBottomSheet: '',
   } as DropdownProps,
   data: {
-    searchItems: [],
-    searchText: '',
     label: '',
     showBottomSheet: false,
     localValue: null,
-    isTextFieldFocusing: false,
   } as DropdownData,
-  onInit() {
-    this.onSelect = debounce(this.onSelect.bind(this), 25);
-  },
-  didUpdate(prevProps) {
-    const { onSearch, items } = this.props;
-    const { searchText } = this.data;
 
-    // TODO: Deep compare items
-    if (onSearch && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
-      this.setData({ searchItems: items });
-    } else if (prevProps.items.length !== items.length) {
-      searchText ? this.onSearch(searchText) : this.setData({ searchItems: items });
-    }
-  },
-  deriveDataFromProps({ value, labelKey, items, idKey, multiple }) {
+  deriveDataFromProps({ value, labelKey, items, idKey }) {
     const { label: localLabel } = this.data;
     let label = localLabel;
-    if (multiple) {
-      label = (value || []).map((v: any) => (typeof v === 'object' ? v[labelKey] : v)).join(', ');
-    } else {
-      label =
-        value && typeof value === 'object'
-          ? value[labelKey] ?? items.find((i) => i[idKey] === value[idKey])?.[labelKey]
-          : value;
-    }
+
+    label =
+      value && typeof value === 'object'
+        ? value[labelKey] ?? items.find((i) => i[idKey] === value[idKey])?.[labelKey]
+        : value;
+
     if (label !== localLabel) {
       this.setData({ label });
     }
@@ -120,49 +92,7 @@ Component({
       this.setData({ localValue: value });
     }
   },
-  async didMount() {
-    this.onSearch = debounce(this.onSearch.bind(this));
-
-    const { items, value, multiple, bottomSheetHeight, bottomSheetDistanceFromTop, showSearch } =
-      this.props;
-    const data = { searchItems: items, localValue: value || (multiple ? [] : '') } as DropdownData;
-    const sysInfo = await getSystemInfoAsync();
-
-    if (bottomSheetHeight) {
-      data.bottomSheetContainerHeight = bottomSheetHeight;
-      data.bottomSheetScrollViewHeight =
-        bottomSheetHeight - (showSearch ? 60 : 0) - (multiple ? 100 : 0) - BottomSheetHeaderHeight;
-    } else {
-      data.bottomSheetContainerHeight = sysInfo.windowHeight - bottomSheetDistanceFromTop;
-      data.bottomSheetScrollViewHeight =
-        data.bottomSheetContainerHeight -
-        (showSearch ? 60 : 0) -
-        (multiple ? 100 : 0) -
-        BottomSheetHeaderHeight;
-    }
-
-    this.setData(data);
-  },
   methods: {
-    onSearch(text) {
-      const { items, labelKey } = this.props;
-      const searched = items.filter((i) =>
-        compareNormalize(typeof i === 'object' ? i[labelKey] : i, text),
-      );
-
-      this.setData({ searchItems: searched });
-    },
-    onChangeSearchText(event) {
-      const { onSearch } = this.props;
-      const { value } = event.detail;
-
-      if (onSearch) {
-        onSearch(value);
-      } else {
-        this.setData({ searchText: value });
-        this.onSearch(value);
-      }
-    },
     onTap(e) {
       const { disabled, onTap, useBottomSheet } = this.props;
       if (disabled) {
@@ -173,62 +103,13 @@ Component({
       }
       onTap && onTap(e);
     },
-    onClose() {
-      const { multiple, onHideDropdown } = this.props;
-      if (multiple) {
-        this.hideBottomSheet(() => {
-          this.setData({ localValue: this.props.value || [] });
-        });
-      } else {
-        this.hideBottomSheet();
-      }
-      onHideDropdown && onHideDropdown();
-    },
-    hideBottomSheet(callback = () => { }) {
-      this.setData(
-        {
-          showBottomSheet: false,
-          searchText: '',
-          searchItems: this.props.items,
-        },
-        callback,
-      );
+
+    onHideDropdown() {
+      this.props.onHideDropdown();
+      this.setData({ showBottomSheet: false });
     },
     onSelect(event) {
-      const { multiple, value, idKey, closeAfterSelect, onSelect } = this.props;
-      const { localValue } = this.data;
-      const { item } = event.target.dataset;
-
-      if (multiple) {
-        const existedIndex = (localValue as any[]).findIndex((v) =>
-          typeof item === 'object' ? v[idKey] === item[idKey] : v === item,
-        );
-        this.setData({
-          localValue:
-            existedIndex > -1
-              ? (localValue as any[]).filter((_v: any, i: number) => i !== existedIndex)
-              : [...localValue, item],
-        });
-      } else if (
-        !value ||
-        item !== value ||
-        (typeof item === 'object' && item[idKey] !== value[idKey])
-      ) {
-        this.setData({ localValue: item }, () => {
-          onSelect(item);
-          closeAfterSelect && this.hideBottomSheet();
-        });
-      }
-    },
-    onSelectMultiple() {
-      this.props.onSelect(this.data.localValue);
-      this.hideBottomSheet();
-    },
-    onTextFieldFocus() {
-      this.setData({ isTextFieldFocusing: true });
-    },
-    onTextFieldBlur() {
-      this.setData({ isTextFieldFocusing: false });
+      this.props.onSelect(event);
     },
   },
 });
