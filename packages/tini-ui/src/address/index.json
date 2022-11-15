@@ -2,9 +2,9 @@
   "component": true,
   "componentLifeCycleV2": "YES",
   "usingComponents": {
-    "dropdown": "../dropdown/index",
-    "bottom-sheet": "../bottom-sheet/index",
-    "tu-label": "../tu-label/index",
-    "textfield": "../textfield/index"
+    "tu-label": "../tu-label",
+    "textfield": "../textfield",
+    "dropdown": "../dropdown",
+    "dropdown-content": "../dropdown-content"
   }
 }

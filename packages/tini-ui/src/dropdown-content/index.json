@@ -1,0 +1,10 @@
+{
+  "componentLifeCycleV2": "YES",
+  "component": true,
+  "usingComponents": {
+    "textfield": "../../textfield",
+    "bottom-sheet": "../../bottom-sheet",
+    "tu-label": "../../tu-label",
+    "tu-button": "../../tu-button"
+  }
+}

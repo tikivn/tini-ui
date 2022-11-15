@@ -6,6 +6,7 @@ type BottomSheetProps = {
   maskClose: boolean;
   animation: boolean;
   show: boolean;
+  showButtonBack: boolean;
   disableScroll: boolean;
   distanceFromTop: number;
   isContentScrollView?: boolean;
@@ -16,6 +17,7 @@ type BottomSheetProps = {
   buttonCls?: string;
   onClose?: (event: any) => void;
   onClick?: (event: any) => void;
+  onGoBack?: () => void;
 };
 
 Component({
@@ -49,8 +51,7 @@ Component({
     if (my.canIUse('offHardwareBackPress')) {
       my.offHardwareBackPress(this.onHardwareBackPress);
     }
-            my.hideOverlay({});
-
+    my.hideOverlay({});
   },
   didUpdate(): void {
     if (my.canIUse('disableHardwareBackPress')) {
@@ -114,6 +115,16 @@ Component({
       const { onClick } = this.props;
       if (onClick) {
         onClick({
+          target: {
+            dataset: this.dataset,
+          },
+        });
+      }
+    },
+    onGoBack(): void {
+      const { onGoBack } = this.props;
+      if (onGoBack) {
+        onGoBack({
           target: {
             dataset: this.dataset,
           },

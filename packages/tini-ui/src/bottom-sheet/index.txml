@@ -1,7 +1,10 @@
 <template name="defaultHeader">
   <view class="tu-bottom-sheet-header">
+    <view tiki:if="{{showButtonBack}}" class="tu-bottom-sheet-header-button back" onTap="onGoBack">
+      <icon type="arrow_left" color="var(--color-alias-reverse-theme)" />
+    </view>
     <view class="tu-bottom-sheet-header-title">{{title}}</view>
-    <view class="tu-bottom-sheet-header-close-button" onTap="onClose">
+    <view class="tu-bottom-sheet-header-button close" onTap="onClose">
       <icon type="close" color="var(--color-alias-reverse-theme)" />
     </view>
   </view>
@@ -9,21 +12,20 @@
 
 <template name="defaultFooter">
   <view class="tu-bottom-sheet-footer">
-    <tu-button class="tu-bottom-sheet-footer-button {{buttonCls}}" shape="{{buttonShape}}" onTap="onClick">{{buttonTitle}}</tu-button>
+    <tu-button class="tu-bottom-sheet-footer-button {{buttonCls}}" shape="{{buttonShape}}" onTap="onClick">
+      {{buttonTitle}}
+    </tu-button>
   </view>
 </template>
 
-<popup mask="{{mask}}" class="tu-bottom-sheet {{popupClass}}" animation="{{animation}}" position="bottom" show="{{show}}"
-  maskClose="{{maskClose}}"
-  disableScroll="{{disableScroll}}" zIndex="{{zIndex}}" onClose="onClose">
-  <view class="tu-bottom-sheet-wrapper {{className}}" 
-    style="max-height: calc(var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{distanceFromTop}}px);{{style || ''}}">
+<popup mask="{{mask}}" class="tu-bottom-sheet {{popupClass}}" animation="{{animation}}" position="bottom" show="{{show}}" maskClose="{{maskClose}}" disableScroll="{{disableScroll}}" zIndex="{{zIndex}}" onClose="onClose">
+  <view class="tu-bottom-sheet-wrapper {{className}}" style="max-height: calc(var(--tf-device-height) - var(--tf-status-bar-height, 25px) - var(--tf-title-bar-height, 50px) - {{distanceFromTop}}px);{{style || ''}}">
     <!-- header -->
     <block tiki:if="{{$slots.header}}">
       <slot name="header" />
     </block>
     <block tiki:else>
-      <template is="defaultHeader" data="{{title}}" />
+      <template is="defaultHeader" data="{{title, showButtonBack}}" />
     </block>
 
     <!-- content -->
@@ -37,7 +39,7 @@
       <slot />
     </block>
 
-    <!-- footer --> 
+    <!-- footer -->
     <block tiki:if="{{$slots.footer}}">
       <slot name="footer" />
     </block>
