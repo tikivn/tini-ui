@@ -12,6 +12,7 @@ type DropdownContentProps = {
   multiple?: boolean;
   onTap?: (event: unknown) => void;
   items?: Array<string> | Array<any>;
+  loading?: boolean;
   labelKey?: string;
   idKey?: string;
   showSearch?: boolean;
@@ -51,11 +52,11 @@ Component({
     placeholder: '',
     disabled: false,
     shape: 'rounded',
-    loading: false,
     inputCls: '',
     className: '',
     items: [],
     labelKey: 'name',
+    loading: false,
     idKey: 'id',
     showSearch: false,
     searchPlaceholder: 'Tìm kiếm',

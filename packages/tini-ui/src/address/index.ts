@@ -18,6 +18,7 @@ type AddressData = {
   showCityDropdown: boolean;
   showDistrictDropdown: boolean;
   showWardDropdown: boolean;
+  loading: boolean;
 };
 
 type AddresProps = {
@@ -113,6 +114,7 @@ Component({
     showCityDropdown: false,
     showDistrictDropdown: false,
     showWardDropdown: false,
+    loading: false,
     cities: [],
     districts: [],
     wards: [],
@@ -214,12 +216,14 @@ Component({
       this.setData({ cities });
     },
     async getDistricts(cityId) {
+      this.setData({ loading: true });
       const districts = await this.addressService.getDistricts(cityId);
-      this.setData({ districts });
+      this.setData({ districts, loading: false });
     },
     async getWards(districtId) {
+      this.setData({ loading: true });
       const wards = await this.addressService.getWards(districtId);
-      this.setData({ wards });
+      this.setData({ wards, loading: false });
     },
     onChangeAddress() {
       const { onChangeAddress, onFullAddress, showName, showPhone } = this.props;

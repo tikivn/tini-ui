@@ -1,38 +1,106 @@
-<textfield value="{{value.street}}" className="mb-small" maxlength="100" labelText="{{streetLabel}}"
-	onInput="changeStreet" errorMsg="{{streetErrorMsg}}" hasError="{{!!streetErrorMsg}}"
-	placeholder="{{streetPlaceholder}}" debounce="{{400}}" />
+<textfield value="{{value.street}}"
+		   className="mb-small"
+		   maxlength="100"
+		   labelText="{{streetLabel}}"
+		   onInput="changeStreet"
+		   errorMsg="{{streetErrorMsg}}"
+		   hasError="{{!!streetErrorMsg}}"
+		   placeholder="{{streetPlaceholder}}"
+		   debounce="{{400}}" />
 
-<textfield readonly onTap="onTapCityDropdown" data-item="city" errorMsg="{{cityErrorMsg}}" hasError="{{!!cityErrorMsg}}"
-	value="{{value.city.name}}" labelText="{{cityLabel}}" placeholder="{{cityPlaceholder}}"
-	className="tu-dropdown mb-small" trailingIcon="arrow_down" />
+<textfield readonly
+		   onTap="onTapCityDropdown"
+		   data-item="city"
+		   errorMsg="{{cityErrorMsg}}"
+		   hasError="{{!!cityErrorMsg}}"
+		   value="{{value.city.name}}"
+		   labelText="{{cityLabel}}"
+		   placeholder="{{cityPlaceholder}}"
+		   className="tu-dropdown mb-small"
+		   trailingIcon="arrow_down" />
 
-<textfield readonly onTap="onTapDistrictDropdown" data-item="district" errorMsg="{{districtErrorMsg}}"
-	hasError="{{!!districtErrorMsg}}" value="{{value.district.name}}" labelText="{{districtLabel}}"
-	placeholder="{{districtPlaceholder}}"
-	className="tu-dropdown mb-small {{value.city ? '' : 'bg-disable disabled-tap'}}" disabled="{{!value.city}}"
-	trailingIcon="arrow_down" />
+<textfield readonly
+		   onTap="onTapDistrictDropdown"
+		   data-item="district"
+		   errorMsg="{{districtErrorMsg}}"
+		   hasError="{{!!districtErrorMsg}}"
+		   value="{{value.district.name}}"
+		   labelText="{{districtLabel}}"
+		   placeholder="{{districtPlaceholder}}"
+		   className="tu-dropdown mb-small {{value.city ? '' : 'bg-disable disabled-tap'}}"
+		   disabled="{{!value.city}}"
+		   trailingIcon="arrow_down" />
 
-<textfield readonly onTap="onTapWardDropdown" data-item="ward" errorMsg="{{wardErrorMsg}}" hasError="{{!!wardErrorMsg}}"
-	value="{{value.ward.name}}" labelText="{{wardLabel}}" placeholder="{{wardPlaceholder}}"
-	className="tu-dropdown mb-small {{value.district ? '' : 'bg-disable disabled-tap'}}" disabled="{{!value.district}}"
-	trailingIcon="arrow_down" />
+<textfield readonly
+		   onTap="onTapWardDropdown"
+		   data-item="ward"
+		   errorMsg="{{wardErrorMsg}}"
+		   hasError="{{!!wardErrorMsg}}"
+		   value="{{value.ward.name}}"
+		   labelText="{{wardLabel}}"
+		   placeholder="{{wardPlaceholder}}"
+		   className="tu-dropdown mb-small {{value.district ? '' : 'bg-disable disabled-tap'}}"
+		   disabled="{{!value.district}}"
+		   trailingIcon="arrow_down" />
 
-<dropdown-content items="{{cities}}" showBottomSheet="{{showCityDropdown}}" classBottomSheet="bottomCity"
-	className="mb-small" onSelect="selectCity" value="{{value.city}}" showSearch="{{!listCities}}" showNotFound
-	showButtonBack="{{showButtonBack}}" onHideDropdown="onHideDropdown" bottomSheetTitle="{{cityLabel}}" />
+<dropdown-content items="{{cities}}"
+				  showBottomSheet="{{showCityDropdown}}"
+				  classBottomSheet="bottomCity"
+				  className="mb-small"
+				  onSelect="selectCity"
+				  value="{{value.city}}"
+				  showSearch="{{!listCities}}"
+				  showNotFound
+				  showButtonBack="{{showButtonBack}}"
+				  onHideDropdown="onHideDropdown"
+				  bottomSheetTitle="{{cityLabel}}" />
 
-<dropdown-content items="{{districts}}" showBottomSheet="{{showDistrictDropdown}}" className="mb-small"
-	onSelect="selectDistrict" value="{{value.district}}" showSearch showNotFound showButtonBack onGoBack="goBackCity"
-	onHideDropdown="onHideDropdown" bottomSheetTitle="{{districtLabel}}" />
+<dropdown-content items="{{districts}}"
+				  showBottomSheet="{{showDistrictDropdown}}"
+				  className="mb-small"
+				  onSelect="selectDistrict"
+				  value="{{value.district}}"
+				  loading="{{loading}}"
+				  showSearch
+				  showNotFound
+				  showButtonBack
+				  onGoBack="goBackCity"
+				  onHideDropdown="onHideDropdown"
+				  bottomSheetTitle="{{districtLabel}}" />
 
-<dropdown-content items="{{wards}}" showBottomSheet="{{showWardDropdown}}" className="mb-small" onSelect="selectWard"
-	value="{{value.ward}}" showSearch showNotFound showButtonBack onGoBack="goBackDistrict"
-	onHideDropdown="onHideDropdown" bottomSheetTitle="{{wardLabel}}" />
+<dropdown-content items="{{wards}}"
+				  showBottomSheet="{{showWardDropdown}}"
+				  className="mb-small"
+				  onSelect="selectWard"
+				  value="{{value.ward}}"
+				  loading="{{loading}}"
+				  showSearch
+				  showNotFound
+				  showButtonBack
+				  onGoBack="goBackDistrict"
+				  onHideDropdown="onHideDropdown"
+				  bottomSheetTitle="{{wardLabel}}" />
 
-<textfield tiki:if="{{showName}}" value="{{value.full_name}}" className="mb-small" labelText="{{nameLabel}}"
-	tiki:key="ward" onInput="changeName" maxlength="100" errorMsg="{{nameErrorMsg}}" hasError="{{!!nameErrorMsg}}"
-	placeholder="{{namePlaceholder}}" debounce="{{400}}" />
+<textfield tiki:if="{{showName}}"
+		   value="{{value.full_name}}"
+		   className="mb-small"
+		   labelText="{{nameLabel}}"
+		   tiki:key="ward"
+		   onInput="changeName"
+		   maxlength="100"
+		   errorMsg="{{nameErrorMsg}}"
+		   hasError="{{!!nameErrorMsg}}"
+		   placeholder="{{namePlaceholder}}"
+		   debounce="{{400}}" />
 
-<textfield tiki:if="{{showPhone}}" value="{{value.phone_number}}" className="mb-small" labelText="{{phoneLabel}}"
-	onInput="changePhone" errorMsg="{{phoneErrorMsg}}" type="tel" maxlength="11" hasError="{{!!phoneErrorMsg}}"
-	placeholder="{{phonePlaceholder}}" debounce="{{400}}" />
+<textfield tiki:if="{{showPhone}}"
+		   value="{{value.phone_number}}"
+		   className="mb-small"
+		   labelText="{{phoneLabel}}"
+		   onInput="changePhone"
+		   errorMsg="{{phoneErrorMsg}}"
+		   type="tel"
+		   maxlength="11"
+		   hasError="{{!!phoneErrorMsg}}"
+		   placeholder="{{phonePlaceholder}}"
+		   debounce="{{400}}" />
