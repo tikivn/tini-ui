@@ -17,6 +17,7 @@ type CouponItemProps = {
   data: CouponItem;
   status?: string;
   className?: string;
+  showButton?: boolean;
   onShowCoupon: (params: { coupon: CouponItem }) => void;
   onCloseCoupon: () => void;
   onSelect: (params: { coupon: CouponItem }) => void;
@@ -37,9 +38,10 @@ Component<CouponItemData, CouponItemProps, CouponItemMethods>({
   props: {
     className: '',
     data: null,
-    onShowCoupon: () => {},
-    onCloseCoupon: () => {},
-    onSelect: () => {},
+    showButton: true,
+    onShowCoupon: () => { },
+    onCloseCoupon: () => { },
+    onSelect: () => { },
   },
   methods: {
     onSelect() {
