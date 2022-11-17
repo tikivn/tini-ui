@@ -105,11 +105,15 @@ Component({
     },
 
     onHideDropdown() {
-      this.props.onHideDropdown();
+      const { onHideDropdown } = this.props;
+      if (onHideDropdown) {
+        this.props.onHideDropdown();
+      }
       this.setData({ showBottomSheet: false });
     },
     onSelect(event) {
       this.props.onSelect(event);
+      this.setData({ showBottomSheet: false });
     },
   },
 });
