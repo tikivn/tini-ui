@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/button/index",
     "pages/coupon/index",
     "pages/index/index",
     "pages/address/index",
@@ -8,7 +9,6 @@
     "pages/textfield/index",
     "pages/label/index",
     "pages/list/index",
-    "pages/button/index",
     "pages/pagination/index",
     "pages/stepper/index",
     "pages/index/index",
