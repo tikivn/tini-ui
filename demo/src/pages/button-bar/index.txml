@@ -1,18 +1,16 @@
-<button-bar option="Option"
+<button-bar checkboxText="Option"
             direction="row"
             buttons="{{[
     {
         buttonText: 'Button1',
-        shape: 'pill',
         type: 'outline',
     },
     {
         buttonText: 'Button2',
-        shape: 'pill'
     },
 ]}}" />
 
-<button-bar option="Option"
+<button-bar checkboxText="Option"
             direction="column"
             buttons="{{[
     {
@@ -25,12 +23,11 @@
         type: 'outline',
     },
 ]}}" />
-<button-bar option="Option"
+<button-bar checkboxText="Option"
             direction="row"
             buttons="{{[
     {
         buttonText: 'Button1',
-        shape: 'pill',
         type: 'outline',
     },
 ]}}" />
