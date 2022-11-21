@@ -1,30 +1,14 @@
-type ButtonProps = {
-    buttonText?: string,
-    className?: string;
-    style?: string;
-    iconName?: string;
-    leadingIcon?: string;
-    trailingIcon?: string;
-    leadingIconColor?: string;
-    trailingIconColor?: string;
-    shape?: 'pill' | 'rounded' | 'circle';
-    size?: 'medium' | 'small' | 'large';
-    formType?: 'submit' | 'reset';
-    skeleton?: boolean;
-    loading?: boolean;
-    disabled?: boolean;
-    type: 'solid' | 'outline' | 'ghost';
-    onTap?: (event: any) => void;
-};
+
+import { ButtonProps } from '../tu-button/index'
 type ButtonBarProps = {
     className?: string;
     style?: string;
     buttons?: Array<ButtonProps>;
-    direction?: string,
-    option?: string,
-    onTapFirst?: () => void;
-    onTapSecond?: () => void;
-    onOption?: () => void;
+    direction?: 'row' | 'column',
+    checkboxText?: string,
+    onTapFirst?: (event: any) => void;
+    onTapSecond?: (event: any) => void;
+    onTapCheckbox?: (event: any) => void;
 };
 
 Component({
@@ -35,19 +19,20 @@ Component({
             }
         ],
         direction: 'row',
+        checkboxText: '',
         onTapFirst: () => { },
         onTapSecond: () => { },
-        onOption: () => { }
+        onTapCheckbox: () => { }
     } as ButtonBarProps,
     methods: {
-        onTap1() {
-            this.props.onTapFirst();
+        onTap1(event: any) {
+            this.props.onTapFirst(event);
         },
-        onTap2() {
-            this.props.onTapSecond();
+        onTap2(event: any) {
+            this.props.onTapSecond(event);
         },
-        _onChange() {
-            this.props.onOption();
+        _onChange(event: any) {
+            this.props.onTapCheckbox(event);
         }
     },
 });
