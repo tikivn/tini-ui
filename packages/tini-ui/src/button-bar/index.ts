@@ -22,8 +22,8 @@ type ButtonBarProps = {
     buttons?: Array<ButtonProps>;
     direction?: string,
     option?: string,
-    onTapLeft?: () => void;
-    onTapRight?: () => void;
+    onTapFirst?: () => void;
+    onTapSecond?: () => void;
     onOption?: () => void;
 };
 
@@ -35,16 +35,16 @@ Component({
             }
         ],
         direction: 'row',
-        onTapLeft: () => { },
-        onTapRight: () => { },
+        onTapFirst: () => { },
+        onTapSecond: () => { },
         onOption: () => { }
     } as ButtonBarProps,
     methods: {
         onTap1() {
-            this.props.onTapLeft();
+            this.props.onTapFirst();
         },
         onTap2() {
-            this.props.onTapRight();
+            this.props.onTapSecond();
         },
         _onChange() {
             this.props.onOption();
