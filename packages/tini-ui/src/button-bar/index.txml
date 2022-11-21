@@ -1,9 +1,9 @@
 <view class="{{className}} container"
       style="{{style}}">
-  <view tiki:if="{{option}}"
+  <view tiki:if="{{checkboxText}}"
         class="flex items-center text-gray60">
     <checkbox onChange="_onChange" />
-    <text class="ml-2x-small">{{option}}</text>
+    <text class="ml-2x-small">{{checkboxText}}</text>
   </view>
   <view class="button-bar {{direction == 'row' ? 'flex-row' : 'flex-col'}}">
     <tu-button class="flex-grow"
