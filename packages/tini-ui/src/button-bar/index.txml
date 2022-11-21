@@ -1,7 +1,7 @@
-<view class="{{className}} container"
+<view class="{{className || ''}} container"
       style="{{style}}">
   <view tiki:if="{{checkboxText}}"
-        class="flex items-center text-gray60">
+        class="flex items-center text-gray60 mb-small">
     <checkbox onChange="_onChange" />
     <text class="ml-2x-small">{{checkboxText}}</text>
   </view>

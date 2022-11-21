@@ -1,18 +1,19 @@
+<view class="bg-white">
 <button-bar checkboxText="Option"
+            class="mb-medium"
             direction="row"
             buttons="{{[
     {
         buttonText: 'Button1',
-        shape: 'pill',
         type: 'outline',
     },
     {
         buttonText: 'Button2',
-        shape: 'pill'
     },
 ]}}" />
 
 <button-bar checkboxText="Option"
+            class="mb-medium"
             direction="column"
             buttons="{{[
     {
@@ -34,3 +35,4 @@
         type: 'outline',
     },
 ]}}" />
+</view>
