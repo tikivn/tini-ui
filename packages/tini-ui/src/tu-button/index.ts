@@ -1,6 +1,6 @@
 import fmtEvent from '../_util/fmtEvent';
 
-type ButtonProps = {
+export type ButtonProps = {
   className?: string;
   style?: string;
   iconName?: string;
