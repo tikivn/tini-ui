@@ -35,6 +35,9 @@ Component({
             }
         ],
         direction: 'row',
+        onTapLeft: () => { },
+        onTapRight: () => { },
+        onOption: () => { }
     } as ButtonBarProps,
     methods: {
         onTap1() {
