@@ -1,0 +1,36 @@
+<button-bar option="Option"
+            direction="row"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        shape: 'pill',
+        type: 'outline',
+    },
+    {
+        buttonText: 'Button2',
+        shape: 'pill'
+    },
+]}}" />
+
+<button-bar option="Option"
+            direction="column"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        shape: 'pill',
+    },
+    {
+        buttonText: 'Button2',
+        shape: 'pill',
+        type: 'outline',
+    },
+]}}" />
+<button-bar option="Option"
+            direction="row"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        shape: 'pill',
+        type: 'outline',
+    },
+]}}" />

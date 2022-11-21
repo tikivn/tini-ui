@@ -1,0 +1,19 @@
+<view class="container">
+  <view tiki:if="{{option}}"
+        class="flex items-center text-gray60">
+    <checkbox onChange="_onChange" />
+    <text class="ml-2x-small">{{option}}</text>
+  </view>
+  <view class="button-bar {{direction == 'row' ? 'flex-row' : 'flex-col'}}">
+    <tu-button class="flex-grow"
+               tiki:for="{{buttons}}"
+               type="{{item.type}}"
+               shape="{{item.shape}}"
+               style="{{item.style}}"
+               size="{{item.size}}"
+               loading="{{item.loading}}"
+               formType="{{item.formType}}"
+               disabled="{{item.disabled}}"
+               onTap="{{index == 0 ? 'onTap1' : 'onTap2'}}">{{item.buttonText}}</tu-button>
+  </view>
+</view>
