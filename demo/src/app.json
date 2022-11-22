@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/button-bar/index",
     "pages/label/index",
+    "pages/button-bar/index",
     "pages/coupon/index",
     "pages/index/index",
     "pages/address/index",
