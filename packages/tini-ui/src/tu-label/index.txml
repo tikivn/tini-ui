@@ -8,7 +8,7 @@
       class="tu-label-inline {{disabled ? 'tu-label-inline-disabled' : ''}} {{helperText ? 'tu-label-inline-has-helper' : ''}}">
       <badge class="tu-label-dot" tiki:if="{{showBadge}}" dot />
       <view>{{text}}</view>
-      <tu-icon className="tu-label-icon" tiki:if="{{icon}}" type="{{icon}}" color="{{iconColor}}" />
+      <tu-icon className="tu-label-icon" tiki:if="{{icon}}" type="{{icon}}" color="{{iconColor ? iconColor : 'var(--color-label-icon-default)'}}"/>
     </view>
   </block>
   <view class="tu-label-helper" tiki:if="{{helperText && !loading}}">{{helperText}}</view>

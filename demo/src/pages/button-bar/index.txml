@@ -1,0 +1,38 @@
+<view class="bg-white">
+<button-bar checkboxText="Option"
+            class="mb-medium"
+            direction="row"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        type: 'outline',
+    },
+    {
+        buttonText: 'Button2',
+    },
+]}}" />
+
+<button-bar checkboxText="Option"
+            class="mb-medium"
+            direction="column"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        shape: 'pill',
+    },
+    {
+        buttonText: 'Button2',
+        shape: 'pill',
+        type: 'outline',
+    },
+]}}" />
+<button-bar checkboxText="Option"
+            direction="row"
+            buttons="{{[
+    {
+        buttonText: 'Button1',
+        shape: 'pill',
+        type: 'outline',
+    },
+]}}" />
+</view>

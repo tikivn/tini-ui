@@ -13,7 +13,7 @@ Component({
   props: {
     showBadge: false,
     icon: '',
-    iconColor: '#808089',
+    iconColor: '',
     helperText: '',
     disabled: false,
     text: '',
