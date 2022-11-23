@@ -3,12 +3,13 @@ import fmtEvent from '../_util/fmtEvent';
 export type ButtonProps = {
   className?: string;
   style?: string;
+  variant?: 'brand' | 'brand-reverse' | 'neutral' | 'neutral-reverse';
   iconName?: string;
   leadingIcon?: string;
   trailingIcon?: string;
   leadingIconColor?: string;
   trailingIconColor?: string;
-  shape?: 'pill' | 'rounded' | 'circle';
+  shape?: 'pill' | 'rounded';
   size?: 'medium' | 'small' | 'large';
   formType?: 'submit' | 'reset';
   skeleton?: boolean;
@@ -20,13 +21,14 @@ export type ButtonProps = {
 
 Component({
   props: {
+    variant: 'brand',
     type: 'solid',
     shape: 'rounded',
     size: 'large',
     leadingIcon: '',
     trailingIcon: '',
-    leadingIconColor: '#fff',
-    trailingIconColor: '#fff',
+    leadingIconColor: '',
+    trailingIconColor: '',
     skeleton: false,
     loading: false,
     disabled: false,

@@ -1,6 +1,16 @@
 <template name="variant-style">
   <view class="page-block">
     <view class="page-block-title">Variants</view>
+    <list-item upperSubtitle="Brand button & Neutral button & Over background">
+    </list-item>
+    <tu-button class="my-large" class="">Brand</tu-button>
+    <tu-button class="mb-large" variant="neutral">Neutral</tu-button>
+    <view class="bg-blue60 p-2x-small radius-8px mb-large">
+      <tu-button class="" variant="brand-reverse">Brand reverse</tu-button>
+    </view>
+    <view class="bg-gray100 p-2x-small radius-8px">
+      <tu-button variant="neutral-reverse">Neutral reverse</tu-button>
+    </view>
     <list-item upperSubtitle="Solid, Outlined and Ghost.">
       <view>1. Style</view>
     </list-item>

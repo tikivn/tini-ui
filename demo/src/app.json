@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/button/index",
     "pages/button-bar/index",
     "pages/label/index",
     "pages/coupon/index",
@@ -9,7 +10,6 @@
     "pages/bottom-sheet/index",
     "pages/textfield/index",
     "pages/list/index",
-    "pages/button/index",
     "pages/pagination/index",
     "pages/stepper/index",
     "pages/index/index",

@@ -1,3 +1,70 @@
+:root {
+  --color-alias-primary-on-reverse-theme-decimal: 255, 255, 255;
+  --color-global-blue60-decimal: 26, 148, 255;
+  --color-alias-brand-decimal: var(--color-global-blue60-decimal);  
+  --color-alias-on-brand-decimal: 255, 255, 255;
+  // brand-reverse token
+  //solid
+  --color-button-brand-reverse-solid-text-default: var(--color-alias-brand); 
+  --color-button-brand-reverse-solid-text-hover: rgba(var(--color-alias-brand-decimal), 0.8); 
+  --color-button-brand-reverse-solid-text-active: rgba(var(--color-alias-brand-decimal), 0.6);
+  --color-button-brand-reverse-solid-text-disabled: var(--color-alias-disabled); 
+  --color-button-brand-reverse-solid-icon-default: var(--color-alias-brand); 
+  --color-button-brand-reverse-solid-icon-hover: rgba(var(--color-alias-brand-decimal), 0.8); 
+  --color-button-brand-reverse-solid-icon-active: rgba(var(--color-alias-brand-decimal), 0.6);
+  --color-button-brand-reverse-solid-icon-disabled: var(--color-alias-disabled); 
+  --color-button-brand-reverse-solid-background-default: var(--color-alias-on-brand); 
+  --color-button-brand-reverse-solid-background-disabled: var(--color-alias-disabled-variant); 
+
+  //outline
+  --color-button-brand-reverse-outlined-text-default: var(--color-alias-on-brand);
+  --color-button-brand-reverse-outlined-text-disabled: var(--color-alias-disabled);
+  --color-button-brand-reverse-outlined-icon-default: var(--color-alias-on-brand);
+  --color-button-brand-reverse-outlined-icon-disabled: var(--color-alias-disabled);
+  --color-button-brand-reverse-outlined-border-default: var(--color-alias-on-brand);
+  --color-button-brand-reverse-outlined-border-hover: rgba(var(--color-alias-on-brand-decimal), 0.8);
+  --color-button-brand-reverse-outlined-border-active: rgba(var(--color-alias-on-brand-decimal), 0.6);
+  --color-button-brand-reverse-outlined-border-disabled: var(--color-alias-disabled-variant); 
+
+  //ghost 
+  --color-button-brand-reverse-ghost-text-default: var(--color-alias-on-brand);
+  --color-button-brand-reverse-ghost-text-disabled: var(--color-alias-disabled); 
+  --color-button-brand-reverse-ghost-icon-default: var(--color-alias-on-brand); 
+  --color-button-brand-reverse-ghost-icon-disabled: var(--color-alias-disabled);
+  --color-button-brand-reverse-ghost-background-hover: rgba(var(--color-alias-on-brand-decimal), 0.2);
+  --color-button-brand-reverse-ghost-background-active: rgba(var(--color-alias-on-brand-decimal), 0.4); 
+
+  // neutral-reverse token
+  //solid
+  --color-button-neutral-reverse-solid-text-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-solid-text-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-solid-icon-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-solid-icon-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-solid-background-default: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.2);
+  --color-button-neutral-reverse-solid-background-hover: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.4);
+  --color-button-neutral-reverse-solid-background-active: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.6);
+  --color-button-neutral-reverse-solid-background-disabled: var(--color-alias-reverse-disabled-variant);
+
+  //outline
+  --color-button-neutral-reverse-outlined-text-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-outlined-text-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-outlined-icon-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-outlined-icon-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-outlined-border-default: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.2);
+  --color-button-neutral-reverse-outlined-border-hover: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.4);
+  --color-button-neutral-reverse-outlined-border-active: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.6);
+  --color-button-neutral-reverse-outlined-border-disabled: var(--color-alias-reverse-disabled-variant);
+
+  //ghost
+  --color-button-neutral-reverse-ghost-text-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-ghost-text-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-ghost-icon-default: var(--color-alias-primary-on-reverse-theme);
+  --color-button-neutral-reverse-ghost-icon-disabled: var(--color-alias-reverse-disabled); 
+  --color-button-neutral-reverse-ghost-background-hover: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.3);
+  --color-button-neutral-reverse-ghost-background-active: rgba(var(--color-alias-primary-on-reverse-theme-decimal), 0.4);
+
+}
+
 .size-large {
   width: var(--component-size-large);
   height: var(--component-size-large);
@@ -57,40 +124,8 @@
   &.rounded {
     border-radius: var(--border-radius-rounded-4px);
   }
-  &.square {
-    border-radius: var(--border-radius-rounded-4px);
-
-    &.large {
-      &:extend(.size-large,
-      .no-padding-horizontal);
-    }
-    &.medium {
-      &:extend(.size-medium,
-      .no-padding-horizontal);
-    }
-    &.small {
-      &:extend(.size-small,
-      .no-padding-horizontal);
-    }
-  }
   &.pill {
     border-radius: var(--border-radius-pill);
-  }
-  &.circle {
-    border-radius: 50%;
-
-    &.large {
-      &:extend(.size-large,
-      .no-padding-horizontal);
-    }
-    &.medium {
-      &:extend(.size-medium,
-      .no-padding-horizontal);
-    }
-    &.small {
-      &:extend(.size-small,
-      .no-padding-horizontal);
-    }
   }
 
   &.skeleton {
@@ -98,11 +133,250 @@
     pointer-events: none;
     color: var(--color-global-black);
     border: none;
-    & .tu-button--icon * {
-      fill: var(--color-global-black);
+    .tu-button-icon * {
+      z-index: -1000;
     }
     & .t-loading-indicator {
       display: none;
+    }
+  }
+
+  &.loading {
+    &.hasIconName {
+      * {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  &.brand-reverse {
+    &.solid {
+      color: var(--color-button-brand-reverse-solid-text-default);
+      background-color: var(--color-button-brand-reverse-solid-background-default);
+      border-color: var(--color-button-brand-reverse-solid-background-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-brand-reverse-solid-icon-default);
+        }
+      }
+      &:hover {
+        color: var(--color-button-brand-reverse-solid-text-hover);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-solid-icon-hover);
+          }
+        }
+      }
+      &:active {
+        color: var(--color-button-brand-reverse-solid-text-active);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-solid-icon-active);
+          }
+        }
+      }
+      &.disabled {
+        color: var(--color-button-brand-reverse-solid-text-disabled);
+        background-color: var(--color-button-brand-reverse-solid-background-disabled);
+        border-color: var(--color-button-brand-reverse-solid-background-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-solid-background-disabled);
+          }
+        }
+      }
+    }
+    &.outline {
+      color: var(--color-button-brand-reverse-outlined-text-default);
+      border-color: var(--color-button-brand-reverse-outlined-border-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-brand-reverse-outlined-icon-default);
+        }
+      }
+      &:hover {
+        border-color: var(--color-button-brand-reverse-outlined-border-hover);
+      }
+      &:active {
+        border-color: var(--color-button-brand-reverse-outlined-border-active);
+      }
+      &.disabled {
+        color: var(--color-button-brand-reverse-outlined-text-disabled);
+        border-color: var(--color-button-brand-reverse-outlined-border-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-outlined-icon-disabled);
+          }
+        }
+      }
+    }
+    &.ghost {
+      color: var(--color-button-brand-reverse-ghost-text-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-brand-reverse-ghost-icon-default);
+        }
+      }
+      &:hover {
+        background-color: var(--color-button-brand-reverse-ghost-background-hover);
+      }
+      &:active {
+        background-color: var(--color-button-brand-reverse-ghost-background-active);
+      }
+      &.disabled {
+        color: var(--color-button-brand-reverse-ghost-text-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-ghost-icon-disabled);
+          }
+        }
+      }
+    }
+  }
+  &.neutral {
+    &.solid {
+      color: var(--color-button-neutral-solid-text-default);
+      background-color: var(--color-button-neutral-solid-background-default);
+      border-color: var(--color-button-neutral-solid-background-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-solid-icon-default);
+        }
+      }
+      &:hover {
+        background-color: var(--color-button-neutral-solid-background-hover);
+      }
+      &:active {
+        background-color: var(--color-button-neutral-solid-background-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-solid-text-disabled);
+        background-color: var(--color-button-neutral-solid-background-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-neutral-solid-background-disabled);
+          }
+        }
+      }
+    }
+    &.outline {
+      color: var(--color-button-neutral-outlined-text-default);
+      border-color: var(--color-button-neutral-outlined-border-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-outlined-icon-default);
+        }
+      }
+      &:hover {
+        border-color: var(--color-button-neutral-outlined-border-hover);
+      }
+      &:active {
+        border-color: var(--color-button-neutral-outlined-border-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-outlined-text-disabled);
+        border-color: var(--color-button-brand-reverse-outlined-border-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-outlined-icon-disabled);
+          }
+        }
+      }
+    }
+    &.ghost {
+      color: var(--color-button-neutral-ghost-text-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-ghost-icon-default);
+        }
+      }
+      &:hover {
+        background-color: var(--color-button-neutral-ghost-background-hover);
+      }
+      &:active {
+        background-color: var(--color-button-neutral-ghost-background-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-ghost-text-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-neutral-ghost-icon-disabled);
+          }
+        }
+      }
+    }
+  }
+  &.neutral-reverse {
+    &.solid {
+      color: var(--color-button-neutral-reverse-solid-text-default);
+      background-color: var(--color-button-neutral-reverse-solid-background-default);
+      border-color: var(--color-button-neutral-reverse-solid-background-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-reverse-solid-icon-default);
+        }
+      }
+      &:hover {
+        background-color: var(--color-button-neutral-reverse-solid-background-hover);
+      }
+      &:active {
+        background-color: var(--color-button-neutral-reverse-solid-background-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-reverse-solid-text-disabled);
+        background-color: var(--color-button-neutral-reverse-solid-background-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-neutral-reverse-solid-background-disabled);
+          }
+        }
+      }
+    }
+    &.outline {
+      color: var(--color-button-neutral-reverse-outlined-text-default);
+      border-color: var(--color-button-neutral-reverse-outlined-border-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-reverse-outlined-icon-default);
+        }
+      }
+      &:hover {
+        border-color: var(--color-button-neutral-reverse-outlined-border-hover);
+      }
+      &:active {
+        border-color: var(--color-button-neutral-reverse-outlined-border-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-reverse-outlined-text-disabled);
+        border-color: var(--color-button-brand-reverse-outlined-border-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-brand-reverse-outlined-icon-disabled);
+          }
+        }
+      }
+    }
+    &.ghost {
+      color: var(--color-button-neutral-reverse-ghost-text-default);
+      .tu-button-icon {
+        * {
+          fill: var(--color-button-neutral-reverse-ghost-icon-default);
+        }
+      }
+      &:hover {
+        background-color: var(--color-button-neutral-reverse-ghost-background-hover);
+      }
+      &:active {
+        background-color: var(--color-button-neutral-reverse-ghost-background-active);
+      }
+      &.disabled {
+        color: var(--color-button-neutral-reverse-ghost-text-disabled);
+        .tu-button-icon {
+          * {
+            fill: var(--color-button-neutral-reverse-ghost-icon-disabled);
+          }
+        }
+      }
     }
   }
 }
