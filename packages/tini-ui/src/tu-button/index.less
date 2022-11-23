@@ -133,13 +133,22 @@
     pointer-events: none;
     color: var(--color-global-black);
     border: none;
-    & .tu-button--icon * {
-      fill: var(--color-global-black);
+    .tu-button-icon * {
+      z-index: -1000;
     }
     & .t-loading-indicator {
       display: none;
     }
   }
+
+  &.loading {
+    &.hasIconName {
+      * {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
   &.brand-reverse {
     &.solid {
       color: var(--color-button-brand-reverse-solid-text-default);
