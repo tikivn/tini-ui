@@ -9,8 +9,8 @@ export interface IChipPinProps extends IChipMethods {
   label?: string;
   length?: number;
   shape: 'rounded' | 'circle';
+  id: string;
   disabled?: boolean;
-  focus?: boolean;
   secret?: boolean;
   hideCaret?: boolean;
   hasError?: boolean;
@@ -25,8 +25,8 @@ Component({
     label: '',
     length: 4,
     shape: 'rounded',
+    id: 'pin',
     disabled: false,
-    focus: false,
     secret: false,
     hideCaret: false,
     hasError: false,
@@ -36,46 +36,47 @@ Component({
     onComplete: () => {},
   } as IChipPinProps,
 
-  data: {
-    currentIndex: -1,
-  },
-
   methods: {
-    onItemFocus(event) {
-      this.setData({
-        currentIndex: event.target.dataset.index,
-      });
-    },
-
+    inputRefs: [] as any[],
     onItemChange(event) {
-      const { currentIndex } = this.data;
+      const index = event.target.dataset.index;
       const { length, onChange, onComplete } = this.props;
       const value = event.detail.value;
-      this.values[currentIndex] = value;
+      this.values[index] = value;
       const pin = this.values.join('');
 
-      if (value && currentIndex < length - 1)
-        this.setData({
-          currentIndex: currentIndex + 1,
-        });
-
-      onChange(pin, currentIndex);
+      onChange(pin, index);
 
       if (pin.length === length) onComplete(pin);
+
+      if (`${value}`.trim().length && index < length - 1) {
+        this.inputRefs?.[index + 1]?.focus();
+      }
+    },
+    onKeyDown(event) {
+      const index = event.target.dataset.index;
+      const { key, keyCode } = event.detail;
+      const isBackPress = key === 'Backspace' || keyCode === 8;
+      if (index === 0 || !isBackPress) {
+        return;
+      }
+
+      if (`${this.values[index]}`.trim().length === 0) {
+        this.inputRefs?.[index - 1]?.focus();
+      }
     },
   },
 
   didMount() {
-    const { length, focus, value } = this.props;
+    const { length, value, id } = this.props;
 
     this.values =
       value && typeof value === 'string'
         ? value.split('').slice(0, length)
         : Array(length).fill('');
 
-    if (focus)
-      this.setData({
-        currentIndex: Math.min(value.length, length) - 1 || 0,
-      });
+    this.inputRefs = Array.from(Array(length).keys()).map((i) =>
+      (my as any).createInputContext(`${id}-${i}`),
+    );
   },
 });

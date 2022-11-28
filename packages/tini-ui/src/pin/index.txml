@@ -11,18 +11,19 @@
   <view class="tu-pin-blocks">
     <input
       tiki:for="{{length}}"
+      id="{{id}}-{{index}}"
       class="tu-pin-item tu-pin-item-{{shape}}{{secret ? ' tu-pin-item-secret': ''}}{{hasError ? ' tu-pin-item-error' : ''}}{{hideCaret ? ' tu-pin-item-hide-caret' : ''}}"
       placeholder-class="tu-pin-item-placeholder"
+      selectionStart="{{0}}"
+      selectionEnd="{{1}}"
       type="number"
       placeholder="-"
-      focus="{{index === currentIndex}}"
       disabled="{{disabled}}"
       password="{{secret}}"
       maxlength="{{1}}"
       data-index="{{index}}"
-      value="{{value[index]}}"
-      onFocus="onItemFocus"
       onInput="onItemChange"
+      onKeyDown="onKeyDown"
     />
   </view>
   <view
