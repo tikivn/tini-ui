@@ -97,5 +97,17 @@ Component({
         console.error(error);
       }
     },
+    onKeyDown(event) {
+      const { onTapSearchIcon } = this.props as any;
+      if (!onTapSearchIcon) {
+        return;
+      }
+
+      const { key, keyCode } = event.detail;
+      // Enter
+      if (keyCode === 13 || key == 'Enter') {
+        onTapSearchIcon();
+      }
+    },
   },
 });
