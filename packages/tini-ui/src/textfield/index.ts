@@ -193,5 +193,8 @@ Component({
     onTap(e) {
       this.onEvent('onTap', e);
     },
+    onKeyDown(e) {
+      this.onEvent('onKeyDown', e);
+    },
   },
 });
