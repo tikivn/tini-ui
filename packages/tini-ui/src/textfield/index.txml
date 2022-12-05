@@ -53,6 +53,7 @@
         onConfirm="onConfirm" 
         onFocus="onFocus" 
         onBlur="onBlur"
+        onKeyDown="onKeyDown"
         controlled="{{controlled}}" />
       <block tiki:if="{{suffix}}">
         <template is="suffix" data="{{type: suffix, suffixContent}}"/>

@@ -29,4 +29,5 @@
   onTapIconLeft="onTapSearchIcon"
   onConfirm="onTapSearchIcon"
   onInput="onInput"  
+  onKeyDown="onKeyDown"
 />
