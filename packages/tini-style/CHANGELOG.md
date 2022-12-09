@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-style@0.16.0...@tiki.vn/tini-style@0.17.0) (2022-12-09)
+
+**Note:** Version bump only for package @tiki.vn/tini-style
+
+
+
+
+
 # [0.16.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-style@0.15.0...@tiki.vn/tini-style@0.16.0) (2022-09-05)
 
 **Note:** Version bump only for package @tiki.vn/tini-style

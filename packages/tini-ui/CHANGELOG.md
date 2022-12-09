@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-ui@0.16.0...@tiki.vn/tini-ui@0.17.0) (2022-12-09)
+
+
+### Bug Fixes
+
+* add onKeyDown textfield ([cdd46d1](https://github.com/tikivn/tini-ui/commit/cdd46d18041d02adf1e28d38259cb6949de4d5b4))
+* bottom-bar ([47530f5](https://github.com/tikivn/tini-ui/commit/47530f529f73d7e5eeade5486e7f7d301de27e25))
+* cannot close bottom sheet when using dropdown component ([152e242](https://github.com/tikivn/tini-ui/commit/152e242b6800415ea2868e99d477d1bf8730c62d))
+* coupon background ([f421b67](https://github.com/tikivn/tini-ui/commit/f421b6718dc3521d2bf8917dc571ab9fcb306b9a))
+* keydown pin ([897760f](https://github.com/tikivn/tini-ui/commit/897760f6f569086923ba487fe52eb34af6df59da))
+* label disable text token ([fc3455b](https://github.com/tikivn/tini-ui/commit/fc3455b61f93776960a74f5b7825e1024f290adf))
+* style ([927c98f](https://github.com/tikivn/tini-ui/commit/927c98f7413daedddb063579418a841666029fc3))
+* tini ui label option text token ([ccbd862](https://github.com/tikivn/tini-ui/commit/ccbd862dbf0064f01e9f9b321b6a36b50c650adf))
+* tu-label ([73fd44b](https://github.com/tikivn/tini-ui/commit/73fd44b33aff8dfa7674518795f6cebc43943bb0))
+
+
+### Features
+
+* add detail to search bar ([c6a8bc9](https://github.com/tikivn/tini-ui/commit/c6a8bc94e9653e8daa51d83e4636dbbfa29edbad))
+* update key code ([23cf08c](https://github.com/tikivn/tini-ui/commit/23cf08c5a51493812b46a62403360d9a3480d8f1))
+* update pin component ([6dd0bef](https://github.com/tikivn/tini-ui/commit/6dd0bef09d26ed24bd2623d8fac58583a00a8dc1))
+* **TMA-4271:** Update address bottom sheet ([#69](https://github.com/tikivn/tini-ui/issues/69)) ([6ee41a9](https://github.com/tikivn/tini-ui/commit/6ee41a936e4985d48320b8a29afe182dbf1c09be))
+* add cart coupon ([#65](https://github.com/tikivn/tini-ui/issues/65)) ([5d81c13](https://github.com/tikivn/tini-ui/commit/5d81c13276d4c293204b8054127cb88a4f5d8a61))
+* add coupon ([#64](https://github.com/tikivn/tini-ui/issues/64)) ([bd80e43](https://github.com/tikivn/tini-ui/commit/bd80e433bfc15c71ec69da10bdbc116588026825))
+* add showActionButton prop ([#68](https://github.com/tikivn/tini-ui/issues/68)) ([abffba0](https://github.com/tikivn/tini-ui/commit/abffba013a7155eec055f77ab0862062ec68bd4a))
+* update color ([2f46932](https://github.com/tikivn/tini-ui/commit/2f46932f292382770bbe1bfebb99013e96f90da6))
+* update coupon ([f8291f0](https://github.com/tikivn/tini-ui/commit/f8291f0dca2f5be6b0aacae36d4c192b541a2c0a))
+* update types ([1ec0b51](https://github.com/tikivn/tini-ui/commit/1ec0b514ac904b613fd85f514086ac0dc92f6bba))
+
+
+
+
+
 # [0.16.0](https://github.com/tikivn/tini-ui/compare/@tiki.vn/tini-ui@0.15.0...@tiki.vn/tini-ui@0.16.0) (2022-09-05)
 
 **Note:** Version bump only for package @tiki.vn/tini-ui
