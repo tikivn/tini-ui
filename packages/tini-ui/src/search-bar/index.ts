@@ -43,9 +43,17 @@ export interface ISearchBarComponentProps extends ISearchBarComponentPropsEvents
 
 function mapPropsEvent<T>(eventNames: string[]): Record<string, any> {
   return eventNames.reduce((obj, eventName) => {
-    return <ThisType<{ props: T }>>{
+    return <ThisType<{ props: T; _value: string }>>{
       ...obj,
       [eventName]: function (e: any) {
+        if (e.detail?.value !== undefined) {
+          this._value = e.detail.value;
+        } else {
+          e.detail = {
+            value: this._value,
+          };
+        }
+
         if (this.props[eventName] instanceof Function) {
           return this.props[eventName](e);
         }
@@ -70,6 +78,7 @@ Component({
     this.onChangeValue(nextProps.value);
   },
   methods: {
+    _value: '',
     ...mapPropsEvent<ISearchBarComponentPropsEvents>([
       'onFocus',
       'onBlur',
@@ -106,7 +115,11 @@ Component({
       const { key, keyCode } = event.detail;
       // Enter
       if (keyCode === 13 || key == 'Enter') {
-        onTapSearchIcon();
+        onTapSearchIcon({
+          detail: {
+            value: this._value,
+          },
+        });
       }
     },
   },
